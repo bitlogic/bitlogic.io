@@ -1,14 +1,8 @@
 import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import NavBar from "./NavBar/Navbar"
 
-const Header = () => {}
-// Header.propTypes = {
-//   siteTitle: PropTypes.string,
-// }
-
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
+const Header = () => {
+  return <NavBar />
+}
 
 export default Header

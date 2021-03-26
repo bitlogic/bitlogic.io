@@ -9,7 +9,8 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import NavBar from "./Navbar"
+import Header from "./header"
+import "@fontsource/roboto"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -25,7 +26,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <NavBar />
+      <Header />
       <div
         style={{
           margin: `0 auto`,

@@ -1,0 +1,22 @@
+/* .NavBar {
+} */
+/* .NavBar__Item {
+} */
+.NavBar__Link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.NavBar__Collapse {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
