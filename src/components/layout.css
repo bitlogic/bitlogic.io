@@ -1,9 +1,8 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em roboto;
+  font: 62.5% roboto;
   box-sizing: border-box;
-  overflow-y: scroll;
 }
 body {
   margin: 0;

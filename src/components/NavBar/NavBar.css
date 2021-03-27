@@ -1,7 +1,12 @@
-/* .NavBar {
-} */
-/* .NavBar__Item {
-} */
+.NavBar {
+  background-color: #2a2c2e !important;
+}
+.NavBar__List {
+  margin-top: 2rem;
+}
+.NavBar__Item {
+  padding: 0.5rem 1rem;
+}
 .NavBar__Link {
   text-decoration: none;
   text-transform: uppercase;
@@ -14,9 +19,23 @@
   letter-spacing: 0em;
   text-align: center;
 }
-.NavBar__Collapse {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.NavBar__Link:hover {
+  text-decoration: none;
+  color: #1ecad3;
+}
+
+@media screen and (min-width: 992px) {
+  .NavBar {
+    height: 8rem;
+  }
+  .NavBar__Collapse {
+    /* DESKTOP */
+    justify-content: flex-end;
+  }
+  .NavBar__List {
+    margin-top: 0rem;
+  }
+  .NavBar__Item {
+    margin-right: 5rem;
+  }
 }

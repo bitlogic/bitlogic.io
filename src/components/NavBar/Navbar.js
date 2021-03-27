@@ -9,7 +9,7 @@ import "./NavBar.css"
 const NavBar = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg" className="NavBar ">
+      <Navbar variant="dark" expand="lg" className="NavBar ">
         <Link to="/">
           <img
             src={logo}

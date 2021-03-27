@@ -8,20 +8,21 @@ const MENU_LINKS = [
   { id: 3, text: "edtech", url: "/edTech" },
   { id: 4, text: "bitway", url: "/bitway" },
   { id: 5, text: "blog", url: "/blog" },
-  { id: 6, text: "contact", url: "/contact" },
+  { id: 6, text: "contacto", url: "/contact" },
 ]
 
 const Links = ({ styleClass }) => {
   return (
-    <Nav className="NavBar__Item ">
+    <Nav className="NavBar__List ">
       {MENU_LINKS.map(({ id, text, url }) => (
-        <Link
-          key={id}
-          to={url}
-          className={`NavBar__Link ${styleClass ? styleClass : ""}`}
-        >
-          {text}
-        </Link>
+        <Nav.Item key={id} className="NavBar__Item">
+          <Link
+            to={url}
+            className={`NavBar__Link ${styleClass ? styleClass : ""}`}
+          >
+            {text}
+          </Link>
+        </Nav.Item>
       ))}
     </Nav>
   )
