@@ -1,5 +1,14 @@
 .Footer {
   background-color: #2a2c2e;
   height: 25rem;
-  width: 100%;
+  width: 100vw;
+}
+
+.Footer__container {
+  height: 100%;
+}
+
+.Footer__row {
+  align-items: center;
+  height: 100%;
 }

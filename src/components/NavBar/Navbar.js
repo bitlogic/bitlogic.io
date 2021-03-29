@@ -2,7 +2,6 @@ import React from "react"
 import Navbar from "react-bootstrap/Navbar"
 import Links from "../../constants/links"
 import logo from "../../images/logoprincipal.png"
-import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import "./NavBar.css"
 

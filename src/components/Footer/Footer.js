@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <>
       <div className="Footer">
-        <Container fluid>
-          <Row>
+        <Container fluid className="Footer__container">
+          <Row className="Footer__row">
             <Col>
               {" "}
               <Link to="/">
