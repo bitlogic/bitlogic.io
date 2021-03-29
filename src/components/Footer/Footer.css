@@ -1,14 +1,64 @@
 .Footer {
   background-color: #2a2c2e;
-  height: 25rem;
+  padding: 10rem;
   width: 100vw;
 }
 
-.Footer__container {
+.Footer__Container {
   height: 100%;
 }
 
-.Footer__row {
+/* .Footer__Row {
+  height: auto;
+} */
+.Footer__Col {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 100%;
+  justify-content: center;
+}
+.Footer__Col__Logo {
+  align-items: flex-end;
+}
+.Footer__Col__Social {
+  align-items: flex-start;
+}
+
+.Footer__Title__Text {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #1ecad3;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.Footer__ContactData {
+  list-style: none;
+}
+
+.Footer__ContactData__Item {
+  color: #fff;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.Footer__Social {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+.Footer__Social__Item {
+  margin-right: 1.5rem;
+}
+.Footer__Social__Link {
+  color: #fff;
+  font-size: 2.5rem;
 }

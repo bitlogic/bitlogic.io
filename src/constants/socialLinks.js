@@ -36,6 +36,20 @@ const RRSS_LINKS = [
   },
 ]
 
-export default function links({ styleClass }) {
-  return {}
+const SocialLinks = ({ styleClass }) => {
+  return (
+    <ul className="Footer__Social">
+      {RRSS_LINKS.map(({ id, icon, url }) => (
+        <li className="Footer__Social__Item" key={id}>
+          <Link
+            to={url}
+            className={`Footer__Social__Link ${styleClass ? styleClass : ""}`}
+          >
+            {icon}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
 }
+export default SocialLinks

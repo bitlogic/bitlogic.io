@@ -5,14 +5,16 @@ import Col from "react-bootstrap/Col"
 import { Link } from "gatsby"
 import logo from "../../images/logoprincipal.png"
 import "./Footer.css"
+import ContactData from "../../constants/contactData"
+import SocialLinks from "./../../constants/socialLinks"
 
 const Footer = () => {
   return (
     <>
       <div className="Footer">
-        <Container fluid className="Footer__container">
-          <Row className="Footer__row">
-            <Col>
+        <Container fluid className="Footer__Container">
+          <Row className="Footer__Row">
+            <Col className="Footer__Col Footer__Col__Logo">
               {" "}
               <Link to="/">
                 <img
@@ -26,8 +28,18 @@ const Footer = () => {
                 />
               </Link>
             </Col>
-            <Col></Col>
-            <Col></Col>
+            <Col className="Footer__Col Footer__Col__Contact">
+              <div className="Footer__Title">
+                <h3 className="Footer__Title__Text">Contacto</h3>
+                <ContactData />
+              </div>
+            </Col>
+            <Col className="Footer__Col Footer__Col__Social">
+              <div className="Footer__Title">
+                <h3 className="Footer__Title__Text">S&iacute;guenos</h3>
+                <SocialLinks />
+              </div>
+            </Col>
           </Row>
         </Container>
       </div>
