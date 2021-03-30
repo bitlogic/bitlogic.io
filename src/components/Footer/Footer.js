@@ -12,9 +12,14 @@ const Footer = () => {
   return (
     <>
       <div className="Footer">
-        <Container fluid className="Footer__Container">
+        <Container className="Footer__Container">
           <Row className="Footer__Row">
-            <Col className="Footer__Col Footer__Col__Logo">
+            <Col
+              xs={12}
+              md={6}
+              lg={4}
+              className="Footer__Col Footer__Col__Logo"
+            >
               {" "}
               <Link to="/">
                 <img
@@ -24,17 +29,22 @@ const Footer = () => {
                   formats={["AUTO", "WEBP", "AVIF"]}
                   alt="logo bitlogic"
                   //   style={{ marginLeft: `58px`, marginBottom: "0rem" }}
-                  className="d-inline-block align-center"
+                  className="Footer__Logo d-inline-block align-center"
                 />
               </Link>
             </Col>
-            <Col className="Footer__Col Footer__Col__Contact">
+            <Col
+              xs={12}
+              md={6}
+              lg={4}
+              className="Footer__Col Footer__Col__Contact"
+            >
               <div className="Footer__Title">
                 <h3 className="Footer__Title__Text">Contacto</h3>
                 <ContactData />
               </div>
             </Col>
-            <Col className="Footer__Col Footer__Col__Social">
+            <Col xs={12} lg={4} className="Footer__Col Footer__Col__Social">
               <div className="Footer__Title">
                 <h3 className="Footer__Title__Text">S&iacute;guenos</h3>
                 <SocialLinks />

@@ -1,6 +1,10 @@
 .NavBar {
   background-color: #2a2c2e !important;
 }
+.NavBar__Toggle {
+  color: #1ecad3;
+  border-color: #1ecad3;
+}
 .NavBar__List {
   margin-top: 2rem;
 }
