@@ -12,16 +12,14 @@ const NavBar = () => {
         <Link to="/">
           <img
             src={logo}
-            width={143}
-            // quality={95}
+            quality={95}
             formats={["AUTO", "WEBP", "AVIF"]}
-            alt="logo bitlogic"
-            style={{ marginLeft: `58px`, marginBottom: "0rem" }}
-            className="d-inline-block align-top"
+            alt="Logo Bitlogic"
+            className="d-inline-block align-top NavBar__Logo"
           />
         </Link>
         <Navbar.Toggle
-          className="NavBar__Toggle "
+          className="NavBar__Toggler"
           aria-controls=" basic-navbar-nav"
         />
         <Navbar.Collapse id=" basic-navbar-nav" className="NavBar__Collapse">

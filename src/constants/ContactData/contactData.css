@@ -1,0 +1,32 @@
+.Footer__ContactData {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 2.8rem;
+}
+
+.Footer__ContactData__Item {
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem;
+  padding-right: 5px;
+}
+@media screen and (min-width: 576px) {
+  .Footer__ContactData {
+    flex-flow: column nowrap;
+  }
+}
+@media screen and (min-width: 992px) {
+  .Footer__ContactData {
+    margin-bottom: 0;
+  }
+
+  .Footer__ContactData__Item {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    text-align: center;
+  }
+}

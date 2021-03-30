@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col"
 import { Link } from "gatsby"
 import logo from "../../images/logoprincipal.png"
 import "./Footer.css"
-import ContactData from "../../constants/contactData"
+import ContactData from "../../constants/ContactData/contactData"
 import SocialLinks from "./../../constants/socialLinks"
 
 const Footer = () => {
@@ -16,7 +16,7 @@ const Footer = () => {
           <Row className="Footer__Row">
             <Col
               xs={12}
-              md={6}
+              md={12}
               lg={4}
               className="Footer__Col Footer__Col__Logo"
             >
@@ -44,7 +44,12 @@ const Footer = () => {
                 <ContactData />
               </div>
             </Col>
-            <Col xs={12} lg={4} className="Footer__Col Footer__Col__Social">
+            <Col
+              xs={12}
+              md={6}
+              lg={4}
+              className="Footer__Col Footer__Col__Social"
+            >
               <div className="Footer__Title">
                 <h3 className="Footer__Title__Text">S&iacute;guenos</h3>
                 <SocialLinks />

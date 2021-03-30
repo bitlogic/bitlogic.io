@@ -4,7 +4,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
   FaTwitter,
-  FaGithub,
+  // FaGithub,
 } from "react-icons/fa"
 
 const RRSS_LINKS = [
@@ -28,11 +28,11 @@ const RRSS_LINKS = [
     icon: <FaInstagram className="social-icon"></FaInstagram>,
     url: "https://www.instagram.com/bitlogic.io/",
   },
-  {
-    id: 5,
-    icon: <FaGithub className="social-icon"></FaGithub>,
-    url: "https://github.com/bitlogic",
-  },
+  // {
+  //   id: 5,
+  //   icon: <FaGithub className="social-icon"></FaGithub>,
+  //   url: "https://github.com/bitlogic",
+  // },
 ]
 
 const SocialLinks = ({ styleClass }) => {
