@@ -12,8 +12,6 @@ const NavBar = () => {
         <Link to="/">
           <img
             src={logo}
-            quality={95}
-            formats={["AUTO", "WEBP", "AVIF"]}
             alt="Logo Bitlogic"
             className="d-inline-block align-top NavBar__Logo"
           />

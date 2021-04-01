@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 import logo from "../../images/logoprincipal.png"
 import "./Footer.css"
 import ContactData from "../../constants/ContactData/contactData"
-import SocialLinks from "./../../constants/socialLinks"
+import SocialLinks from "../../constants/SocialLinks/socialLinks"
 
 const Footer = () => {
   return (

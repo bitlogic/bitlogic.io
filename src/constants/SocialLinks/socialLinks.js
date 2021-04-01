@@ -6,6 +6,7 @@ import {
   FaTwitter,
   // FaGithub,
 } from "react-icons/fa"
+import "./socialLinks.css"
 
 const RRSS_LINKS = [
   {
@@ -41,8 +42,9 @@ const SocialLinks = ({ styleClass }) => {
       {RRSS_LINKS.map(({ id, icon, url }) => (
         <li className="Footer__Social__Item" key={id}>
           <a
-            to={url}
+            href={url}
             target="_blank"
+            rel="noreferrer"
             className={`Footer__Social__Link ${styleClass ? styleClass : ""}`}
           >
             {icon}

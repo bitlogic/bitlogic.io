@@ -27,25 +27,11 @@
   margin-bottom: 1rem;
 }
 
-.Footer__Social {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-}
-.Footer__Social__Item {
-  margin: 0 1.5rem 0 0;
-}
-.Footer__Social__Link {
-  color: #fff;
-  font-size: 2.5rem;
-}
 @media screen and (min-width: 992px) {
   .Footer {
     padding: 10rem;
   }
-  /* .Footer__Container {
-    height: 100%;
-  } */
+
   .Footer__Logo {
     margin-bottom: 0;
   }

@@ -1,0 +1,18 @@
+.Footer__Social {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+.Footer__Social__Item {
+  margin: 0 1.5rem 0 0;
+}
+.Footer__Social__Link {
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+@media screen and (min-width: 992px) {
+  .Footer__Social__Item {
+    margin: 0 0.75rem;
+  }
+}

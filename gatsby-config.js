@@ -1,8 +1,9 @@
-require("dotenv").config({
-  path: `.env`,
-})
-
 module.exports = {
+  siteMetadata: {
+    title: `Bitlogic`,
+    description: `Bitlogic Web es una empresa dedicada al diseño, ingeniería y desarrollo ágil de productos de software, especializada en la transformación digital de instituciones educativas .`,
+    author: `Bitlogic.io`,
+  },
   plugins: [
     "gatsby-plugin-react-helmet",
     {
@@ -15,12 +16,12 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.API_URL || "http://localhost:1337",
-        contentTypes: [`users`],
-        singleTypes: [`homepage`],
+        apiURL: `http://localhost:1337`,
         queryLimit: 1000,
+        contentTypes: [`services`, `banners`],
       },
     },
+    `gatsby-plugin-image`,
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     {
