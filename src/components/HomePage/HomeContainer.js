@@ -1,7 +1,6 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
-
 import { BgImage } from "gbimage-bridge"
 
 import Layout from "../layout"
@@ -46,7 +45,7 @@ const Home = () => {
         <div className="Home__Logo__Container">
           <GatsbyImage image={logoImage} alt={`img-${title}`}></GatsbyImage>
         </div>
-        <h1>{title}</h1>
+        <h1 className="Home__Title">{title}</h1>
       </BgImage>
     </Layout>
   )

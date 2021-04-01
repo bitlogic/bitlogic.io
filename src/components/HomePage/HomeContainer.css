@@ -10,3 +10,10 @@
 .Home__Logo__Container {
   width: 40%;
 }
+
+.Home__Title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4rem;
+  line-height: 16px;
+}

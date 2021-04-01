@@ -1,16 +1,46 @@
 import * as React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
+import { BgImage } from "gbimage-bridge"
 import { Link } from "gatsby"
 
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
+import Layout from "../layout"
+import SEO from "../seo"
+import "./EdtechContainer.css"
 
-const EdTech = () => (
-  <Layout>
-    <SEO title="EdTech" />
-    <h1>Hi from the EdTech page</h1>
-    <p>Welcome to EdTech</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+const EdTech = () => {
+  const {
+    edtechBanner: {
+      nodes: {
+        0: { title, image },
+      },
+    },
+  } = useStaticQuery(graphql`
+    {
+      edtechBanner: allStrapiBanners(filter: { page: { eq: "edTech" } }) {
+        nodes {
+          title
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const imagen = getImage(image)
+
+  return (
+    <Layout>
+      <SEO title="EdTech" />
+      <BgImage image={imagen} className="Services__BgImage">
+        <h1 className="Services__Title">{title}</h1>
+      </BgImage>
+      <Link to="/">Go back to the homepage</Link>
+    </Layout>
+  )
+}
 
 export default EdTech
