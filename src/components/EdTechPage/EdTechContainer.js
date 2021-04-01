@@ -17,7 +17,7 @@ const EdTech = () => {
     },
   } = useStaticQuery(graphql`
     {
-      edtechBanner: allStrapiBanners(filter: { page: { eq: "edTech" } }) {
+      edtechBanner: allStrapiBanners(filter: { page: { eq: "edtech" } }) {
         nodes {
           title
           image {
