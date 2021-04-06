@@ -11454,24 +11454,24 @@ module.exports = withSideEffect;
 /***/ }),
 
 /***/ "react-dom/server":
-/*!********************************************************************************************************************!*\
-  !*** external "C:\\FedeTanco\\Developments\\react\\bitlogic-web\\bitlogic.io\\node_modules\\react-dom\\server.js" ***!
-  \********************************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** external "C:\\fedetanco\\Developments\\bitlogic-web\\bitlogic.io\\node_modules\\react-dom\\server.js" ***!
+  \*************************************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("C:\\FedeTanco\\Developments\\react\\bitlogic-web\\bitlogic.io\\node_modules\\react-dom\\server.js");;
+module.exports = require("C:\\fedetanco\\Developments\\bitlogic-web\\bitlogic.io\\node_modules\\react-dom\\server.js");;
 
 /***/ }),
 
 /***/ "react":
-/*!***************************************************************************************************************!*\
-  !*** external "C:\\FedeTanco\\Developments\\react\\bitlogic-web\\bitlogic.io\\node_modules\\react\\index.js" ***!
-  \***************************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** external "C:\\fedetanco\\Developments\\bitlogic-web\\bitlogic.io\\node_modules\\react\\index.js" ***!
+  \********************************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("C:\\FedeTanco\\Developments\\react\\bitlogic-web\\bitlogic.io\\node_modules\\react\\index.js");;
+module.exports = require("C:\\fedetanco\\Developments\\bitlogic-web\\bitlogic.io\\node_modules\\react\\index.js");;
 
 /***/ }),
 

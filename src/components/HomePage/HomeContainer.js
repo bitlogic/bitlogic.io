@@ -10,24 +10,25 @@ import "./HomeContainer.css"
 
 const Home = () => {
   const {
-    homeBanner: {
+    banner: {
       nodes: {
         0: { title, image, logo },
       },
     },
   } = useStaticQuery(graphql`
     {
-      homeBanner: allStrapiBanners(filter: { page: { eq: "home" } }) {
+      banner: allStrapiBanners(filter: { page: { eq: "home" } }) {
         nodes {
+          strapiId
           title
           image {
             childImageSharp {
-              gatsbyImageData(quality: 50, webpOptions: { quality: 70 })
+              gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
             }
           }
           logo {
             childImageSharp {
-              gatsbyImageData(quality: 50, webpOptions: { quality: 70 })
+              gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
             }
           }
         }
@@ -36,6 +37,7 @@ const Home = () => {
   `)
 
   const imagen = getImage(image)
+
   const logoImage = getImage(logo)
 
   return (

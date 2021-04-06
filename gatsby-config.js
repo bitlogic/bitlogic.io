@@ -18,7 +18,7 @@ module.exports = {
       options: {
         apiURL: `http://localhost:1337`,
         queryLimit: 1000,
-        contentTypes: [`services`, `banners`],
+        contentTypes: [`banners`, `services`, `edteches`],
       },
     },
     `gatsby-plugin-image`,
