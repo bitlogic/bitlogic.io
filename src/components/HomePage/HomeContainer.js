@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
+import ServicesSection from "./ServicesSection/ServicesSection"
 
 import Layout from "../layout"
 import SEO from "../seo"
@@ -49,6 +50,7 @@ const Home = () => {
         </div>
         <h1 className="Home__Title">{title}</h1>
       </BgImage>
+      <ServicesSection />
     </Layout>
   )
 }
