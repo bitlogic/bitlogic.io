@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: `https://cms.bitlogic.io`,
         queryLimit: 1000,
         contentTypes: [`banners`, `services`, `edteches`],
       },
@@ -33,7 +33,7 @@ module.exports = {
         background_color: "#663399",
         theme_color: "#663399",
         display: "minimal-ui",
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/isotipo.png`,
       },
     },
     "gatsby-plugin-offline",

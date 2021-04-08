@@ -1,18 +1,30 @@
 import React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import Card from "react-bootstrap/Card"
+import Col from "react-bootstrap/Col"
+import Container from "react-bootstrap/Container"
 
 const ServiceItem = ({ service }) => {
-  const { title, strapiId, content, icon } = service
+  const { title, content, icon } = service
+
+  const imagen = getImage(icon)
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>{content}</Card.Text>
-      </Card.Body>
-    </Card>
+    <Col xs={12} md={4}>
+      <Card className="Service__Card">
+        <div className="Service__Card__Img__Container">
+          <GatsbyImage
+            className="Service__Card__Img"
+            image={imagen}
+            alt={`img-${title}`}
+          ></GatsbyImage>
+        </div>
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <Card.Text>{content}</Card.Text>
+        </Card.Body>
+      </Card>
+    </Col>
   )
 }
 

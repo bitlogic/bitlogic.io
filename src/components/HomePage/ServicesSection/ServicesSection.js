@@ -4,6 +4,8 @@ import { getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
 import ServiceItem from "./ServiceItem"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
 
 const ServicesSection = () => {
   const {
@@ -17,7 +19,10 @@ const ServicesSection = () => {
           content
           icon {
             childImageSharp {
-              gatsbyImageData(quality: 100)
+              gatsbyImageData(quality: 100, width: 50)
+              resize(width: 80) {
+                width
+              }
             }
           }
         }
@@ -26,11 +31,19 @@ const ServicesSection = () => {
   `)
 
   return (
-    <div>
-      {nodes.map((service, key) => {
-        return <ServiceItem service={service} key={service.strapiId} />
-      })}
-    </div>
+    <Container>
+      <Row>
+        {nodes.map((service, key) => {
+          return (
+            <ServiceItem
+              className="Service__Item"
+              service={service}
+              key={service.strapiId}
+            />
+          )
+        })}
+      </Row>
+    </Container>
   )
 }
 

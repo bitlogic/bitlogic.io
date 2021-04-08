@@ -9,35 +9,35 @@ import SEO from "../seo"
 import "./ServicesContainer.css"
 
 const Services = () => {
-  // const {
-  //   servicesBanner: {
-  //     nodes: {
-  //       0: { title, image },
-  //     },
-  //   },
-  // } = useStaticQuery(graphql`
-  //   {
-  //     servicesBanner: allStrapiBanners(filter: { page: { eq: "services" } }) {
-  //       nodes {
-  //         title
-  //         image {
-  //           childImageSharp {
-  //             gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const {
+    servicesBanner: {
+      nodes: {
+        0: { title, image },
+      },
+    },
+  } = useStaticQuery(graphql`
+    {
+      servicesBanner: allStrapiBanners(filter: { page: { eq: "services" } }) {
+        nodes {
+          title
+          image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  // const imagen = getImage(image)
+  const imagen = getImage(image)
 
   return (
     <Layout>
       <SEO title="Servicios" />
-      {/* <BgImage image={imagen} className="Services__BgImage">
+      <BgImage image={imagen} className="Services__BgImage">
         <h1 className="Services__Title">{title}</h1>
-      </BgImage> */}
+      </BgImage>
       <h1>The service PAGE</h1>
       <Link to="/">Go back to the homepage</Link>
     </Layout>
