@@ -16,9 +16,10 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: `https://cms.bitlogic.io`,
+        apiURL: `http://localhost:1337`,
         queryLimit: 1000,
-        contentTypes: [`banners`, `services`, `edteches`],
+        contentTypes: ["banners", "services", "edteches"],
+        singleTypes: [`home-page`],
       },
     },
     `gatsby-plugin-image`,

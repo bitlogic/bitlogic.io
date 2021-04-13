@@ -2,10 +2,11 @@ import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
-import ServicesSection from "./ServicesSection/ServicesSection"
+import ServicesSection from "../ServicesSection/ServicesSection"
+import BitWaySection from "../BitWaySection/BitWaySection"
 
-import Layout from "../layout"
-import SEO from "../seo"
+import Layout from "../../layout"
+import SEO from "../../seo"
 
 import "./HomeContainer.css"
 
@@ -38,7 +39,6 @@ const Home = () => {
   `)
 
   const imagen = getImage(image)
-
   const logoImage = getImage(logo)
 
   return (
@@ -51,6 +51,7 @@ const Home = () => {
         <h1 className="Home__Title">{title}</h1>
       </BgImage>
       <ServicesSection />
+      <BitWaySection />
     </Layout>
   )
 }

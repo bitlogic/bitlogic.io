@@ -1,27 +1,29 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { getImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
 
 import ServiceItem from "./ServiceItem"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 
+import showdown from "showdown"
+import "./ServiceSection.css"
+
 const ServicesSection = () => {
-  const {
-    services: { nodes },
-  } = useStaticQuery(graphql`
+  const { title, services } = useStaticQuery(graphql`
     {
-      services: allStrapiServices {
+      title: allStrapiHomePage {
         nodes {
-          strapiId
-          title
-          content
-          icon {
-            childImageSharp {
-              gatsbyImageData(quality: 100, width: 50)
-              resize(width: 80) {
-                width
+          titleClientes
+        }
+      }
+      services: allStrapiServices(sort: { order: ASC, fields: id }) {
+        nodes {
+          home {
+            title
+            content
+            icon {
+              childImageSharp {
+                gatsbyImageData
               }
             }
           }
@@ -30,15 +32,32 @@ const ServicesSection = () => {
     }
   `)
 
+  const { titleServices } = title.nodes[0]
+  const { nodes } = services
+
+  const titles = titleServices
+  let converter = new showdown.Converter()
+  let post = titles
+  let html = converter.makeHtml(post)
+
+  const ReplaceHtml = () => {
+    return { __html: html }
+  }
+
   return (
     <Container>
+      <div
+        dangerouslySetInnerHTML={ReplaceHtml()}
+        className="Service__Title"
+      ></div>
+
       <Row>
         {nodes.map((service, key) => {
           return (
             <ServiceItem
               className="Service__Item"
               service={service}
-              key={service.strapiId}
+              key={key}
             />
           )
         })}

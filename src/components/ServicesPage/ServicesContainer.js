@@ -9,13 +9,7 @@ import SEO from "../seo"
 import "./ServicesContainer.css"
 
 const Services = () => {
-  const {
-    servicesBanner: {
-      nodes: {
-        0: { title, image },
-      },
-    },
-  } = useStaticQuery(graphql`
+  const { servicesBanner } = useStaticQuery(graphql`
     {
       servicesBanner: allStrapiBanners(filter: { page: { eq: "services" } }) {
         nodes {
@@ -30,6 +24,7 @@ const Services = () => {
     }
   `)
 
+  const { title, image } = servicesBanner.nodes[0]
   const imagen = getImage(image)
 
   return (
