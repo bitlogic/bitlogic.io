@@ -8,7 +8,7 @@ import BitWaySection from "../BitWaySection/BitWaySection"
 import Layout from "../../layout"
 import SEO from "../../seo"
 
-import "./HomeContainer.css"
+import "./HomeContainer.scss"
 
 const Home = () => {
   const {
@@ -50,7 +50,7 @@ const Home = () => {
         </div>
         <h1 className="Home__Title">{title}</h1>
       </BgImage>
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       <BitWaySection />
     </Layout>
   )
