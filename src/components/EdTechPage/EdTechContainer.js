@@ -23,28 +23,21 @@ const EdTech = () => {
           }
         }
       }
-      content: allStrapiEdteches {
-        nodes {
-          submodules {
-            content
-          }
-        }
-      }
     }
   `)
   const { title, image } = edtechBanner.nodes[0]
   const imagen = getImage(image)
 
-  const { submodules } = content.nodes[0]
+  /* const { submodules } = content.nodes[0] */
 
-  const modules = submodules[0].content
+  /* const modules = submodules[0].content
   let converter = new showdown.Converter()
   let post = modules
   let html = converter.makeHtml(post)
 
   const ReplaceHtml = () => {
     return { __html: html }
-  }
+  } */
 
   return (
     <Layout>
@@ -54,23 +47,21 @@ const EdTech = () => {
       </BgImage>
       <h1>ED TECH PAGE</h1>
       <Link to="/">Go back to the homepage</Link>
-      <div
+      {/* <div
         dangerouslySetInnerHTML={ReplaceHtml()}
         className="Edtech__content"
-      ></div>
+      ></div> */}
     </Layout>
   )
 }
 
 export default EdTech
 
-/* edtechBanner: allStrapiBanners(filter: { page: { eq: "edtech" } }) {
-        nodes {
-          title
-          image {
-            childImageSharp {
-              gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
-            }
-          }
-        }
-      } */
+/* LO DE ABAJO ES UN QUERY */
+/* content: allStrapiEdteches {
+    nodes {
+      submodules {
+        content
+      }
+    }
+  } */

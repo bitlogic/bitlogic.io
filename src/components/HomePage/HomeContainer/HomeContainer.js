@@ -38,6 +38,7 @@ const Home = () => {
     }
   `)
 
+  console.log(image)
   const imagen = getImage(image)
   const logoImage = getImage(logo)
 

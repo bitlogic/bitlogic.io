@@ -31,12 +31,12 @@ const BitWaySection = () => {
 
   return (
     <div className="Home__Edtech">
-      {/* <BgImage image={imagen} className="Home__Bitway__BgImage">
+      <BgImage image={imagen} className="Home__Bitway__BgImage">
         <div
           dangerouslySetInnerHTML={ReplaceHtml()}
           className="Service__Title"
         ></div>
-      </BgImage> */}
+      </BgImage>
     </div>
   )
 }
