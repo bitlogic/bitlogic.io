@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { Link } from "gatsby"
 import logo from "../../images/logoprincipal.png"
-import "./Footer.css"
+import "./Footer.scss"
 import ContactData from "../../constants/ContactData/contactData"
 import SocialLinks from "../../constants/SocialLinks/socialLinks"
 

@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar"
 import Links from "../../constants/links"
 import logo from "../../images/logoprincipal.png"
 import { Link } from "gatsby"
-import "./NavBar.css"
+import "./NavBar.scss"
 
 const NavBar = () => {
   return (

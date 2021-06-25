@@ -4,7 +4,7 @@ import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 import showdown from "showdown"
 
-import "./BitWaySection.css"
+import "./BitWaySection.scss"
 import PropTypes from "prop-types"
 
 const BitWaySection = () => {

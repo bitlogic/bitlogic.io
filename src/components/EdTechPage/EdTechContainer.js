@@ -8,7 +8,7 @@ import showdown from "showdown"
 
 import Layout from "../layout"
 import SEO from "../seo"
-import "./EdtechContainer.css"
+import "./EdtechContainer.scss"
 
 const EdTech = () => {
   const { edtechBanner, content } = useStaticQuery(graphql`
