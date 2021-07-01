@@ -82,7 +82,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.STRAPI_URL,
+        apiURL: process.env.BUILD_ENV,
         queryLimit: 1000,
         contentTypes: ["banners", "services", "edteches"],
         singleTypes: [`home-page`],
