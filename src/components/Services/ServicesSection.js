@@ -5,6 +5,8 @@ import ServiceCard from './ServiceCard'
 
 const ServicesSection = ({services}) => {
 
+    console.log(services)
+
     const servicesToDisplay = services?.map(
         service => (
             <ServiceCard 

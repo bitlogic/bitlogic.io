@@ -1,6 +1,5 @@
 import React from "react"
-import {useServices} from '../hooks'
-import {useBanner} from '../hooks'
+import {useServices, useBanner} from '../hooks'
 import ServicesSection from "../components/Services/ServicesSection"
 import Layout from "../components/layout"
 import BannerTop from "../components/Banners/BannerTop"

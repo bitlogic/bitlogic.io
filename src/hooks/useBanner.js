@@ -7,6 +7,8 @@ const useBanner = () => {
             nodes {
               title
               strapiId
+              page
+              type
               image {
                 childImageSharp {
                   gatsbyImageData(
@@ -15,8 +17,19 @@ const useBanner = () => {
                   )
                 }
               }
-              page
-              type
+              logo {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 100
+                    formats: [AUTO, WEBP, AVIF, PNG]
+                    placeholder: BLURRED
+                  )
+                }
+              }
+              link {
+                name
+                pathTo
+              }
             }
         }
     }
