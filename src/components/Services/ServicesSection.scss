@@ -5,6 +5,9 @@
 }
 
 .serviceCard {
+    &__description {
+        font-size: $small;
+    }
     &__icon {
         margin: 0 auto;
         margin-top: 30px;
@@ -12,7 +15,7 @@
     }
     &__title {
         font-weight: $bold;
-        font-size: $large;
+        font-size: $medium;
         margin-bottom: 45px;
     }
     &__block {
@@ -22,5 +25,14 @@
     }
 }
 
-
+@media (min-width: $breakpoint-tablet) {
+    .serviceCard {
+        &__description {
+            font-size: $medium;
+        }
+        &__title {
+            font-size: $large;
+        }
+    }
+}
     

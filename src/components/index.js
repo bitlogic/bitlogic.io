@@ -1,7 +1,9 @@
-import ServicesSection from "./Services/servicesSection.component"
+import ServicesSection from "./Services/ServicesSection"
+import Title from "./Title/Title"
 
 /* Ordenados alfabéticamente */
 
 export {
-  ServicesSection
+  ServicesSection,
+  Title
 }
