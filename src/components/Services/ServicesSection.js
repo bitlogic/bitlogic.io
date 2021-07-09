@@ -8,6 +8,10 @@ const ServicesSection = ({ services }) => {
     <ServiceCard key={service.id} service={service} />
   ))
 
+  const servicesToDisplay = services?.map(service => (
+    <ServiceCard key={service.id} service={service} />
+  ))
+
   return (
     <div className="container-fluid servicesSection">
       <div className="container">{servicesToDisplay}</div>
