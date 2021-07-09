@@ -8,7 +8,7 @@ import "./EdtechSection.css"
 import PropTypes from "prop-types"
 
 const BitWaySection = () => {
-  const { edtech } = useStaticQuery(graphql`
+  /* const { edtech } = useStaticQuery(graphql`
     {
       edtech: allStrapiHomePage {
         nodes {
@@ -16,9 +16,9 @@ const BitWaySection = () => {
         }
       }
     }
-  `)
+  `) */
 
-  const { titleEdTech } = edtech.nodes[0]
+  /* const { titleEdTech } = edtech.nodes[0]
 
   const titles = titleBitWay
   let converter = new showdown.Converter()
@@ -28,17 +28,16 @@ const BitWaySection = () => {
   const ReplaceHtml = () => {
     return { __html: html }
   }
-
-  return (
-    <div className="Home__Edtech">
+ */
+  return null
+  /*   <div className="Home__Edtech">
       <BgImage image={imagen} className="Home__Bitway__BgImage">
         <div
           dangerouslySetInnerHTML={ReplaceHtml()}
           className="Service__Title"
         ></div>
       </BgImage>
-    </div>
-  )
+    </div> */
 }
 
 BitWaySection.propTypes = {}

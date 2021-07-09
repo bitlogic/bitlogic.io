@@ -1,26 +1,18 @@
-import React from 'react'
+import React from "react"
+
+import ServiceCard from "./ServiceCard"
 import "./ServicesSection.scss"
-import ServiceCard from './ServiceCard'
 
+const ServicesSection = ({ services }) => {
+  const servicesToDisplay = services?.map(service => (
+    <ServiceCard key={service.id} service={service} />
+  ))
 
-const ServicesSection = ({services}) => {
-
-    const servicesToDisplay = services?.map(
-        service => (
-            <ServiceCard 
-                key={service.id} 
-                service={service} 
-            />
-        )        
-    )
-    
-    return (
-        <div className="container-fluid servicesSection">
-            <div className="container">
-                {servicesToDisplay}
-            </div>
-        </div>
-    )
+  return (
+    <div className="container-fluid servicesSection">
+      <div className="container">{servicesToDisplay}</div>
+    </div>
+  )
 }
 
 export default ServicesSection

@@ -1,19 +1,16 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useServices = () => {
-    const query = useStaticQuery(graphql`
+  const query = useStaticQuery(graphql`
     {
-      allStrapiServices(filter: {visible: {eq: true}}) {
+      allStrapiServices(filter: { visible: { eq: true } }) {
         nodes {
           description
           title
           id
           icon {
             childImageSharp {
-              gatsbyImageData(
-                quality: 100,
-                placeholder: BLURRED
-                )
+              gatsbyImageData(quality: 100, placeholder: BLURRED)
             }
           }
         }

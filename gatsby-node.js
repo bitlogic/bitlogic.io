@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+exports.createSchemaCustomization = ({ actions }) => {
+  const schema = require("./src/schema/schema")
 
-// You can delete this file if you're not using it
+  const { createTypes } = actions
+  const typeDefs = schema.value // + luego se concatenan
+
+  createTypes(typeDefs)
+}

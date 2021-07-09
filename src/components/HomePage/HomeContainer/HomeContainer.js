@@ -4,6 +4,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 import ServicesSection from "../ServicesSection/ServicesSection"
 import BitWaySection from "../BitWaySection/BitWaySection"
+import { useBanner, useHomePage } from "../../../hooks/index"
 
 import Layout from "../../layout"
 import SEO from "../../seo"
@@ -11,48 +12,31 @@ import SEO from "../../seo"
 import "./HomeContainer.scss"
 
 const Home = () => {
-  const {
-    banner: {
-      nodes: {
-        0: { title, image, logo },
-      },
-    },
-  } = useStaticQuery(graphql`
-    {
-      banner: allStrapiBanners(filter: { page: { eq: "home" } }) {
-        nodes {
-          strapiId
-          title
-          image {
-            childImageSharp {
-              gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
-            }
-          }
-          logo {
-            childImageSharp {
-              gatsbyImageData(quality: 100, webpOptions: { quality: 90 })
-            }
-          }
-        }
-      }
-    }
-  `)
+  /* const data = useHomePage() */
+  const dataBanner = useBanner()
+  const banner = dataBanner?.allStrapiBanners?.nodes.find(
+    banner => banner.page === "home"
+  )
 
-  console.log(image)
-  const imagen = getImage(image)
-  const logoImage = getImage(logo)
+  const imagen = getImage(banner.image)
+  const logoImage = getImage(banner.logo)
 
   return (
     <Layout>
       <SEO title="Home" />
-      <BgImage image={imagen} className="Home__BgImage">
-        <div className="Home__Logo__Container">
-          <GatsbyImage image={logoImage} alt={`img-${title}`}></GatsbyImage>
-        </div>
-        <h1 className="Home__Title">{title}</h1>
-      </BgImage>
-      {/* <ServicesSection /> */}
-      <BitWaySection />
+      {
+        <BgImage image={imagen} className="Home__BgImage">
+          <div className="Home__Logo__Container">
+            <GatsbyImage
+              image={logoImage}
+              alt={`img-${banner.title}`}
+            ></GatsbyImage>
+          </div>
+          <h1 className="Home__Title">{banner.title}</h1>
+        </BgImage>
+        /*{ <ServicesSection />}
+      {/* <BitWaySection /> */
+      }
     </Layout>
   )
 }

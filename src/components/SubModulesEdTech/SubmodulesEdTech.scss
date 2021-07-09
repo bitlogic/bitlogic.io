@@ -1,0 +1,24 @@
+.Submodules {
+  border-top: solid 4px #1ecad3;
+  padding: 30px 0 10px 0;
+
+  &__text {
+    padding-left: 0;
+    h4 {
+      margin-bottom: 0;
+    }
+    p {
+      text-align: start;
+      margin-top: 20px;
+    }
+  }
+  &__image {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  .dataDriven {
+    img {
+      width: 80%;
+    }
+  }
+}

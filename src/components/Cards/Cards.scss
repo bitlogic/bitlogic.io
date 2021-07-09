@@ -1,0 +1,118 @@
+@import "../../styles/global.scss";
+.Cards {
+  &__body {
+    @extend %border-shadowed;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+  &__icon {
+    margin: 0 auto;
+    max-width: 115px;
+    transform: translateY(60%);
+  }
+  &__title {
+    font-weight: $max-bold;
+    font-size: $medium;
+    line-height: $large;
+    text-align: center;
+    padding: 90px 5px 29px;
+  }
+  &__container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__description {
+    padding: 0px 5px 10px 0px;
+    margin-bottom: 0;
+    p {
+      font-weight: $normal;
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+  &__submodules {
+    position: relative;
+    padding-left: 0;
+
+    &__title {
+      margin: 0 0 30px 0;
+      font-size: $medium;
+      line-height: 18px;
+      text-align: center;
+      font-weight: $max-bold;
+    }
+
+    &__items {
+      p {
+        font-size: $small;
+        text-align: center;
+        margin: 5px 0 0 0;
+      }
+      p.no-border {
+        padding-top: 0px;
+        &:first-child {
+          padding-top: 30px;
+          border-top: solid 4px #1ecad3;
+        }
+      }
+      h4 {
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: $bold;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 776px) {
+  .Cards {
+    position: relative;
+    &__body {
+      box-shadow: none;
+    }
+    &__icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      /*  transform: translate(40%, 60%); */
+    }
+
+    &__description {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 18px;
+      padding: 37px 44px 36px 38px;
+      margin-bottom: 0;
+      p {
+        font-weight: $normal;
+        font-size: 15px;
+        line-height: 20px;
+      }
+    }
+    &__submodules {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 18px;
+      padding: 25px 0 38px 48px;
+
+      &__title {
+        margin: 0 0 5px 0;
+        line-height: 26px;
+        text-align: start;
+        padding: 0 18px;
+      }
+
+      &__items {
+        padding: 0 18px;
+        p {
+          text-align: start;
+        }
+        p.no-border {
+          padding-top: 0px;
+          &:first-child {
+            padding-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}

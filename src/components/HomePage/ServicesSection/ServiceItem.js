@@ -4,12 +4,12 @@ import Card from "react-bootstrap/Card"
 import Col from "react-bootstrap/Col"
 
 const ServiceItem = ({ service }) => {
-  const { title, content, icon } = service.home
+  /* const { title, content, icon } = service.home
 
-  const imagen = getImage(icon)
+  const imagen = getImage(icon) */
 
   return (
-    <Col xs={12} md={4}>
+    /*  <Col xs={12} md={4}>
       <Card className="Service__Card">
         <div className="Service__Card__Img__Container">
           <GatsbyImage
@@ -23,7 +23,8 @@ const ServiceItem = ({ service }) => {
           <Card.Text>{content}</Card.Text>
         </Card.Body>
       </Card>
-    </Col>
+    </Col> */
+    null
   )
 }
 

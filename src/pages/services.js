@@ -1,30 +1,32 @@
 import React from "react"
-import {useServices} from '../hooks'
-import {useBanner} from '../hooks'
+import { useServices } from "../hooks"
+import { useBanner } from "../hooks"
 import ServicesSection from "../components/Services/ServicesSection"
 import Layout from "../components/layout"
 import BannerTop from "../components/Banners/BannerTop"
 import BannerActionCall from "../components/Banners/BannerActionCall"
 
 const Services = () => {
+  const servicesData = useServices()
+  const servicesList = servicesData?.allStrapiServices?.nodes
 
-    const servicesData = useServices()
-    const servicesList = servicesData?.allStrapiServices?.nodes
+  const bannerData = useBanner()
+  const bannerTop = bannerData?.allStrapiBanners?.nodes.find(
+    banner => banner.page === "services" && banner.type === "top"
+  )
+  const bannerActionCall = bannerData?.allStrapiBanners?.nodes.find(
+    banner => banner.page === "services" && banner.type === "actionCall"
+  )
 
-    const bannerData = useBanner()
-    const bannerTop = bannerData?.allStrapiBanners?.nodes
-        .find(banner => banner.page === "services" && banner.type ==="top")
-    const bannerActionCall = bannerData?.allStrapiBanners?.nodes
-        .find(banner => banner.page === "services" && banner.type ==="actionCall")
-
-    return (
-        <Layout>
-            <BannerTop banner={bannerTop} />
-            <ServicesSection services={servicesList} />
-            <BannerActionCall banner={bannerActionCall} />
-        </Layout>
-    )
+  return (
+    <Layout>
+      <BannerTop banner={bannerTop} />
+      <ServicesSection services={servicesList} />
+      <BannerActionCall banner={bannerActionCall} />
+    </Layout>
+  )
 }
 
+/* Service Page no deberia tener banners, banners a su container en componentes */
 
 export default Services

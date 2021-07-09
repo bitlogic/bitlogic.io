@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react"
 
-const BannerActionCall = ({banner}) => {
-    return (
-        <div>
-            {banner.title}
-        </div>
-    )
+const BannerActionCall = ({ banner }) => {
+  return <div></div>
 }
 
 export default BannerActionCall

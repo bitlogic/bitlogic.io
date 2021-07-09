@@ -3,26 +3,28 @@
 $primary-font: "Roboto", sans-serif;
 $medium: 20px;
 
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: $primary-font;
-    font-size: $medium;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $primary-font;
+  font-size: $medium;
 }
 
 /* Colors */
-$black:#2A2C2E;
-$white: #FFFFFF;
-$yellow: #FFE927;
-$blue:#1ECAD3;
+$black: #2a2c2e;
+$white: #ffffff;
+$yellow: #ffe927;
+$blue: #1ecad3;
 
 /* Sizes */
 $small: 14px;
 $medium: 20px;
-$large: 25px; 
-$second-large: 40px; 
-$extra-large: 45px; 
+$large: 25px;
+$second-large: 40px;
+$extra-large: 45px;
 
 /* Weights */
 $normal: 400;
@@ -32,15 +34,12 @@ $max-bold: 700;
 
 /* Borders */
 $bottom-yellow: 4px solid $yellow;
+
 %border-shadowed {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
 }
 
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1025px;
-
-
-
-

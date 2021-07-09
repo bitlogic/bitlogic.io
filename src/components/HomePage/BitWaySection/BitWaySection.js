@@ -8,7 +8,7 @@ import "./BitWaySection.scss"
 import PropTypes from "prop-types"
 
 const BitWaySection = () => {
-  const { bitway } = useStaticQuery(graphql`
+  /* const { bitway } = useStaticQuery(graphql`
     {
       bitway: allStrapiHomePage {
         nodes {
@@ -33,17 +33,17 @@ const BitWaySection = () => {
   const ReplaceHtml = () => {
     return { __html: html }
   }
-
-  const imagen = getImage(imageBitWay)
+ */
+  // const imagen = getImage(imageBitWay)
 
   return (
     <div className="Home__Bitway">
-      <BgImage image={imagen} className="Home__Bitway__BgImage">
+      {/* <BgImage image={imagen} className="Home__Bitway__BgImage">
         <div
           dangerouslySetInnerHTML={ReplaceHtml()}
           className="Service__Title"
         ></div>
-      </BgImage>
+      </BgImage> */}
     </div>
   )
 }
