@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEdTech } from "../../hooks"
+import { useEdTech, useBanner } from "../../hooks"
 import { BannerTop, BannerActionCall } from "../index"
 import Layout from "../layout"
 import SEO from "../seo"
@@ -8,22 +8,24 @@ import Cards from "../Cards/Cards"
 
 const EdTech = () => {
   const data = useEdTech()
-
+  const bannerData = useBanner()
   const edTechs = data?.allStrapiEdteches?.nodes
-
-  const bannerTop = data?.allStrapiBanners?.nodes[0]
-  const banner = bannerTop && <BannerTop banner={bannerTop} />
 
   const content = edTechs.map(tech => <Cards key={tech.id} tech={tech} />)
 
-  const bannerBottom = <BannerActionCall />
+  const bannerTop = bannerData?.allStrapiBanners?.nodes.find(
+    banner => banner.page === "edtech" && banner.type === "top"
+  )
+  const bannerActionCall = bannerData?.allStrapiBanners?.nodes.find(
+    banner => banner.page === "edtech" && banner.type === "actionCall"
+  )
 
   return (
     <Layout>
       <SEO title="EdTech" />
-      {banner}
+      <BannerTop banner={bannerTop} />
       <div className="container">{content}</div>
-      {bannerBottom}
+      <BannerActionCall banner={bannerActionCall} />
     </Layout>
   )
 }

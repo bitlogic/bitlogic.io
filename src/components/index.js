@@ -1,4 +1,5 @@
-import ServicesSection from "./Services/ServicesSection"
+import ServicesSection from "./ServicesPage/ServicesSection"
+import ServiceCard from "./ServicesPage/ServiceCard"
 import Cards from "./Cards/Cards"
 import BannerTop from "./Banners/BannerTop"
 import BannerActionCall from "./Banners/BannerActionCall"
@@ -10,6 +11,7 @@ import Title from "./Title/Title"
 
 export {
   ServicesSection,
+  ServiceCard,
   Cards,
   BannerTop,
   BannerActionCall,

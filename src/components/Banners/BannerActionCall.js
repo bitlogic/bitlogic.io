@@ -5,7 +5,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BannerActionCall.scss"
 
 const BannerActionCall = ({ banner }) => {
-  console.log(banner)
+  console.log("object banner", banner)
   const icon = getImage(banner.logo)
 
   return (
