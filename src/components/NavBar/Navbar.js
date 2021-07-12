@@ -1,6 +1,6 @@
 import React from "react"
 import Navbar from "react-bootstrap/Navbar"
-import Links from "../../constants/links"
+import { MenuLinks } from "../../constants"
 import logo from "../../images/logoprincipal.png"
 import { Link } from "gatsby"
 import "./NavBar.scss"
@@ -8,7 +8,7 @@ import "./NavBar.scss"
 const NavBar = () => {
   return (
     <>
-      <Navbar variant="dark" expand="lg" className="NavBar ">
+      <Navbar variant="dark" expand="xl" className="NavBar ">
         <Link to="/">
           <img
             src={logo}
@@ -22,7 +22,7 @@ const NavBar = () => {
         />
         <Navbar.Collapse id=" basic-navbar-nav" className="NavBar__Collapse">
           {/* Menu Links */}
-          <Links />
+          <MenuLinks />
         </Navbar.Collapse>
       </Navbar>
     </>

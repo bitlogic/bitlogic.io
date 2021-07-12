@@ -5,13 +5,13 @@ import Nav from "react-bootstrap/Nav"
 const MENU_LINKS = [
   { id: 1, text: "home", url: "/" },
   { id: 2, text: "servicios", url: "/services" },
-  { id: 3, text: "edtech", url: "/edTech" },
+  { id: 3, text: "edtech", url: "/edtech" },
   { id: 4, text: "bitway", url: "/bitway" },
   { id: 5, text: "blog", url: "/blog" },
   { id: 6, text: "contacto", url: "/contact" },
 ]
 
-const Links = ({ styleClass }) => {
+const MenuLinks = ({ styleClass }) => {
   return (
     <Nav className="NavBar__List ">
       {MENU_LINKS.map(({ id, text, url }) => (
@@ -28,4 +28,4 @@ const Links = ({ styleClass }) => {
   )
 }
 
-export default Links
+export default MenuLinks

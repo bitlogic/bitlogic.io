@@ -5,9 +5,8 @@ import { BgImage } from "gbimage-bridge"
 import ServicesSection from "../ServicesSection/ServicesSection"
 import BitWaySection from "../BitWaySection/BitWaySection"
 import { useBanner, useHomePage } from "../../../hooks/index"
-
 import Layout from "../../layout"
-import SEO from "../../seo"
+import { Seo } from "../../index"
 
 import "./HomeContainer.scss"
 
@@ -23,7 +22,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <Seo title="Home" />
       {
         <BgImage image={imagen} className="Home__BgImage">
           <div className="Home__Logo__Container">

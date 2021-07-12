@@ -20,6 +20,12 @@
   &__container {
     padding-left: 0;
     padding-right: 0;
+    &--submodules {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
   }
   &__description {
     padding: 0px 5px 10px 0px;
@@ -32,7 +38,6 @@
   }
   &__submodules {
     position: relative;
-    padding-left: 0;
 
     &__title {
       margin: 0 0 30px 0;
@@ -50,6 +55,7 @@
       }
       p.no-border {
         padding-top: 0px;
+        margin-top: 0;
         &:first-child {
           padding-top: 30px;
           border-top: solid 4px #1ecad3;
@@ -63,8 +69,11 @@
     }
   }
 }
+.no-mobile {
+  display: none;
+}
 
-@media screen and (min-width: 776px) {
+@media screen and (min-width: 992px) {
   .Cards {
     position: relative;
     &__body {
@@ -72,39 +81,44 @@
     }
     &__icon {
       position: absolute;
-      top: 0;
-      left: 0;
-
-      /*  transform: translate(40%, 60%); */
+      transform: translate(60%, 60%);
+    }
+    &__title {
+      font-size: $large;
+      text-align: start;
+      margin-left: 200px;
     }
 
     &__description {
+      min-height: 200px;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       border-radius: 18px;
       padding: 37px 44px 36px 38px;
-      margin-bottom: 0;
+
       p {
-        font-weight: $normal;
-        font-size: 15px;
-        line-height: 20px;
+        font-size: $medium;
+        line-height: 26px;
       }
     }
     &__submodules {
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       border-radius: 18px;
-      padding: 25px 0 38px 48px;
 
+      &--items {
+        box-shadow: none;
+      }
       &__title {
         margin: 0 0 5px 0;
         line-height: 26px;
         text-align: start;
-        padding: 0 18px;
+        padding: 25px 18px 0;
       }
 
       &__items {
         padding: 0 18px;
         p {
           text-align: start;
+          font-size: $medium;
         }
         p.no-border {
           padding-top: 0px;
@@ -114,5 +128,8 @@
         }
       }
     }
+  }
+  .no-mobile {
+    display: block;
   }
 }

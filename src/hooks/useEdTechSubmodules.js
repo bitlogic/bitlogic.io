@@ -14,7 +14,7 @@ const useEdTechSubmodules = () => {
             title
             logo {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(width: 60)
               }
             }
           }
@@ -24,7 +24,7 @@ const useEdTechSubmodules = () => {
             content
             icon {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(width: 60)
               }
             }
           }

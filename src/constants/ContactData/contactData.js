@@ -1,5 +1,5 @@
 import React from "react"
-import "./contactData.css"
+import "./contactData.scss"
 
 const CONTACT_ITEMS = [
   "José Roque Funes 1791",

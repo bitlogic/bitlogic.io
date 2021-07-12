@@ -1,7 +1,7 @@
 import React from "react"
 import { useServices, useBanner } from "../../hooks"
 import Layout from "../layout"
-import { BannerTop, BannerActionCall, ServiceCard } from "../index"
+import { BannerTop, BannerActionCall, ServiceCard, Seo } from "../index"
 
 import "./ServicesSection.scss"
 
@@ -24,6 +24,7 @@ const ServicesSection = () => {
 
   return (
     <Layout>
+      <Seo />
       <BannerTop banner={bannerTop} />
       <div className="container-fluid servicesSection">
         <div className="container">{servicesToDisplay}</div>

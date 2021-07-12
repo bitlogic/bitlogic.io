@@ -1,10 +1,10 @@
 import * as React from "react"
 import { useEdTech, useBanner } from "../../hooks"
-import { BannerTop, BannerActionCall } from "../index"
+import { BannerTop, BannerActionCall, Seo } from "../index"
 import Layout from "../layout"
-import SEO from "../seo"
-import "./EdtechContainer.scss"
+
 import Cards from "../Cards/Cards"
+import "./EdtechContainer.scss"
 
 const EdTech = () => {
   const data = useEdTech()
@@ -20,9 +20,15 @@ const EdTech = () => {
     banner => banner.page === "edtech" && banner.type === "actionCall"
   )
 
+  const {
+    pageTitle,
+    pageDescription,
+    pageKeywords,
+  } = data?.allStrapiEdTechPage?.nodes[0].seo
+
   return (
     <Layout>
-      <SEO title="EdTech" />
+      <Seo title={pageTitle} />
       <BannerTop banner={bannerTop} />
       <div className="container">{content}</div>
       <BannerActionCall banner={bannerActionCall} />

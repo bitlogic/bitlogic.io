@@ -20,7 +20,7 @@ module.exports = {
         apiURL: process.env.STRAPI_URL,
         queryLimit: 1000,
         contentTypes: ["banners", "services", "edTeches", "ed-tech-submodules"],
-        singleTypes: [`home-page`],
+        singleTypes: [`home-page`, `ed-tech-page`, `global-seo`],
       },
     },
     `gatsby-plugin-image`,
@@ -51,5 +51,13 @@ module.exports = {
     },
     "gatsby-plugin-offline",
     `gatsby-plugin-sass`,
+    /* {
+      resolve: "gatsby-plugin-hubspot",
+      options: {
+        trackingCode: "8668423",
+        respectDNT: true,
+        productionOnly: true,
+      },
+    }, */
   ],
 }

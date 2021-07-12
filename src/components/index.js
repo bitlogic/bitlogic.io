@@ -6,6 +6,7 @@ import BannerActionCall from "./Banners/BannerActionCall"
 import SubModuleItems from "./SubmoduleItems/SubmoduleItems"
 import SubModulesEdTech from "./SubModulesEdTech/SubModulesEdTech"
 import Title from "./Title/Title"
+import Seo from "./Seo/Seo"
 
 /* Ordenados alfabéticamente */
 
@@ -18,4 +19,5 @@ export {
   SubModuleItems,
   SubModulesEdTech,
   Title,
+  Seo,
 }

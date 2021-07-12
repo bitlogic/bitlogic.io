@@ -6,7 +6,7 @@ import {
   FaTwitter,
   // FaGithub,
 } from "react-icons/fa"
-import "./socialLinks.css"
+import "./socialLinks.scss"
 
 const RRSS_LINKS = [
   {

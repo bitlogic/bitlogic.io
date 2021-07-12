@@ -33,7 +33,7 @@ const useEdTech = () => {
           content
           icon {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(height: 100)
             }
           }
           edTechSubmodules {
@@ -42,6 +42,15 @@ const useEdTech = () => {
               title
               edTechType
             }
+          }
+        }
+      }
+      allStrapiEdTechPage {
+        nodes {
+          seo: SEO {
+            pageDescription
+            pageKeywords
+            pageTitle
           }
         }
       }
