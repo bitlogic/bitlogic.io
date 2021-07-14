@@ -1,0 +1,143 @@
+@import "../../styles/global.scss";
+
+.EdtechCards {
+  background-color: $blue;
+  width: 100%;
+  margin-top: 55px;
+  padding: 33px 30px;
+  &__mainTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+    h2,
+    span {
+      font-size: $large;
+      color: $white;
+      margin-bottom: 0px;
+      text-align: center;
+    }
+
+    span {
+      /* -webkit-text-stroke: 2px $blue; */
+      -webkit-text-fill-color: $yellow;
+    }
+  }
+
+  &__card {
+    display: flex;
+    align-items: flex-end;
+
+    margin-right: 10px;
+  }
+  &__image {
+    align-self: flex-start;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+  }
+  &__textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    /*    margin-right: 20px; */
+  }
+  &__title {
+    font-size: $medium;
+    font-weight: $bold;
+    color: $white;
+    margin-bottom: 5px;
+  }
+  &__intro {
+    font-size: $small;
+    font-weight: $normal;
+    color: $white;
+
+    margin-bottom: 5px;
+    padding-bottom: 20px;
+  }
+  &__link {
+    color: $white;
+    font-size: $medium;
+    font-weight: $bold;
+    border-bottom: 4px solid $yellow;
+    margin-bottom: 0;
+    text-align: right;
+
+    &:hover {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .EdtechCards {
+    width: 100%;
+
+    &__mainTitle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+
+      h2,
+      span {
+        font-size: $extra-large;
+        text-align: left;
+      }
+      h2 {
+        width: 80%;
+      }
+    }
+    &__card {
+      border-bottom: 4px solid $yellow;
+    }
+
+    &__link {
+      font-size: $medium;
+      padding-left: 0;
+      padding-right: 0;
+      text-align: left;
+      align-self: flex-end;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .EdtechCards {
+    padding: 65px 147px 65px 114px;
+    &__mainTitle {
+      align-items: center;
+      padding-left: 50px;
+      h2,
+      span {
+        font-size: $extra-large;
+        text-align: left;
+      }
+      h2 {
+        width: 80%;
+      }
+    }
+
+    &__title {
+      font-size: $large;
+    }
+    &__intro {
+      font-size: $medium;
+      padding-bottom: 40px;
+    }
+    &__link {
+      font-size: $large;
+      align-self: flex-end;
+      text-align: center;
+      &:hover {
+        text-decoration: none;
+        color: $white;
+      }
+    }
+  }
+}

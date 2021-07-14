@@ -26,6 +26,7 @@ module.exports = {
     },
     `gatsby-plugin-image`,
     "gatsby-transformer-sharp",
+    `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {

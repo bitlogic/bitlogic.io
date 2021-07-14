@@ -14,7 +14,7 @@ const useHomePage = () => {
               homeTitle
               homeIcon {
                 childImageSharp {
-                  gatsbyImageData(width: 60)
+                  gatsbyImageData(height: 90)
                 }
               }
             }

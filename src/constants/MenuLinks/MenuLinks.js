@@ -4,11 +4,11 @@ import Nav from "react-bootstrap/Nav"
 
 const MENU_LINKS = [
   { id: 1, text: "home", url: "/" },
-  { id: 2, text: "servicios", url: "/services" },
+  { id: 2, text: "servicios", url: "/servicios" },
   { id: 3, text: "edtech", url: "/edtech" },
   { id: 4, text: "bitway", url: "/bitway" },
   { id: 5, text: "blog", url: "/blog" },
-  { id: 6, text: "contacto", url: "/contact" },
+  { id: 6, text: "contacto", url: "/contacto" },
 ]
 
 const MenuLinks = ({ styleClass }) => {

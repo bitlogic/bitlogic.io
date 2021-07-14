@@ -11,7 +11,7 @@ import "./HomeContainer.scss"
 
 const Home = () => {
   const data = useHomePage()
-  console.log("object data", data)
+
   const dataBanner = useBanner()
   const homeSections = data?.allStrapiHome?.nodes[0]?.sections
   const banner = dataBanner?.allStrapiBanners?.nodes.find(

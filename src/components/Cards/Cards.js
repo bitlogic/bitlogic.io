@@ -31,12 +31,12 @@ const Cards = ({ tech }) => {
 
   return (
     <>
-      <div className=" Cards container px-4">
+      <div className=" Cards container-fluid ">
         <div className="Cards__icon ">
           <GatsbyImage image={icon} alt={tech.title} />
         </div>
         <div className="Cards__body col-12">
-          <div className="Cards__title col-lg-12">{tech.title}</div>
+          <div className="Cards__title col-lg-8">{tech.title}</div>
 
           <div className="Cards__container">
             <div className="row">

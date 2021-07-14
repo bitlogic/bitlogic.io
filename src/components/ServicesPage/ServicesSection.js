@@ -22,9 +22,19 @@ const ServicesSection = () => {
     banner => banner.page === "services" && banner.type === "actionCall"
   )
 
+  const {
+    pageDescription,
+    pageKeywords,
+    pageTitle,
+  } = servicesData?.allStrapiServicesPage?.nodes[0]?.seo
+
   return (
     <Layout>
-      <Seo />
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        keywords={pageKeywords}
+      />
       <BannerTop banner={bannerTop} />
       <div className="container-fluid servicesSection">
         <div className="container">{servicesToDisplay}</div>

@@ -1,10 +1,67 @@
 @import "../../styles/global.scss";
 
-.ServiceCards__card {
-  @extend %border-shadowed;
-  padding: 0 30px;
-  margin: 0 15px;
+.ServiceCards {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  &__mainTitle {
+    text-align: center;
+    margin-top: 54px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 600px;
+    h2,
+    span {
+      font-size: $extra-large;
+      color: $blue;
+      margin-bottom: 30px;
+    }
+    span {
+      -webkit-text-stroke: 2px $blue;
+      -webkit-text-fill-color: white;
+    }
+  }
+  &__card {
+    @extend %border-shadowed;
+    padding: 30px 30px 10px;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__image {
+    margin-bottom: 27px;
+  }
+  &__textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title {
+    font-size: $large;
+    font-weight: $bold;
+    text-align: center;
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+  &__intro {
+    font-size: $medium;
+    font-weight: $normal;
+    text-align: center;
+  }
+  &__link {
+    color: $blue;
+    font-size: $large;
+    font-weight: $bold;
+    border-bottom: 4px solid $yellow;
+    margin-bottom: 0;
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
 }

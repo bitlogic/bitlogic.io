@@ -28,9 +28,13 @@ const EdTech = () => {
 
   return (
     <Layout>
-      <Seo title={pageTitle} />
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        keywords={pageKeywords}
+      />
       <BannerTop banner={bannerTop} />
-      <div className="container">{content}</div>
+      <div className="container-fluid">{content}</div>
       <BannerActionCall banner={bannerActionCall} />
     </Layout>
   )

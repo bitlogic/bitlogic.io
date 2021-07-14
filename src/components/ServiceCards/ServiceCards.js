@@ -1,30 +1,50 @@
 import React from "react"
-import Markdown from "react-markdown"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+import showdown from "showdown"
 import "./ServiceCards.scss"
 
 const ServiceCards = ({ title, services }) => {
-  console.log(" sectionssections", services)
+  const titles = title
+  let converter = new showdown.Converter()
+  let post = titles
+  let html = converter.makeHtml(post)
+
+  const ReplaceHtml = () => {
+    return { __html: html }
+  }
+
+  console.log("servicesservicesservices", services)
 
   const servicios = services?.map((service, idx) => (
-    <div className="col-12 col-md-3 ServiceCards__card">
-      <div>
-        <GatsbyImage image={getImage(service?.homeIcon)} />{" "}
+    <div key={idx} className="col-12 col-md-3 ServiceCards__card">
+      <div className="ServiceCards__image">
+        <GatsbyImage
+          image={getImage(service?.homeIcon)}
+          alt={service.homeTitle}
+        />{" "}
       </div>
-      <div>
-        <p>{service.homeTitle}</p>
-        <p>{service.homeIntro}</p>
+      <div className="ServiceCards__textContainer">
+        <p className="ServiceCards__title">{service.homeTitle}</p>
+        <p className="ServiceCards__intro">{service.homeIntro}</p>
       </div>
+
+      <Link to={"/servicios"} className="ServiceCards__link">
+        Ver más
+      </Link>
     </div>
   ))
 
   return (
     <>
-      <div className="container ServiceCards">
+      <div className="container-fluid  ServiceCards">
         <div className="row">
-          <Markdown className="col-12">{title}</Markdown>
+          <div
+            dangerouslySetInnerHTML={ReplaceHtml()}
+            className="col-12 ServiceCards__mainTitle"
+          ></div>
         </div>
-        <div className="row justify-content-center">{servicios}</div>
+        <div className="row justify-content-center ">{servicios}</div>
       </div>
     </>
   )
