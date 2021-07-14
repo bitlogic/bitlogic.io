@@ -1,32 +1,31 @@
-.Footer__ContactData {
+.ContactData {
   list-style: none;
   display: flex;
   flex-flow: row wrap;
-  margin-bottom: 2.8rem;
+  margin-bottom: 1.5rem;
 }
 
-.Footer__ContactData__Item {
+.ContactData__Item {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 14px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 700;
-  line-height: 1.8rem;
+  line-height: 25px;
   padding-right: 5px;
+  margin-bottom: 0;
 }
 @media screen and (min-width: 576px) {
-  .Footer__ContactData {
+  .ContactData {
     flex-flow: column nowrap;
   }
 }
 @media screen and (min-width: 992px) {
-  .Footer__ContactData {
+  .ContactData {
     margin-bottom: 0;
   }
 
-  .Footer__ContactData__Item {
-    font-size: 1.4rem;
-    line-height: 2rem;
+  .ContactData__Item {
     text-align: center;
   }
 }

@@ -13,7 +13,6 @@ function Seo({ description, lang, meta, title, keywords }) {
     siteURL,
   } = data.allStrapiGlobalSeo.nodes[0]
 
-  console.log("siteTitle,,,,", siteTitle)
   const metaDescription = description ? description : siteDesc
   const defaultTitle = siteTitle
   const preventIndex = robots ? `index, follow` : `noindex, nofollow`

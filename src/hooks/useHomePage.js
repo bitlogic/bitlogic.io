@@ -1,23 +1,38 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useHomePage = () => {
-  /* const query = useStaticQuery(graphql`
+  const query = useStaticQuery(graphql`
     {
-      allStrapiHomePage(sort: { fields: id, order: ASC }) {
+      allStrapiHome {
         nodes {
-          title
-          content
-          icon {
-            childImageSharp {
-              gatsbyImageData
+          sections {
+            title
+            type
+            enable
+            edteches {
+              homeIntro
+              homeTitle
+              homeIcon {
+                childImageSharp {
+                  gatsbyImageData(width: 60)
+                }
+              }
+            }
+            services {
+              homeIntro
+              homeTitle
+              homeIcon {
+                childImageSharp {
+                  gatsbyImageData(height: 90)
+                }
+              }
             }
           }
-          submodulesTitle
         }
       }
     }
   `)
-  return query */
+  return query
 }
 
 export default useHomePage

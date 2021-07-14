@@ -7,12 +7,11 @@ import "./SubmodulesEdTech.scss"
 const SubModulesEdTech = ({ items, variant }) => {
   const data = useEdTechSubmodules()
   const submodules = data?.submodules?.nodes
-  console.log("submodules,submodules", submodules)
+
   const custom = submodules.find(art => art.strapiId === items.id)
   const { submodule, submoduleItem, title } = custom
   const { description, logo, id } = submodule
 
-  console.log("object,CUSTOM", custom)
   const logoSubmodule = logo && (
     <GatsbyImage image={getImage(logo)} alt={`${title}-${id}`} />
   )

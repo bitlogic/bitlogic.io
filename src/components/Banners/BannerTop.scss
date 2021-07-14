@@ -2,7 +2,7 @@
 
 .banner {
   &__bgImage {
-    height: 60vh;
+    min-height: 60vh;
     display: flex;
     align-items: flex-end;
   }
@@ -16,7 +16,6 @@
     color: $white;
     font-weight: $max-bold;
     margin: 0;
-    line-height: $large;
   }
   &__summary {
     background-color: $blue;
@@ -39,6 +38,9 @@
 
 @media (min-width: $breakpoint-tablet) {
   .banner {
+    &__bgImage {
+      min-height: 600px;
+    }
     &__titleContainer {
       padding: 30px;
     }

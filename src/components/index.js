@@ -7,7 +7,9 @@ import SubModuleItems from "./SubmoduleItems/SubmoduleItems"
 import SubModulesEdTech from "./SubModulesEdTech/SubModulesEdTech"
 import Title from "./Title/Title"
 import Seo from "./Seo/Seo"
-
+import EdTechCards from "./EdTechCards/EdTechCards"
+import ServiceCards from "./ServiceCards/ServiceCards"
+import CustomSection from "./CustomSection/CustomSection"
 /* Ordenados alfabéticamente */
 
 export {
@@ -20,4 +22,7 @@ export {
   SubModulesEdTech,
   Title,
   Seo,
+  EdTechCards,
+  ServiceCards,
+  CustomSection,
 }

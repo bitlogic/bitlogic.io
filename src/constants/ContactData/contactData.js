@@ -9,9 +9,9 @@ const CONTACT_ITEMS = [
 
 const ContactData = () => {
   return (
-    <ul className="Footer__ContactData">
+    <ul className="ContactData">
       {CONTACT_ITEMS.map((data, i) => (
-        <li className="Footer__ContactData__Item" key={i}>
+        <li className="ContactData__Item" key={i}>
           {data}
         </li>
       ))}

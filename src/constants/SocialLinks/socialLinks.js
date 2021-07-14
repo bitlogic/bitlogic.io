@@ -38,14 +38,14 @@ const RRSS_LINKS = [
 
 const SocialLinks = ({ styleClass }) => {
   return (
-    <ul className="Footer__Social">
+    <ul className="RRSS__Social">
       {RRSS_LINKS.map(({ id, icon, url }) => (
-        <li className="Footer__Social__Item" key={id}>
+        <li className="RRSS__Social__Item" key={id}>
           <a
             href={url}
             target="_blank"
             rel="noreferrer"
-            className={`Footer__Social__Link ${styleClass ? styleClass : ""}`}
+            className={`RRSS__Social__Link ${styleClass ? styleClass : ""}`}
           >
             {icon}
           </a>

@@ -1,0 +1,10 @@
+@import "../../styles/global.scss";
+
+.ServiceCards__card {
+  @extend %border-shadowed;
+  padding: 0 30px;
+  margin: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

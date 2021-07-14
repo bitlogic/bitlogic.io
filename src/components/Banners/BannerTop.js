@@ -1,22 +1,23 @@
 import React from "react"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 import "./BannerTop.scss"
 
 const BannerTop = ({ banner }) => {
-  const image = getImage(banner.image)
+  const { image, title, summary } = banner
+  const imageBanner = getImage(image)
 
   return (
     <div className="banner">
-      <BgImage image={image} className="banner__bgImage">
+      <BgImage image={imageBanner} className="banner__bgImage">
         <div className="banner__titleContainer">
-          <h1 className="banner__title">{banner.title}</h1>
+          <h1 className="banner__title">{title}</h1>
         </div>
       </BgImage>
-      {banner.summary ? (
+      {summary ? (
         <div className="banner__summary">
           <div className="container ">
-            <p className="banner__summary__txt">{banner.summary}</p>
+            <p className="banner__summary__txt">{summary}</p>
           </div>
         </div>
       ) : null}

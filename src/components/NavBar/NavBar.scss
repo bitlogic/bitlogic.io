@@ -38,9 +38,6 @@
 }
 
 @media screen and (min-width: 992px) {
-  .NavBar {
-    height: 8rem;
-  }
   .NavBar__Logo {
     width: 143px;
     margin-left: 58px;
@@ -53,6 +50,6 @@
     margin-top: 0rem;
   }
   .NavBar__Item {
-    margin-right: 5rem;
+    margin-right: 2.5rem;
   }
 }

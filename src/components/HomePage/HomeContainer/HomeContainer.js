@@ -1,18 +1,19 @@
 import * as React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
-import ServicesSection from "../ServicesSection/ServicesSection"
-import BitWaySection from "../BitWaySection/BitWaySection"
+
 import { useBanner, useHomePage } from "../../../hooks/index"
 import Layout from "../../layout"
-import { Seo } from "../../index"
+import { Seo, CustomSection } from "../../index"
 
 import "./HomeContainer.scss"
 
 const Home = () => {
-  /* const data = useHomePage() */
+  const data = useHomePage()
+  console.log("object data", data)
   const dataBanner = useBanner()
+  const homeSections = data?.allStrapiHome?.nodes[0]?.sections
   const banner = dataBanner?.allStrapiBanners?.nodes.find(
     banner => banner.page === "home"
   )
@@ -33,9 +34,8 @@ const Home = () => {
           </div>
           <h1 className="Home__Title">{banner.title}</h1>
         </BgImage>
-        /*{ <ServicesSection />}
-      {/* <BitWaySection /> */
       }
+      <CustomSection sections={homeSections} />
     </Layout>
   )
 }

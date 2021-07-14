@@ -27,6 +27,7 @@ const useBanner = () => {
             name
             pathTo
           }
+          summary
         }
       }
     }

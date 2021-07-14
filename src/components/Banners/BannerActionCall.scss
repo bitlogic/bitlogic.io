@@ -1,70 +1,70 @@
 @import "../../styles/global.scss";
 
 .bannerActCall {
-    background: linear-gradient(180deg, $white 20%, $blue 0);    
-    padding: 20px 10px 30px 10px;
-    max-height: 200px;
-    display:flex;
-    justify-content: center;
-    &__description {
-        padding-right: 20px;
-        padding-top: 40px;
-        display:flex;
-        flex-direction:column;
-        align-items: center;
-        align-self: flex-end;
-        width: 70%;
-        max-width: 420px;
+  background: linear-gradient(180deg, $white 20%, $blue 0);
+  padding: 20px 10px 30px 10px;
+  max-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  //   margin-bottom: 30px;/*  */
+  &__description {
+    padding-right: 50px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-end;
+    width: 70%;
+    max-width: 420px;
+  }
+  &__logo {
+    flex-basis: 60px;
+    padding-bottom: 20px;
+    // transform: translateY(-20%);
+  }
+  &__title {
+    color: $white;
+    font-size: $medium;
+    font-weight: $bold;
+    margin-bottom: 20px;
+    flex-basis: auto;
+    padding-left: 20px;
+  }
+  &__link {
+    color: $white;
+    font-weight: $bold;
+    border-bottom: $bottom-yellow;
+    font-size: $small;
+    padding: 7px;
+    &:hover {
+      color: $white;
+      text-decoration: none;
+      border-color: rgb(255, 244, 179);
     }
-    &__logo {
-        flex-basis: 60px;
-        padding-bottom: 20px;
-        transform:translateY(-20%)
-    }
-    &__title {
-        color: $white;
-        font-size: $medium;
-        font-weight: $bold;
-        margin-bottom: 10px;
-        flex-basis: auto;
-        padding-left: 10px;
-        text-align: center;
-    }
-    &__link {
-        color: $white;
-        font-weight: $bold;
-        border-bottom: $bottom-yellow;
-        font-size: $small;
-        padding: 7px;
-        &:hover {
-            color: $white;
-            text-decoration: none;
-            border-color: rgb(255, 244, 179);
-        }
-    }
+  }
 }
 
 @media (min-width: $breakpoint-tablet) {
-    .bannerActCall {
-        padding: 50px;
-        max-height: 500px;
-        background: linear-gradient(180deg, $white 30%, $blue 0);
-        &__title {
-            color: $white;
-            font-size: $extra-large;
-        }
-        &__link {
-            font-size: $large;
-        }
-        &__description {
-            padding-top: 20px;
-            padding-bottom: 20px;
-            max-width: 700px;
-        }
-        &__logo {
-            flex-basis: 110px;
-            transform:translateY(-10%)
-        }
+  .bannerActCall {
+    padding: 50px 50px 71px 50px;
+    max-height: 500px;
+    background: linear-gradient(180deg, $white 35%, $blue 0);
+    &__title {
+      color: $white;
+      font-size: $extra-large;
     }
+    &__link {
+      font-size: $large;
+    }
+    &__description {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      max-width: 700px;
+    }
+    &__logo {
+      flex-basis: 110px;
+      //   transform: translateY(-10%);
+    }
+  }
 }
-

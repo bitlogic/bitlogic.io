@@ -29,11 +29,13 @@
     &:first-child {
       margin-top: 65px;
     }
-    h4 {
-      font-size: $large;
-    }
-    p {
-      font-size: $medium;
+    &__text {
+      h4 {
+        font-size: $large;
+      }
+      p {
+        font-size: $medium;
+      }
     }
     &__image {
       transform: translateX(20%);

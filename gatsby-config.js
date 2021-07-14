@@ -17,10 +17,11 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
+        // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
         apiURL: process.env.STRAPI_URL,
         queryLimit: 1000,
         contentTypes: ["banners", "services", "edTeches", "ed-tech-submodules"],
-        singleTypes: [`home-page`, `ed-tech-page`, `global-seo`],
+        singleTypes: [`ed-tech-page`, `global-seo`, `services-page`, `home`],
       },
     },
     `gatsby-plugin-image`,
