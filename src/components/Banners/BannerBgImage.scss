@@ -1,0 +1,117 @@
+@import "../../styles/global.scss";
+
+.bannerBgImage {
+  &__bgImage {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title {
+    margin-bottom: 30px;
+    h2,
+    span,
+    p {
+      font-size: $large;
+      color: $blue;
+      margin-bottom: 0px;
+      text-align: center;
+    }
+
+    h2 span {
+      background-color: $blue;
+      display: inline-block;
+      transform: skew(-15deg);
+    }
+    h2 span p {
+      color: $white;
+      padding: 5px 20px;
+      display: inline-block;
+      transform: skew(15deg);
+    }
+  }
+  &__link {
+    color: $blue;
+    font-size: $medium;
+    font-weight: $bold;
+    border-bottom: 4px solid $yellow;
+    margin-bottom: 0;
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+}
+.bannerBgColor {
+  &__container {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $blue;
+  }
+  &__titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title {
+    margin-bottom: 30px;
+    h2,
+    span {
+      font-size: $large;
+      color: $white;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    h2 span {
+      background-color: $white;
+      padding: 0px 30px;
+      display: inline-block;
+      transform: skew(-25deg);
+    }
+    h2 span p {
+      color: $blue;
+      padding: 0 15px;
+      display: inline-block;
+      transform: skew(25deg);
+      margin-bottom: 0;
+    }
+  }
+  &__link {
+    color: $white;
+    font-size: $medium;
+    font-weight: $bold;
+    border-bottom: 4px solid $yellow;
+    margin-bottom: 0;
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bannerBgImage,
+  .bannerBgColor {
+    &__title {
+      h2,
+      span,
+      p {
+        font-size: $extra-large;
+      }
+    }
+
+    &__link {
+      font-size: $large;
+    }
+  }
+}

@@ -11,8 +11,8 @@ import "./HomeContainer.scss"
 
 const Home = () => {
   const data = useHomePage()
-
   const dataBanner = useBanner()
+
   const homeSections = data?.allStrapiHome?.nodes[0]?.sections
   const banner = dataBanner?.allStrapiBanners?.nodes.find(
     banner => banner.page === "home"
@@ -20,6 +20,8 @@ const Home = () => {
 
   const imagen = getImage(banner.image)
   const logoImage = getImage(banner.logo)
+
+  console.log("object", data)
 
   return (
     <Layout>

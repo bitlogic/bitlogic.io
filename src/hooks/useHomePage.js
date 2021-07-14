@@ -27,6 +27,12 @@ const useHomePage = () => {
                 }
               }
             }
+            banner {
+              title
+              type
+              enable
+              id
+            }
           }
         }
       }

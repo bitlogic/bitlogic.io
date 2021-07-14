@@ -3,7 +3,7 @@
 .EdtechCards {
   background-color: $blue;
   width: 100%;
-  margin-top: 55px;
+
   padding: 33px 30px;
   &__mainTitle {
     display: flex;
@@ -76,8 +76,7 @@
 
 @media screen and (min-width: 992px) {
   .EdtechCards {
-    width: 100%;
-
+    padding: 33px 30px 65px 30px;
     &__mainTitle {
       display: flex;
       flex-direction: column;
@@ -107,7 +106,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   .EdtechCards {
     padding: 65px 147px 65px 114px;
     &__mainTitle {
