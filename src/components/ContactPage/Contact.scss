@@ -1,0 +1,33 @@
+@import "../../styles/global.scss";
+
+.contactForm {
+    margin: 0 auto;
+    &__input {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 30px;
+        border:none;
+        border-bottom: $blue 5px solid;
+        &::placeholder { 
+            color: black;
+            opacity: 1; 
+            font-weight: 700;
+        }
+        &:focus {
+            border:none;
+        }
+        
+    }
+    &__inputSubmit {
+        margin-left: 80%;
+        width: 20%;
+        border:none;
+        border-bottom: $yellow 5px solid;
+        background-color: transparent;
+        color: $blue;
+        font-weight: 700;
+        &:focus {
+            border:none;
+        }
+    }
+}
