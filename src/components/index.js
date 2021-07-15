@@ -11,7 +11,8 @@ import EdTechCards from "./EdTechCards/EdTechCards"
 import ServiceCards from "./ServiceCards/ServiceCards"
 import CustomSection from "./CustomSection/CustomSection"
 import BannerBgImage from "./Banners/BannerBgImage"
-/* Ordenados alfabéticamente */
+import BannerLogo from "./Banners/BannerLogo"
+import BannerISO from "./Banners/BannerISO"
 
 export {
   ServicesSection,
@@ -27,4 +28,6 @@ export {
   ServiceCards,
   CustomSection,
   BannerBgImage,
+  BannerLogo,
+  BannerISO,
 }

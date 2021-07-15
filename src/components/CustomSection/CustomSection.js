@@ -1,5 +1,13 @@
 import React from "react"
-import { ServiceCards, EdTechCards, BannerBgImage, BannerTop } from "../index"
+
+import {
+  ServiceCards,
+  EdTechCards,
+  BannerBgImage,
+  BannerTop,
+  BannerLogo,
+  BannerISO,
+} from "../index"
 import "./CustomSection.scss"
 
 const CustomSection = ({ sections }) => {
@@ -38,6 +46,24 @@ const CustomSection = ({ sections }) => {
           <BannerBgImage
             key={idx}
             title={section.title}
+            banner={section.banner}
+          />
+        ) : null}
+        {(section?.enable && section?.banner) !== null &&
+        (section?.enable && section?.banner) !== undefined &&
+        section?.banner.type === "homeLogo" ? (
+          <BannerLogo
+            key={idx}
+            title={section.banner.title}
+            banner={section.banner}
+          />
+        ) : null}
+        {(section?.enable && section?.banner) !== null &&
+        (section?.enable && section?.banner) !== undefined &&
+        section?.banner.type === "iram" ? (
+          <BannerISO
+            key={idx}
+            title={section.banner.title}
             banner={section.banner}
           />
         ) : null}

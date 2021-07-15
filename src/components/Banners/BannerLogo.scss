@@ -1,0 +1,109 @@
+@import "../../styles/global.scss";
+
+@keyframes slogan-underline {
+  0% {
+    left: 0;
+    width: 50%;
+    background: #ffe927;
+  }
+  25% {
+    left: 45%;
+    width: 55%;
+    background: #fafafa;
+  }
+  50% {
+    left: 25%;
+    width: 20%;
+    background: #ffe927;
+  }
+  75% {
+    left: 40%;
+    width: 40%;
+    background: #fafafa;
+  }
+  100% {
+    left: 0;
+    width: 50%;
+    background: #ffe927;
+  }
+}
+.BannerLogo__BgImage {
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.BannerLogo__Logo__Container {
+  max-width: 45%;
+  min-width: 20rem;
+}
+
+.BannerLogo__Title {
+  position: relative;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 16px;
+  padding: 1.8rem 0 0.5rem;
+}
+.BannerLogo__Title::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 50%;
+  background: #ffe927;
+  animation: 3s infinite slogan-underline;
+}
+.BannerLogo__summary {
+  background-color: $blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__txt {
+    color: $white;
+    font-size: 15px;
+    padding: 23px 16px;
+    font-weight: $normal;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 20px 0 20px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .BannerLogo__Title {
+    font-size: 3rem;
+    line-height: 20px;
+    padding: 2rem 0 0.75rem;
+  }
+  .BannerLogo__Title::after {
+    height: 3px;
+  }
+  .BannerLogo__summary {
+    &__txt {
+      font-size: $large;
+
+      line-height: 26px;
+      text-align: center;
+      padding: 4rem 6rem;
+      margin-top: 0;
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  .BannerLogo__Title {
+    font-size: 4rem;
+    line-height: 30px;
+    padding: 2rem 0 1rem;
+  }
+  .Home__Title::after {
+    height: 4px;
+  }
+}
