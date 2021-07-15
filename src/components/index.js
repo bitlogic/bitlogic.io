@@ -10,6 +10,7 @@ import Seo from "./Seo/Seo"
 import EdTechCards from "./EdTechCards/EdTechCards"
 import ServiceCards from "./ServiceCards/ServiceCards"
 import CustomSection from "./CustomSection/CustomSection"
+import BannerBgImage from "./Banners/BannerBgImage"
 /* Ordenados alfabéticamente */
 
 export {
@@ -25,4 +26,5 @@ export {
   EdTechCards,
   ServiceCards,
   CustomSection,
+  BannerBgImage,
 }

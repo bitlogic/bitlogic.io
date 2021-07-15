@@ -14,8 +14,6 @@ const ServiceCards = ({ title, services }) => {
     return { __html: html }
   }
 
-  console.log("servicesservicesservices", services)
-
   const servicios = services?.map((service, idx) => (
     <div key={idx} className="col-12 col-md-3 ServiceCards__card">
       <div className="ServiceCards__image">
