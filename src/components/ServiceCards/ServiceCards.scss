@@ -14,9 +14,16 @@
     flex-wrap: wrap;
     align-items: center;
     max-width: 600px;
+    h1,
     h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
     span {
       font-size: $extra-large;
+      font-weight: $max-bold;
       color: $blue;
       margin-bottom: 30px;
     }
@@ -45,7 +52,7 @@
   }
   &__title {
     font-size: $large;
-    font-weight: $bold;
+    font-weight: $max-bold;
     text-align: center;
     max-width: 200px;
     margin-bottom: 10px;
@@ -58,7 +65,7 @@
   &__link {
     color: $blue;
     font-size: $large;
-    font-weight: $bold;
+    font-weight: $max-bold;
     border-bottom: 4px solid $yellow;
     margin-bottom: 0;
     &:hover {

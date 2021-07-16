@@ -34,7 +34,7 @@ const EdTech = () => {
         keywords={pageKeywords}
       />
       <BannerTop banner={bannerTop} />
-      <div className="container-fluid">{content}</div>
+      <div className="container-fluid EdTech__container">{content}</div>
       <BannerActionCall banner={bannerActionCall} />
     </Layout>
   )

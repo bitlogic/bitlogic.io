@@ -75,7 +75,7 @@
 
 @media screen and (min-width: 992px) {
   .Cards {
-    padding: 0px 200px;
+    padding: 0px 50px;
     position: relative;
     &__body {
       box-shadow: none;
@@ -132,5 +132,16 @@
   }
   .no-mobile {
     display: block;
+  }
+}
+
+@media screen and (min-width: 1202px) {
+  .Cards {
+    padding: 0px 150px;
+  }
+}
+@media screen and (min-width: 1552px) {
+  .Cards {
+    padding: 0px 300px;
   }
 }
