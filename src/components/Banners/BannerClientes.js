@@ -1,16 +1,16 @@
 import React from "react"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+
 import { useBanner } from "../../hooks/index"
 import showdown from "showdown"
-import "./BannerISO.scss"
+// import "./BannerISO.scss"
 
-const BannerISO = ({ banner, title }) => {
+const BannerClientes = ({ banner, title }) => {
   const dataBanner = useBanner()
 
   const bannerSelected = dataBanner?.allStrapiBanners?.nodes.find(
     ban => ban.strapiId === banner.id
   )
-  const { logo, summary } = bannerSelected
+  const { summary } = bannerSelected
 
   const titles = summary
   let converter = new showdown.Converter()
@@ -21,20 +21,17 @@ const BannerISO = ({ banner, title }) => {
     return { __html: html }
   }
   return (
-    <div className="bannerISO">
+    <div className="banner">
       <div className="bannerISO__row">
-        <div className="bannerISO__titleContainer ">
+        <div className="banner__titleContainer ">
           <h2>{title}</h2>
           <div
             dangerouslySetInnerHTML={ReplaceHtml()}
-            className="bannerISO__subtitle"
+            className="banner__subtitle"
           ></div>
-        </div>
-        <div className="bannerISO__image ">
-          <GatsbyImage image={getImage(logo)} alt={`img-${title}`} />
         </div>
       </div>
     </div>
   )
 }
-export default BannerISO
+export default BannerClientes

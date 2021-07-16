@@ -7,6 +7,7 @@ import {
   BannerTop,
   BannerLogo,
   BannerISO,
+  BannerClientes,
 } from "../index"
 import "./CustomSection.scss"
 
@@ -62,6 +63,15 @@ const CustomSection = ({ sections }) => {
         (section?.enable && section?.banner) !== undefined &&
         section?.banner.type === "iram" ? (
           <BannerISO
+            key={idx}
+            title={section.banner.title}
+            banner={section.banner}
+          />
+        ) : null}
+        {(section?.enable && section?.banner) !== null &&
+        (section?.enable && section?.banner) !== undefined &&
+        section?.banner.type === "clientes" ? (
+          <BannerClientes
             key={idx}
             title={section.banner.title}
             banner={section.banner}

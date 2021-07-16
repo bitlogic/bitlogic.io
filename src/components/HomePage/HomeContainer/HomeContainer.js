@@ -1,9 +1,5 @@
 import * as React from "react"
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
-
-import { useBanner, useHomePage } from "../../../hooks/index"
+import { useHomePage } from "../../../hooks/index"
 import Layout from "../../layout"
 import { Seo, CustomSection } from "../../index"
 
