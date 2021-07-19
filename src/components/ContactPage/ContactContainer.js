@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { useForm } from "react-hook-form";
 import "./Contact.scss"
@@ -28,6 +27,11 @@ const Contact = ({image}) => {
     <Layout>
       <Seo />
       <div className="contact">
+        {/* <BannerBgImage
+            key={idx}
+            title={section.title}
+            banner={section.banner}
+          /> */}
         <form
             onSubmit={handleSubmit(onSubmit)}
             className="contactForm"
@@ -67,7 +71,7 @@ const Contact = ({image}) => {
           {/* <div>
             <GatsbyImage 
               image={image} 
-              // alt={article.title} 
+              // alt={} 
             />
           </div> */}
       </div>
