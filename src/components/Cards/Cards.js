@@ -15,7 +15,7 @@ const Cards = ({ tech }) => {
       {submod.title}
     </p>
   ))
-  console.log("object", tech?.edTechSubmodules?.ed_tech_submodules)
+
   const submoduleItems = tech?.edTechSubmodules?.ed_tech_submodules.map(
     submod =>
       submod.edTechType === "SIS" ? null : (

@@ -14,24 +14,26 @@ const ServiceCards = ({ title, services }) => {
     return { __html: html }
   }
 
-  const servicios = services?.map((service, idx) => (
-    <div key={idx} className="col-12 col-md-3 ServiceCards__card">
-      <div className="ServiceCards__image">
-        <GatsbyImage
-          image={getImage(service?.homeIcon)}
-          alt={service.homeTitle}
-        />{" "}
-      </div>
-      <div className="ServiceCards__textContainer">
-        <p className="ServiceCards__title">{service.homeTitle}</p>
-        <p className="ServiceCards__intro">{service.homeIntro}</p>
-      </div>
+  const servicios = services
+    ?.map((service, idx) => (
+      <div key={idx} className="col-12 col-md-3 ServiceCards__card">
+        <div className="ServiceCards__image">
+          <GatsbyImage
+            image={getImage(service?.homeIcon)}
+            alt={service.homeTitle}
+          />{" "}
+        </div>
+        <div className="ServiceCards__textContainer">
+          <p className="ServiceCards__title">{service.homeTitle}</p>
+          <p className="ServiceCards__intro">{service.homeIntro}</p>
+        </div>
 
-      <Link to={"/servicios"} className="ServiceCards__link">
-        Ver más
-      </Link>
-    </div>
-  ))
+        <Link to={"/servicios"} className="ServiceCards__link">
+          Ver más
+        </Link>
+      </div>
+    ))
+    .slice(0, 3)
 
   return (
     <>

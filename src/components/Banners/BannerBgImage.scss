@@ -15,21 +15,39 @@
   }
   &__title {
     margin-bottom: 30px;
+    h1,
     h2,
+    h3,
+    h4,
+    h5,
+    h6,
     span,
     p {
       font-size: $large;
       color: $blue;
+      font-weight: $max-bold;
       margin-bottom: 0px;
       text-align: center;
     }
 
-    h2 span {
+    h1 span,
+    h2 span,
+    h3 span,
+    h4 span,
+    h5 span,
+    h6 span,
+    p span {
       background-color: $blue;
       display: inline-block;
       transform: skew(-15deg);
     }
-    h2 span p {
+    h1 span p,
+    h2 span p,
+    h3 span p,
+    h4 span p,
+    h5 span p,
+    h6 span p,
+    p span p {
       color: $white;
       padding: 5px 20px;
       display: inline-block;
@@ -39,7 +57,7 @@
   &__link {
     color: $blue;
     font-size: $medium;
-    font-weight: $bold;
+    font-weight: $max-bold;
     border-bottom: 4px solid $yellow;
     margin-bottom: 0;
     &:hover {
@@ -64,21 +82,40 @@
   }
   &__title {
     margin-bottom: 30px;
+    h1,
     h2,
-    span {
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    p {
       font-size: $large;
       color: $white;
+      font-weight: $max-bold;
       margin-bottom: 10px;
       text-align: center;
     }
 
-    h2 span {
+    h1 span,
+    h2 span,
+    h3 span,
+    h4 span,
+    h5 span,
+    h6 span,
+    p span {
       background-color: $white;
       padding: 0px 30px;
       display: inline-block;
       transform: skew(-25deg);
     }
-    h2 span p {
+    h1 span p,
+    h2 span p,
+    h3 span p,
+    h4 span p,
+    h5 span p,
+    h6 span p,
+    p span p {
       color: $blue;
       padding: 0 15px;
       display: inline-block;
@@ -89,7 +126,7 @@
   &__link {
     color: $white;
     font-size: $medium;
-    font-weight: $bold;
+    font-weight: $max-bold;
     border-bottom: 4px solid $yellow;
     margin-bottom: 0;
     &:hover {
@@ -103,7 +140,12 @@
   .bannerBgImage,
   .bannerBgColor {
     &__title {
+      h1,
       h2,
+      h3,
+      h4,
+      h5,
+      h6,
       span,
       p {
         font-size: $extra-large;

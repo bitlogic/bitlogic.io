@@ -11,9 +11,16 @@
     align-items: center;
     flex-wrap: wrap;
 
+    h1,
     h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
     span {
       font-size: $large;
+      font-weight: $max-bold;
       color: $white;
       margin-bottom: 0px;
       text-align: center;
@@ -47,7 +54,7 @@
   }
   &__title {
     font-size: $medium;
-    font-weight: $bold;
+    font-weight: $max-bold;
     color: $white;
     margin-bottom: 5px;
   }
@@ -62,7 +69,7 @@
   &__link {
     color: $white;
     font-size: $medium;
-    font-weight: $bold;
+    font-weight: $max-bold;
     border-bottom: 4px solid $yellow;
     margin-bottom: 0;
     text-align: right;
@@ -83,12 +90,24 @@
       align-items: center;
       flex-wrap: wrap;
 
+      h1,
       h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
       span {
         font-size: $extra-large;
         text-align: left;
       }
-      h2 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
         width: 80%;
       }
     }
@@ -112,13 +131,24 @@
     &__mainTitle {
       align-items: center;
       padding-left: 50px;
+      h1,
       h2,
-      span {
+      h3,
+      h4,
+      h5,
+      h6,
+      p span {
         font-size: $extra-large;
         text-align: left;
       }
-      h2 {
-        width: 80%;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        width: 70%;
       }
     }
 
