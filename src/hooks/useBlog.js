@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 
-const useArticle = () => {
+const useBlog = () => {
   const query = useStaticQuery(graphql`
     {
       allStrapiBlogCategory {
@@ -19,9 +19,18 @@ const useArticle = () => {
           }
         }
       }
+      allStrapiBlogPage {
+        nodes {
+          seo: pageMetadata {
+            pageTitle
+            pageKeywords
+            pageDescription
+          }
+        }
+      }
     }
   `)
   return query
 }
 
-export default useArticle
+export default useBlog
