@@ -12,6 +12,7 @@ import {
 import "./CustomSection.scss"
 
 const CustomSection = ({ sections }) => {
+  console.log(sections)
   const section = sections.map((section, idx) => {
     return (
       <div key={idx} className="CustomSections">

@@ -27,6 +27,8 @@ const Contact = ({image}) => {
     <Layout>
       <Seo />
       <div className="contact">
+        <div className="contact__group">
+          <h2 className="contact__title">Te invitamos a <span><p>CREAR</p></span></h2>
         {/* <BannerBgImage
             key={idx}
             title={section.title}
@@ -67,6 +69,9 @@ const Contact = ({image}) => {
 
             <input type="submit" value="Enviar" className="contactForm__inputSubmit" />
           </form>
+        </div>
+        <div className="contact__image"></div>
+        
 
           {/* <div>
             <GatsbyImage 
