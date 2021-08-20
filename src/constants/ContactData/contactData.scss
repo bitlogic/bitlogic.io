@@ -1,0 +1,31 @@
+.ContactData {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 1.5rem;
+}
+
+.ContactData__Item {
+  color: #fff;
+  font-size: 14px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  padding-right: 5px;
+  margin-bottom: 0;
+}
+@media screen and (min-width: 576px) {
+  .ContactData {
+    flex-flow: column nowrap;
+  }
+}
+@media screen and (min-width: 992px) {
+  .ContactData {
+    margin-bottom: 0;
+  }
+
+  .ContactData__Item {
+    text-align: center;
+  }
+}

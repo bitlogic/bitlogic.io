@@ -1,0 +1,45 @@
+@import "../../styles/global.scss";
+
+.Submodules {
+  border-top: solid 4px #1ecad3;
+  padding: 30px 0 10px 0;
+
+  &__text {
+    padding-left: 0;
+    h4 {
+      margin-bottom: 0;
+    }
+    p {
+      text-align: start;
+      margin-top: 20px;
+    }
+  }
+  &__image {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .Submodules {
+    padding: 65px 0 50px 0;
+    &:first-child {
+      margin-top: 65px;
+    }
+    &:last-child {
+      border-bottom: solid 4px #1ecad3;
+    }
+
+    &__text {
+      h4 {
+        font-size: $large;
+      }
+      p {
+        font-size: $medium;
+      }
+    }
+    &__image {
+      transform: translateX(20%);
+    }
+  }
+}

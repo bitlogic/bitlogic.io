@@ -1,0 +1,39 @@
+@import "../../../styles/global.scss";
+.bitway-paragraph {
+  & p {
+    font-family: $primary-font;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  & h2 {
+    text-align: center;
+    color: $blue;
+    font-family: $primary-font;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 51px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 80px 0;
+    & span {
+      font-size: 26px;
+      background-color: $blue;
+      padding: 10px 10px 2px 10px;
+      margin: 0;
+      transform: skew(-15deg);
+      display: inline-block;
+      & p {
+        font-size: 45px;
+        margin: 0;
+        display: inline-block;
+        color: white;
+        transform: skew(15deg);
+      }
+    }
+  }
+}
