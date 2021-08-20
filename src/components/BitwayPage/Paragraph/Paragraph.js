@@ -2,7 +2,6 @@ import React from 'react'
 import './Paragraph.scss'
 import MarkdownView from 'react-showdown';
 const Paragraph = ({text}) => {
-    console.log(text)
     const {title, body} = text
     return (
         <section className="bitway-paragraph">
