@@ -18,8 +18,6 @@ const BannerLogo = ({ banner, title }) => {
   const imagen = getImage(image)
   const logoImage = getImage(logo)
 
-  console.log(banner)
-
   return (
     <>
       <BgImage image={imagen} className="BannerLogo__BgImage">
