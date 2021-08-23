@@ -21,20 +21,19 @@ const Gallery = ({ content }) => {
       {content.map((elem) => (
         <div
           className="bitway-gallery"
-          style={{ gridTemplateAreas: layouts[elem.Type] }}
+          style={{ gridTemplateAreas: layouts[elem.type] }}
           key={elem.id}
         >
-          {fillGrid(elem.Image, photos[elem.Type]).map((image, index) => {
-            const prosImage = getImage(image.Image);
-            const text = image.Text ? { textOverlay: image.Text } : {};
+          {fillGrid(elem.galleryImage, photos[elem.type]).map((image, index) => {
+            const prosImage = getImage(image.image);
             return (
               <BgImage
                 className={"bitway-gallery-" + index + " bitway-gallery-item"}
                 image={prosImage}
-                alt={image.Caption}
+                alt={image.caption}
               >
-                {image.Text && (
-                  <div className="bitway-gallery-item-inner">{image.Text}</div>
+                {image.text && (
+                  <div className="bitway-gallery-item-inner">{image.text}</div>
                 )}
               </BgImage>
             );

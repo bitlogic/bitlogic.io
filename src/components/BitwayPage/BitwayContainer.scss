@@ -16,7 +16,7 @@
   grid-area: bitway-even;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 992px) {
   .bitway-body {
     grid-template-columns: 1fr;
     grid-template-areas: "bitway-even" "bitway-odd";
