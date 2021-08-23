@@ -10,12 +10,29 @@ const useBlog = () => {
             id
             summary
             title
+            slug
             image {
               id
               childImageSharp {
                 gatsbyImageData
               }
             }
+          }
+        }
+      }
+      allStrapiArticle {
+        nodes {
+          title
+          summary
+          description
+          slug
+          image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          blog_categories {
+            name
           }
         }
       }

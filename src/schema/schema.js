@@ -860,7 +860,7 @@ type StrapiBlogCategoryArticles {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
-  image: File
+  image:File @link(from: "image___NODE")
 }
 
 type StrapiArticle implements Node {
@@ -910,7 +910,7 @@ type StrapiArticle implements Node {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
-  image: File
+  image:File @link(from: "image___NODE")
   blog_categories: [StrapiArticleBlog_categories]
   strapiId: Int
 }

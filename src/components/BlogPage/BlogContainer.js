@@ -45,6 +45,7 @@ const Blog = () => {
                 image={item.image}
                 title={item.title}
                 summary={item.summary.substring(0, 95)}
+                slug={"/blog/" + item.slug}
                 text="Ver más"
               />
             ))}
