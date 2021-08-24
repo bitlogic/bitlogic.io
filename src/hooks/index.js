@@ -4,6 +4,7 @@ import useEdTech from "./useEdTech"
 import useEdTechSubmodules from "./useEdTechSubmodules"
 import useGlobalSeo from "./useGlobalSeo"
 import useHomePage from "./useHomePage"
+import useBlog from './useBlog'
 
 export {
   useServices,
@@ -12,4 +13,5 @@ export {
   useEdTechSubmodules,
   useGlobalSeo,
   useHomePage,
+  useBlog,
 }

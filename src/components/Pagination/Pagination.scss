@@ -1,0 +1,32 @@
+@import "../../styles/global.scss";
+
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding-top: 25px;
+  & svg {
+    font-size: 12px;
+    margin: 0 0.5rem;
+  }
+  &__item {
+    display: block;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  &__link {
+    font-weight: $bold;
+    color: $blue;
+    padding: 0.2rem;
+
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+}
+.active-page {
+  border-bottom: 5px $yellow solid;
+}
