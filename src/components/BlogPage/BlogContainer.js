@@ -35,7 +35,7 @@ const Blog = () => {
       />
       <div className="blog__container">
         <div className="banner__container">
-          <p dangerouslySetInnerHTML={{ __html: bannerBlog.summary }} />
+          <h3 dangerouslySetInnerHTML={{ __html: bannerBlog.summary }} />
         </div>
         {data?.map((article, idx) => (
           <BlogGrid key={idx} title={article.name}>

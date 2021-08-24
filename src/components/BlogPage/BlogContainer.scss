@@ -14,7 +14,7 @@
     text-align: center;
     border-bottom: 4px solid $blue;
 
-    p {
+    h3 {
         margin-bottom: 0;
         padding: 5px;
         font-size: $medium;
@@ -30,6 +30,8 @@
             transform: skew(-20deg);
 
             p {
+                padding: 10px;
+                margin-bottom: 0;
                 color: $white;
                 transform: skew(20deg);
             }
@@ -44,7 +46,7 @@
     }
 
     .banner__container {
-        p {
+        h3 {
             display: flex;
             align-items: center;  
             font-size: $large;
@@ -52,6 +54,20 @@
             span {
                 margin-top: 0;
                 margin-left: 15px;
+            }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-desktop) {
+    .banner__container {
+        h3 {
+            font-size: $extra-large;
+            span {
+                p {
+                    padding: 20px;
+                    font-size: $second-large;
+                }
             }
         }
     }

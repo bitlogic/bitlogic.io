@@ -3,6 +3,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import "./BlogArticle.scss"
 
+
 const BlogArticle = ({ title, summary, image, slug, text }) => {
   return (
     <div className="article__container">
