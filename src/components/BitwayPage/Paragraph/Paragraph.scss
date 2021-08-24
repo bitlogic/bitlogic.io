@@ -9,6 +9,9 @@
     letter-spacing: 0em;
     text-align: left;
   }
+  & > div > p {
+    padding: 20px 150px;
+  }
   & h2 {
     text-align: center;
     color: $blue;

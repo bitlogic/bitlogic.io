@@ -712,7 +712,70 @@ type StrapiBannersLink {
   pathTo: String
 }
 
-`
+
+type StrapiBitwayPage implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  published_at(
+    formatString: String
+
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  SEO: StrapiBitwayPageSEO
+  sections: [StrapiBitwayPageSections]
+  strapiId: Int
+}
+
+type StrapiBitwayPageSEO {
+  id: Int
+  pageTitle: String
+  pageDescription: String
+  pageKeywords: String
+}
+
+type StrapiBitwayPageSections {
+  id: Int
+  body: String
+  type: String
+  galleryImage: [StrapiBitwayPageSectionsGalleryImage]
+}
+
+type StrapiBitwayPageSectionsGalleryImage {
+  id: Int
+  text: String
+  caption: String
+  image: File @link(from: "image___NODE")
+}`
 
 module.exports = {
   value: schema,

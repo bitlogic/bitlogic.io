@@ -4,9 +4,9 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { BgImage } from "gbimage-bridge";
 
 const layouts = {
-  dos: '"gal0 gal0 gal1" "gal0 gal0 gal1"',
-  cuatro: '"gal0 gal1 gal1" "gal0 gal2 gal3" "gal0 gal2 gal3"',
-  cuatroinvertido: '"gal0 gal0 gal3" "gal1 gal2 gal3" "gal1 gal2 gal3"',
+  dos: {gridTemplateAreas: '"gal0 gal0 gal1" "gal0 gal0 gal1"', gridTemplateColumns: "2fr 25% 3fr" },
+  cuatro: {gridTemplateAreas: '"gal0 gal1 gal1" "gal0 gal2 gal3" "gal0 gal2 gal3"', gridTemplateColumns: "2fr 25% 3fr" },
+  cuatroinvertido: {gridTemplateAreas: '"gal0 gal0 gal3" "gal1 gal2 gal3" "gal1 gal2 gal3"',  gridTemplateColumns: "3fr 25% 2fr"},
 };
 
 const photos = {
@@ -21,7 +21,7 @@ const Gallery = ({ content }) => {
       {content.map((elem) => (
         <div
           className="bitway-gallery"
-          style={{ gridTemplateAreas: layouts[elem.type] }}
+          style={layouts[elem.type]}
           key={elem.id}
         >
           {fillGrid(elem.galleryImage, photos[elem.type]).map((image, index) => {

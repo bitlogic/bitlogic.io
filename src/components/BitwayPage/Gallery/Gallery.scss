@@ -19,8 +19,7 @@
 
 .bitway-gallery {
   display: grid;
-  grid-template-columns: 1fr 20% 1fr;
-  grid-template-rows: 150px;
+  grid-template-rows: 400px;
   gap: 20px;
 }
 
@@ -37,7 +36,7 @@
 
 .bitway-gallery-item {
   position: relative;
-  min-height: 150px;
+  min-height: 400px;
 }
 
 .bitway-gallery-item-inner {
