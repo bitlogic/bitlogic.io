@@ -16,9 +16,15 @@
   grid-area: bitway-even;
 }
 
+.bitway-desktop{display: grid;}
+.bitway-mobile{display: none;}
+
 @media (max-width: 992px) {
   .bitway-body {
     grid-template-columns: 1fr;
     grid-template-areas: "bitway-even" "bitway-odd";
   }
+  .bitway-desktop{display: none;}
+  .bitway-mobile{display: grid;}
+
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import './Paragraph.scss'
 import MarkdownView from 'react-showdown';
-const Paragraph = ({text}) => {
+const Paragraph = ({text, ...extra}) => {
     const {body} = text
     return (
-        <section className="bitway-paragraph">
+        <section {...extra} className={`bitway-paragraph ${extra.className}`}  >
             <MarkdownView markdown={body} />
         </section>
     )
