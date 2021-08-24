@@ -1,0 +1,33 @@
+@import "../../styles/global.scss";
+.grid {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 0;
+        border-bottom: 4px solid $blue;
+
+        h3 {
+            padding-left: 5px;
+            font-size: $medium;
+            color: $black;
+        }
+    }
+}
+
+@media (min-width: $breakpoint-desktop) {
+
+    .grid {
+        &__container {
+            h3 {
+                padding-left: 35px;
+                font-size: $large;
+            }
+        }
+
+        &__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+} 
