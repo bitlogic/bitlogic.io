@@ -44,7 +44,9 @@ const ServiceCards = ({ title, services }) => {
             className="col-12 ServiceCards__mainTitle"
           ></div>
         </div>
-        <div className="row justify-content-center ">{servicios}</div>
+        <div className="ServiceCards__container row justify-content-center">
+          {servicios}
+        </div>
       </div>
     </>
   )

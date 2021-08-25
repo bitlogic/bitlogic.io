@@ -12,11 +12,12 @@ const Contact = () => {
   const contactData = useContactPage()
 
 
-  const { contactImage,  nameImage, title } = contactData.allStrapiContactPage.nodes[0]
+  const { image,  nameImage, title } = contactData.allStrapiContactPage.nodes[0]
   const { pageTitle, pageDescription, pageKeywords } = contactData.allStrapiContactPage.nodes[0].pageMetadata
 
+  const contactImage = getImage(image)
 
-  const image = getImage(contactImage);
+   console.log()
 
   const {
     register,
@@ -42,56 +43,50 @@ const Contact = () => {
           <div className="contact__title">
             <MarkdownView markdown={title} />
           </div>
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="contactForm"
-          >
-            
-            <input 
+          <form onSubmit={handleSubmit(onSubmit)} className="contactForm">
+            <input
               className="contactForm__input"
               type="text"
               placeholder="Nombre"
               {...register("name", { required: true, maxLength: 50 })}
             />
-          
-            <input 
+
+            <input
               className="contactForm__input"
               type="text"
               placeholder="Apellido"
               {...register("lastName", { required: true, maxLength: 50 })}
             />
 
-            <input 
+            <input
               className="contactForm__input"
               type="text"
               placeholder="Correo"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
 
-            <input 
+            <input
               className="contactForm__input"
               type="text"
               placeholder="Institución"
               {...register("institution", { required: true, maxLength: 50 })}
-            />      
-
-            <input type="submit" value="Enviar" className="contactForm__inputSubmit" />
-          </form>
-        </div>
-            <GatsbyImage 
-              className="contact__image"
-              image={image} 
-              alt={nameImage} 
             />
 
-        
-
-
+            <input
+              type="submit"
+              value="Enviar"
+              className="contactForm__inputSubmit"
+            />
+          </form>
+        </div>
+        <GatsbyImage
+          className="contact__image"
+          image={contactImage}
+          alt={nameImage}
+        />
       </div>
-     
-
     </Layout>
-    )
+  )
 }
 
 export default Contact

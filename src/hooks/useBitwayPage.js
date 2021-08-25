@@ -21,7 +21,7 @@ const useBitwayPage = () => {
               id
               image {
                 childImageSharp {
-                  gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+                  gatsbyImageData
                 }
               }
             }
