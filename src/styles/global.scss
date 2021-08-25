@@ -43,3 +43,14 @@ $bottom-yellow: 4px solid $yellow;
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1025px;
+
+.notFoundPage{
+  height: calc(100vh - 240px - 96px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & h1 {
+    font-size: 3em;
+  }
+}

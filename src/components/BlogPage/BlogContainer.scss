@@ -1,0 +1,74 @@
+@import "../../styles/global.scss";
+
+.blog__container {
+    width: 100%;
+    padding: 5px 25px 60px;
+}
+
+.banner__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 190px;
+    text-align: center;
+    border-bottom: 4px solid $blue;
+
+    h3 {
+        margin-bottom: 0;
+        padding: 5px;
+        font-size: $medium;
+        line-height: $large;
+        font-weight: 700;
+        color: $blue;
+
+        span {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: $blue;
+            overflow: hidden;
+            transform: skew(-20deg);
+
+            p {
+                padding: 10px;
+                margin-bottom: 0;
+                color: $white;
+                transform: skew(20deg);
+            }
+        }
+    }
+
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .blog__container {
+        padding: 0 85px;
+    }
+
+    .banner__container {
+        h3 {
+            display: flex;
+            align-items: center;  
+            font-size: $large;
+
+            span {
+                margin-top: 0;
+                margin-left: 15px;
+            }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-desktop) {
+    .banner__container {
+        h3 {
+            font-size: $extra-large;
+            span {
+                p {
+                    padding: 20px;
+                    font-size: $second-large;
+                }
+            }
+        }
+    }
+}
