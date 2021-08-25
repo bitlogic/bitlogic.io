@@ -1,15 +1,23 @@
 import * as React from "react"
+import { useContactPage } from "../../hooks/index"
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { useForm } from "react-hook-form";
+import MarkdownView from 'react-showdown';
 import "./Contact.scss"
 
 import Layout from "../../components/layout"
 
 import { Seo } from "../index"
 
-const Contact = ({image}) => {
+const Contact = () => {
 
-  // const image = getImage(image);
+  const contactData = useContactPage()
+
+
+  const contactImage = contactData.allStrapiContactPage.nodes[0].image
+  const title = contactData.allStrapiContactPage.nodes[0].title
+
+  const image = getImage(contactImage);
 
   const {
     register,
@@ -21,19 +29,16 @@ const Contact = ({image}) => {
     console.log(data)
   }
 
-  console.log({ errors })
+  // console.log({ errors })
 
   return (
     <Layout>
       <Seo />
       <div className="contact">
         <div className="contact__group">
-          <h2 className="contact__title">Te invitamos a <span><p>CREAR</p></span></h2>
-        {/* <BannerBgImage
-            key={idx}
-            title={section.title}
-            banner={section.banner}
-          /> */}
+          <div className="contact__title">
+            <MarkdownView markdown={title} />
+          </div>
         <form
             onSubmit={handleSubmit(onSubmit)}
             className="contactForm"
@@ -70,15 +75,15 @@ const Contact = ({image}) => {
             <input type="submit" value="Enviar" className="contactForm__inputSubmit" />
           </form>
         </div>
-        <div className="contact__image"></div>
-        
-
-          {/* <div>
             <GatsbyImage 
+              className="contact__image"
               image={image} 
               // alt={} 
             />
-          </div> */}
+
+        
+
+
       </div>
      
 

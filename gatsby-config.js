@@ -21,7 +21,7 @@ module.exports = {
         apiURL: process.env.STRAPI_URL,
         queryLimit: 1000,
         contentTypes: ["banners", "services", "edTeches", "ed-tech-submodules"],
-        singleTypes: [`ed-tech-page`, `global-seo`, `services-page`, `home`],
+        singleTypes: [`ed-tech-page`, `global-seo`, `services-page`, `home`, `contact-page`],
       },
     },
     `gatsby-plugin-image`,

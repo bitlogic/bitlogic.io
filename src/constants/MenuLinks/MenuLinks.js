@@ -19,6 +19,7 @@ const MenuLinks = ({ styleClass }) => {
           <Link
             to={url}
             className={`NavBar__Link ${styleClass ? styleClass : ""}`}
+            activeClassName="NavBar__Link--active"
           >
             {text}
           </Link>

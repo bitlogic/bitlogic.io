@@ -33,6 +33,7 @@
     "react-hook-form": "^7.11.0",
     "react-icons": "^4.2.0",
     "react-markdown": "^6.0.2",
+    "react-showdown": "^2.3.1",
     "sass": "^1.35.1",
     "showdown": "^1.9.1"
   },

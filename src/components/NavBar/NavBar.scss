@@ -37,6 +37,11 @@
   color: #1ecad3;
 }
 
+.NavBar__Link--active {
+  text-decoration: none;
+  color: #1ecad3;
+}
+
 @media screen and (min-width: 992px) {
   .NavBar__Logo {
     width: 143px;

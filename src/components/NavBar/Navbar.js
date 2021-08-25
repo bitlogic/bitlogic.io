@@ -18,9 +18,9 @@ const NavBar = () => {
         </Link>
         <Navbar.Toggle
           className="NavBar__Toggler"
-          aria-controls=" basic-navbar-nav"
+          aria-controls="basic-navbar-nav"
         />
-        <Navbar.Collapse id=" basic-navbar-nav" className="NavBar__Collapse">
+        <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
           {/* Menu Links */}
           <MenuLinks />
         </Navbar.Collapse>

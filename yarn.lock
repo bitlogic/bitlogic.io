@@ -7250,7 +7250,7 @@ html-entities@^2.1.0:
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.3.2.tgz#760b404685cb1d794e4f4b744332e3b00dcfe488"
   integrity sha512-c3Ab/url5ksaT0WyleslpBEthOzWhrjQbg75y7XUsfSzi3Dgzt0l8w5e7DylRn15MTlMMD58dTfzddNS2kcAjQ==
 
-htmlparser2@^6.1.0:
+htmlparser2@^6.0.1, htmlparser2@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-6.1.0.tgz#c4d762b6c3371a05dbe65e94ae43a9f845fb8fb7"
   integrity sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==
@@ -11168,6 +11168,15 @@ react-refresh@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.9.0.tgz#71863337adc3e5c2f8a6bfddd12ae3bfe32aafbf"
   integrity sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==
+
+react-showdown@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/react-showdown/-/react-showdown-2.3.1.tgz#c1d4644e3c351ae131da49d8ba081db812c7ca80"
+  integrity sha512-3O9Gz6HF1MQbGK17gYOO6EJP27h9Sp+g/L7KeOhMJERuutYP3802MPaL8JybjeI97X9HTeeN4A89WjOpEHl3NQ==
+  dependencies:
+    domhandler "^4.0.0"
+    htmlparser2 "^6.0.1"
+    showdown "^1.9.1"
 
 react-side-effect@^2.1.0:
   version "2.1.1"
