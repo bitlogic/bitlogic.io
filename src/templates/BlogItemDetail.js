@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Markdown from "react-markdown"
+import MarkdownView from "react-showdown"
 import Layout from "../components/layout"
 import { Seo } from '../components/index.js'
 import { BannerTop } from "../components/index.js"
@@ -13,13 +13,11 @@ import "./BlogItemDetail.scss"
 
   return (
     <Layout>
-      <Seo 
-        title={detail.title}
-      />
+      <Seo title={detail.title} />
       <BannerTop banner={bannerTop} />
       <div className="detail__container">
         <div className="detail__description">
-          <Markdown>{detail.description}</Markdown>
+          <MarkdownView markdown={detail.description} />
         </div>
       </div>
     </Layout>

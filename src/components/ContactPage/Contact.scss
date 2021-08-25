@@ -17,6 +17,7 @@
         text-align: center;
         h2 {
             font-size: 30px;
+            margin-bottom: 0;
         }
         span{
             background-color: $blue;
@@ -25,10 +26,12 @@
             height: 40px;
             p {
                 color: $white;
-                padding: 5px;
+                text-transform: uppercase;
+                padding: 5px 15px;
                 display: inline-block;
                 transform: skew(15deg);
                 font-size: 30px;
+                line-height: 30px;
             }
         }
     }
@@ -103,7 +106,7 @@
         }
         &__image  {
             width: 43%;
-            height: 685px;
+            height: 765px;
             margin-left: 20px;
         }
     }    
