@@ -5,6 +5,11 @@ const useContactPage = () => {
     {
     allStrapiContactPage {
         nodes {
+            pageMetadata {
+              pageDescription
+              pageKeywords
+              pageTitle
+            }
             image {
                 childImageSharp {
                     gatsbyImageData

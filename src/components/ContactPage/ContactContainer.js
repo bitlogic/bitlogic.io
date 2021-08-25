@@ -1,12 +1,10 @@
 import * as React from "react"
-import { useContactPage } from "../../hooks/index"
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { useForm } from "react-hook-form";
 import MarkdownView from 'react-showdown';
 import "./Contact.scss"
-
+import { useContactPage } from "../../hooks/index"
 import Layout from "../../components/layout"
-
 import { Seo } from "../index"
 
 const Contact = () => {
@@ -14,8 +12,9 @@ const Contact = () => {
   const contactData = useContactPage()
 
 
-  const contactImage = contactData.allStrapiContactPage.nodes[0].image
-  const title = contactData.allStrapiContactPage.nodes[0].title
+  const { contactImage,  nameImage, title } = contactData.allStrapiContactPage.nodes[0]
+  const { pageTitle, pageDescription, pageKeywords } = contactData.allStrapiContactPage.nodes[0].pageMetadata
+
 
   const image = getImage(contactImage);
 
@@ -33,7 +32,11 @@ const Contact = () => {
 
   return (
     <Layout>
-      <Seo />
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        keywords={pageKeywords}
+      />
       <div className="contact">
         <div className="contact__group">
           <div className="contact__title">
@@ -78,7 +81,7 @@ const Contact = () => {
             <GatsbyImage 
               className="contact__image"
               image={image} 
-              // alt={} 
+              alt={nameImage} 
             />
 
         

@@ -34,7 +34,7 @@ module.exports = {
           `services-page`,
           `home`,
           `blog-page`,
-          "bitway-page",
+          `bitway-page`,
           `contact-page`,
         ],
       },
