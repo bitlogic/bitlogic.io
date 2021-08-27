@@ -1,6 +1,5 @@
 import React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
-import { useEdTechSubmodules } from "../../hooks/index"
 import "./SubModuleItem.scss"
 
 const SubModuleItems = ({ items }) => {
