@@ -34,22 +34,23 @@
     text-align: center;
     color: $blue;
     font-family: $primary-font;
-    font-size: 45px;
+    font-size: $large;
     font-style: normal;
     font-weight: 700;
     line-height: 51px;
     letter-spacing: 0em;
     text-align: center;
-    margin: 80px 0;
+    margin: 80px 0 45px;
     & span {
-      font-size: 26px;
+      font-size: $large;
       background-color: $blue;
-      padding: 10px 10px 2px 10px;
-      margin: 0;
+      padding: 0 10px;
+      margin: 0 0 0 5px;
       transform: skew(-15deg);
       display: inline-block;
       & p {
-        font-size: 45px;
+        font-size: $large;
+        font-weight: $bold;
         margin: 0;
         display: inline-block;
         color: white;
@@ -86,5 +87,25 @@
         color: $blue;
       }
     }
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .bitway-paragraph {
+    & h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: $extra-large;
+      & span {
+        padding:15px 10px 5px;
+        & p {
+          font-size: $extra-large;
+        }
+      }
+
+  }
   }
 }
