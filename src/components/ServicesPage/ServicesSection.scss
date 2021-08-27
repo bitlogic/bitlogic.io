@@ -6,7 +6,9 @@
 
 .serviceCard {
   &__description {
-    font-size: $small;
+    p {
+      font-size: $small;
+    }  
   }
   &__icon {
     margin: 0 auto;
@@ -28,7 +30,10 @@
 @media (min-width: $breakpoint-tablet) {
   .serviceCard {
     &__description {
-      font-size: $medium;
+      p {
+        font-size: $medium;
+      }
+      
     }
     &__title {
       font-size: $large;

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
-import { useForm } from "react-hook-form";
 import MarkdownView from 'react-showdown';
+import HubspotForm from "react-hubspot-form"
 import "./Contact.scss"
 import { useContactPage } from "../../hooks/index"
 import Layout from "../../components/layout"
@@ -17,20 +17,6 @@ const Contact = () => {
 
   const contactImage = getImage(image)
 
-   console.log()
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
-
-  const onSubmit = data => {
-    console.log(data)
-  }
-
-  // console.log({ errors })
-
   return (
     <Layout>
       <Seo
@@ -43,7 +29,15 @@ const Contact = () => {
           <div className="contact__title">
             <MarkdownView markdown={title} />
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="contactForm">
+          <div>
+            <HubspotForm 
+            portalId="7871650" 
+            formId="8ccf245e-a430-4b36-9cb6-70b1df97ff67"    
+            onSubmit={() => console.log('Submit!')}
+            onReady={(form) => console.log('Form ready!')}
+            loading={<div>Loading...</div>} />
+          </div>
+          {/* <form onSubmit={handleSubmit(onSubmit)} className="contactForm">
             <input
               className="contactForm__input"
               type="text"
@@ -77,8 +71,9 @@ const Contact = () => {
               value="Enviar"
               className="contactForm__inputSubmit"
             />
-          </form>
+          </form> */}
         </div>
+        
         <GatsbyImage
           className="contact__image"
           image={contactImage}

@@ -101,6 +101,14 @@ type StrapiHomeSections {
   enable: Boolean
   services: [StrapiHomeSectionsServices]
   edteches: [StrapiHomeSectionsEdteches]
+  partners: [StrapiHomeSectionsPartners]
+}
+
+type StrapiHomeSectionsPartners {
+  id: Int
+  text: String
+  caption: String
+  image: File @link(from: "image___NODE")
 }
 
 type StrapiHomeSectionsBanner {

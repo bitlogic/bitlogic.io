@@ -4,7 +4,6 @@
   background-color: $blue;
   width: 100%;
   min-height: 300px;
-  margin-bottom: 1px;
   padding: 50px;
   &__row {
     display: flex;
@@ -26,6 +25,7 @@
       font-weight: $bold;
       border-bottom: 4px solid $yellow;
       padding-bottom: 15px;
+      text-align: center;
     }
     p {
       color: $white;
