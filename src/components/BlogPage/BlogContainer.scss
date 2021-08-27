@@ -2,7 +2,8 @@
 
 .blog__container {
     width: 100%;
-    padding: 5px 25px 60px;
+    padding: 5px 15px 60px;
+    margin-bottom: 45px;
 }
 
 .banner__container {
@@ -60,9 +61,13 @@
 }
 
 @media (min-width: $breakpoint-desktop) {
+    .blog__container {
+        margin-bottom: 85px;
+    }
+    
     .banner__container {
         h3 {
-            font-size: $extra-large;
+            font-size: $second-large;
             span {
                 p {
                     padding: 20px;

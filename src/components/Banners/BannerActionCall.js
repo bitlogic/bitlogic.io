@@ -13,7 +13,7 @@ const BannerActionCall = ({ banner }) => {
         <GatsbyImage image={icon} alt={banner.title} />
       </div>
       <div className="bannerActCall__description">
-        <h1 className="bannerActCall__title">{banner.title}</h1>
+        <h3 className="bannerActCall__title">{banner.title}</h3>
         <Link to={`/${banner.link.pathTo}`} className="bannerActCall__link">
           {banner.link.name}
         </Link>
