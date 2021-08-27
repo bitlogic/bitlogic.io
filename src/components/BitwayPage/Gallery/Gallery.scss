@@ -26,7 +26,7 @@
 .bitway-gallery-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 26px;
+  gap: 20px;
 }
 
 .bitway-gallery-item {
@@ -49,4 +49,17 @@
   line-height: 51px;
   letter-spacing: 0em;
   text-align: center;
+}
+
+
+@media (max-width: 992px) {
+  .bitway-gallery {
+    grid-template-rows: 250px;
+  }
+
+  
+  .bitway-gallery-item {
+    min-height: 250px;
+  }
+
 }
