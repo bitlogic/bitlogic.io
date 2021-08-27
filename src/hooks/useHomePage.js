@@ -27,6 +27,15 @@ const useHomePage = () => {
                 }
               }
             }
+            partners {
+              caption
+              id
+              image {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
             banner {
               title
               type
