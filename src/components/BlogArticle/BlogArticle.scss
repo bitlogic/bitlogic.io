@@ -1,86 +1,92 @@
 @import "../../styles/global.scss";
 .article {
-    &__container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding: 15px 0;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  &__image {
+    width: 290px;
+    margin: auto 0;
+
+    img {
+      height: 165px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 15px;
+
+    h3 {
+      padding-left: 0;
+      margin-bottom: 15px;
+      font-size: $small;
+      font-weight: $max-bold;
     }
 
-    &__image {
-        width: 290px;
-        margin: auto 0;
-        background-size: cover;
-
-        img {
-            height: 165px;
-        }
+    p {
+      margin-bottom: 15px;
+      font-size: 12px;
+      line-height: 18px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
     }
+  }
 
-    &__link {
-        text-align: end;
-    } 
+  &__link {
+    text-align: end;
 
-    &__description {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        padding: 5px 15px;
-
-        h3 {
-            padding-left: 0;
-            margin-bottom: 15px;
-            font-size: $small;
-            font-weight: $max-bold;
-        }
-
-        p {
-            margin-bottom: 15px;
-            font-size: $small;
-        }
-
-       a {
-           display: inline-block;
-           margin-right: 0;
-           font-size: $small;
-           font-weight: $max_bold;
-           text-decoration: none;
-            color: $blue;
-            border-bottom: 5px solid $yellow;
-            cursor: pointer;
-        }
+    a {
+      padding: 7px;
+      margin-right: 0;
+      font-size: 12px;
+      font-weight: $max_bold;
+      text-decoration: none;
+      color: $blue;
+      border-bottom: 5px solid $yellow;
+      cursor: pointer;
     }
+  }
 }
 
 @media (min-width: $breakpoint-desktop) {
-    .article {
-        &__container {
-            flex-direction: column;
-            padding: 25px 40px;
-        }
-
-        &__image {
-            width: 100%;
-
-            img {
-                width: 500px;
-                height: 100%;
-            }
-        }
-
-        &__description {
-            width: 100%;
-            padding: 0;
-
-            h3 {
-                margin-top: 15px;
-                font-size: $medium;
-            }
-
-            p, a {
-                font-size: $medium;
-            }
-        }
+  .article {
+    &__container {
+      flex-direction: column;
+      padding: 25px 40px;
     }
-} 
+
+    &__image {
+      width: 100%;
+
+      img {
+        width: 500px;
+        height: 100%;
+      }
+    }
+
+    &__description {
+      width: 100%;
+      padding: 0;
+
+      h3 {
+        margin-top: 25px;
+        font-size: $large;
+      }
+
+      p,
+      a {
+        font-size: 18px;
+        line-height: 30px;
+      }
+    }
+  }
+}

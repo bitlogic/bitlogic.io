@@ -34,8 +34,6 @@ const BitwayPage = () => {
     .filter(e => e.body)
     .map(e => <Paragraph key={e.index} text={e} />)
   // y se renderizan
-
-  console.log(sectionswide)
   return (
     <Layout>
       <Seo
