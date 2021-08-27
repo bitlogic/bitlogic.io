@@ -1,5 +1,4 @@
 import { useStaticQuery, graphql } from "gatsby";
-import { useEffect, useState } from "react";
 
 const useBitwayPage = () => {
   const query = useStaticQuery(graphql`

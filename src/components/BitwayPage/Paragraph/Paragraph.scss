@@ -2,7 +2,7 @@
 .bitway-paragraph {
   & p {
     font-family: $primary-font;
-    font-size: 20px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 400;
     line-height: 26px;
@@ -11,15 +11,26 @@
   }
   & > div > p {
     font-family: $primary-font;
-    font-size: 20px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 400;
     line-height: 26px;
     letter-spacing: 0em;
     text-align: left;
-    padding: 0 20% 20px;
+    padding: 0 80px 20px;
+    & * {
+      font-size: 25px;
+    }
+    & a {
+      
+    }
   }
-  & h2 {
+  & h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-align: center;
     color: $blue;
     font-family: $primary-font;
