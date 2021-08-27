@@ -44,7 +44,7 @@
   background: #1ECAD380;
   color: white;
   font-family: Roboto;
-  font-size: 25px;
+  font-size: 45px;
   font-style: normal;
   font-weight: 700;
   line-height: 51px;
@@ -58,6 +58,10 @@
     grid-template-rows: 250px;
   }
 
+  .bitway-gallery-item-inner {
+    font-size: 25px;
+  }
+  
   
   .bitway-gallery-item {
     min-height: 250px;
