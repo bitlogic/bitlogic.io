@@ -14,6 +14,7 @@ import BannerISO from "./Banners/BannerISO"
 import BannerClientes from "./Banners/BannerClientes"
 import BannerTop from "./Banners/BannerTop"
 import BannerActionCall from "./Banners/BannerActionCall"
+import PartnersSection from "./PartnersSection/PartnersSection"
 
 export {
   ServicesSection,
@@ -32,4 +33,5 @@ export {
   BannerClientes,
   BannerTop,
   BannerActionCall,
+  PartnersSection,
 }

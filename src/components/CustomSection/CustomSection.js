@@ -1,5 +1,4 @@
 import React from "react"
-
 import {
   ServiceCards,
   EdTechCards,
@@ -8,6 +7,7 @@ import {
   BannerLogo,
   BannerISO,
   BannerClientes,
+  PartnersSection,
 } from "../index"
 import "./CustomSection.scss"
 
@@ -78,6 +78,14 @@ const CustomSection = ({ sections }) => {
             banner={section.banner}
           />
         ) : null}
+        {section?.partners !== null ? (
+          <PartnersSection
+            key={idx}
+            title={section.title}
+            partners={section.partners}
+          />
+        ) : null
+        }
       </div>
     )
   })

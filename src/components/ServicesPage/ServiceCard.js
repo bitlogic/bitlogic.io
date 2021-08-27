@@ -14,8 +14,8 @@ const ServiceCard = ({ service }) => {
       </div>
       <div className="col-12 col-md-10 serviceCard__block">
         <div className="serviceCard__title">{service.title}</div>
-        <div className="serviceCard__description">
-          <Markdown escapeHtml={true}>{service.description}</Markdown>
+        <div >
+          <Markdown className="serviceCard__description" escapeHtml={true}>{service.description}</Markdown>
         </div>
       </div>
     </div>
