@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 
@@ -26,6 +25,7 @@ const BannerLogo = ({ banner, title }) => {
         </div>
         <h1 className="BannerLogo__Title">{title}</h1>
       </BgImage>
+      
       {summary ? (
         <div className="BannerLogo__summary">
           <div className="container ">

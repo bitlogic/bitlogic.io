@@ -16,6 +16,10 @@ const useContactPage = () => {
                   }
             }
             title
+            contactForm {
+              portalId
+              formId
+            }
         }
     }
     }
