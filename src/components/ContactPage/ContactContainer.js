@@ -13,6 +13,7 @@ const Contact = () => {
 
 
   const { image,  nameImage, title } = contactData.allStrapiContactPage.nodes[0]
+  const { formId, portalId } = contactData.allStrapiContactPage.nodes[0].contactForm
   const { pageTitle, pageDescription, pageKeywords } = contactData.allStrapiContactPage.nodes[0].pageMetadata
 
   const contactImage = getImage(image)
@@ -31,47 +32,10 @@ const Contact = () => {
           </div>
           <div>
             <HubspotForm 
-            portalId="7871650" 
-            formId="8ccf245e-a430-4b36-9cb6-70b1df97ff67"    
-            onSubmit={() => console.log('Submit!')}
-            onReady={(form) => console.log('Form ready!')}
+            portalId={portalId}
+            formId={formId}   
             loading={<div>Loading...</div>} />
           </div>
-          {/* <form onSubmit={handleSubmit(onSubmit)} className="contactForm">
-            <input
-              className="contactForm__input"
-              type="text"
-              placeholder="Nombre"
-              {...register("name", { required: true, maxLength: 50 })}
-            />
-
-            <input
-              className="contactForm__input"
-              type="text"
-              placeholder="Apellido"
-              {...register("lastName", { required: true, maxLength: 50 })}
-            />
-
-            <input
-              className="contactForm__input"
-              type="text"
-              placeholder="Correo"
-              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-            />
-
-            <input
-              className="contactForm__input"
-              type="text"
-              placeholder="Institución"
-              {...register("institution", { required: true, maxLength: 50 })}
-            />
-
-            <input
-              type="submit"
-              value="Enviar"
-              className="contactForm__inputSubmit"
-            />
-          </form> */}
         </div>
         
         <GatsbyImage

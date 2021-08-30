@@ -42,49 +42,6 @@
     }
 }
 
-// .hubspot-form-wrapper {
-//     width: 90%;
-//     margin: 0 auto;
-//     .hs-input {
-
-//         height: 100px !important;
-//     }
-// }
-
-// .contactForm {
-//     &__input {
-//         width: 100%;
-//         height: 55px;
-//         margin-bottom: 30px;
-//         border:none;
-//         border-bottom: $blue 5px solid;
-//         &::placeholder { 
-//             color: black;
-//             opacity: 1; 
-//             font-weight: 700;
-//         }
-//         &:focus {
-//             outline: none;
-//         }
-        
-//     }
-//     &__inputSubmit {
-//         box-sizing: border-box;
-//         margin-left: 76%;
-//         width: 24%;
-//         padding: 0 10px;
-//         padding-bottom: 5px;
-//         border:none;
-//         border-bottom: $yellow 5px solid;
-//         background-color: transparent;
-//         color: $blue;
-//         font-weight: 700;
-//         &:focus {
-//             border-bottom:yellow 5px solid;;
-//         }
-//     }
-// }
-
 @media screen and (min-width: 786px) {
     .contact {
         max-width: 1400px;
