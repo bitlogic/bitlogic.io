@@ -449,8 +449,8 @@ type StrapiBanners implements Node {
     locale: String
   ): Date
   link: StrapiBannersLink
-  image: File @link(from: "image___NODE")
-  logo: File @link(from: "logo___NODE")
+  image: LocalFile
+  logo: LocalFile
   strapiId: Int
 }
 type StrapiBannersLink {
@@ -755,7 +755,7 @@ type StrapiContactPage implements Node {
     locale: String
   ): Date
   pageMetadata: StrapiContactPagePageMetadata
-  image: File @link(from: "image___NODE")
+  image: LocalFile
   strapiId: Int
 }
 
@@ -764,6 +764,10 @@ type StrapiContactPagePageMetadata {
   pageTitle: String
   pageDescription: String
   pageKeywords: String
+}
+
+type LocalFile {
+  localFile: File @link(from: "localFile___NODE")
 }
 
 

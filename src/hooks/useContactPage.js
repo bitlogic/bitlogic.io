@@ -3,25 +3,27 @@ import { useStaticQuery, graphql } from "gatsby"
 const useContactPage = () => {
   const query = useStaticQuery(graphql`
     {
-    allStrapiContactPage {
+      allStrapiContactPage {
         nodes {
-            pageMetadata {
-              pageDescription
-              pageKeywords
-              pageTitle
+          pageMetadata {
+            pageDescription
+            pageKeywords
+            pageTitle
+          }
+          image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
             }
-            image {
-                childImageSharp {
-                    gatsbyImageData
-                  }
-            }
-            title
-            contactForm {
-              portalId
-              formId
-            }
+          }
+          title
+          contactForm {
+            portalId
+            formId
+          }
         }
-    }
+      }
     }
   `)
   return query

@@ -5,7 +5,7 @@ import "./BannerTop.scss"
 
 const BannerTop = ({ banner }) => {
   const { image, title, summary } = banner
-  const imageBanner = getImage(image)
+  const imageBanner = getImage(image.localFile)
 
   return (
     <div className="banner">

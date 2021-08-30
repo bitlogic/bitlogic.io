@@ -16,7 +16,7 @@ const Contact = () => {
   const { formId, portalId } = contactData.allStrapiContactPage.nodes[0].contactForm
   const { pageTitle, pageDescription, pageKeywords } = contactData.allStrapiContactPage.nodes[0].pageMetadata
 
-  const contactImage = getImage(image)
+  const contactImage = getImage(image.localFile)
 
   return (
     <Layout>
