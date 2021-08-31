@@ -13,8 +13,10 @@ const useBlog = () => {
             slug
             image {
               id
-              childImageSharp {
-                gatsbyImageData
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
               }
             }
           }

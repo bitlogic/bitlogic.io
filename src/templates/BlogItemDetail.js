@@ -43,8 +43,10 @@ query($slug: String!) {
       description
       slug
       image {
-        childImageSharp {
-          gatsbyImageData
+        localFile {
+          childImageSharp {
+            gatsbyImageData
+          }
         }
       }
       blog_categories {

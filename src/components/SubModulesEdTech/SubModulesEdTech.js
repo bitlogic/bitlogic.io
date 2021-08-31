@@ -13,7 +13,7 @@ const SubModulesEdTech = ({ items, variant }) => {
   const { description, logo, id } = submodule
 
   const logoSubmodule = logo && (
-    <GatsbyImage image={getImage(logo)} alt={`${title}-${id}`} />
+    <GatsbyImage image={getImage(logo.localFile)} alt={`${title}-${id}`} />
   )
 
   const classVariant = variant && `${variant}`

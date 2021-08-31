@@ -18,8 +18,10 @@ const useServices = () => {
           title
           id
           icon {
-            childImageSharp {
-              gatsbyImageData(width: 150, quality: 100, placeholder: BLURRED)
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 150, quality: 100, placeholder: BLURRED)
+              }
             }
           }
         }

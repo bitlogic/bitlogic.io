@@ -8,6 +8,7 @@ import "./EdtechContainer.scss"
 
 const EdTech = () => {
   const data = useEdTech()
+  console.log(data)
   const bannerData = useBanner()
   const edTechs = data?.allStrapiEdteches?.nodes
 

@@ -26,7 +26,7 @@ const BannerBgImage = ({ banner }) => {
   return (
     <div className="bannerBgImage">
       {bannerSelected.type === "bgImage" ? (
-        <BgImage image={getImage(image)} className="bannerBgImage__bgImage">
+        <BgImage image={getImage(image.localFile)} className="bannerBgImage__bgImage">
           <div className="bannerBgImage__titleContainer">
             <div
               dangerouslySetInnerHTML={ReplaceHtml()}

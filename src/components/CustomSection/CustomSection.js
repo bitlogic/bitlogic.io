@@ -13,8 +13,6 @@ import "./CustomSection.scss"
 
 const CustomSection = ({ sections }) => {
 
-  console.log(sections[0].banner)
-
   const section = sections.map((section, idx) => {
     return (
       <div key={idx} className="CustomSections">
