@@ -10,17 +10,21 @@ const useBanner = () => {
           page
           type
           image {
-            childImageSharp {
-              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
             }
           }
           logo {
-            childImageSharp {
-              gatsbyImageData(
-                quality: 100
-                formats: [AUTO, WEBP]
-                placeholder: BLURRED
-              )
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 100
+                  formats: [AUTO, WEBP]
+                  placeholder: BLURRED
+                )
+              }
             }
           }
           link {

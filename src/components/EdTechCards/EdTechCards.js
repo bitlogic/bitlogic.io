@@ -19,7 +19,7 @@ const EdTechCards = ({ title, edteches }) => {
         <div key={idx} className="col-12 col-lg-8 EdtechCards__card">
           <div className="EdtechCards__image col-4 ">
             <GatsbyImage
-              image={getImage(edtech?.homeIcon)}
+              image={getImage(edtech?.homeIcon.localFile)}
               alt={edtech.homeTitle}
             />{" "}
           </div>

@@ -14,8 +14,8 @@ const BannerLogo = ({ banner, title }) => {
   )
   const { image, logo, summary } = bannerSelected
 
-  const imagen = getImage(image)
-  const logoImage = getImage(logo)
+  const imagen = getImage(image.localFile)
+  const logoImage = getImage(logo.localFile)
 
   return (
     <>

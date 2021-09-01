@@ -61,8 +61,8 @@ type StrapiServices implements Node {
     difference: String
     locale: String
   ): Date
-  icon: File @link(from: "icon___NODE")
-  homeIcon: File @link(from: "homeIcon___NODE")
+  icon: LocalFile
+  homeIcon: LocalFile
   strapiId: Int
 }
 
@@ -116,7 +116,7 @@ type StrapiHomeSectionsPartners {
   id: Int
   text: String
   caption: String
-  image: File @link(from: "image___NODE")
+  image: LocalFile
 }
 
 type StrapiHomeSectionsBanner {
@@ -143,8 +143,8 @@ type StrapiHomeSectionsBanner {
     difference: String
     locale: String
   ): Date
-  image: File @link(from: "image___NODE")
-  logo: File @link(from: "logo___NODE")
+  image: LocalFile
+  logo: LocalFile
   summary: String
 }
 
@@ -173,8 +173,8 @@ type StrapiHomeSectionsServices {
     difference: String
     locale: String
   ): Date
-  icon: File @link(from: "icon___NODE")
-  homeIcon: File @link(from: "homeIcon___NODE")
+  icon: LocalFile
+  homeIcon: LocalFile
 }
 
 type StrapiHomeSectionsEdteches {
@@ -201,8 +201,8 @@ type StrapiHomeSectionsEdteches {
     difference: String
     locale: String
   ): Date
-  icon: File @link(from: "icon___NODE")
-  homeIcon: File @link(from: "homeIcon___NODE")
+  icon: LocalFile
+  homeIcon: LocalFile
 }
 
 type StrapiGlobalSeo implements Node {
@@ -270,8 +270,8 @@ type StrapiEdteches implements Node {
     locale: String
   ): Date
   edTechSubmodules: StrapiEdtechesEdTechSubmodules
-  icon: File @link(from: "icon___NODE")
-  homeIcon: File @link(from: "homeIcon___NODE")
+  icon: LocalFile
+  homeIcon: LocalFile
   strapiId: Int
 }
 
@@ -338,14 +338,14 @@ type StrapiEdTechSubmodulesSubmodule {
   id: Int
   title: String
   description: String
-  logo: File @link(from: "logo___NODE")
+  logo: LocalFile
 }
 
 type StrapiEdTechSubmodulesSubmoduleItem {
   id: Int
   content: String
   title: String
-  icon: File @link(from: "icon___NODE")
+  icon: LocalFile
 }
 
 type StrapiEdTechPage implements Node {
@@ -412,8 +412,8 @@ type StrapiEdTechPageBannersBanner {
     difference: String
     locale: String
   ): Date
-  image: File @link(from: "image___NODE")
-  logo: File @link(from: "logo___NODE")
+  image: LocalFile
+  logo: LocalFile
 }
 
 type StrapiBanners implements Node {
@@ -427,38 +427,26 @@ type StrapiBanners implements Node {
   type: String
   summary: String
   published_at(
-    # Format the date using Moment.js' date tokens, e.g. . See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
-    formatString: String
-    # Returns a string generated with Moment.js'  function
-    fromNow: Boolean
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    formatString: String    
+    fromNow: Boolean    
     difference: String
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   created_at(
-    # Format the date using Moment.js' date tokens, e.g. . See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
-    formatString: String
-    # Returns a string generated with Moment.js'  function
-    fromNow: Boolean
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    formatString: String    
+    fromNow: Boolean    
     difference: String
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   updated_at(
-    # Format the date using Moment.js' date tokens, e.g. . See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
-    formatString: String
-    # Returns a string generated with Moment.js'  function
-    fromNow: Boolean
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    formatString: String    
+    fromNow: Boolean    
     difference: String
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   link: StrapiBannersLink
-  image: File @link(from: "image___NODE")
-  logo: File @link(from: "logo___NODE")
+  image: LocalFile
+  logo: LocalFile
   strapiId: Int
 }
 type StrapiBannersLink {
@@ -533,7 +521,7 @@ type StrapiBitwayPageBannersBanner {
     difference: String
     locale: String
   ): Date
-  logo: File @link(from: "logo___NODE")
+  logo: LocalFile
 }
 
 type StrapiBitwayPageSEO {
@@ -554,7 +542,7 @@ type StrapiBitwayPageSectionsGalleryImage {
   id: Int
   text: String
   caption: String
-  image: File @link(from: "image___NODE")
+  image: LocalFile
 }
 
 type StrapiBlogCategory implements Node {
@@ -608,7 +596,7 @@ type StrapiBlogCategoryArticles {
     difference: String
     locale: String
   ): Date
-  image: File @link(from: "image___NODE")
+  image: LocalFile
   slug: String
 }
 
@@ -638,7 +626,7 @@ type StrapiArticle implements Node {
     difference: String
     locale: String
   ): Date
-  image: File @link(from: "image___NODE")
+  image: LocalFile
   blog_categories: [StrapiArticleBlog_categories]
   strapiId: Int
   slug: String
@@ -676,33 +664,21 @@ type StrapiBlogPage implements Node {
     formatString: String
 
     fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
     difference: String
-
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   created_at(
     formatString: String
 
     fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
     difference: String
-
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   updated_at(
     formatString: String
 
     fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
     difference: String
-
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   pageMetadata: StrapiBlogPagePageMetadata
@@ -724,47 +700,26 @@ type StrapiContactPage implements Node {
   title: String
   imageName: String
   published_at(
-    # Format the date using Moment.js' date tokens, e.g.  See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
-
-    # Returns a string generated with Moment.js' function
     fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
     difference: String
-
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   created_at(
-    # Format the date using Moment.js' date tokens, e.g.  See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
-
-    # Returns a string generated with Moment.js' function
     fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
     difference: String
-
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   updated_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
-
-    # Returns a string generated with Moment.js'  function
     fromNow: Boolean
-
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
     difference: String
-
-    # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
   pageMetadata: StrapiContactPagePageMetadata
   contactForm: StrapiContactPageContactForm
-  image: File @link(from: "image___NODE")
+  image: LocalFile
   strapiId: Int
 }
 
@@ -779,6 +734,10 @@ type StrapiContactPagePageMetadata {
   pageTitle: String
   pageDescription: String
   pageKeywords: String
+}
+
+type LocalFile {
+  localFile: File @link(from: "localFile___NODE")
 }
 
 

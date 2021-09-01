@@ -27,7 +27,7 @@ const Cards = ({ tech }) => {
       )
   )
 
-  const icon = getImage(tech?.icon)
+  const icon = getImage(tech?.icon.localFile)
 
   return (
     <>

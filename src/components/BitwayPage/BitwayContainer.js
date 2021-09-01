@@ -14,7 +14,7 @@ const BitwayPage = () => {
     allStrapiBitwayPage: { nodes },
   } = useBitwayPage()
 
-  const sections = nodes[0].sections
+  const sections = nodes[0]?.sections
 
   const bannerData = useBanner()
 
@@ -22,7 +22,7 @@ const BitwayPage = () => {
     banner => banner.page === "bitway" && banner.type === "actionCall"
   )
 
-  const { pageTitle, pageDescription, pageKeywords } = nodes[0].SEO
+  const { pageTitle, pageDescription, pageKeywords } = nodes[0]?.SEO
 
   // vista desktop
   // sort funciona con referencia, asi que se crea una nueva array
@@ -36,11 +36,15 @@ const BitwayPage = () => {
   // y se renderizan
   return (
     <Layout>
-      <Seo
-        title={pageTitle}
-        description={pageDescription}
-        keywords={pageKeywords}
-      />
+      {nodes[0]?.SEO && (
+        <Seo
+          title={pageTitle}
+          description={pageDescription}
+          keywords={pageKeywords}
+        />
+      )}
+      {sections.length > 0 && (
+
       <div className="bitway-body">
         {/* se renderiza por vistas */}
         {/* vista mobile */}
@@ -78,7 +82,10 @@ const BitwayPage = () => {
         <Gallery className="bitway-desktop" content={gallery} />
         <section className="bitway-desktop">{paragraph}</section>
       </div>
-      <BannerActionCall banner={bannerActionCall} />
+      )}
+      {bannerActionCall && (
+        <BannerActionCall banner={bannerActionCall} />
+      )}
     </Layout>
   )
 }

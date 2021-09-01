@@ -18,8 +18,10 @@ const useHomePage = () => {
               homeIntro
               homeTitle
               homeIcon {
-                childImageSharp {
-                  gatsbyImageData(height: 90)
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(height: 90)
+                  }
                 }
               }
             }
@@ -27,8 +29,10 @@ const useHomePage = () => {
               homeIntro
               homeTitle
               homeIcon {
-                childImageSharp {
-                  gatsbyImageData(height: 90)
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(height: 90)
+                  }
                 }
               }
             }
@@ -36,8 +40,10 @@ const useHomePage = () => {
               caption
               id
               image {
-                childImageSharp {
-                  gatsbyImageData
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
                 }
               }
             }

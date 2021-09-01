@@ -19,8 +19,10 @@ const useBitwayPage = () => {
               text
               id
               image {
-                childImageSharp {
-                  gatsbyImageData
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
                 }
               }
             }

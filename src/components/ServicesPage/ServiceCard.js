@@ -3,7 +3,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import Markdown from "react-markdown"
 
 const ServiceCard = ({ service }) => {
-  const icon = getImage(service.icon)
+  const icon = getImage(service.icon.localFile)
 
   return (
     <div className="serviceCard row">

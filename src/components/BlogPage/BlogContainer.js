@@ -15,6 +15,7 @@ const Blog = () => {
   const bannerData = useBanner()
   const blogData = useBlog()
   const data = blogData?.allStrapiBlogCategory?.nodes
+  console.log(data)
   
   const bannerBlog = bannerData?.allStrapiBanners?.nodes.find(
     banner => banner.page === "blog" && banner.type === "bgColor"
@@ -26,33 +27,40 @@ const Blog = () => {
   
   const { pageTitle, pageDescription, pageKeywords } = blogData?.allStrapiBlogPage?.nodes[0]?.seo
 
+
   return (
     <Layout>
-      <Seo
-        title={pageTitle}
-        description={pageDescription}
-        keywords={pageKeywords}
-      />
-      <div className="blog__container">
-        <div className="banner__container">
-          <h3 dangerouslySetInnerHTML={{ __html: bannerBlog.summary }} />
+      {blogData?.allStrapiBlogPage?.nodes[0]?.seo && (
+        <Seo
+          title={pageTitle}
+          description={pageDescription}
+          keywords={pageKeywords}
+        />
+      )}
+      {data.length > 0 && (
+        <div className="blog__container">
+          <div className="banner__container">
+            <h3 dangerouslySetInnerHTML={{ __html: bannerBlog.summary }} />
+          </div>
+          {data?.map((article, idx) => (
+            <BlogGrid key={idx} title={article.name}>
+              {article?.articles?.map((item, idx) => (
+                <BlogArticle
+                  key={idx}
+                  image={item.image}
+                  title={item.title}
+                  summary={item.summary.substring(0, 85)}
+                  slug={"/blog/" + item.slug}
+                  text="Ver más"
+                />
+              ))}
+            </BlogGrid>
+          ))}
         </div>
-        {data?.map((article, idx) => (
-          <BlogGrid key={idx} title={article.name}>
-            {article?.articles?.map((item, idx) => (
-              <BlogArticle
-                key={idx}
-                image={item.image}
-                title={item.title}
-                summary={item.summary.substring(0, 85)}
-                slug={"/blog/" + item.slug}
-                text="Ver más"
-              />
-            ))}
-          </BlogGrid>
-        ))}
-      </div>
-      <BannerActionCall banner={bannerActionCall} />
+      )}
+      {bannerActionCall && (
+        <BannerActionCall banner={bannerActionCall} />
+      )}
     </Layout>
   )
 }

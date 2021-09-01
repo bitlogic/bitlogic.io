@@ -15,13 +15,17 @@ const useEdTech = () => {
             name
           }
           logo {
-            childImageSharp {
-              gatsbyImageData
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
             }
           }
           image {
-            childImageSharp {
-              gatsbyImageData
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
             }
           }
         }
@@ -32,9 +36,11 @@ const useEdTech = () => {
           title
           content
           icon {
-            childImageSharp {
-              gatsbyImageData(height: 100)
-            }
+              localFile {
+                  childImageSharp {
+                    gatsbyImageData(height: 100)
+                  }
+              }
           }
           edTechSubmodules {
             ed_tech_submodules {

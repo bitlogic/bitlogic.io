@@ -13,8 +13,10 @@ const useEdTechSubmodules = () => {
             description
             title
             logo {
-              childImageSharp {
-                gatsbyImageData(width: 60)
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 60)
+                }
               }
             }
           }
@@ -23,8 +25,10 @@ const useEdTechSubmodules = () => {
             id
             content
             icon {
-              childImageSharp {
-                gatsbyImageData(width: 60)
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 60)
+                }
               }
             }
           }

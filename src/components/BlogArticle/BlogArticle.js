@@ -9,7 +9,7 @@ const BlogArticle = ({ title, summary, image, slug, text }) => {
   return (
     <div className="article__container">
       <div className="article__image">
-        <GatsbyImage image={getImage(image)} alt={title} />
+        <GatsbyImage image={getImage(image.localFile)} alt={title} />
       </div>
       <div className="article__description">
         <h3>{title}</h3>

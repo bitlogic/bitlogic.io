@@ -8,6 +8,7 @@ import "./EdtechContainer.scss"
 
 const EdTech = () => {
   const data = useEdTech()
+
   const bannerData = useBanner()
   const edTechs = data?.allStrapiEdteches?.nodes
 
@@ -28,14 +29,22 @@ const EdTech = () => {
 
   return (
     <Layout>
-      <Seo
-        title={pageTitle}
-        description={pageDescription}
-        keywords={pageKeywords}
-      />
-      <BannerTop banner={bannerTop} />
-      <div className="container-fluid EdTech__container">{content}</div>
-      <BannerActionCall banner={bannerActionCall} />
+      {data?.allStrapiEdTechPage?.nodes[0].seo && (
+        <Seo
+          title={pageTitle}
+          description={pageDescription}
+          keywords={pageKeywords}
+        />
+      )}
+      {bannerTop && (
+        <BannerTop banner={bannerTop} />
+      )}
+      {content.length > 0 && (
+        <div className="container-fluid EdTech__container">{content}</div>
+      )}
+      {bannerActionCall && (
+        <BannerActionCall banner={bannerActionCall} />
+      )}
     </Layout>
   )
 }
