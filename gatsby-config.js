@@ -52,7 +52,7 @@ module.exports = {
           breakpoints: [750, 1080, 1366, 1920],
           backgroundColor: `transparent`,
         },
-      },
+      }, 
     },
     {
       resolve: `gatsby-plugin-manifest`,
