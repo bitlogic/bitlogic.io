@@ -90,7 +90,15 @@ type StrapiHome implements Node {
     locale: String
   ): Date
   sections: [StrapiHomeSections]
+  pageMetadata: StrapiHomePageMetadata
   strapiId: Int
+}
+
+type StrapiHomePageMetadata {
+  id: Int
+  pageTitle: String
+  pageDescription: String
+  pageKeywords: String
 }
 
 type StrapiHomeSections {
@@ -755,8 +763,15 @@ type StrapiContactPage implements Node {
     locale: String
   ): Date
   pageMetadata: StrapiContactPagePageMetadata
+  contactForm: StrapiContactPageContactForm
   image: File @link(from: "image___NODE")
   strapiId: Int
+}
+
+type StrapiContactPageContactForm {
+  id: Int
+  portalId: String
+  formId: String
 }
 
 type StrapiContactPagePageMetadata {

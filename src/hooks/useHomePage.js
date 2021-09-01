@@ -5,6 +5,11 @@ const useHomePage = () => {
     {
       allStrapiHome {
         nodes {
+          pageMetadata {
+            pageDescription
+            pageKeywords
+            pageTitle
+          }
           sections {
             title
             type
