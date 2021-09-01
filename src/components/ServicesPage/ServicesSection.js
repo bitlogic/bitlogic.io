@@ -30,16 +30,20 @@ const ServicesSection = () => {
 
   return (
     <Layout>
-      <Seo
-        title={pageTitle}
-        description={pageDescription}
-        keywords={pageKeywords}
-      />
-      <BannerTop banner={bannerTop} />
-      <div className="container-fluid servicesSection">
-        <div className="container">{servicesToDisplay}</div>
-      </div>
-      <BannerActionCall banner={bannerActionCall} />
+      {servicesData?.allStrapiServicesPage?.nodes[0]?.seo && (
+        <Seo
+          title={pageTitle}
+          description={pageDescription}
+          keywords={pageKeywords}
+        />
+      )}
+      {bannerTop && <BannerTop banner={bannerTop} />}
+      {servicesToDisplay.length > 0 && (
+        <div className="container-fluid servicesSection">
+          <div className="container">{servicesToDisplay}</div>
+        </div>
+      )}
+      {bannerActionCall && <BannerActionCall banner={bannerActionCall} />}
     </Layout>
   )
 }
