@@ -13,8 +13,8 @@ const Contact = () => {
 
 
   const { image,  nameImage, title } = contactData?.allStrapiContactPage?.nodes[0]
-  const { formId, portalId } = contactData?.allStrapiContactPage?.nodes[0]?.contactForm
-  const { pageTitle, pageDescription, pageKeywords } = contactData?.allStrapiContactPage?.nodes[0]?.pageMetadata
+  const { formId, portalId } = contactData?.allStrapiContactPage?.nodes[0]?.contactForm || {}
+  const { pageTitle, pageDescription, pageKeywords } = contactData?.allStrapiContactPage?.nodes[0]?.pageMetadata || {}
 
   const contactImage = getImage(image?.localFile)
 

@@ -10,7 +10,7 @@ const Home = () => {
   const data = useHomePage()
   
   const homeSections = data?.allStrapiHome?.nodes[0]?.sections
-  const { pageTitle, pageDescription, pageKeywords } = data?.allStrapiHome?.nodes[0].pageMetadata
+  const { pageTitle, pageDescription, pageKeywords } = data?.allStrapiHome?.nodes[0].pageMetadata || {}
 
 
   return (
