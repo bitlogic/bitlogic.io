@@ -740,6 +740,55 @@ type LocalFile {
   localFile: File @link(from: "localFile___NODE")
 }
 
+type StrapiGlobalConfig implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  published_at(
+    formatString: String
+
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  script: [StrapiGlobalConfigScript]
+  strapiId: Int
+}
+
+type StrapiGlobalConfigScript {
+  id: Int
+  name: String
+  enable: Boolean
+  src: String
+}
+
 
 `
 
