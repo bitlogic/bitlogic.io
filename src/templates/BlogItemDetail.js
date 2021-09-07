@@ -2,17 +2,18 @@ import React from "react"
 import { graphql } from "gatsby"
 import showdown from "showdown"
 import Layout from "../components/layout"
-import { Seo } from '../components/index.js'
+import { Seo } from "../components/index.js"
 import { BannerTop } from "../components/index.js"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BlogItemDetail.scss"
 
- const BlogDetail = ({ data }) => {
-  const detail = data.allStrapiArticle.nodes[0]
+const BlogDetail = ({ data }) => {
+  const detail = data?.allStrapiArticle?.nodes[0]
   const { title, image } = detail
   const bannerTop = { title, image }
 
   let converter = new showdown.Converter()
-  let description = detail.description
+  let description = detail?.description
   let html = converter.makeHtml(description)
 
   const ReplaceHtml = () => {
@@ -28,6 +29,19 @@ import "./BlogItemDetail.scss"
           <p dangerouslySetInnerHTML={ReplaceHtml()} />
 
           {/* <MarkdownView markdown={detail.description} /> */}
+        </div>
+        <div className="detail__box-author">
+          <div className="detail__box-author-image">
+            <GatsbyImage
+              image={getImage(detail?.author?.image?.localFile)}
+              alt={detail?.author?.name}
+            />
+          </div>
+          <div className="detail__box-autor-description">
+            <h5>{detail.author.name}</h5>
+            <h6>{detail.author.subName}</h6>
+            <p>{detail.author.summary}</p>
+          </div>
         </div>
       </div>
     </Layout>
@@ -51,6 +65,18 @@ query($slug: String!) {
       }
       blog_categories {
         name
+      }
+      author {
+        name
+        subName
+        summary
+        image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
       }
     }
   }
