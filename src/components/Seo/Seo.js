@@ -10,7 +10,7 @@ function Seo({ description, lang, meta, title, keywords }) {
     author,
     robots,
     siteMetadata: { siteDesc, siteKeywords, siteTitle },
-  } = data.allStrapiGlobalSeo.nodes[0]
+  } = data?.allStrapiGlobalSeo?.nodes[0]
 
   const metaDescription = description ? description : siteDesc
   const defaultTitle = siteTitle
