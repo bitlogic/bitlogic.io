@@ -3,8 +3,8 @@ import React from "react"
 import { useBanner, useBlog } from "../../hooks"
 
 import Layout from "../../components/layout"
-import BlogGrid from '../BlogGrid/BlogGrid'
-import BlogArticle from '../BlogArticle/BlogArticle'
+import BlogGrid from './BlogGrid/BlogGrid'
+import BlogArticle from './BlogArticle/BlogArticle'
 
 import { Seo, BannerActionCall } from "../index"
 
@@ -39,9 +39,11 @@ const Blog = () => {
       )}
       {data.length > 0 && (
         <div className="blog__container">
-          <div className="banner__container">
-            <h3 dangerouslySetInnerHTML={{ __html: bannerBlog.summary }} />
-          </div>
+          {bannerBlog && (
+            <div className="banner__container">
+              <h3 dangerouslySetInnerHTML={{ __html: bannerBlog.summary }} />
+            </div>
+          )}
           {data?.map((article, idx) => (
             <BlogGrid key={idx} title={article.name}>
               {article?.articles?.map((item, idx) => (
@@ -58,9 +60,7 @@ const Blog = () => {
           ))}
         </div>
       )}
-      {bannerActionCall && (
-        <BannerActionCall banner={bannerActionCall} />
-      )}
+      {bannerActionCall && <BannerActionCall banner={bannerActionCall} />}
     </Layout>
   )
 }
