@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import showdown from "showdown"
 import Layout from "../components/layout"
 import { Seo } from "../components/index.js"
 import { BannerTop } from "../components/index.js"
@@ -8,17 +7,15 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BlogItemDetail.scss"
 
 const BlogDetail = ({ data }) => {
-  const {title, description, image, authors, summary} = data?.allStrapiArticle?.nodes[0]
+  const {title, description, image, author } = data?.allStrapiArticle?.nodes[0]
   const bannerTop = { title, image }
 
-  let converter = new showdown.Converter()
-  let html = converter.makeHtml(description)
+  let converter = author.summary
+  console.log(converter)
 
   const ReplaceHtml = () => {
-    return { __html: html }
+    return { __html: description }
   }
-
-  console.log(authors)
 
   return (
     <Layout>
@@ -28,21 +25,23 @@ const BlogDetail = ({ data }) => {
         <div className="col-lg-12">
           <div className="detail__description">
             <p dangerouslySetInnerHTML={ReplaceHtml()} />
-            {authors?.map(author => (
-              <div className="detail__box-author">
-                <div className="detail__box-author-image">
-                  <GatsbyImage
-                    image={getImage(author?.image)}
-                    alt={author?.name}
-                  />
+            <div className="detail__description-author">
+              {author?.map(author => (
+                <div className="detail__box-author">
+                  <div className="detail__box-author-image">
+                    <GatsbyImage
+                      image={getImage(author?.image.localFile)}
+                      alt={author?.name}
+                    />
+                  </div>
+                  <div className="detail__box-autor-description">
+                    <h5>{author?.name}</h5>
+                    <h6>{author?.subTitle}</h6>
+                    <p>{author?.summary}</p>
+                  </div>
                 </div>
-                <div className="detail__box-autor-description">
-                  <h5>{author?.name}</h5>
-                  <h6>{author?.subName}</h6>
-                  <p>{author?.summary}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
         {/* <div className="col-lg-4">
@@ -80,7 +79,18 @@ export const query = graphql`
             }
           }
         }
-        authors
+        author {
+          name
+          subTitle
+          summary
+          image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -22,7 +22,7 @@ const useBanner = () => {
                 gatsbyImageData(
                   quality: 100
                   formats: [AUTO, WEBP]
-                  placeholder: BLURRED
+                  
                 )
               }
             }

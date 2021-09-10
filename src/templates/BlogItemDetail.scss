@@ -70,6 +70,7 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 4;
       overflow: hidden;
+      margin-bottom: 15px;
     }
   }
 
@@ -133,10 +134,10 @@
   .detail {
     &__box-author {
       flex-direction: row;
-      margin: 0 auto;
+      margin: 25px auto;
     }
     &__box-author-image {
-      flex-basis: 35%;
+      flex-basis: 65%;
       text-align: center;
       img {
         width: 145px;
@@ -151,7 +152,7 @@
   }
 }
 
-@media (min-width: $breakpoint-desktop) {
+@media (min-width: 1280px) {
   .detail {
     &__container {
       padding-left: 5rem;
@@ -163,12 +164,26 @@
       }
     }
 
-    &__box-author {
-      margin: 4rem auto 1rem;
+    &__description {
+      padding: 4rem 5rem 3rem;
     }
 
+    &__description-author {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 1rem 1rem;
+    }
+
+    &__box-author {
+      margin: 1.5rem;
+    }
+
+    // &__box-author-image {
+    //   flex-basis: 65%;
+    // }
+
     &__box-autor-description {
-      width: 85%;
+      width: 100%;
 
       h5 {
         font-size: $medium;

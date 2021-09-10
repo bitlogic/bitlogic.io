@@ -15,7 +15,6 @@ const Blog = () => {
   const bannerData = useBanner()
   const blogData = useBlog()
   const data = blogData?.allStrapiBlogCategory?.nodes
-  console.log(data)
   
   const bannerBlog = bannerData?.allStrapiBanners?.nodes.find(
     banner => banner.page === "blog" && banner.type === "bgColor"
@@ -46,7 +45,7 @@ const Blog = () => {
           )}
           {data?.map((article, idx) => (
             <BlogGrid key={idx} title={article.name}>
-              {article?.articles?.map((item, idx) => (
+              {article?.article?.map((item, idx) => (
                 <BlogArticle
                   key={idx}
                   image={item.image}
