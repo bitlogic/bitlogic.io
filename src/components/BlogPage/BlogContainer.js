@@ -45,7 +45,7 @@ const Blog = () => {
           )}
           {data?.map((article, idx) => (
             <BlogGrid key={idx} title={article.name}>
-              {article?.article?.map((item, idx) => (
+              {article?.articles?.map((item, idx) => (
                 <BlogArticle
                   key={idx}
                   image={item.image}
