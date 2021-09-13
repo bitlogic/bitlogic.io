@@ -10,17 +10,21 @@ const Home = () => {
   const data = useHomePage()
   
   const homeSections = data?.allStrapiHome?.nodes[0]?.sections
-  const { pageTitle, pageDescription, pageKeywords } = data?.allStrapiHome?.nodes[0].pageMetadata
+  const { pageTitle, pageDescription, pageKeywords } = data?.allStrapiHome?.nodes[0]?.pageMetadata || {}
 
 
   return (
     <Layout>
-      <Seo 
-        title={pageTitle}
-        description={pageDescription}
-        keywords={pageKeywords} 
-      />
-      <CustomSection sections={homeSections} />
+      {data?.allStrapiHome?.nodes[0]?.pageMetadata && (
+        <Seo
+          title={pageTitle}
+          description={pageDescription}
+          keywords={pageKeywords}
+        />
+      )}
+      {homeSections && (
+        <CustomSection sections={homeSections} />
+      )}
     </Layout>
   )
 }

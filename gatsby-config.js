@@ -5,6 +5,20 @@ module.exports = {
     author: `Bitlogic.io`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-BKGQR6SJWV", // Google Analytics / G
+        ],
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+        },
+      },
+    },
     "gatsby-plugin-react-helmet",
 
     {
@@ -37,6 +51,7 @@ module.exports = {
           `blog-page`,
           `bitway-page`,
           `contact-page`,
+          `global-config`,
         ],
       },
     },
@@ -47,12 +62,12 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`],
-          placeholder: `blurred`,
+          // placeholder: `blurred`,
           quality: 100,
           breakpoints: [750, 1080, 1366, 1920],
           backgroundColor: `transparent`,
         },
-      }, 
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,

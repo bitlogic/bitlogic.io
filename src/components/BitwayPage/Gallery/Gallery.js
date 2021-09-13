@@ -1,6 +1,6 @@
 import React from "react"
 import "./Gallery.scss"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 
 const layouts = {

@@ -62,7 +62,7 @@
     margin-bottom: 10px;
   }
   &__intro {
-    font-size: $medium;
+    font-size: $small;
     font-weight: $normal;
     text-align: center;
   }
@@ -92,6 +92,10 @@
       span {
         font-size: $extra-large;
       }
+    }
+
+    &__intro {
+      font-size: $medium;
     }
   }
 }
