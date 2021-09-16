@@ -20,7 +20,7 @@ const useServices = () => {
           icon {
             localFile {
               childImageSharp {
-                gatsbyImageData(width: 150, quality: 100, placeholder: BLURRED)
+                gatsbyImageData(width: 150, quality: 100)
               }
             }
           }
