@@ -6,7 +6,7 @@ const useBlog = () => {
       allStrapiBlogCategory {
         nodes {
           name
-          articles {
+          article {
             title
             summary
             slug

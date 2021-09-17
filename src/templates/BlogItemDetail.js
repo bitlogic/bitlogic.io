@@ -4,13 +4,14 @@ import showdown from "showdown"
 import Layout from "../components/layout"
 import { Seo } from "../components/index.js"
 import { BannerTop } from "../components/index.js"
-// import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BlogItemDetail.scss"
 
 const BlogDetail = ({ data }) => {
-  const { title, description, image } = data?.allStrapiArticle?.nodes[0]
+  const { title, description, image, author } = data?.allStrapiArticle?.nodes[0]
   const bannerTop = { title, image }
 
+  let { summary } = author
   let converter = new showdown.Converter()
   let html = converter.makeHtml(description)
 
@@ -26,7 +27,7 @@ const BlogDetail = ({ data }) => {
         <div className="col-lg-12">
           <div className="detail__description">
             <p dangerouslySetInnerHTML={ReplaceHtml()} />
-            {/* <div className="detail__description-author">
+            <div className="detail__description-author">
               {author?.map(author => (
                 <div className="detail__box-author">
                   <div className="detail__box-author-image">
@@ -42,7 +43,7 @@ const BlogDetail = ({ data }) => {
                   </div>
                 </div>
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
         {/* <div className="col-lg-4">
@@ -77,6 +78,18 @@ export const query = graphql`
           localFile {
             childImageSharp {
               gatsbyImageData
+            }
+          }
+        }
+        author {
+          name
+          subTitle
+          summary
+          image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
             }
           }
         }

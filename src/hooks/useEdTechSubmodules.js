@@ -15,7 +15,7 @@ const useEdTechSubmodules = () => {
             logo {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(width: 60)
+                  gatsbyImageData(width: 60, quality: 100)
                 }
               }
             }
@@ -27,7 +27,7 @@ const useEdTechSubmodules = () => {
             icon {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(width: 60)
+                  gatsbyImageData(width: 60, quality: 100)
                 }
               }
             }
