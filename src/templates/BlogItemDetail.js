@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import showdown from "showdown"
+// import ReactMarkdown from "react-markdown"
+import MarkdownView from "react-showdown"
 import Layout from "../components/layout"
 import { Seo } from "../components/index.js"
 import { BannerTop } from "../components/index.js"
@@ -12,13 +14,7 @@ const BlogDetail = ({ data }) => {
   const bannerTop = { title, image }
 
   let { summary } = author
-  let converter = new showdown.Converter()
-  let html = converter.makeHtml(description)
-
-  const ReplaceHtml = () => {
-    return { __html: html }
-  }
-
+  
   return (
     <Layout>
       <Seo title={title} />
@@ -26,7 +22,10 @@ const BlogDetail = ({ data }) => {
       <div className="detail__container row">
         <div className="col-lg-12">
           <div className="detail__description">
-            <p dangerouslySetInnerHTML={ReplaceHtml()} />
+            <MarkdownView
+              markdown={description}
+            />
+            {/* <ReactMarkdown source={description} /> */}
             <div className="detail__description-author">
               {author?.map(author => (
                 <div className="detail__box-author">
@@ -88,7 +87,7 @@ export const query = graphql`
           image {
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(width: 200)
               }
             }
           }
