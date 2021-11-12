@@ -1,31 +1,32 @@
 import React from "react"
-
 import { useBanner, useBlog } from "../../hooks"
 
 import Layout from "../../components/layout"
-import BlogGrid from './BlogGrid/BlogGrid'
-import BlogArticle from './BlogArticle/BlogArticle'
+import BlogGrid from "./BlogGrid/BlogGrid"
+import BlogArticle from "./BlogArticle/BlogArticle"
 
 import { Seo, BannerActionCall } from "../index"
 
 import "./BlogContainer.scss"
 
 const Blog = () => {
-
   const bannerData = useBanner()
   const blogData = useBlog()
   const data = blogData?.allStrapiBlogCategory?.nodes
-  
+
   const bannerBlog = bannerData?.allStrapiBanners?.nodes.find(
     banner => banner.page === "blog" && banner.type === "bgColor"
   )
-    
+
   const bannerActionCall = bannerData?.allStrapiBanners?.nodes.find(
     banner => banner.page === "blog" && banner.type === "actionCall"
   )
-  
-  const { pageTitle, pageDescription, pageKeywords } = blogData?.allStrapiBlogPage?.nodes[0]?.seo
 
+  const {
+    pageTitle,
+    pageDescription,
+    pageKeywords,
+  } = blogData?.allStrapiBlogPage?.nodes[0]?.seo
 
   return (
     <Layout>
@@ -50,7 +51,7 @@ const Blog = () => {
                   key={idx}
                   image={item.image}
                   title={item.title}
-                  summary={item.summary.substring(0, 85)}
+                  summary={item.summary}
                   slug={"/blog/" + item.slug}
                   text="Ver más"
                 />

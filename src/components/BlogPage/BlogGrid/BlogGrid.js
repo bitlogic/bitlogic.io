@@ -1,5 +1,4 @@
 import React from 'react'
-
 import './BlogGrid.scss'
 import Pagination from '../../Pagination/Pagination'
 

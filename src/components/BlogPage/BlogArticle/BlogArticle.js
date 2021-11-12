@@ -1,18 +1,11 @@
 import React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-import showdown from "showdown"
+// import ReactMarkdown from "react-markdown"
+import MarkdownView from "react-showdown"
 import "./BlogArticle.scss"
 
-
 const BlogArticle = ({ title, summary, image, slug, text }) => {
-  let converter = new showdown.Converter()
-  let html = converter.makeHtml(summary)
-
-  const ReplaceHtml = () => {
-    return { __html: html }
-  }
-
   return (
     <div className="article__container">
       <GatsbyImage
@@ -21,9 +14,10 @@ const BlogArticle = ({ title, summary, image, slug, text }) => {
         className="article__image"
       />
       <div className="article__description">
-        <h3>{title}</h3>
+        <h3>{`${title} ...`}</h3>
         <div>
-          <p dangerouslySetInnerHTML={ReplaceHtml()} />
+          <MarkdownView markdown={`${summary} ...`} />
+          {/* <ReactMarkdown source={`${summary} ...`} /> */}
         </div>
         <div className="article__link">
           <Link to={slug}>{text}</Link>
