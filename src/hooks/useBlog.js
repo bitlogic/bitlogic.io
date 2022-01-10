@@ -6,18 +6,23 @@ const useBlog = () => {
       allStrapiBlogCategory {
         nodes {
           name
-          article {
-            title
-            summary
-            slug
-            image {
-              url
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
+        }
+      }
+      allStrapiArticle(sort: { fields: published_at, order: DESC }) {
+        nodes {
+          title
+          summary
+          slug
+          image {
+            url
+            localFile {
+              childImageSharp {
+                gatsbyImageData
               }
             }
+          }
+          blog_category {
+            name
           }
         }
       }
