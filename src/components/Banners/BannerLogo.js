@@ -1,12 +1,16 @@
 import * as React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
+import logoLight from "../../images/logoprincipal.png"
 
 import { useBanner } from "../../hooks/index"
+import { useTheme } from "../../context/themeContext"
 
 import "./BannerLogo.scss"
 
 const BannerLogo = ({ banner, title }) => {
+  const { theme } = useTheme()
+
   const dataBanner = useBanner()
 
   const bannerSelected = dataBanner?.allStrapiBanners?.nodes.find(
@@ -21,11 +25,15 @@ const BannerLogo = ({ banner, title }) => {
     <>
       <BgImage image={imagen} className="BannerLogo__BgImage">
         <div className="BannerLogo__Logo__Container">
-          <GatsbyImage image={logoImage} alt={`img-${title}`}></GatsbyImage>
+          {theme === "dark" ? (
+            <img src={logoLight} alt="" />
+          ) : (
+            <GatsbyImage image={logoImage} alt={`img-${title}`}></GatsbyImage>
+          )}
         </div>
         <h1 className="BannerLogo__Title">{title}</h1>
       </BgImage>
-      
+
       {summary ? (
         <div className="BannerLogo__summary">
           <div className="container ">

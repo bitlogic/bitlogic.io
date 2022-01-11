@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 55px;
-
+  background-color: #292929;
   &__container {
     padding: 1.5rem;
   }
@@ -33,10 +33,12 @@
     }
     span {
       -webkit-text-stroke: 2px $blue;
-      -webkit-text-fill-color: white;
+      -webkit-text-fill-color: #292929;
     }
   }
   &__card {
+    background-color: rgba(255, 255, 255, 0.075);
+    color: #cecece;
     @extend %border-shadowed;
     padding: 30px 30px 16px;
     margin: 0 35px 30px;

@@ -1,7 +1,7 @@
 @import "../../styles/global.scss";
 
 .EdtechCards {
-  background-color: $blue;
+  background-color: #1ecad3;
   width: 100%;
 
   padding: 33px 30px;
@@ -35,7 +35,7 @@
   &__card {
     display: flex;
     align-items: flex-end;
-
+    background-color: rgba(255, 255, 255, 0.055);
     margin-right: 10px;
   }
   &__image {
