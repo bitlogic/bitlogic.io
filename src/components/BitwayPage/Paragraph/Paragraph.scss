@@ -19,7 +19,7 @@
     line-height: 30px;
     letter-spacing: 0em;
     text-align: left;
-    padding: 0 80px 20px;
+    // padding: 0 80px 20px;
     & * {
       font-size: 20px;
     }
@@ -72,7 +72,6 @@
       line-height: 26px;
       letter-spacing: 0em;
       text-align: left;
-      
     }
     & > div > p {
       font-family: $primary-font;
@@ -82,7 +81,7 @@
       line-height: 26px;
       letter-spacing: 0em;
       text-align: left;
-      padding: 0 20px 0px 0px;
+      // padding: 0 20px 0px 0px;
       & * {
         font-size: 15px;
       }
@@ -96,19 +95,22 @@
 @media (min-width: $breakpoint-desktop) {
   .bitway-paragraph {
     & h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-size: $extra-large;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: $extra-large;
       & span {
-        padding:15px 10px 5px;
+        padding: 15px 10px 5px;
         & p {
           font-size: $extra-large;
         }
       }
+    }
 
-  }
+    & > div > p {
+    padding: 0 80px 20px;
+    }
   }
 }

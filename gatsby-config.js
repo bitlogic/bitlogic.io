@@ -62,7 +62,7 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`],
-          placeholder: `blurred`,
+          // placeholder: `blurred`,
           quality: 100,
           breakpoints: [750, 1080, 1366, 1920],
           backgroundColor: `transparent`,
@@ -79,6 +79,20 @@ module.exports = {
         theme_color: "#663399",
         display: "minimal-ui",
         icon: `src/images/isotipo.png`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "nofollow",
+            },
+          },
+        ],
       },
     },
     "gatsby-plugin-offline",

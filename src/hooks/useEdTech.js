@@ -36,11 +36,11 @@ const useEdTech = () => {
           title
           content
           icon {
-              localFile {
-                  childImageSharp {
-                    gatsbyImageData(height: 100)
-                  }
+            localFile {
+              childImageSharp {
+                gatsbyImageData(height: 100, quality: 100)
               }
+            }
           }
           edTechSubmodules {
             ed_tech_submodules {

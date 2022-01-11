@@ -1,7 +1,6 @@
 import React from 'react'
-
 import './BlogGrid.scss'
-import Pagination from '../Pagination/Pagination'
+import Pagination from '../../Pagination/Pagination'
 
 const BlogGrid = ({title, children}) => {
   return (

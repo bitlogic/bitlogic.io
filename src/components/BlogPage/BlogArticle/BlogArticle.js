@@ -1,20 +1,23 @@
 import React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+// import ReactMarkdown from "react-markdown"
 import MarkdownView from "react-showdown"
 import "./BlogArticle.scss"
-
 
 const BlogArticle = ({ title, summary, image, slug, text }) => {
   return (
     <div className="article__container">
-      <div className="article__image">
-        <GatsbyImage image={getImage(image.localFile)} alt={title} />
-      </div>
+      <GatsbyImage
+        image={getImage(image.localFile)}
+        alt={title}
+        className="article__image"
+      />
       <div className="article__description">
-        <h3>{title}</h3>
+        <h3>{`${title} ...`}</h3>
         <div>
-          <MarkdownView markdown={summary} />
+          <MarkdownView markdown={`${summary} ...`} />
+          {/* <ReactMarkdown source={`${summary} ...`} /> */}
         </div>
         <div className="article__link">
           <Link to={slug}>{text}</Link>
