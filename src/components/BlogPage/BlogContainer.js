@@ -49,7 +49,7 @@ const Blog = () => {
           )}
           
           {filterArticle?.map((category, idx) => (
-            <BlogGrid key={idx} title={category[0].blog_category.name}>
+            <BlogGrid key={idx} title={category[0]?.blog_category?.name}>
               {category.map((item, idx) => (
                 <BlogArticle
                   key={idx}
