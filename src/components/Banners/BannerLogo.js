@@ -26,7 +26,7 @@ const BannerLogo = ({ banner, title }) => {
       <BgImage image={imagen} className="BannerLogo__BgImage">
         <div className="BannerLogo__Logo__Container">
           {theme === "dark" ? (
-            <img src={logoLight} alt="" />
+            <GatsbyImage image={logoImage} alt={`img-${title}`}></GatsbyImage>
           ) : (
             <GatsbyImage image={logoImage} alt={`img-${title}`}></GatsbyImage>
           )}

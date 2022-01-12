@@ -1,6 +1,7 @@
 @import "../../styles/global.scss";
+
 .Footer {
-  background-color: #383838;
+  background-color: $nav-footer-container;
   padding: 30px 30px 34px;
 }
 .Footer__Logo {

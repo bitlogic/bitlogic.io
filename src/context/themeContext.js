@@ -3,32 +3,20 @@ import PropTypes from 'prop-types'
 
 const themes = {
   light: {
-    '--title': '#007bff',
-    '--footer-container': '#182C49',
-    
-    '--primary': '#4a4949',
-    '--primary-variant': '#4a4949',
-    '--primary-button': '#666666',
+    '--nav-footer-container': '#2a2c2e',
+
+    '--primary': '#000000',
     '--primary-container': '#ffffff',
 
-    '--secondary': '#4a4949',
-    '--secondary-variant': '#00a4eb',
-    '--secondary-button': '#00a4eb',
-    '--secondary-container': '#f2f2f2'
+    '--secondary-container': '#25cad3',
   },
   dark: {
-    '--title': '#ffffff',
-    '--footer-container': '#ffffff29',
+    '--nav-footer-container': '#383838',
 
-    '--primary': '#FFFFFF',
-    '--primary-variant': '#A1A1A1',
-    '--primary-button': '#FFFFFF',
-    '--primary-container': '#121212',
+    '--primary': '#ffffff',
+    '--primary-container': '#292929',
 
-    '--secondary': '#FFFFFF',
-    '--secondary-variant': '#A1A1A1',
-    '--secondary-button': '#FFFFFF',
-    '--secondary-container': '#252525'
+    '--secondary-container': '#191919',
   }
 }
 

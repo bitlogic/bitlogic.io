@@ -3,21 +3,16 @@
 $primary-font: "Roboto", sans-serif;
 $medium: 20px;
 
-$title: var(--title);
-$footer-container: var(--footer-container);
+$nav-footer-container: var(--nav-footer-container);
 
 $primary: var(--primary);
-$primary-variant: var(--primary-variant);
-$primary-button: var(--primary-button);
 $primary-container: var(--primary-container);
 
 $secondary: var(--secondary);
-$secondary-variant: var(--secondary-variant);
-$secondary-button: var(--secondary-button);
 $secondary-container: var(--secondary-container);
 
 main {
-  background-color: #292929 !important;
+  background-color: $primary-container !important;
 }
 
 *,
@@ -28,6 +23,7 @@ main {
   box-sizing: border-box;
   font-family: $primary-font;
   font-size: $medium;
+  transition: color 200ms, background-color 200ms;
 }
 
 a {

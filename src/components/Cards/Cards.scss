@@ -11,7 +11,7 @@
     transform: translateY(60%);
   }
   &__title {
-    color: white;
+    color: $primary;
     font-weight: $max-bold;
     font-size: $medium;
     line-height: $large;
@@ -30,7 +30,7 @@
   }
   &__description {
     background-color: rgba(255, 255, 255, 0.089);
-    color: white;
+    color: $primary;
     padding: 20px 25px;
     margin-bottom: 0;
     p {
@@ -41,7 +41,7 @@
   }
   &__submodules {
     background-color: none;
-    color: white;
+    color: $primary;
     position: relative;
     padding: 0 45px;
 
