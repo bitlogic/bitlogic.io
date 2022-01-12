@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: $primary-container;
   }
   &__titleContainer {
     display: flex;
@@ -48,7 +49,7 @@
     h5 span p,
     h6 span p,
     p span p {
-      color: $white;
+      color: $primary-container;
       padding: 5px 20px;
       display: inline-block;
       transform: skew(15deg);
@@ -72,7 +73,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $blue;
+    background-color: $secondary-container
   }
   &__titleContainer {
     display: flex;
@@ -91,7 +92,7 @@
     span,
     p {
       font-size: $large;
-      color: $white;
+      color: $primary;
       font-weight: $max-bold;
       margin-bottom: 10px;
       text-align: center;
@@ -116,7 +117,7 @@
     h5 span p,
     h6 span p,
     p span p {
-      color: $blue;
+      color: $secondary-container;
       padding: 0 15px;
       display: inline-block;
       transform: skew(25deg);

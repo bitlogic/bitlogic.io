@@ -28,6 +28,7 @@
   }
 }
 .BannerLogo__BgImage {
+  background-color: $primary-container;
   width: 100%;
   min-height: 600px;
   display: flex;
@@ -48,6 +49,7 @@
   font-size: 1.2rem;
   line-height: 16px;
   padding: 1.8rem 0 0.5rem;
+  color: $primary;
 }
 .BannerLogo__Title::after {
   position: absolute;

@@ -1,7 +1,7 @@
 import React from "react"
 import Navbar from "react-bootstrap/Navbar"
 import { MenuLinks } from "../../constants"
-import logo from "../../images/logoprincipal.png"
+import logoLight from "../../images/logoprincipal.png"
 import { Link } from "gatsby"
 import "./NavBar.scss"
 
@@ -11,7 +11,7 @@ const NavBar = () => {
       <Navbar variant="dark" expand="xl" className="NavBar ">
         <Link to="/">
           <img
-            src={logo}
+            src={logoLight}
             alt="Logo Bitlogic"
             className="d-inline-block align-top NavBar__Logo"
           />
