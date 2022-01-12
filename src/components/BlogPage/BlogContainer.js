@@ -13,6 +13,7 @@ const Blog = () => {
   const bannerData = useBanner()
   const blogData = useBlog()
   const data = blogData?.allStrapiBlogCategory?.nodes
+  const dataArticles = blogData?.allStrapiArticle?.nodes
 
   const bannerBlog = bannerData?.allStrapiBanners?.nodes.find(
     banner => banner.page === "blog" && banner.type === "bgColor"
@@ -21,6 +22,8 @@ const Blog = () => {
   const bannerActionCall = bannerData?.allStrapiBanners?.nodes.find(
     banner => banner.page === "blog" && banner.type === "actionCall"
   )
+
+  const filterArticle = data.map(category => dataArticles.filter(article => category.name === article.blog_category.name))
 
   const {
     pageTitle,
@@ -44,9 +47,10 @@ const Blog = () => {
               <h3 dangerouslySetInnerHTML={{ __html: bannerBlog.summary }} />
             </div>
           )}
-          {data?.map((article, idx) => (
-            <BlogGrid key={idx} title={article.name}>
-              {article?.article?.map((item, idx) => (
+          
+          {filterArticle?.map((category, idx) => (
+            <BlogGrid key={idx} title={category[0]?.blog_category?.name}>
+              {category.map((item, idx) => (
                 <BlogArticle
                   key={idx}
                   image={item.image}
@@ -60,6 +64,7 @@ const Blog = () => {
           ))}
         </div>
       )}
+      
       {bannerActionCall && <BannerActionCall banner={bannerActionCall} />}
     </Layout>
   )
