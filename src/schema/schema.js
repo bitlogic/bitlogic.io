@@ -62,7 +62,6 @@ type StrapiServices implements Node {
     locale: String
   ): Date
   icon: LocalFile
-  homeIcon: LocalFile
   strapiId: Int
 }
 
@@ -273,6 +272,184 @@ type StrapiEdteches implements Node {
   icon: LocalFile
   homeIcon: LocalFile
   strapiId: Int
+  iconDarkMode: StrapiEdtechesIconDarkMode
+  homeIconDarkMode: StrapiEdtechesHomeIconDarkMode
+}
+
+type StrapiEdtechesIconDarkMode {
+  id: Int
+  name: String
+  width: Int
+  height: Int
+  formats: StrapiEdtechesIconDarkModeFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiEdtechesIconDarkModeFormats {
+  thumbnail: StrapiEdtechesIconDarkModeFormatsThumbnail
+  large: StrapiEdtechesIconDarkModeFormatsLarge
+  medium: StrapiEdtechesIconDarkModeFormatsMedium
+  small: StrapiEdtechesIconDarkModeFormatsSmall
+}
+
+type StrapiEdtechesIconDarkModeFormatsThumbnail {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdtechesIconDarkModeFormatsLarge {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdtechesIconDarkModeFormatsMedium {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdtechesIconDarkModeFormatsSmall {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdtechesHomeIconDarkMode {
+  id: Int
+  name: String
+  width: Int
+  height: Int
+  formats: StrapiEdtechesHomeIconDarkModeFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  updated_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiEdtechesHomeIconDarkModeFormats {
+  thumbnail: StrapiEdtechesHomeIconDarkModeFormatsThumbnail
+  large: StrapiEdtechesHomeIconDarkModeFormatsLarge
+  medium: StrapiEdtechesHomeIconDarkModeFormatsMedium
+  small: StrapiEdtechesHomeIconDarkModeFormatsSmall
+}
+
+type StrapiEdtechesHomeIconDarkModeFormatsThumbnail {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdtechesHomeIconDarkModeFormatsLarge {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdtechesHomeIconDarkModeFormatsMedium {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdtechesHomeIconDarkModeFormatsSmall {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
 }
 
 type StrapiEdtechesEdTechSubmodules {
@@ -339,6 +516,101 @@ type StrapiEdTechSubmodulesSubmodule {
   title: String
   description: String
   logo: LocalFile
+  logoDarkMode: StrapiEdTechSubmodulesSubmoduleLogoDarkMode
+}
+
+type StrapiEdTechSubmodulesSubmoduleLogoDarkMode {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  updated_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormats {
+  thumbnail: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsThumbnail
+  large: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsLarge
+  medium: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsMedium
+  small: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsSmall
+}
+
+type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsThumbnail {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsLarge {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsMedium {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsSmall {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
 }
 
 type StrapiEdTechSubmodulesSubmoduleItem {
@@ -346,6 +618,65 @@ type StrapiEdTechSubmodulesSubmoduleItem {
   content: String
   title: String
   icon: LocalFile
+  iconDarkMode: StrapiEdTechSubmodulesSubmoduleItemIconDarkMode
+}
+
+type StrapiEdTechSubmodulesSubmoduleItemIconDarkMode {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  updated_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormats {
+  thumbnail: StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormatsThumbnail
+}
+
+type StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormatsThumbnail {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
 }
 
 type StrapiEdTechPage implements Node {
@@ -448,7 +779,183 @@ type StrapiBanners implements Node {
   image: LocalFile
   logo: LocalFile
   strapiId: Int
+  imageDarkMode: StrapiBannersImageDarkMode
+  logoDarkMode: StrapiBannersLogoDarkMode
 }
+
+type StrapiBannersImageDarkMode {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: StrapiBannersImageDarkModeFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiBannersImageDarkModeFormats {
+  thumbnail: StrapiBannersImageDarkModeFormatsThumbnail
+  large: StrapiBannersImageDarkModeFormatsLarge
+  medium: StrapiBannersImageDarkModeFormatsMedium
+  small: StrapiBannersImageDarkModeFormatsSmall
+}
+
+type StrapiBannersImageDarkModeFormatsThumbnail {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBannersImageDarkModeFormatsLarge {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBannersImageDarkModeFormatsMedium {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBannersImageDarkModeFormatsSmall {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBannersLogoDarkMode {
+  id: Int
+  name: String
+  width: Int
+  height: Int
+  formats: StrapiBannersLogoDarkModeFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  updated_at(
+    
+    formatString: String
+
+    
+    fromNow: Boolean
+
+    
+    difference: String
+
+    
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiBannersLogoDarkModeFormats {
+  thumbnail: StrapiBannersLogoDarkModeFormatsThumbnail
+  large: StrapiBannersLogoDarkModeFormatsLarge
+  medium: StrapiBannersLogoDarkModeFormatsMedium
+  small: StrapiBannersLogoDarkModeFormatsSmall
+}
+
+type StrapiBannersLogoDarkModeFormatsThumbnail {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBannersLogoDarkModeFormatsLarge {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBannersLogoDarkModeFormatsMedium {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBannersLogoDarkModeFormatsSmall {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+
 type StrapiBannersLink {
   id: Int
   name: String
@@ -582,42 +1089,42 @@ type StrapiBlogCategoryArticle {
   slug: String
   blog_category: Int
   published_at(
-    # Format the date using Moment.js' date tokens, e.g.  See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js' function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   created_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js' function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   updated_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js'  function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   author: [StrapiBlogCategoryArticleAuthor]
@@ -645,29 +1152,29 @@ type StrapiBlogCategoryArticleAuthorImage {
   url: String
   provider: String
   created_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js'  function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   updated_at(
-    # Format the date using Moment.js' date tokens, e.g.  See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js'  function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   localFile: File
@@ -739,29 +1246,29 @@ type StrapiBlogCategoryArticleImage {
   url: String
   provider: String
   created_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js'  function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   updated_at(
-    # Format the date using Moment.js' date tokens, e.g.  See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js'  function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   localFile: File
@@ -883,42 +1390,42 @@ type StrapiArticleBlog_category {
   id: Int
   name: String
   published_at(
-    # Format the date using Moment.js' date tokens, e.g.  See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js'  function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   created_at(
-    # Format the date using Moment.js' date tokens, e.g.  See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js' function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   updated_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js' function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
 }
@@ -944,29 +1451,29 @@ type StrapiArticleAuthorImage {
   url: String
   provider: String
   created_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js' function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   updated_at(
-    # Format the date using Moment.js' date tokens, e.g. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    
     formatString: String
 
-    # Returns a string generated with Moment.js' function
+    
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   localFile: File
@@ -1141,10 +1648,10 @@ type StrapiGlobalConfig implements Node {
 
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   created_at(
@@ -1152,10 +1659,10 @@ type StrapiGlobalConfig implements Node {
 
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   updated_at(
@@ -1163,10 +1670,10 @@ type StrapiGlobalConfig implements Node {
 
     fromNow: Boolean
 
-    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    
     difference: String
 
-    # Configures the locale Moment.js will use to format the date.
+    
     locale: String
   ): Date
   script: [StrapiGlobalConfigScript]
