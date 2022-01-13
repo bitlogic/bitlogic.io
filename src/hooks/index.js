@@ -6,6 +6,7 @@ import useGlobalSeo from "./useGlobalSeo"
 import useHomePage from "./useHomePage"
 import useContactPage from "./useContactPage"
 import useBlog from './useBlog'
+import useJobsPage from "./useJobsPage"
 
 export {
   useServices,
@@ -16,4 +17,5 @@ export {
   useHomePage,
   useContactPage,
   useBlog,
+  useJobsPage,
 }

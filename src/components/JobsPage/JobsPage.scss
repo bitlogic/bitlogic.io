@@ -10,6 +10,11 @@
 .cats-job {
     border-bottom: 1px solid  #cdcdcd;
     padding-left: 15px !important;
+
+    >div{
+        overflow-x: hidden !important;
+    }
+    
     
     &:hover {
         background-color: #faf5f5 !important;
@@ -41,7 +46,9 @@
     justify-content: center;
     h2{
         color:$blue;
-        font-size: $second-large;
+        font-size: $large;
+        text-align: center;
+        
         span{
             background-color: $blue;
             display: inline-block;
@@ -53,7 +60,7 @@
                 -webkit-transform: skew(15deg);
                 transform: skew(15deg);
                 color: $white !important;
-                font-size: $second-large;
+                font-size: $large;
                 margin: 0;
             }
         }   
@@ -62,10 +69,9 @@
         color: $white;
         //border-bottom: 4px solid $blue;
         //padding: 7px;
-        line-height: 30px;
-        font-size: $medium;
+        font-size: $small;
         text-align: center;
-        padding: 0px 15px;
+        //padding: 0px 15px;
     }
 }
 
