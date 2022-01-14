@@ -8,8 +8,7 @@ import './JobsPage.scss'
 
 export default function JobsPage() {
     const jobsData = useJobsPage()
-    const banner = jobsData.strapiJobsPage.banner
-
+    const banner = jobsData?.strapiJobsPage?.banner
     const { pageTitle, pageDescription, pageKeywords } = jobsData?.strapiJobsPage?.pageMetadata || {}
 
     return (
