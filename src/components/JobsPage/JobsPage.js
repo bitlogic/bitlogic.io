@@ -10,11 +10,11 @@ export default function JobsPage() {
     const jobsData = useJobsPage()
     const banner = jobsData.strapiJobsPage.banner
 
-    const { pageTitle, pageDescription, pageKeywords } = jobsData?.allStrapiJobsPage?.nodes[0]?.pageMetadata || {}
+    const { pageTitle, pageDescription, pageKeywords } = jobsData?.strapiJobsPage?.pageMetadata || {}
 
     return (
         <Layout>
-            {jobsData?.allStrapiJobsPage?.nodes[0]?.pageMetadata && (
+            {jobsData?.strapiJobsPage?.pageMetadata && (
                 <Seo
                     title={pageTitle}
                     description={pageDescription}
