@@ -19,7 +19,7 @@ const ServiceCards = ({ title, services }) => {
       <div key={idx} className="col-12 col-md-3 ServiceCards__card">
         <div className="ServiceCards__image">
           <GatsbyImage
-            image={getImage(service?.homeIcon.localFile)}
+            image={getImage(service?.icon.localFile)}
             alt={service.homeTitle}
           />{" "}
         </div>

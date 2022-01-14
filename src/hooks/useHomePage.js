@@ -28,7 +28,7 @@ const useHomePage = () => {
             services {
               homeIntro
               homeTitle
-              homeIcon {
+              icon {
                 localFile {
                   childImageSharp {
                     gatsbyImageData(height: 90)
