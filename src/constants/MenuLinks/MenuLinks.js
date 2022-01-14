@@ -8,7 +8,8 @@ const MENU_LINKS = [
   { id: 3, text: "edtech", url: "/edtech" },
   { id: 4, text: "bitway", url: "/bitway" },
   { id: 5, text: "blog", url: "/blog" },
-  { id: 6, text: "contacto", url: "/contacto" },
+  { id: 6, text: "jobs", url: "/jobs" },
+  { id: 7, text: "contacto", url: "/contacto" },
 ]
 
 const MenuLinks = ({ styleClass }) => {

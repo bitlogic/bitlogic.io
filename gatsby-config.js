@@ -52,6 +52,7 @@ module.exports = {
           `bitway-page`,
           `contact-page`,
           `global-config`,
+          `jobs-page`,
         ],
       },
     },
