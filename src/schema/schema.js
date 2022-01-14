@@ -63,6 +63,7 @@ type StrapiServices implements Node {
   ): Date
   icon: LocalFile
   strapiId: Int
+  iconDarkMode: LocalFile
 }
 
 type StrapiHome implements Node {
@@ -116,6 +117,7 @@ type StrapiHomeSectionsPartners {
   text: String
   caption: String
   image: LocalFile
+  imageDark: LocalFile
 }
 
 type StrapiHomeSectionsBanner {
@@ -173,7 +175,7 @@ type StrapiHomeSectionsServices {
     locale: String
   ): Date
   icon: LocalFile
-  homeIcon: LocalFile
+  iconDarkMode: LocalFile
 }
 
 type StrapiHomeSectionsEdteches {
@@ -202,6 +204,8 @@ type StrapiHomeSectionsEdteches {
   ): Date
   icon: LocalFile
   homeIcon: LocalFile
+  iconDarkMode: LocalFile
+  homeIconDarkMode: LocalFile
 }
 
 type StrapiGlobalSeo implements Node {
@@ -272,185 +276,10 @@ type StrapiEdteches implements Node {
   icon: LocalFile
   homeIcon: LocalFile
   strapiId: Int
-  iconDarkMode: StrapiEdtechesIconDarkMode
-  homeIconDarkMode: StrapiEdtechesHomeIconDarkMode
+  iconDarkMode: LocalFile
+  homeIconDarkMode: LocalFile
 }
 
-type StrapiEdtechesIconDarkMode {
-  id: Int
-  name: String
-  width: Int
-  height: Int
-  formats: StrapiEdtechesIconDarkModeFormats
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  provider: String
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  localFile: File
-}
-
-type StrapiEdtechesIconDarkModeFormats {
-  thumbnail: StrapiEdtechesIconDarkModeFormatsThumbnail
-  large: StrapiEdtechesIconDarkModeFormatsLarge
-  medium: StrapiEdtechesIconDarkModeFormatsMedium
-  small: StrapiEdtechesIconDarkModeFormatsSmall
-}
-
-type StrapiEdtechesIconDarkModeFormatsThumbnail {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdtechesIconDarkModeFormatsLarge {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdtechesIconDarkModeFormatsMedium {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdtechesIconDarkModeFormatsSmall {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdtechesHomeIconDarkMode {
-  id: Int
-  name: String
-  width: Int
-  height: Int
-  formats: StrapiEdtechesHomeIconDarkModeFormats
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  provider: String
-  created_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  updated_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  localFile: File
-}
-
-type StrapiEdtechesHomeIconDarkModeFormats {
-  thumbnail: StrapiEdtechesHomeIconDarkModeFormatsThumbnail
-  large: StrapiEdtechesHomeIconDarkModeFormatsLarge
-  medium: StrapiEdtechesHomeIconDarkModeFormatsMedium
-  small: StrapiEdtechesHomeIconDarkModeFormatsSmall
-}
-
-type StrapiEdtechesHomeIconDarkModeFormatsThumbnail {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdtechesHomeIconDarkModeFormatsLarge {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdtechesHomeIconDarkModeFormatsMedium {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdtechesHomeIconDarkModeFormatsSmall {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
 
 type StrapiEdtechesEdTechSubmodules {
   id: Int
@@ -516,168 +345,18 @@ type StrapiEdTechSubmodulesSubmodule {
   title: String
   description: String
   logo: LocalFile
-  logoDarkMode: StrapiEdTechSubmodulesSubmoduleLogoDarkMode
+  logoDarkMode: LocalFile
 }
 
-type StrapiEdTechSubmodulesSubmoduleLogoDarkMode {
-  id: Int
-  name: String
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormats
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  provider: String
-  created_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  updated_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  localFile: File
-}
-
-type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormats {
-  thumbnail: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsThumbnail
-  large: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsLarge
-  medium: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsMedium
-  small: StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsSmall
-}
-
-type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsThumbnail {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsLarge {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsMedium {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiEdTechSubmodulesSubmoduleLogoDarkModeFormatsSmall {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
 
 type StrapiEdTechSubmodulesSubmoduleItem {
   id: Int
   content: String
   title: String
   icon: LocalFile
-  iconDarkMode: StrapiEdTechSubmodulesSubmoduleItemIconDarkMode
+  iconDarkMode: LocalFile
 }
 
-type StrapiEdTechSubmodulesSubmoduleItemIconDarkMode {
-  id: Int
-  name: String
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormats
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  provider: String
-  created_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  updated_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  localFile: File
-}
-
-type StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormats {
-  thumbnail: StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormatsThumbnail
-}
-
-type StrapiEdTechSubmodulesSubmoduleItemIconDarkModeFormatsThumbnail {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
 
 type StrapiEdTechPage implements Node {
   id: ID!
@@ -779,180 +458,8 @@ type StrapiBanners implements Node {
   image: LocalFile
   logo: LocalFile
   strapiId: Int
-  imageDarkMode: StrapiBannersImageDarkMode
-  logoDarkMode: StrapiBannersLogoDarkMode
-}
-
-type StrapiBannersImageDarkMode {
-  id: Int
-  name: String
-  alternativeText: String
-  caption: String
-  width: Int
-  height: Int
-  formats: StrapiBannersImageDarkModeFormats
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  provider: String
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  localFile: File
-}
-
-type StrapiBannersImageDarkModeFormats {
-  thumbnail: StrapiBannersImageDarkModeFormatsThumbnail
-  large: StrapiBannersImageDarkModeFormatsLarge
-  medium: StrapiBannersImageDarkModeFormatsMedium
-  small: StrapiBannersImageDarkModeFormatsSmall
-}
-
-type StrapiBannersImageDarkModeFormatsThumbnail {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiBannersImageDarkModeFormatsLarge {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiBannersImageDarkModeFormatsMedium {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiBannersImageDarkModeFormatsSmall {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiBannersLogoDarkMode {
-  id: Int
-  name: String
-  width: Int
-  height: Int
-  formats: StrapiBannersLogoDarkModeFormats
-  hash: String
-  ext: String
-  mime: String
-  size: Float
-  url: String
-  provider: String
-  created_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  updated_at(
-    
-    formatString: String
-
-    
-    fromNow: Boolean
-
-    
-    difference: String
-
-    
-    locale: String
-  ): Date
-  localFile: File
-}
-
-type StrapiBannersLogoDarkModeFormats {
-  thumbnail: StrapiBannersLogoDarkModeFormatsThumbnail
-  large: StrapiBannersLogoDarkModeFormatsLarge
-  medium: StrapiBannersLogoDarkModeFormatsMedium
-  small: StrapiBannersLogoDarkModeFormatsSmall
-}
-
-type StrapiBannersLogoDarkModeFormatsThumbnail {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiBannersLogoDarkModeFormatsLarge {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiBannersLogoDarkModeFormatsMedium {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
-}
-
-type StrapiBannersLogoDarkModeFormatsSmall {
-  name: String
-  hash: String
-  ext: String
-  mime: String
-  width: Int
-  height: Int
-  size: Float
-  url: String
+  imageDarkMode: LocalFile
+  logoDarkMode: LocalFile
 }
 
 

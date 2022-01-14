@@ -33,7 +33,6 @@ const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const localTheme = localStorage.getItem('theme')
     const deviseTheme = getDeviseTheme()
-    console.log(localTheme)
     // local storage > devise theme
     setTheme(localTheme || deviseTheme || DEFAULT_THEME)
   }, [])

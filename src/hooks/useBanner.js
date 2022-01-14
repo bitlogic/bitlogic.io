@@ -16,6 +16,24 @@ const useBanner = () => {
               }
             }
           }
+          imageDarkMode {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          logoDarkMode {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  quality: 100
+                  formats: [AUTO, WEBP]
+                  placeholder: BLURRED
+                )
+              }
+            }
+          }
           logo {
             localFile {
               childImageSharp {

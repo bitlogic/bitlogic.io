@@ -19,12 +19,26 @@ const useEdTechSubmodules = () => {
                 }
               }
             }
+            logoDarkMode {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 60, quality: 100)
+                }
+              }
+            }
           }
           submoduleItem {
             title
             id
             content
             icon {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 60, quality: 100)
+                }
+              }
+            }
+            iconDarkMode {
               localFile {
                 childImageSharp {
                   gatsbyImageData(width: 60, quality: 100)
