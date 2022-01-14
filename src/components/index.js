@@ -15,6 +15,7 @@ import BannerClientes from "./Banners/BannerClientes"
 import BannerTop from "./Banners/BannerTop"
 import BannerActionCall from "./Banners/BannerActionCall"
 import PartnersSection from "./PartnersSection/PartnersSection"
+import JobsPage from "./JobsPage/JobsPage"
 
 export {
   ServicesSection,
@@ -34,4 +35,5 @@ export {
   BannerTop,
   BannerActionCall,
   PartnersSection,
+  JobsPage,
 }

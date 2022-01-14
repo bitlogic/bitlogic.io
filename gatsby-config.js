@@ -3,8 +3,10 @@ module.exports = {
     title: `Bitlogic`,
     description: `Bitlogic Web es una empresa dedicada al diseño, ingeniería y desarrollo ágil de productos de software, especializada en la transformación digital de instituciones educativas .`,
     author: `Bitlogic.io`,
+    siteUrl: `https://www.bitlogic.io`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -32,8 +34,8 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
-        // apiURL: `https://strapi.bitlogic.io`,
-        apiURL: process.env.STRAPI_URL,
+        apiURL: `https://strapi.bitlogic.io`,
+        // apiURL: process.env.STRAPI_URL,
         queryLimit: 1000,
         collectionTypes: [
           `banners`,
@@ -52,6 +54,7 @@ module.exports = {
           `bitway-page`,
           `contact-page`,
           `global-config`,
+          `jobs-page`,
         ],
       },
     },
