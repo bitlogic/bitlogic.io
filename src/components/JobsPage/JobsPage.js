@@ -3,14 +3,24 @@ import Layout from '../layout'
 import Helmet from 'react-helmet'
 import { useJobsPage } from '../../hooks'
 import MarkdownView from "react-showdown"
+import { Seo } from '../index'
 import './JobsPage.scss'
 
 export default function JobsPage() {
     const jobsData = useJobsPage()
     const banner = jobsData.strapiJobsPage.banner
-    
+
+    const { pageTitle, pageDescription, pageKeywords } = jobsData?.allStrapiJobsPage?.nodes[0]?.pageMetadata || {}
+
     return (
         <Layout>
+            {jobsData?.allStrapiJobsPage?.nodes[0]?.pageMetadata && (
+                <Seo
+                    title={pageTitle}
+                    description={pageDescription}
+                    keywords={pageKeywords}
+                />
+            )}
             <MarkdownView markdown={banner} className="banner__head" />
             <div id="cats-portal-widget" className="container widget-container"></div>
             <Helmet>
@@ -27,5 +37,3 @@ export default function JobsPage() {
         </Layout>
     )
 }
-
-//Pasar lo que esta dentro helmet a strapi. crear otro campo para helmet
