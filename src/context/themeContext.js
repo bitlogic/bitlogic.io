@@ -36,22 +36,23 @@ export const useTheme = () => useContext(ThemeContext)
 
 const ThemeProvider = ({ children }) => {
   // default theme: light
-  const DEFAULT_THEME = 'light'
-  const [theme, setTheme] = useState(DEFAULT_THEME)
+  const DEFAULT_THEME = "light"
+  const localTheme = localStorage.getItem("theme")
+  const deviseTheme = getDeviseTheme()
+  const [theme, setTheme] = useState(localTheme || deviseTheme || DEFAULT_THEME)
+
+  // useEffect(() => {
+
+  //   // local storage > devise theme
+  //   setTheme(localTheme || deviseTheme || DEFAULT_THEME)
+  // }, [])
 
   useEffect(() => {
-    const localTheme = localStorage.getItem('theme')
-    const deviseTheme = getDeviseTheme()
-    // local storage > devise theme
-    setTheme(localTheme || deviseTheme || DEFAULT_THEME)
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme)
+    localStorage.setItem("theme", theme)
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
+    setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"))
   }
 
   return (
