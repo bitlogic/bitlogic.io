@@ -1,12 +1,15 @@
 @import "../../styles/global.scss";
 
+
 .servicesSection {
+  background-color: $primary-container;
   padding-top: 70px;
 }
 
 .serviceCard {
   &__description {
     p {
+      color: $primary;
       font-size: $small;
     }  
   }
@@ -16,12 +19,14 @@
     width: 100px;
   }
   &__title {
+    color: $primary;
     font-weight: $bold;
     font-size: $medium;
     margin-bottom: 45px;
   }
   &__block {
     @extend %border-shadowed;
+    background-color: rgba(255, 255, 255, 0.055);
     padding: 40px;
     margin-bottom: 45px;
   }

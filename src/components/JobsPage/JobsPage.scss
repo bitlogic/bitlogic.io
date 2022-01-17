@@ -7,25 +7,33 @@
     }
 }
 
+.cats-multiselect-label{
+    color: $primary !important;
+}
+
 .cats-job {
     border-bottom: 1px solid  #cdcdcd;
     padding-left: 15px !important;
-
     >div{
         overflow-x: hidden !important;
     }
-    
+    &-column-value{
+        color: $primary !important;
+    }
     
     &:hover {
-        background-color: #faf5f5 !important;
+        background: #f0f0f0 !important;
         cursor: pointer;
+        & .cats-job-column-value{
+            color: $primary-hover !important;
+        }
     }
 }
 
 .widget-container {
     min-height: 65vh;
     margin-top: 20px !important;
-    margin-bottom: 70px !important;
+    padding-bottom: 70px !important;
 }
 
 .cats-powered-by {

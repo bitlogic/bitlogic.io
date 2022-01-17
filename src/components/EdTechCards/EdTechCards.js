@@ -4,7 +4,11 @@ import { Link } from "gatsby"
 import showdown from "showdown"
 import "./EdtechCards.scss"
 
+import { useTheme } from "../../context/themeContext"
+
 const EdTechCards = ({ title, edteches }) => {
+  const { theme } = useTheme()
+
   const titles = title
   let converter = new showdown.Converter()
   let post = titles
@@ -13,13 +17,19 @@ const EdTechCards = ({ title, edteches }) => {
   const ReplaceHtml = () => {
     return { __html: html }
   }
+ 
   const edtechCard = edteches
     ?.map((edtech, idx) => (
       <div className="row mt-4">
         <div key={idx} className="col-12 col-lg-8 EdtechCards__card">
           <div className="EdtechCards__image col-4 ">
             <GatsbyImage
-              image={getImage(edtech?.homeIcon.localFile)}
+              image={
+                theme === "dark" &&
+                getImage(edtech?.homeIconDarkMode?.localFile)
+                  ? getImage(edtech?.homeIconDarkMode?.localFile)
+                  : getImage(edtech?.homeIcon?.localFile)
+              }
               alt={edtech.homeTitle}
             />{" "}
           </div>
