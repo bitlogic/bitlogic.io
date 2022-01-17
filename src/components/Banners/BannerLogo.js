@@ -23,8 +23,6 @@ const BannerLogo = ({ banner, title }) => {
   const imagenDM = getImage(imageDarkMode?.localFile)
   const logoDM = getImage(logoDarkMode?.localFile)
 
-  console.log(logoDM)
-
   return (
     <>
       {theme === "dark" && imagenDM && logoDM ? (
