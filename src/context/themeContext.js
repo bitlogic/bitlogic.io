@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const themes = {
   light: {
     '--nav-footer-container': '#2a2c2e',
-
+    '--blog-card-container': '#f5f5f5',
     '--primary': '#000000',
     '--primary-hover': '#000000',
     '--primary-container': '#ffffff',
@@ -13,6 +13,7 @@ const themes = {
   },
   dark: {
     '--nav-footer-container': '#383838',
+    '--blog-card-container': '#383838',
 
     '--primary': '#ffffff',
     '--primary-hover': '#000000',
