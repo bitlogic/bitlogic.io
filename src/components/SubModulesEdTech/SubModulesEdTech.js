@@ -18,7 +18,7 @@ const SubModulesEdTech = ({ items, variant }) => {
   const logoDark = getImage(logoDarkMode?.localFile)
 
   // const logoSubmodule = logo && logoDarkMode (
-  //   <GatsbyImage image={getImage(logo.localFile)} alt={`${title}-${id}`} />
+  //   <GatsbyImage image={getImage(logo)} alt={`${title}-${id}`} />
   // )
 
   const classVariant = variant && `${variant}`

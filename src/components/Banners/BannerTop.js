@@ -9,8 +9,8 @@ const BannerTop = ({ banner }) => {
   const { image, imageDarkMode, title, summary } = banner
   const { theme } = useTheme()
 
-  const imageBanner = getImage(image.localFile)
-  const imageDM = getImage(imageDarkMode.localFile)
+  const imageBanner = getImage(image?.localFile)
+  const imageDM = getImage(imageDarkMode?.localFile)
 
   return (
     <div className="banner">
