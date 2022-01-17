@@ -6,6 +6,7 @@ const themes = {
     '--nav-footer-container': '#2a2c2e',
 
     '--primary': '#000000',
+    '--primary-hover': '#000000',
     '--primary-container': '#ffffff',
 
     '--secondary-container': '#25cad3',
@@ -14,6 +15,7 @@ const themes = {
     '--nav-footer-container': '#383838',
 
     '--primary': '#ffffff',
+    '--primary-hover': '#000000',
     '--primary-container': '#292929',
 
     '--secondary-container': '#191919',
