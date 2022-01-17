@@ -2,17 +2,20 @@
 
 .cats-job-title {
   a {
-    color: rgb(86, 130, 198);
-    font-weight: 700;
+    color: $title-jobs;
+    font-weight: 700;    
   }
 }
 
 .cats-multiselect-label {
   color: $primary !important;
 }
+.cats-multiselect-label-block {
+  border: 2px solid $border-bottom !important;
+}
 
 .cats-job {
-  border-bottom: 1px solid #cdcdcd;
+  border-bottom: 1px solid $border-bottom !important;
   padding-left: 15px !important;
   > div {
     overflow-x: hidden !important;
@@ -22,10 +25,10 @@
   }
 
   &:hover {
-    background: #f0f0f0 !important;
+    background: $jobs-hover !important;
     cursor: pointer;
     & .cats-job-column-value {
-      color: $primary-hover !important;
+      color: $primary !important;
     }
   }
 }
@@ -49,6 +52,9 @@
 
 .cats-column-header {
   padding-left: 15px !important;
+  border-bottom: 2px solid $border-bottom !important;
+  border-top: 2px solid $border-bottom !important;
+
 }
 
 .banner__head {
