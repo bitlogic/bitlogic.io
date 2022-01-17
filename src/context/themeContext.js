@@ -1,0 +1,74 @@
+import React, { createContext, useEffect, useState, useContext } from 'react'
+import PropTypes from 'prop-types'
+
+const themes = {
+  light: {
+    '--nav-footer-container': '#2a2c2e',
+
+    '--primary': '#000000',
+    '--primary-hover': '#000000',
+    '--primary-container': '#ffffff',
+
+    '--secondary-container': '#25cad3',
+  },
+  dark: {
+    '--nav-footer-container': '#383838',
+
+    '--primary': '#ffffff',
+    '--primary-hover': '#000000',
+    '--primary-container': '#292929',
+
+    '--secondary-container': '#191919',
+  }
+}
+
+const ThemeContext = createContext(null)
+
+// const { theme, setTheme, toggleTheme } = useTheme()
+export const useTheme = () => useContext(ThemeContext)
+
+const ThemeProvider = ({ children }) => {
+  // default theme: light
+  const DEFAULT_THEME = 'light'
+  const [theme, setTheme] = useState(DEFAULT_THEME)
+
+  useEffect(() => {
+    const localTheme = localStorage.getItem('theme')
+    const deviseTheme = getDeviseTheme()
+    // local storage > devise theme
+    setTheme(localTheme || deviseTheme || DEFAULT_THEME)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
+  }
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+      <div style={themes[theme]}>{children}</div>
+    </ThemeContext.Provider>
+  )
+}
+
+const getDeviseTheme = () => {
+  if (window.matchMedia) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
+    } else {
+      return 'light'
+    }
+  } else {
+    // cambiar si cambia el tema por defecto
+    return 'light'
+  }
+}
+
+ThemeProvider.propTypes = {
+  children: PropTypes.object
+}
+
+export default ThemeProvider

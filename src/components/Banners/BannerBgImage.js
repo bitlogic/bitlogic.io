@@ -6,13 +6,16 @@ import { useBanner } from "../../hooks/index"
 import showdown from "showdown"
 import "./BannerBgImage.scss"
 
+import { useTheme } from "../../context/themeContext"
+
 const BannerBgImage = ({ banner }) => {
   const dataBanner = useBanner()
+  const { theme } = useTheme()
 
   const bannerSelected = dataBanner?.allStrapiBanners?.nodes.find(
     ban => ban.strapiId === banner.id
   )
-  const { image, link, summary } = bannerSelected
+  const { image, imageDarkMode, link, summary } = bannerSelected
 
   const titles = summary
   let converter = new showdown.Converter()
@@ -23,10 +26,16 @@ const BannerBgImage = ({ banner }) => {
     return { __html: html }
   }
 
+  const imagen = getImage(image?.localFile)
+  const imagenDM = getImage(imageDarkMode?.localFile)
+
   return (
     <div className="bannerBgImage">
       {bannerSelected.type === "bgImage" ? (
-        <BgImage image={getImage(image.localFile)} className="bannerBgImage__bgImage">
+        <BgImage
+          image={theme === "dark" && imagenDM ? imagenDM : imagen}
+          className="bannerBgImage__bgImage"
+        >
           <div className="bannerBgImage__titleContainer">
             <div
               dangerouslySetInnerHTML={ReplaceHtml()}

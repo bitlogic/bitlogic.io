@@ -1,5 +1,7 @@
+@import "../../styles/global.scss";
+
 .NavBar {
-  background-color: #2a2c2e !important;
+  background-color: $nav-footer-container;
 }
 .NavBar__Logo {
   margin: 16px 28px;
@@ -57,4 +59,35 @@
   .NavBar__Item {
     margin-right: 2.5rem;
   }
+}
+
+.theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-ball{
+  transform: translateX(24px);
+}
+
+.theme-toggle-checkbox{
+  opacity:0;
+  position:absolute;
+}
+
+.theme-toggle-label{
+  cursor: pointer;
+  width:50px;
+  height:26px;
+  background:  $secondary-container;
+  border-radius: 50px;
+  padding: 5px;
+  position:relative;
+}
+
+.theme-toggle-ball{
+  position:absolute;
+  top:2px;
+  left:2px;
+  width:22px;
+  height:22px;
+  background: $primary;
+  border-radius:50%;
+  
+  transition: transform 0.2s linear;
 }

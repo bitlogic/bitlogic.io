@@ -1,5 +1,8 @@
+@import "../../styles/global.scss";
+
 .EdTech {
     &__container {
+        background-color: $primary-container;
         margin-bottom: 95px;
     }
 }

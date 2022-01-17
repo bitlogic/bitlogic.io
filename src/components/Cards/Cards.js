@@ -3,8 +3,11 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import Markdown from "react-markdown"
 import { SubModulesEdTech } from "../index"
 import "./Cards.scss"
+import { useTheme } from "../../context/themeContext"
 
 const Cards = ({ tech }) => {
+  const { theme } = useTheme()
+
   const subModules = tech?.edTechSubmodules?.ed_tech_submodules.map(submod => (
     <p
       key={submod.id}
@@ -27,13 +30,14 @@ const Cards = ({ tech }) => {
       )
   )
 
-  const icon = getImage(tech?.icon.localFile)
+  const icon = getImage(tech?.icon?.localFile)
+  const iconDark = getImage(tech?.iconDarkMode?.localFile)
 
   return (
     <>
       <div className=" Cards container-fluid ">
         <div className="Cards__icon ">
-          <GatsbyImage image={icon} alt={tech.title} />
+          <GatsbyImage image={theme === "dark" && iconDark ? iconDark : icon} alt={tech.title} />
         </div>
         <div className="Cards__body col-12">
           <div className="Cards__title col-lg-8">{tech.title}</div>

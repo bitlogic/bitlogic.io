@@ -31,7 +31,7 @@ const BannerISO = ({ banner, title }) => {
           ></div>
         </div>
         <div className="bannerISO__image ">
-          <GatsbyImage image={getImage(logo.localFile)} alt={`img-${title}`} />
+          <GatsbyImage image={getImage(logo?.localFile)} alt={`img-${title}`} />
         </div>
       </div>
     </div>

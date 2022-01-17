@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import Nav from "react-bootstrap/Nav"
+import { useTheme } from "../../context/themeContext"
 
 const MENU_LINKS = [
   { id: 1, text: "home", url: "/" },
@@ -8,10 +9,13 @@ const MENU_LINKS = [
   { id: 3, text: "edtech", url: "/edtech" },
   { id: 4, text: "bitway", url: "/bitway" },
   { id: 5, text: "blog", url: "/blog" },
-  { id: 6, text: "contacto", url: "/contacto" },
+  { id: 6, text: "jobs", url: "/jobs" },
+  { id: 7, text: "contacto", url: "/contacto" },
 ]
 
 const MenuLinks = ({ styleClass }) => {
+  const { theme, toggleTheme } = useTheme()
+
   return (
     <Nav className="NavBar__List ">
       {MENU_LINKS.map(({ id, text, url }) => (
@@ -25,6 +29,18 @@ const MenuLinks = ({ styleClass }) => {
           </Link>
         </Nav.Item>
       ))}
+      <Nav.Item className="NavBar__Item">
+        <input
+          checked={theme === "light"}
+          onChange={toggleTheme}
+          type="checkbox"
+          class="theme-toggle-checkbox"
+          id="themetoggle"
+        />
+        <label for="themetoggle" class="theme-toggle-label">
+          <div class="theme-toggle-ball"></div>
+        </label>
+      </Nav.Item>
     </Nav>
   )
 }

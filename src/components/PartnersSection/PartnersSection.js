@@ -1,13 +1,20 @@
 import "./PartnersSection.scss"
 import React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { useTheme } from "../../context/themeContext"
 
 const PartnersSection = ({ title, partners }) => {
+  const { theme } = useTheme()
+
   const partnerList = partners.map(partner => {
-    const partnerImage = getImage(partner.image.localFile)
+    const partnerImage = getImage(partner?.image?.localFile)
+    const imagenDM = getImage(partner?.imageDark?.localFile)
     return (
       <div className="partners__image">
-        <GatsbyImage image={partnerImage} alt={partner.caption} />
+        <GatsbyImage
+          image={theme === "dark" && imagenDM ? imagenDM : partnerImage}
+          alt={partner.caption}
+        />
       </div>
     )
   })

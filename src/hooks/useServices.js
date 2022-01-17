@@ -24,6 +24,13 @@ const useServices = () => {
               }
             }
           }
+          iconDarkMode {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 150, quality: 100)
+              }
+            }
+          }
         }
       }
     }

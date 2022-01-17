@@ -4,6 +4,7 @@ import "./layout.scss"
 import Footer from "./Footer/Footer"
 import ScriptTag from "react-script-tag"
 import useGlobalConfig from "../hooks/useGlobalConfig"
+import ThemeProvider from '../context/themeContext'
 
 const Layout = ({ children }) => {
   const config = useGlobalConfig()
@@ -22,14 +23,14 @@ const Layout = ({ children }) => {
     )
   )
   return (
-    <>
+    <ThemeProvider>
       {scripts}
       <Header />
 
       <main>{children}</main>
       <Footer />
       {/*© {new Date().getFullYear()}, Built with*/}
-    </>
+    </ThemeProvider>
   )
 }
 

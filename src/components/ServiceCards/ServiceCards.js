@@ -3,8 +3,11 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import showdown from "showdown"
 import "./ServiceCards.scss"
+import { useTheme } from "../../context/themeContext"
 
 const ServiceCards = ({ title, services }) => {
+  const { theme } = useTheme()
+
   const titles = title
   let converter = new showdown.Converter()
   let post = titles
@@ -14,12 +17,11 @@ const ServiceCards = ({ title, services }) => {
     return { __html: html }
   }
 
-  const servicios = services
-    ?.map((service, idx) => (
+  const servicios = services?.map((service, idx) => (
       <div key={idx} className="col-12 col-md-3 ServiceCards__card">
         <div className="ServiceCards__image">
           <GatsbyImage
-            image={getImage(service?.homeIcon.localFile)}
+            image={theme === "dark" && getImage(service?.iconDarkMode?.localFile) ? getImage(service?.iconDarkMode?.localFile) : getImage(service?.icon?.localFile)}
             alt={service.homeTitle}
           />{" "}
         </div>

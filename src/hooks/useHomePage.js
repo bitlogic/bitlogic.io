@@ -24,14 +24,28 @@ const useHomePage = () => {
                   }
                 }
               }
+              homeIconDarkMode {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(height: 90)
+                  }
+                }
+              }
             }
             services {
               homeIntro
               homeTitle
-              homeIcon {
+              icon {
                 localFile {
                   childImageSharp {
-                    gatsbyImageData(height: 90)
+                    gatsbyImageData
+                  }
+                }
+              }
+              iconDarkMode {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
                   }
                 }
               }
@@ -40,6 +54,13 @@ const useHomePage = () => {
               caption
               id
               image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              imageDark {
                 localFile {
                   childImageSharp {
                     gatsbyImageData

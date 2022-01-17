@@ -31,7 +31,7 @@ const BlogDetail = ({ data }) => {
                 <div className="detail__box-author">
                   <div className="detail__box-author-image">
                     <GatsbyImage
-                      image={getImage(author?.image.localFile)}
+                      image={getImage(author?.image?.localFile)}
                       alt={author?.name}
                     />
                   </div>
