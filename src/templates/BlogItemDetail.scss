@@ -17,6 +17,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      
     }
 
   &__description {
@@ -106,7 +107,8 @@
     max-width: 420px;
     padding: 15px;
     margin: 20px 0;
-    background: $grey-light;
+    background: $blog-card-container;
+    border-radius: 5px;
     box-shadow: 0 3px 7px -1px rgba(#000, 0.1);
     overflow: hidden;
     z-index: 0;
