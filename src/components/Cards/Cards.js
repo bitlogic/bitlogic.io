@@ -30,8 +30,8 @@ const Cards = ({ tech }) => {
       )
   )
 
-  const icon = getImage(tech?.icon.localFile)
-  const iconDark = getImage(tech?.iconDarkMode.localFile)
+  const icon = getImage(tech?.icon?.localFile)
+  const iconDark = getImage(tech?.iconDarkMode?.localFile)
 
   return (
     <>
