@@ -30,6 +30,13 @@
   }
 }
 
+.cats-chevron {
+    color: $primary !important;
+    & path {
+        fill: $primary !important;
+    }
+}
+
 .widget-container {
   min-height: 65vh;
   margin-top: 20px !important;
