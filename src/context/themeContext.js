@@ -3,24 +3,30 @@ import PropTypes from 'prop-types'
 
 const themes = {
   light: {
-    '--nav-footer-container': '#2a2c2e',
-    '--blog-card-container': '#f5f5f5',
-    '--primary': '#000000',
-    '--primary-hover': '#000000',
-    '--primary-container': '#ffffff',
+    "--nav-footer-container": "#2a2c2e",
+    "--blog-card-container": "#f5f5f5",
+    "--primary": "#000000",
+    "--primary-hover": "#000000",
+    "--primary-container": "#ffffff",
+    "--title-jobs": "#5682c6",
+    "--jobs-hover": "#f0f0f0",
 
-    '--secondary-container': '#25cad3',
+    "--secondary-container": "#25cad3",
+    "--border-bottom": "#cdcdcd",
   },
   dark: {
-    '--nav-footer-container': '#383838',
-    '--blog-card-container': '#383838',
+    "--nav-footer-container": "#383838",
+    "--blog-card-container": "#383838",
 
-    '--primary': '#ffffff',
-    '--primary-hover': '#000000',
-    '--primary-container': '#292929',
+    "--primary": "#ffffff",
+    "--primary-hover": "#000000",
+    "--primary-container": "#292929",
+    "--border-bottom": "#565656",
+    "--title-jobs": "#1ecad3",
+    "--jobs-hover": "#8383833b",
 
-    '--secondary-container': '#191919',
-  }
+    "--secondary-container": "#191919",
+  },
 }
 
 const ThemeContext = createContext(null)
