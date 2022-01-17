@@ -34,10 +34,11 @@ const ThemeContext = createContext(null)
 // const { theme, setTheme, toggleTheme } = useTheme()
 export const useTheme = () => useContext(ThemeContext)
 
+
 const ThemeProvider = ({ children }) => {
   // default theme: light
-  const DEFAULT_THEME = "light"
-  const localTheme = localStorage.getItem("theme")
+  const DEFAULT_THEME = 'light'
+  const localTheme = typeof window !== 'undefined' ? localStorage.getItem('theme') : undefined
   const deviseTheme = getDeviseTheme()
   const [theme, setTheme] = useState(localTheme || deviseTheme || DEFAULT_THEME)
 
@@ -48,11 +49,11 @@ const ThemeProvider = ({ children }) => {
   // }, [])
 
   useEffect(() => {
-    localStorage.setItem("theme", theme)
+    localStorage.setItem('theme', theme)
   }, [theme])
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"))
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
   }
 
   return (
@@ -63,18 +64,21 @@ const ThemeProvider = ({ children }) => {
 }
 
 const getDeviseTheme = () => {
-  if (window.matchMedia) {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
+  if (typeof window !== 'undefined') {
+    if (window.matchMedia) {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+      } else {
+        return 'light'
+      }
     } else {
+      // cambiar si cambia el tema por defecto
       return 'light'
     }
   } else {
-    // cambiar si cambia el tema por defecto
-    return 'light'
+    return undefined
   }
 }
-
 ThemeProvider.propTypes = {
   children: PropTypes.object
 }
