@@ -3,6 +3,9 @@ import { Link } from "gatsby"
 import Nav from "react-bootstrap/Nav"
 import { useTheme } from "../../context/themeContext"
 
+import moon from '../../images/moon-solid.svg'
+import sun from '../../images/sun-solid.svg'
+
 const MENU_LINKS = [
   { id: 1, text: "home", url: "/" },
   { id: 2, text: "servicios", url: "/servicios" },
@@ -30,16 +33,9 @@ const MenuLinks = ({ styleClass }) => {
         </Nav.Item>
       ))}
       <Nav.Item className="NavBar__Item">
-        <input
-          checked={theme === "light"}
-          onChange={toggleTheme}
-          type="checkbox"
-          class="theme-toggle-checkbox"
-          id="themetoggle"
-        />
-        <label for="themetoggle" class="theme-toggle-label">
-          <div class="theme-toggle-ball"></div>
-        </label>
+        <button className="theme-toggle" onClick={toggleTheme}>
+          <img src={theme === "dark" ? moon : sun} alt="theme" width="30" />
+        </button>
       </Nav.Item>
     </Nav>
   )
