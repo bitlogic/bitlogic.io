@@ -12,8 +12,13 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const { data } = await graphql(`
-    query Articles {
+    query Pages {
       allStrapiArticle {
+        nodes {
+          slug
+        }
+      }
+      allStrapiPage {
         nodes {
           slug
         }
@@ -30,6 +35,15 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: "/blog/" + node.slug,
       component: BlogDetail,
+      context: { slug: node.slug },
+    })
+  })
+
+  data.allStrapiPage.nodes.forEach(node => {
+    const Page = path.resolve("./src/templates/Page.js")
+    createPage({
+      path: "/" + node.slug,
+      component: Page,
       context: { slug: node.slug },
     })
   })

@@ -42,6 +42,7 @@ module.exports = {
           `ed-tech-submodules`,
           `article`,
           `blog-category`,
+          `page`,
         ],
         singleTypes: [
           `ed-tech-page`,
