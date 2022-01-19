@@ -36,11 +36,16 @@ const Cards = ({ tech }) => {
   return (
     <>
       <div className=" Cards container-fluid ">
-        <div className="Cards__icon ">
-          <GatsbyImage image={theme === "dark" && iconDark ? iconDark : icon} alt={tech.title} />
-        </div>
         <div className="Cards__body col-12">
-          <div className="Cards__title col-lg-8">{tech.title}</div>
+          <div className="Cards__title col-lg-10">
+            <div className="Cards__title-logo">
+              <GatsbyImage
+                image={theme === "dark" && iconDark ? iconDark : icon}
+                alt={tech.title}
+              />
+            </div>
+            <h3>{tech.title}</h3>
+          </div>
 
           <div className="Cards__container">
             <div className="row">
