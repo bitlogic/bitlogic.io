@@ -25,7 +25,7 @@ const Cards = ({ tech }) => {
         <SubModulesEdTech
           key={submod.id}
           items={submod}
-          variant={submod.edTechType == "DDE" && "dataDriven"}
+          variant={submod.edTechType === "DDE" && "dataDriven"}
         />
       )
   )
@@ -40,6 +40,7 @@ const Cards = ({ tech }) => {
           <div className="Cards__title col-lg-10">
             <div className="Cards__title-logo">
               <GatsbyImage
+                imgClassName="Cards__title-logo-img"
                 image={theme === "dark" && iconDark ? iconDark : icon}
                 alt={tech.title}
               />
