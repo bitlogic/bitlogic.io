@@ -70,4 +70,7 @@
   img {
     margin: 0;
   }
+  &-sun{
+    filter: invert(100%);
+  }
 }
