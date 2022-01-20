@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 import Nav from "react-bootstrap/Nav"
 import { useTheme } from "../../context/themeContext"
 
-import moon from '../../images/moon-solid.svg'
-import sun from '../../images/sun-solid.svg'
+import moon from "../../images/moon-solid.svg"
+import sun from "../../images/sun-icon-1.png"
 
 const MENU_LINKS = [
   { id: 1, text: "home", url: "/" },
@@ -33,8 +33,26 @@ const MenuLinks = ({ styleClass }) => {
         </Nav.Item>
       ))}
       <Nav.Item className="NavBar__Item">
-        <button className="theme-toggle" onClick={toggleTheme}>
-          <img src={theme === "dark" ? moon : sun} alt="theme" width="30" />
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          style={{ margin: theme === "dark" ? "0 5px 0 0" : "" }}
+        >
+          {theme === "dark" ? (
+            <img
+              src={moon}
+              className="theme-toggle-moon fadeIn"
+              alt="theme"
+              width="20"
+            />
+          ) : (
+            <img
+              className="theme-toggle-sun fadeIn"
+              src={sun}
+              alt="theme"
+              width="25"
+            />
+          )}
         </button>
       </Nav.Item>
     </Nav>
