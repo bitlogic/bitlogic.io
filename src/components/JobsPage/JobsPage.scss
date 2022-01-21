@@ -7,8 +7,28 @@
   }
 }
 
-.cats-multiselect-label {
-  color: $primary !important;
+.cats-multiselect{
+  &-label {
+    color: $primary !important;
+    
+  }
+  &-dropdown-menu{
+    background: $primary-container !important;
+    color: $primary !important;
+    
+  }
+
+  &-option{
+    cursor: pointer;
+    &:hover{
+      background: rgba(128, 128, 128, 0.13) !important;
+    }
+  }
+
+  &-search input{
+    background: $primary-container !important;
+    color: $primary !important;
+  }
 }
 .cats-multiselect-label-block {
   border: 2px solid $border-bottom !important;
