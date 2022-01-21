@@ -1,5 +1,7 @@
+@import "../../styles/global.scss";
+
 .NavBar {
-  background-color: #2a2c2e !important;
+  background-color: $nav-footer-container;
 }
 .NavBar__Logo {
   margin: 16px 28px;
@@ -18,7 +20,7 @@
   margin-top: 2rem;
 }
 .NavBar__Item {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 .NavBar__Link {
   text-decoration: none;
@@ -42,6 +44,8 @@
   color: #1ecad3;
 }
 
+
+
 @media screen and (min-width: 992px) {
   .NavBar__Logo {
     width: 143px;
@@ -56,5 +60,17 @@
   }
   .NavBar__Item {
     margin-right: 2.5rem;
+  }
+}
+
+
+.theme-toggle{
+  background: none;
+  border: none;
+  img {
+    margin: 0;
+  }
+  &-sun{
+    filter: invert(100%);
   }
 }

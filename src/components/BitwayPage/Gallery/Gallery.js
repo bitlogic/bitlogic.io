@@ -39,7 +39,7 @@ const Gallery = ({ content, ...extra }) => {
         >
           {fillGrid(elem.galleryImage, photos[elem.type]).map(
             (image, index) => {
-              const prosImage = getImage(image.image.localFile)
+              const prosImage = getImage(image?.image?.localFile)
               return (
                 <BgImage
                   className={"bitway-gallery-" + index + " bitway-gallery-item"}

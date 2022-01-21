@@ -1,5 +1,6 @@
 @import "../../../styles/global.scss";
 .bitway-paragraph {
+  color: $primary;
   margin-bottom: 20px;
   & p {
     font-family: $primary-font;
@@ -54,7 +55,7 @@
         font-weight: $bold;
         margin: 0;
         display: inline-block;
-        color: white;
+        color: $primary-container;
         transform: skew(15deg);
       }
     }

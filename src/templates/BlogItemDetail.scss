@@ -2,6 +2,7 @@
 
 .detail {
   &__container {
+    color: $primary;
     width: 100%;
     margin: 0 auto;
     // padding: 4rem 1rem 3rem;
@@ -16,6 +17,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      
     }
 
   &__description {
@@ -79,7 +81,7 @@
         position: relative;
         padding: 1rem;
         border-left: 5px solid $blue;
-        background: $grey-light;
+        background: $blog-card-container;
 
         strong {
           display: flex;
@@ -105,7 +107,8 @@
     max-width: 420px;
     padding: 15px;
     margin: 20px 0;
-    background: $grey-light;
+    background: $blog-card-container;
+    border-radius: 5px;
     box-shadow: 0 3px 7px -1px rgba(#000, 0.1);
     overflow: hidden;
     z-index: 0;
