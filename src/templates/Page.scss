@@ -1,0 +1,31 @@
+@import "../styles/global.scss";
+
+.content {
+  &__container {
+    background: $white;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  &__img {
+    img {
+      width: 100%;
+    }
+  }
+  &__description {
+    text-align: center;
+    h5 {
+      font-size: $large;
+    }
+  }
+  &__link {
+    color: $blue;
+    font-size: $large;
+    font-weight: $max-bold;
+    border-bottom: 4px solid $yellow;
+  
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+}
