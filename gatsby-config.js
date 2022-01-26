@@ -34,7 +34,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
-        // apiURL: `https://strapi.bitlogic.io`,
+        //apiURL: `https://strapi.bitlogic.io`,
         apiURL: process.env.STRAPI_URL,
         queryLimit: 1000,
         collectionTypes: [
