@@ -58,7 +58,7 @@
 
         &::marker {
           color: $blue;
-          font-size: 1rem;
+          font-size: $small;
         }
       }
     }
@@ -235,6 +235,10 @@
       ol {
         li {
           font-size: 18px;
+
+          &::marker {
+            font-size: 18px;
+          }
         }
       }
 
@@ -316,6 +320,9 @@
       ol {
         li {
           font-size: $medium;
+          &::marker {
+            font-size: $medium;
+          }
         }
       }
 
