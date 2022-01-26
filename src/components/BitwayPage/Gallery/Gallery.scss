@@ -20,7 +20,7 @@
 .bitway-gallery {
   display: grid;
   grid-template-rows: 400px;
-  gap: 20px;
+  gap: 10px;
   overflow: hidden;
 }
 
@@ -44,7 +44,7 @@
   background: #1ECAD380;
   color: white;
   font-family: Roboto;
-  font-size: 45px;
+  font-size: 35px;
   font-style: normal;
   font-weight: 700;
   line-height: 51px;
@@ -59,7 +59,7 @@
   }
 
   .bitway-gallery-item-inner {
-    font-size: 25px;
+    font-size: 20px;
   }
   
   

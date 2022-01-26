@@ -25,13 +25,14 @@
 
     &__txt {
       color: $white;
-      font-size: 15px;
+      font-size: $medium;
       padding: 23px 16px;
       font-weight: $normal;
-      line-height: 18px;
+      line-height: 25px;
       letter-spacing: 0em;
       text-align: center;
       margin: 20px 0 20px;
+      font-weight: bold;
     }
   }
 }
