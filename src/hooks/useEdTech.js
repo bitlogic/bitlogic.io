@@ -3,28 +3,44 @@ import { useStaticQuery, graphql } from "gatsby"
 const useEdTech = () => {
   const query = useStaticQuery(graphql`
     {
-      allStrapiBanners(filter: { page: { eq: "edtech" } }) {
+      allStrapiEdTechPage {
         nodes {
-          enable
-          page
-          type
-          title
-          summary
-          link {
-            pathTo
-            name
-          }
-          logo {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
+          topBanner {
+            title
+            summary
+            bgImageDarkMode {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            bgImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
               }
             }
           }
-          image {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
+          actionCallBanner {
+            title
+            link {
+              name
+              pathTo
+            }
+            imageDarkMode {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
               }
             }
           }

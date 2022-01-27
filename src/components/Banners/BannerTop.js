@@ -6,11 +6,11 @@ import "./BannerTop.scss"
 import { useTheme } from "../../context/themeContext"
 
 const BannerTop = ({ banner }) => {
-  const { image, imageDarkMode, title, summary } = banner
+  const { bgImage, bgImageDarkMode, title, summary } = banner
   const { theme } = useTheme()
 
-  const imageBanner = getImage(image?.localFile)
-  const imageDM = getImage(imageDarkMode?.localFile)
+  const imageBanner = getImage(bgImage?.localFile)
+  const imageDM = getImage(bgImageDarkMode?.localFile)
 
   return (
     <div className="banner">

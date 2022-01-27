@@ -7,21 +7,15 @@ import { useTheme } from "../../context/themeContext"
 
 import "./BannerLogo.scss"
 
-const BannerLogo = ({ banner, title }) => {
+const BannerLogo = ({ banner }) => {
   const { theme } = useTheme()
+  const { bgImage, bgImageDarkMode, image, imageDarkMode, title } = banner
 
-  const dataBanner = useBanner()
-
-  const bannerSelected = dataBanner?.allStrapiBanners?.nodes.find(
-    ban => ban.strapiId === banner.id
-  )
-  const { image, imageDarkMode, logo, logoDarkMode, summary } = bannerSelected
-
-  const imagen = getImage(image?.localFile)
-  const logoImage = getImage(logo?.localFile)
+  const imagen = getImage(bgImage?.localFile)
+  const logoImage = getImage(image?.localFile)
   // Version Dark Mode
-  const imagenDM = getImage(imageDarkMode?.localFile)
-  const logoDM = getImage(logoDarkMode?.localFile)
+  const imagenDM = getImage(bgImageDarkMode?.localFile)
+  const logoDM = getImage(imageDarkMode?.localFile)
 
   return (
     <>
@@ -40,14 +34,14 @@ const BannerLogo = ({ banner, title }) => {
           <h1 className="BannerLogo__Title">{title}</h1>
         </BgImage>
       )}
-
-      {summary ? (
+{/* 
+      {title ? (
         <div className="BannerLogo__summary">
           <div className="container ">
-            <p className="BannerLogo__summary__txt">{summary}</p>
+            <p className="BannerLogo__summary__txt">{title}</p>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </>
   )
 }

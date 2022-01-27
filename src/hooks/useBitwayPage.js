@@ -10,6 +10,27 @@ const useBitwayPage = () => {
             pageTitle
             pageKeywords
           }
+          actionCallBanner {
+            title
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            imageDarkMode {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            link {
+              name
+              pathTo
+            }
+          }
           sections {
             body
             id
@@ -19,6 +40,13 @@ const useBitwayPage = () => {
               text
               id
               image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              imageDark {
                 localFile {
                   childImageSharp {
                     gatsbyImageData
