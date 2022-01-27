@@ -1,6 +1,5 @@
 @import "../../styles/global.scss";
 
-
 .servicesSection {
   background-color: $primary-container;
   padding-top: 70px;
@@ -11,18 +10,19 @@
     p {
       color: $primary;
       font-size: $small;
-    }  
+      text-align: justify;
+      margin-bottom: 10px;
+    }
   }
   &__icon {
-    margin: 0 auto;
-    margin-top: 30px;
+    margin: 30px auto;
     width: 100px;
   }
   &__title {
     color: $primary;
     font-weight: $bold;
     font-size: $medium;
-    margin-bottom: 45px;
+    margin-bottom: 25px;
   }
   &__block {
     @extend %border-shadowed;
@@ -38,10 +38,13 @@
       p {
         font-size: $medium;
       }
-      
     }
     &__title {
       font-size: $large;
+    }
+    &__icon {
+      margin: 30px auto 0;
+      width: 100px;
     }
   }
 }

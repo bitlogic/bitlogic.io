@@ -42,19 +42,23 @@
     em {
       font-size: $small;
       line-height: 24px;
+      text-align: justify;
     }
 
-    ul {
-      padding: 1rem;
+    ul,
+    ol {
+      padding: 0.5rem;
       margin-top: -1rem;
+      margin-left: 0;
 
       li {
         margin-left: 1rem;
         font-size: $small;
+        text-align: justify;
 
         &::marker {
           color: $blue;
-          font-size: 1rem;
+          font-size: $small;
         }
       }
     }
@@ -221,9 +225,20 @@
 @media (min-width: $breakpoint-tablet) {
   .detail {
     &__description {
-      ul {
+      p,
+      strong,
+      em {
+        font-size: 18px;
+      }
+
+      ul,
+      ol {
         li {
           font-size: 18px;
+
+          &::marker {
+            font-size: 18px;
+          }
         }
       }
 
@@ -297,8 +312,22 @@
       p,
       strong,
       em {
-        font-size: 18px;
+        font-size: $medium;
         line-height: 34px;
+      }
+
+      ul,
+      ol {
+        li {
+          font-size: $medium;
+          &::marker {
+            font-size: $medium;
+          }
+        }
+      }
+
+      a {
+        font-size: $medium;
       }
 
       img {

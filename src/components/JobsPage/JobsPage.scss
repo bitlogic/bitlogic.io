@@ -1,14 +1,27 @@
 @import "../../styles/global.scss";
 
-.cats-job-title {
-  a {
-    color: $title-jobs;
-    font-weight: 700;    
+.cats-multiselect{
+  &-label {
+    color: $primary !important;
+    
   }
-}
+  &-dropdown-menu{
+    background: $primary-container !important;
+    color: $primary !important;
+    
+  }
 
-.cats-multiselect-label {
-  color: $primary !important;
+  &-option{
+    cursor: pointer;
+    &:hover{
+      background: rgba(128, 128, 128, 0.13) !important;
+    }
+  }
+
+  &-search input{
+    background: $primary-container !important;
+    color: $primary !important;
+  }
 }
 .cats-multiselect-label-block {
   border: 2px solid $border-bottom !important;
@@ -20,8 +33,20 @@
   > div {
     overflow-x: hidden !important;
   }
+
+  &-title {
+    overflow: hidden;
+    a {
+      color: $title-jobs;
+      font-weight: 700; 
+      font-size: $medium;
+      padding-bottom: 10px;   
+    }
+  }
+
   &-column-value {
     color: $primary !important;
+    font-size: $small;
   }
 
   &:hover {
@@ -96,7 +121,42 @@
   }
 }
 
+.cats-mobile{
+  &-column-name{
+    font-size:$small;
+  }
+}
+
 @media (min-width: $breakpoint-tablet) {
+
+  .cats-column-name {
+    span{
+      font-size: $large;
+    }
+  }
+  .cats-job {
+  
+    &-title {
+      a {
+        font-size: $large;  
+      }
+    }
+  
+    &-column-value {
+      font-size: $medium;
+    }
+  }
+
+  .cats-mobile{
+    &-column-name{
+      font-size:$medium;
+    }
+  }
+
+  .cats-multiselect-label{
+    font-size: $large;
+  }
+
   .widget-container {
     margin-top: 70px !important;
   }
@@ -113,6 +173,14 @@
       font-size: $large;
       border-bottom: 4px solid $blue;
       padding: 7px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .cats-job {
+    &-column-value {
+      font-size: $large;
     }
   }
 }

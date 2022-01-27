@@ -9,7 +9,7 @@
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: justify;
   }
   & > div > p {
     font-family: $primary-font;
@@ -18,7 +18,7 @@
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: justify;
     // padding: 0 80px 20px;
     & * {
       font-size: 20px;
@@ -39,10 +39,10 @@
     font-size: $large;
     font-style: normal;
     font-weight: 700;
-    line-height: 51px;
+    line-height: 40px;
     letter-spacing: 0em;
     text-align: center;
-    margin: 80px 0 45px;
+    margin: 40px 0 45px;
     & span {
       font-size: $large;
       background-color: $blue;
@@ -71,7 +71,7 @@
       font-weight: 400;
       line-height: 26px;
       letter-spacing: 0em;
-      text-align: left;
+      text-align: justify;
     }
     & > div > p {
       font-family: $primary-font;
@@ -80,7 +80,7 @@
       font-weight: 400;
       line-height: 26px;
       letter-spacing: 0em;
-      text-align: left;
+      text-align: justify;
       // padding: 0 20px 0px 0px;
       & * {
         font-size: 15px;
