@@ -37,8 +37,8 @@ const BannerBgImage = ({ banner }) => {
               dangerouslySetInnerHTML={ReplaceHtml()}
               className="col-12  bannerBgImage__title"
             ></div>
-            <Link to={`/${link.pathTo}`} className="bannerBgImage__link ">
-              {link.name}
+            <Link to={`/${link?.pathTo}`} className="bannerBgImage__link ">
+              {link?.name}
             </Link>
           </div>
         </BgImage>
