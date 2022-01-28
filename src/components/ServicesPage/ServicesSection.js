@@ -1,5 +1,5 @@
 import React from "react"
-import { useServices, useBanner, useServicePage } from "../../hooks"
+import { useServices, useServicePage } from "../../hooks"
 import Layout from "../layout"
 import { BannerTop, BannerActionCall, ServiceCard, Seo } from "../index"
 
@@ -7,7 +7,6 @@ import "./ServicesSection.scss"
 
 const ServicesSection = () => {
   const servicesData = useServices()
-  const bannerData = useBanner()
 
   const servicesPageData = useServicePage()
 
