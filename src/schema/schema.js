@@ -1421,7 +1421,7 @@ type StrapiJobsPage implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
-  banner: String
+  title: String
   published_at(
     formatString: String
     fromNow: Boolean
