@@ -7,7 +7,7 @@ import Gallery from "./Gallery/Gallery"
 import Paragraph from "./Paragraph/Paragraph"
 import "./BitwayContainer.scss"
 import BannerActionCall from "../Banners/BannerActionCall"
-import { useBanner } from "../../hooks"
+
 
 const BitwayPage = () => {
   const {

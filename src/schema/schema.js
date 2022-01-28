@@ -762,6 +762,7 @@ type StrapiBitwayPageSectionsGalleryImage {
   text: String
   caption: String
   image: LocalFile
+  imageDark: LocalFile
 }
 
 type StrapiBlogCategory implements Node {
