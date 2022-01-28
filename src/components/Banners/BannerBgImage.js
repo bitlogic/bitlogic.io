@@ -2,22 +2,18 @@ import React from "react"
 import { Link } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
-import { useBanner } from "../../hooks/index"
 import showdown from "showdown"
 import "./BannerBgImage.scss"
 
 import { useTheme } from "../../context/themeContext"
 
 const BannerBgImage = ({ banner }) => {
-  const dataBanner = useBanner()
+
   const { theme } = useTheme()
 
-  const bannerSelected = dataBanner?.allStrapiBanners?.nodes.find(
-    ban => ban.strapiId === banner.id
-  )
-  const { image, imageDarkMode, link, summary } = bannerSelected
+  const { bgImage, bgImageDarkMode, link, title } = banner
 
-  const titles = summary
+  const titles = title
   let converter = new showdown.Converter()
   let post = titles
   let html = converter.makeHtml(post)
@@ -26,12 +22,12 @@ const BannerBgImage = ({ banner }) => {
     return { __html: html }
   }
 
-  const imagen = getImage(image?.localFile)
-  const imagenDM = getImage(imageDarkMode?.localFile)
+  const imagen = getImage(bgImage?.localFile)
+  const imagenDM = getImage(bgImageDarkMode?.localFile)
 
   return (
     <div className="bannerBgImage">
-      {bannerSelected.type === "bgImage" ? (
+      {banner.bgImage ? (
         <BgImage
           image={theme === "dark" && imagenDM ? imagenDM : imagen}
           className="bannerBgImage__bgImage"

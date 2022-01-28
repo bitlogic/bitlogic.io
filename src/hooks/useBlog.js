@@ -27,10 +27,32 @@ const useBlog = () => {
       }
       allStrapiBlogPage {
         nodes {
+          title
           seo: pageMetadata {
             pageTitle
             pageKeywords
             pageDescription
+          }
+          actionCallBanner {
+            title
+            link {
+              name
+              pathTo
+            }
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            imageDarkMode {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
           }
         }
       }

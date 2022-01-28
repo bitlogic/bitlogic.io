@@ -7,7 +7,7 @@ import Gallery from "./Gallery/Gallery"
 import Paragraph from "./Paragraph/Paragraph"
 import "./BitwayContainer.scss"
 import BannerActionCall from "../Banners/BannerActionCall"
-import { useBanner } from "../../hooks"
+
 
 const BitwayPage = () => {
   const {
@@ -15,13 +15,7 @@ const BitwayPage = () => {
   } = useBitwayPage()
 
   const sections = nodes[0]?.sections
-
-  const bannerData = useBanner()
-
-  const bannerActionCall = bannerData?.allStrapiBanners?.nodes.find(
-    banner => banner.page === "bitway" && banner.type === "actionCall"
-  )
-
+  const bannerActionCall  = nodes[0]?.actionCallBanner
   const { pageTitle, pageDescription, pageKeywords } = nodes[0]?.SEO
 
   // vista desktop

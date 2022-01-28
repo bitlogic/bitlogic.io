@@ -18,7 +18,7 @@ const ServiceCards = ({ title, services }) => {
   }
 
   const servicios = services?.map((service, idx) => (
-      <div key={idx} className="col-12 col-md-3 ServiceCards__card">
+      <div key={idx} className="col-12 col-md-7 col-lg-3 ServiceCards__card">
         <div className="ServiceCards__image">
           <GatsbyImage
             image={theme === "dark" && getImage(service?.iconDarkMode?.localFile) ? getImage(service?.iconDarkMode?.localFile) : getImage(service?.icon?.localFile)}

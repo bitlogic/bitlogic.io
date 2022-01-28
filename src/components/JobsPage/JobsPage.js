@@ -8,7 +8,7 @@ import './JobsPage.scss'
 
 export default function JobsPage() {
     const jobsData = useJobsPage()
-    const banner = jobsData?.strapiJobsPage?.banner
+    const title = jobsData?.strapiJobsPage?.title
     const { pageTitle, pageDescription, pageKeywords } = jobsData?.strapiJobsPage?.pageMetadata || {}
 
     return (
@@ -20,7 +20,7 @@ export default function JobsPage() {
                     keywords={pageKeywords}
                 />
             )}
-            <MarkdownView markdown={banner} className="banner__head" />
+            <MarkdownView markdown={title} className="banner__head" />
             <div id="cats-portal-widget" className="container widget-container"></div>
             <Helmet>
                 <script>

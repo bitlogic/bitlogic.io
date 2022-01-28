@@ -7,6 +7,7 @@ import useHomePage from "./useHomePage"
 import useContactPage from "./useContactPage"
 import useBlog from './useBlog'
 import useJobsPage from "./useJobsPage"
+import useServicePage from "./useServicePage"
 
 export {
   useServices,
@@ -18,4 +19,5 @@ export {
   useContactPage,
   useBlog,
   useJobsPage,
+  useServicePage
 }

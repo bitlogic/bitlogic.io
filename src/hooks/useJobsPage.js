@@ -4,7 +4,7 @@ const useJobsPage = () => {
     const query = useStaticQuery(graphql`
     {
       strapiJobsPage {
-        banner
+        title
         pageMetadata {
           pageDescription
           pageKeywords

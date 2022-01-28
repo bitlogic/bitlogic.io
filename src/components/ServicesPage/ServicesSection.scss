@@ -10,6 +10,8 @@
     p {
       color: $primary;
       font-size: $small;
+      text-align: justify;
+      margin-bottom: 10px;
     }
   }
   &__icon {
@@ -20,7 +22,7 @@
     color: $primary;
     font-weight: $bold;
     font-size: $medium;
-    margin-bottom: 45px;
+    margin-bottom: 25px;
   }
   &__block {
     @extend %border-shadowed;

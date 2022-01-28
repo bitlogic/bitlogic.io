@@ -29,8 +29,10 @@
             background-color: $blue;
             overflow: hidden;
             transform: skew(-20deg);
+            margin-left: 10px;
 
             p {
+                font-size: $medium;
                 padding: 10px;
                 margin-bottom: 0;
                 color: $white;
@@ -55,6 +57,10 @@
             span {
                 margin-top: 0;
                 margin-left: 15px;
+
+                p{
+                    font-size: $large;
+                }
             }
         }
     }
