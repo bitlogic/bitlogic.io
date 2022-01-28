@@ -66,7 +66,7 @@ const useHomePage = () => {
               homeIcon {
                 localFile {
                   childImageSharp {
-                    gatsbyImageData
+                    gatsbyImageData(height: 90)
                   }
                 }
               }
