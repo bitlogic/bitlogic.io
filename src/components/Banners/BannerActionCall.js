@@ -1,11 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BannerActionCall.scss"
 
 const BannerActionCall = ({ banner }) => {
-  const icon = getImage(banner?.logo?.localFile)
+  const icon = getImage(banner?.image?.localFile)
 
   return (
     <div className="bannerActCall">

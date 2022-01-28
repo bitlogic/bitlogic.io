@@ -1,5 +1,5 @@
 import React from "react"
-import { useServices, useBanner } from "../../hooks"
+import { useServices, useBanner, useServicePage } from "../../hooks"
 import Layout from "../layout"
 import { BannerTop, BannerActionCall, ServiceCard, Seo } from "../index"
 
@@ -9,18 +9,16 @@ const ServicesSection = () => {
   const servicesData = useServices()
   const bannerData = useBanner()
 
+  const servicesPageData = useServicePage()
+
   const servicesList = servicesData?.allStrapiServices?.nodes
 
   const servicesToDisplay = servicesList?.map(service => (
     <ServiceCard key={service.id} service={service} />
   ))
 
-  const bannerTop = bannerData?.allStrapiBanners?.nodes.find(
-    banner => banner.page === "services" && banner.type === "top"
-  )
-  const bannerActionCall = bannerData?.allStrapiBanners?.nodes.find(
-    banner => banner.page === "services" && banner.type === "actionCall"
-  )
+  const bannerTop = servicesPageData?.strapiServicesPage?.topBanner
+  const bannerActionCall = servicesPageData?.strapiServicesPage?.actionCallBanner
 
   const {
     pageDescription,

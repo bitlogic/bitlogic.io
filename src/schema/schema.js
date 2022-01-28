@@ -24,6 +24,30 @@ type StrapiServicesPage implements Node {
   ): Date
   pageMetadata: StrapiServicesPagePageMetadata
   strapiId: Int
+  topBanner: StrapiServicesPageTopBanner
+  actionCallBanner: StrapiServicesPageActionCallBanner
+}
+
+type StrapiServicesPageTopBanner {
+  id: Int
+  title: String
+  summary: String
+  bgImage: LocalFile
+  bgImageDarkMode: LocalFile
+}
+
+type StrapiServicesPageActionCallBanner {
+  id: Int
+  title: String
+  link: StrapiServicesPageActionCallBannerLink
+  image: LocalFile
+  imageDarkMode: LocalFile
+}
+
+type StrapiServicesPageActionCallBannerLink {
+  id: Int
+  name: String
+  pathTo: String
 }
 
 type StrapiServicesPagePageMetadata {
@@ -92,7 +116,148 @@ type StrapiHome implements Node {
   sections: [StrapiHomeSections]
   pageMetadata: StrapiHomePageMetadata
   strapiId: Int
+  topHomeBanner: StrapiHomeTopHomeBanner
+  infoBgBanner: StrapiHomeInfoBgBanner
+  infoImgBanner: StrapiHomeInfoImgBanner
+  infoBanner: StrapiHomeInfoBanner
+  servicesBlock: StrapiHomeServicesBlock
+  edtechBlock: StrapiHomeEdtechBlock
+  partnersBlock: StrapiHomePartnersBlock
 }
+
+type StrapiHomeTopHomeBanner {
+  id: Int
+  title: String
+  image: LocalFile
+  imageDarkMode: LocalFile
+  bgImage: LocalFile
+  bgImageDarkMode: LocalFile
+}
+
+type StrapiHomeInfoBgBanner {
+  id: Int
+  title: String
+  link: StrapiHomeInfoBgBannerLink
+  bgImage: LocalFile
+  bgImageDarkMode: LocalFile
+}
+
+type StrapiHomeInfoBgBannerLink {
+  id: Int
+  name: String
+  pathTo: String
+}
+
+type StrapiHomeInfoImgBanner {
+  id: Int
+  title: String
+  subtitle: String
+  image: LocalFile
+  imageDarkMode: LocalFile
+}
+
+type StrapiHomeInfoBanner {
+  id: Int
+  title: String
+  link: StrapiHomeInfoBannerLink
+}
+
+type StrapiHomeInfoBannerLink {
+  id: Int
+  name: String
+  pathTo: String
+}
+
+type StrapiHomeServicesBlock {
+  id: Int
+  title: String
+  type: String
+  enable: Boolean
+  services: [StrapiHomeServicesBlockServices]
+}
+
+type StrapiHomeServicesBlockServices {
+  id: Int
+  title: String
+  description: String
+  visible: Boolean
+  homeIntro: String
+  homeTitle: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  icon: LocalFile
+  iconDarkMode: LocalFile
+}
+
+type StrapiHomeEdtechBlock {
+  id: Int
+  title: String
+  type: String
+  enable: Boolean
+  edteches: [StrapiHomeEdtechBlockEdteches]
+}
+
+type StrapiHomeEdtechBlockEdteches {
+  id: Int
+  title: String
+  content: String
+  homeIntro: String
+  homeTitle: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  icon: LocalFile
+  homeIcon: LocalFile
+  iconDarkMode: LocalFile
+  homeIconDarkMode: LocalFile
+}
+
+type StrapiHomePartnersBlock {
+  id: Int
+  title: String
+  partners: [StrapiHomePartnersBlockPartners]
+}
+
+type StrapiHomePartnersBlockPartners {
+  id: Int
+  text: String
+  caption: String
+  image: LocalFile
+  imageDark: LocalFile
+}
+
+
 
 type StrapiHomePageMetadata {
   id: Int
@@ -384,6 +549,30 @@ type StrapiEdTechPage implements Node {
   SEO: StrapiEdTechPageSEO
   banners: [StrapiEdTechPageBanners]
   strapiId: Int
+  topBanner: StrapiEdTechPageTopBanner
+  actionCallBanner: StrapiEdTechPageActionCallBanner
+}
+
+type StrapiEdTechPageTopBanner {
+  id: Int
+  title: String
+  summary: String
+  bgImage: LocalFile
+  bgImageDarkMode: LocalFile
+}
+
+type StrapiEdTechPageActionCallBanner {
+  id: Int
+  title: String
+  link: StrapiEdTechPageActionCallBannerLink
+  image: LocalFile
+  imageDarkMode: LocalFile
+}
+
+type StrapiEdTechPageActionCallBannerLink {
+  id: Int
+  name: String
+  pathTo: String
 }
 
 type StrapiEdTechPageSEO {
@@ -497,7 +686,23 @@ type StrapiBitwayPage implements Node {
   strapiId: Int
   banners: [StrapiBitwayPageBanners]
   banner: [StrapiBitwayPageBanner]
+  actionCallBanner: StrapiBitwayPageActionCallBanner
 }
+
+type StrapiBitwayPageActionCallBanner {
+  id: Int
+  title: String
+  link: StrapiBitwayPageActionCallBannerLink
+  image: LocalFile
+  imageDarkMode: LocalFile
+}
+
+type StrapiBitwayPageActionCallBannerLink {
+  id: Int
+  name: String
+  pathTo: String
+}
+
 
 type StrapiBitwayPageBanner {
   id: Int
@@ -1088,6 +1293,22 @@ type StrapiBlogPage implements Node {
   ): Date
   pageMetadata: StrapiBlogPagePageMetadata
   strapiId: Int
+  title: String
+  actionCallBanner: StrapiBlogPageActionCallBanner
+}
+
+type StrapiBlogPageActionCallBanner {
+  id: Int
+  title: String
+  link: StrapiBlogPageActionCallBannerLink
+  image: LocalFile
+  imageDarkMode: LocalFile
+}
+
+type StrapiBlogPageActionCallBannerLink {
+  id: Int
+  name: String
+  pathTo: String
 }
 
 type StrapiBlogPagePageMetadata {
