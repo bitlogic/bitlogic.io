@@ -762,6 +762,7 @@ type StrapiBitwayPageSectionsGalleryImage {
   text: String
   caption: String
   image: LocalFile
+  imageDark: LocalFile
 }
 
 type StrapiBlogCategory implements Node {
@@ -1420,7 +1421,7 @@ type StrapiJobsPage implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
-  banner: String
+  title: String
   published_at(
     formatString: String
     fromNow: Boolean
