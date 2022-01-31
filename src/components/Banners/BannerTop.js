@@ -6,10 +6,10 @@ import "./BannerTop.scss"
 import { useTheme } from "../../context/themeContext"
 
 const BannerTop = ({ banner }) => {
-  const { bgImage, bgImageDarkMode, title, summary } = banner
+  const { bgImage, bgImageDarkMode, image, title, summary } = banner
   const { theme } = useTheme()
 
-  const imageBanner = getImage(bgImage?.localFile)
+  const imageBanner = getImage(bgImage?.localFile) || getImage(image?.localFile)
   const imageDM = getImage(bgImageDarkMode?.localFile)
 
   return (
