@@ -81,7 +81,7 @@
   }
 }
 
-@media (min-width: $breakpoint-desktop) {
+@media (min-width: $breakpoint-lg) {
   .ServiceCards {
     &__mainTitle {
       h1,
@@ -109,4 +109,3 @@
     }
   }
 }
-

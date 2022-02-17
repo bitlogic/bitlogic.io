@@ -5,7 +5,7 @@ import './Hero.scss';
 
 export default function Hero() {
     const data = useHomePage()
-    const richText = data?.allStrapiHome?.nodes[0].Hero[0].title
+    const richText = data?.allStrapiHome?.nodes[0].body[0].title
     console.log(richText)
 
     const regexTitle = /(# )(.*)/g;
@@ -22,25 +22,20 @@ export default function Hero() {
 
     return (
         <>
-            <div className="container">
+            <div className="container d-flex flex-column flex-xl-row-reverse">
+
                 <StaticImage
                     src='../../../public/destinos-naturaleza-copia-640x400.jpg'
                     placeholder="blurred"
                 />
 
                 <div className="content-text">
-                    <div>
-                        <h2>{title}</h2>
-                    </div>
-                    <div>
-                        <h2 className="visible">
-                            <ul>
-                                {listOfWords.map(word => <li>{word}</li>)}
-
-                            </ul>
-                        </h2>
-                    </div>
-
+                    <h2>{title}</h2>
+                    <h2 className="visible">
+                        <ul>
+                            {listOfWords.map(word => <li>{word}</li>)}
+                        </ul>
+                    </h2>
                 </div>
 
             </div>

@@ -92,7 +92,7 @@
   }
 }
 
-@media (min-width: $breakpoint-desktop) {
+@media (min-width: $breakpoint-lg) {
   .bitway-paragraph {
     & h1,
     h2,
@@ -110,7 +110,7 @@
     }
 
     & > div > p {
-    padding: 0 80px 20px;
+      padding: 0 80px 20px;
     }
   }
 }

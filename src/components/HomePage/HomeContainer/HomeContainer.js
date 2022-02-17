@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useHomePage } from "../../../hooks/index"
+import Hero from "../../Hero/Hero"
 import Layout from "../../layout"
 import { Seo } from "../../index"
 
@@ -8,7 +9,7 @@ import "./HomeContainer.scss"
 // Dynamic zone components:
 
 const bodyComponents = {
-  "home.hero": data => <p>Hero</p>,
+  "home.hero": data => <Hero />,
   "home.transition": data => <p>Transition</p>,
   "home.quote": data => <p>Quote</p>,
   "home.video-background": data => <p>video background</p>,

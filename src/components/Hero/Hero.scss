@@ -129,9 +129,6 @@
   }
 
   .content-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     line-height: 40px;
     height: 40px;
     color: #333;
@@ -148,6 +145,7 @@
     h2 {
       font-size: 30px;
       margin: 0;
+      text-align: center;
     }
 
     ul {
@@ -180,9 +178,16 @@
 }
 
 //estilos de 768 para arriba
-@media screen and (min-width: 767px) {
+@media screen and (min-width: $breakpoint-md) {
   .container {
     .content-text {
+      line-height: 65px;
+      height: 65px;
+
+      .visible{
+        height: 65px;
+      }
+
       h2 {
         font-size: $extra-large;
       }
@@ -194,7 +199,7 @@
 
         li {
           font-size: $extra-large;
-          padding-left: 150px;
+          line-height: 65px;
         }
       }
     }

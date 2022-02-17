@@ -71,7 +71,7 @@
   }
 }
 
-@media (min-width: $breakpoint-desktop) {
+@media (min-width: $breakpoint-lg) {
   .article {
     &__container {
       flex-direction: column;
