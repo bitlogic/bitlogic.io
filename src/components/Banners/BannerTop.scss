@@ -37,7 +37,7 @@
   }
 }
 
-@media (min-width: $breakpoint-tablet) {
+@media (min-width: $breakpoint-md) {
   .banner {
     &__bgImage {
       min-height: 600px;

@@ -1,24 +1,22 @@
 @import "../../styles/global.scss";
 
-.cats-multiselect{
+.cats-multiselect {
   &-label {
     color: $primary !important;
-    
   }
-  &-dropdown-menu{
+  &-dropdown-menu {
     background: $primary-container !important;
     color: $primary !important;
-    
   }
 
-  &-option{
+  &-option {
     cursor: pointer;
-    &:hover{
+    &:hover {
       background: rgba(128, 128, 128, 0.13) !important;
     }
   }
 
-  &-search input{
+  &-search input {
     background: $primary-container !important;
     color: $primary !important;
   }
@@ -38,9 +36,9 @@
     overflow: hidden;
     a {
       color: $title-jobs;
-      font-weight: 700; 
+      font-weight: 700;
       font-size: $medium;
-      padding-bottom: 10px;   
+      padding-bottom: 10px;
     }
   }
 
@@ -59,10 +57,10 @@
 }
 
 .cats-chevron {
-    color: $primary !important;
-    & path {
-        fill: $primary !important;
-    }
+  color: $primary !important;
+  & path {
+    fill: $primary !important;
+  }
 }
 
 .widget-container {
@@ -79,7 +77,6 @@
   padding-left: 15px !important;
   border-bottom: 2px solid $border-bottom !important;
   border-top: 2px solid $border-bottom !important;
-
 }
 
 .banner__head {
@@ -121,39 +118,37 @@
   }
 }
 
-.cats-mobile{
-  &-column-name{
-    font-size:$small;
+.cats-mobile {
+  &-column-name {
+    font-size: $small;
   }
 }
 
-@media (min-width: $breakpoint-tablet) {
-
+@media (min-width: $breakpoint-md) {
   .cats-column-name {
-    span{
+    span {
       font-size: $large;
     }
   }
   .cats-job {
-  
     &-title {
       a {
-        font-size: $large;  
+        font-size: $large;
       }
     }
-  
+
     &-column-value {
       font-size: $medium;
     }
   }
 
-  .cats-mobile{
-    &-column-name{
-      font-size:$medium;
+  .cats-mobile {
+    &-column-name {
+      font-size: $medium;
     }
   }
 
-  .cats-multiselect-label{
+  .cats-multiselect-label {
     font-size: $large;
   }
 
@@ -177,7 +172,7 @@
   }
 }
 
-@media (min-width: $breakpoint-desktop) {
+@media (min-width: $breakpoint-lg) {
   .cats-job {
     &-column-value {
       font-size: $large;

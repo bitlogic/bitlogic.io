@@ -66,9 +66,11 @@ $bottom-yellow: 4px solid $yellow;
   border-radius: 18px;
 }
 
-$breakpoint-mobile: 480px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1025px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
 
 .notFoundPage{
   height: calc(100vh - 240px - 96px);
