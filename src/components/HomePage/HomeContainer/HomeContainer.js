@@ -7,6 +7,7 @@ import "./HomeContainer.scss"
 
 // Dynamic zone components:
 import AnimatedTransitionContinous from "../../animatedTransitionContinous/AnimatedTransitionContinous"
+import Quote from "../../quote/Quote"
 
 const bodyComponents = {
   "home.hero": data => <p>Hero</p>,
@@ -15,7 +16,7 @@ const bodyComponents = {
       {data.text}
     </AnimatedTransitionContinous>
   ),
-  "home.quote": data => <p>Quote</p> ,
+  "home.quote": data => <Quote data={data} />,
   "home.video-background": data => <p>video background</p>,
   "home.dual-section": data => <p>dual section</p>,
 }
