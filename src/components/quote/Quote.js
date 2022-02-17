@@ -9,7 +9,7 @@ const Quote = ({ data: { description, title, variant, profile, image } }) => {
       <div className="quote-body">
         <img
           placeholder="https://via.placeholder.com/900"
-          src={"http://localhost:1337" + image.url}
+          src={image.url}
           alt=""
         />
       </div>
@@ -22,7 +22,7 @@ const Quote = ({ data: { description, title, variant, profile, image } }) => {
       <div className="quote-profile make-it-fast">
         <img
           placeholder="https://via.placeholder.com/300"
-          src={"http://localhost:1337" + profile.url}
+          src={profile.url}
           alt=""
         />
       </div>
