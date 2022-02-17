@@ -5,8 +5,9 @@ import './Hero.scss';
 
 export default function Hero() {
     const data = useHomePage()
-    const richText = data?.allStrapiHome?.nodes[0].body[0].title
-    console.log(richText)
+    const dataDinamyc = data?.allStrapiHome?.nodes[0].body[0]
+    const richText = dataDinamyc.title
+    const image = dataDinamyc.image.url
 
     const regexTitle = /(# )(.*)/g;
 
@@ -24,12 +25,12 @@ export default function Hero() {
         <>
             <div className="container d-flex flex-column flex-xl-row-reverse">
 
-                <StaticImage
-                    src='../../../public/destinos-naturaleza-copia-640x400.jpg'
+                <img
+                    src={image}
                     placeholder="blurred"
                 />
 
-                <div className="content-text">
+                <div className="content-text align-self-center">
                     <h2>{title}</h2>
                     <h2 className="visible">
                         <ul>
