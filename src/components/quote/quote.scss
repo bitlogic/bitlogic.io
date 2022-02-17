@@ -1,0 +1,74 @@
+.quote {
+  display: grid;
+  padding: 0 4em;
+  gap: 3em;
+  margin-bottom: 3em;
+  &-body {
+    grid-area: quote-body;
+    img {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+    }
+  }
+  &-person {
+    grid-area: quote-person;
+    display: flex;
+    flex-direction: column;
+    &-title {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+    &-text {
+      font-size: 1em;
+    }
+    &-profile {
+      flex-grow: 0;
+      align-self: flex-start;
+      border-radius: 50%;
+      position: relative;
+      &::before {
+        content: "";
+        inset: 0px 0px 0px 0px;
+        position: absolute;
+        background-color: #22c0c329;
+        z-index: -1;
+        border-radius: 50%;
+        animation: move-shadow 10s infinite linear;
+      }
+      &::after {
+        content: "";
+        inset: 0px 0px 0px 0px;
+        position: absolute;
+        background-color: #22c0c325;
+        z-index: -1;
+        border-radius: 50%;
+        animation: move-shadow 10s infinite linear;
+        animation-delay: 3s;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+      }
+    }
+
+    @keyframes move-shadow {
+      0% {
+        transform: translate3d(7px, 0px, 0px);
+      }
+      25% {
+        transform: translate3d(0px, 7px, 0px);
+      }
+      50% {
+        transform: translate3d(-7px, 0px, 0px);
+      }
+      75% {
+        transform: translate3d(0px, -7px, 0px);
+      }
+      100% {
+        transform: translate3d(7px, 0px, 0px);
+      }
+    }
+  }
+}
