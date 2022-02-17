@@ -96,13 +96,13 @@
   }
 
   grid-template-rows: auto 1fr;
-  @media screen and (max-width: $breakpoint-desktop) {
+  @media screen and (max-width: $breakpoint-lg) {
     grid-template-areas: "quote-body quote-body" "quote-profile quote-person";
     grid-template-columns: auto 1fr;
     padding: 1em;
   }
 
-  @media screen and (max-width: $breakpoint-tablet) {
+  @media screen and (max-width: $breakpoint-md) {
     display: flex;
     flex-direction: column;
     gap: 1em;

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useHomePage } from "../../../hooks/index"
+import Hero from "../../Hero/Hero"
 import Layout from "../../layout"
 import { Seo } from "../../index"
 
@@ -11,7 +12,7 @@ import Quote from "../../quote/Quote"
 import VideoBackground from "../../videoBackground/VideoBackground"
 
 const bodyComponents = {
-  "home.hero": data => <p>Hero</p>,
+  "home.hero": data => <Hero data={data}/>,
   "home.transition": data => (
     <AnimatedTransitionContinous>
       {data.text}
