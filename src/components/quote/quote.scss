@@ -1,0 +1,113 @@
+@import "../../styles/global.scss";
+
+.quote {
+  display: grid;
+  padding: 0 4em;
+  gap: 3em;
+  margin-bottom: 3em;
+
+  &-body {
+    grid-area: quote-body;
+    img {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+    }
+  }
+
+  &-person {
+    grid-area: quote-person;
+    display: flex;
+    flex-direction: column;
+    &-title {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+    &-text {
+      font-size: 1em;
+    }
+    @keyframes move-shadow {
+      0% {
+        transform: translate3d(12px, 0px, 0px);
+      }
+      25% {
+        transform: translate3d(0px, 12px, 0px);
+      }
+      50% {
+        transform: translate3d(-12px, 0px, 0px);
+      }
+      75% {
+        transform: translate3d(0px, -12px, 0px);
+      }
+      100% {
+        transform: translate3d(12px, 0px, 0px);
+      }
+    }
+  }
+
+  &-profile {
+    grid-area: quote-profile;
+    flex-grow: 0;
+    align-self: flex-start;
+    border-radius: 50%;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    z-index: 4;
+    &::before {
+      content: "";
+      inset: 0px 0px 0px 0px;
+      position: absolute;
+      background-color: #22c0c329;
+      border-radius: 50%;
+      animation: move-shadow 7s infinite linear;
+      z-index: -1;
+    }
+    &::after {
+      content: "";
+      inset: 0px 0px 0px 0px;
+      position: absolute;
+      background-color: #22c0c325;
+      border-radius: 50%;
+      animation: move-shadow 7s infinite linear;
+      animation-delay: 3s;
+      z-index: -1;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+  }
+}
+
+// variantes
+.variant {
+  &-quote {
+    grid-template-areas: "quote-person quote-body" "quote-profile quote-body";
+    grid-template-columns: 1fr 2fr;
+    @extend .variant;
+  }
+
+  &-image {
+    grid-template-areas: "quote-body quote-person" "quote-body quote-profile";
+    grid-template-columns: 2fr 1fr;
+    @extend .variant;
+  }
+
+  grid-template-rows: auto 1fr;
+  @media screen and (max-width: $breakpoint-lg) {
+    grid-template-areas: "quote-body quote-body" "quote-profile quote-person";
+    grid-template-columns: auto 1fr;
+    padding: 1em;
+  }
+
+  @media screen and (max-width: $breakpoint-md) {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,13 +1,9 @@
 import React from 'react';
-import { useHomePage } from "../../hooks/index"
-import { StaticImage } from "gatsby-plugin-image"
 import './Hero.scss';
 
-export default function Hero() {
-    const data = useHomePage()
-    const dataDinamyc = data?.allStrapiHome?.nodes[0].body[0]
-    const richText = dataDinamyc.title
-    const image = dataDinamyc.image.url
+export default function Hero({data}) {
+    const richText = data.title
+    const image = data.image.url
 
     const regexTitle = /(# )(.*)/g;
 
