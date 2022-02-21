@@ -1,6 +1,5 @@
 import * as React from "react"
 import { useHomePage } from "../../../hooks/index"
-import Hero from "../../Hero/Hero"
 import Layout from "../../layout"
 import { Seo } from "../../index"
 
@@ -10,17 +9,17 @@ import "./HomeContainer.scss"
 import AnimatedTransitionContinous from "../../animatedTransitionContinous/AnimatedTransitionContinous"
 import Quote from "../../quote/Quote"
 import VideoBackground from "../../videoBackground/VideoBackground"
+import Hero from "../../Hero/Hero"
+import DualSection from "../../DualSection/DualSection"
 
 const bodyComponents = {
-  "home.hero": data => <Hero data={data}/>,
+  "home.hero": data => <Hero data={data} />,
   "home.transition": data => (
-    <AnimatedTransitionContinous>
-      {data.text}
-    </AnimatedTransitionContinous>
+    <AnimatedTransitionContinous>{data.text}</AnimatedTransitionContinous>
   ),
   "home.quote": data => <Quote data={data} />,
-  "home.video-background": data => <VideoBackground data={data} /> ,
-  "home.dual-section": data => <p>dual section</p>,
+  "home.video-background": data => <VideoBackground data={data} />,
+  "home.dual-section": data => <DualSection data={data} />,
 }
 
 const Home = () => {
