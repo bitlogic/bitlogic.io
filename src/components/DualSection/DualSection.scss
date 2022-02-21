@@ -1,0 +1,16 @@
+@import "../../styles/global.scss";
+
+.dualSection {
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  &__image {
+    width: 300px;
+  }
+}
+
