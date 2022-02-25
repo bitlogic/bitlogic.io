@@ -24,7 +24,6 @@ const bodyComponents = {
 
 const Home = () => {
   const data = useHomePage()
-  console.log(data)
   const { pageTitle, pageDescription, pageKeywords } =
     data?.allStrapiHome?.nodes[0]?.pageMetadata || {}
 
