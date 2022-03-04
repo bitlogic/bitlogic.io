@@ -1,52 +1,31 @@
 import React from "react";
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { useFooter } from '../../../hooks';
-import { Link } from 'gatsby';
-import { FaIcon } from "../../FaIcon/FaIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./contactData.scss";
 
 export default function ContactData() {
   const data = useFooter();
   const dataFooter = data?.allStrapiLayout?.nodes[0].footer;
 
-  const logo = getImage(dataFooter?.logo?.localFile?.childImageSharp?.gatsbyImageData);
-
-  /* const location = dataFooter.location?.iconText.map((item) => {
-   
-  }) */
-
-  const navegationItems = dataFooter?.navegation?.pageLink
-
-  const navegationParts = navegationItems.map((section) =>
-    <div className="ContactData__Item">
-      <Link to={section.pathTo}>{section.name}</Link>
-    </div>
-  );
+  const contact = dataFooter?.contact?.iconText.map((item) => {
+    return (
+      <p className="icon-text">
+        <FontAwesomeIcon icon={item.icon.type, item.icon.code} />
+        {item.name}
+      </p>
+    )
+  });
 
   return (
     <>
       <div className='ContactData__Item'>
-        <h3>{dataFooter?.location?.title}</h3>
-        <p> <FaIcon type="text" code="name"/> </p>
-        
-      </div>
-      <div className='ContactData__Item'>
-        <h3>{dataFooter.navegation?.title}</h3>
-        <ul>
-          <li>{navegationParts}</li>
-        </ul>
-      </div>
-{/* 
-      <div className='ContactData__Item'>
-        <Link to={dataFooter.contact.internalLink.pathTo}>{dataFooter.contact.internalLink.name}</Link>
         <h3>{dataFooter.contact.title}</h3>
-        <p>{dataFooter.contact.phone}</p>
-        <p>{dataFooter.contact.email}</p>
-      </div>
+        <p className='ContactData__Item__contact'>{contact}</p>
 
-      <Link to="/">
-        <GatsbyImage image={logo} />
-      </Link> */}
+        <div className='ContactData__Item__link'>
+          <a href={dataFooter.internalLink.pathTo}>{dataFooter.internalLink.name}</a>
+        </div>
+      </div>
     </>
 
   )

@@ -1,31 +1,45 @@
-.ContactData {
-  list-style: none;
-  display: flex;
-  flex-flow: row wrap;
-  margin-bottom: 1.5rem;
-}
+@import "../../../styles/global.scss";
 
 .ContactData__Item {
-  color: #fff;
-  font-size: 14px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 25px;
-  padding-right: 5px;
-  margin-bottom: 0;
-}
-@media screen and (min-width: 576px) {
-  .ContactData {
-    flex-flow: column nowrap;
-  }
-}
-@media screen and (min-width: 992px) {
-  .ContactData {
-    margin-bottom: 0;
+  color: $white;
+  h3 {
+    color: $white;
+    font-size: $medium;
   }
 
+  &__contact {
+    display: none;
+
+    .icon-text {
+      font-size: 16px;
+    }
+  }
+  &__link {
+    a {
+      color: #8761fc;
+      font-weight: bold;
+      text-decoration: underline #8761fc;
+      font-size: 18px;
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-md) {
   .ContactData__Item {
-    text-align: center;
+    &__contact {
+      display: block;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .ContactData__Item {
+    .icon-text {
+      font-size: 18px;
+    }
+    &__link {
+      a {
+        font-size: 20px;
+      }
+    }
   }
 }

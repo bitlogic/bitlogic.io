@@ -1,0 +1,10 @@
+@import "../../../styles/global.scss";
+
+.SocialMedia {
+  &__Links {
+    margin-bottom: 20px;
+    a {
+      color: $white;
+    }
+  }
+}
