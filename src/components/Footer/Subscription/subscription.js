@@ -66,7 +66,7 @@ export default function Subscription() {
             return false;
         }
 
-        alert(`${JSON.stringify(values)}, subscripción exitosa`);
+        alert(`Subscripción exitosa`);
     }
 
     const { email } = values;
