@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useFooter = () => {
-  const query = useStaticQuery(graphql`
+  return useStaticQuery(graphql`
     {
       allStrapiLayout {
         nodes {
@@ -66,7 +66,6 @@ const useFooter = () => {
       }          
     }       
   `)
-  return query
 }
 
 export default useFooter
