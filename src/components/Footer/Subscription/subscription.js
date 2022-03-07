@@ -24,11 +24,6 @@ export default function Subscription() {
             isValid = false;
         }
 
-        if (email && !/\S+@\S+\.\S+/.test(email)) {
-            validations.email = 'Formato inválido, debe ser  example@mail.com';
-            isValid = false;
-        }
-
         if (!isValid) {
             setValidations(validations);
         }
@@ -43,10 +38,6 @@ export default function Subscription() {
 
         if (!value) {
             message = `${name} es requerido`;
-        }
-
-        if (value && name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
-            message = 'Formato inválido, debe ser example@mail.com';
         }
 
         setValidations({ ...validations, [name]: message });

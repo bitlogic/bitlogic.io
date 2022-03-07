@@ -35,6 +35,9 @@
   .ContactData__Item {
     .icon-text {
       font-size: 18px;
+      svg {
+        margin-right: 10px;
+      }
     }
     &__link {
       a {

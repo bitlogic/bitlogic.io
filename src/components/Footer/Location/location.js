@@ -1,6 +1,6 @@
 import React from "react";
 import { useFooter } from '../../../hooks';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import FaIcon from "../../FaIcon/FaIcon"
 import "./location.scss";
 
 export default function Location() {
@@ -9,8 +9,8 @@ export default function Location() {
 
     const location = dataFooter.location?.iconText.map((item) => {
         return (
-            <p>
-                <FontAwesomeIcon icon={item.icon.type, item.icon.code} />
+            <p className="icon-text d-flex">
+                <FaIcon type={item.icon.type} code={item.icon.code} />
                 {item.name}
             </p>
         )

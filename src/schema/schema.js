@@ -1212,7 +1212,7 @@ type StrapiLayoutFooter {
   location: StrapiLayoutFooterLocation
   contact: StrapiLayoutFooterContact
   internalLink: StrapiLayoutFooterInternalLink
-  logo: StrapiLayoutFooterLogo
+  logo: LocalFile
 }
 
 type StrapiLayoutFooterSubscription {
@@ -1465,7 +1465,6 @@ type StrapiLayoutFooterLogo {
 }
 
 `
-
 
 
 module.exports = {
