@@ -2,56 +2,76 @@ import React from "react"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import { Link } from "gatsby"
-import logo from "../../images/logoprincipal.png"
+import ContactData from "./ContactData/contactData"
+import Location from './Location/location';
+import SocialLinks from "./SocialLinks/socialLinks"
+import Navegation from './Navegation/navegation';
+import Subscription from './Subscription/subscription';
 import "./Footer.scss"
-import ContactData from "../../constants/ContactData/contactData"
-import SocialLinks from "../../constants/SocialLinks/socialLinks"
+
 
 const Footer = () => {
   return (
     <>
       <div className="Footer">
-        <Container className="Footer__Container">
+        <Container fluid className="Footer__Container fluid">
           <Row className="Footer__Row">
             <Col
-              xs={12}
-              md={12}
+              xs={6}
+              md={3}
               lg={4}
-              className="Footer__Col Footer__Col__Logo"
+              xl={3}
+              className="Footer__Col Footer__Col__Navegation"
             >
-              {" "}
-              <Link to="/">
-                <img
-                  src={logo}
-                  width={143}
-                  // quality={95}
-                  formats={["AUTO", "WEBP", "AVIF"]}
-                  alt="logo bitlogic"
-                  //   style={{ marginLeft: `58px`, marginBottom: "0rem" }}
-                  className="Footer__Logo d-inline-block align-center"
-                />
-              </Link>
+              <div className="Footer__Title">
+                <Navegation />
+              </div>
             </Col>
+
             <Col
-              xs={12}
-              md={6}
+              xs={6}
+              md={4}
               lg={4}
+              xl={3}
               className="Footer__Col Footer__Col__Contact"
             >
               <div className="Footer__Title">
-                <h3 className="Footer__Title__Text">Contacto</h3>
                 <ContactData />
               </div>
             </Col>
+
+            <Col
+              xs={6}
+              md={4}
+              lg={4}
+              xl={3}
+              className="Footer__Col Footer__Col__Contact d-none d-xl-block"
+            >
+              <div className="Footer__Title">
+                <Location />
+              </div>
+            </Col>
+
             <Col
               xs={12}
-              md={6}
+              md={5}
               lg={4}
+              xl={3}
+              className="Footer__Col Footer__Col__Navegation"
+            >
+              <div className="Footer__Title">
+                <Subscription />
+              </div>
+            </Col>
+
+            <Col
+              xs={12}
+              md={12}
+              lg={12}
               className="Footer__Col Footer__Col__Social"
             >
               <div className="Footer__Title">
-                <h3 className="Footer__Title__Text">S&iacute;guenos</h3>
+
                 <SocialLinks />
               </div>
             </Col>

@@ -1,0 +1,57 @@
+@import "../../../styles/global.scss";
+
+.ContactData {
+  &__Item {
+    .titleSubscription {
+      display: none;
+    }
+  }
+
+  &__Form {
+    label {
+      margin-right: 5px;
+    }
+    input {
+      width: 100%;
+      border-radius: 5px;
+    }
+    button {
+      background: #8761fc;
+      border: none;
+      border-radius: 5px;
+      color: $white;
+      font-size: $small;
+      font-weight: bold;
+      padding: 5px;
+      width: 40%;
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-md) {
+  .ContactData {
+    &__Item {
+      .titleSubscription {
+        display: block;
+      }
+    }
+    &__Form {
+      input {
+        margin-bottom: 10px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .ContactData {
+    &__Form {
+      input {
+        width: 75%;
+      }
+      button {
+        width: 35%;
+      }
+    }
+  }
+}
