@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../FontAwesomeOne/FontAwesomeOne"
 
 
-const Icon = ({ type, code }) => {
+const FaIcon = ({ type, code }) => {
   return (
     <div>
-      <FontAwesomeIcon icon={[ type, code ]} />
+      <FontAwesomeIcon icon={[type, code]} />
     </div>
   )
 }
 
-export default Icon
+export default FaIcon

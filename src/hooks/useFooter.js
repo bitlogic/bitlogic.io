@@ -35,7 +35,7 @@ const useFooter = () => {
             logo {
               localFile {
                 childImageSharp {
-                  gatsbyImageData
+                  gatsbyImageData(width: 143, height: 43)
                 }
               }
             }
