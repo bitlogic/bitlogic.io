@@ -14,8 +14,8 @@ const Footer = () => {
   return (
     <>
       <div className="Footer">
-        <Container fluid className="Footer__Container fluid">
-          <Row className="Footer__Row">
+        <Container fluid className="Footer__Container">
+          <Row className="Footer__Row ps-xl-5">
             <Col
               xs={6}
               md={3}
@@ -47,7 +47,7 @@ const Footer = () => {
               xl={3}
               className="Footer__Col Footer__Col__Contact d-none d-xl-block"
             >
-              <div className="Footer__Title">
+              <div className="Footer__Title ps-xl-3">
                 <Location />
               </div>
             </Col>

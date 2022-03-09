@@ -1,7 +1,6 @@
 import "./quote.scss"
 
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
 
 const Quote = ({ data: { description, title, variant, profile, image } }) => {
   return (
