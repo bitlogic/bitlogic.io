@@ -22,7 +22,7 @@
     & > div {
       display: flex;
       animation: scrollText 120s infinite linear;
-      &:hover{
+      &:hover {
         animation-play-state: paused;
       }
       @keyframes scrollText {
@@ -37,16 +37,14 @@
     h1 {
       margin: 0;
       font-size: 60px;
-      color: rgba(255, 255, 255, 1);
+      color: rgba(255, 255, 255, 1) transparent;
       transition: all 1s ease;
       -webkit-text-stroke: 1px black;
-      color: transparent;
       cursor: default;
-     &:hover{
-      text-decoration: none;
-      color: black;
-     }
+      &:hover {
+        text-decoration: none;
+        color: black;
+      }
     }
   }
 }
-
