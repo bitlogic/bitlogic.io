@@ -4,9 +4,16 @@ import "./layout.scss"
 import Footer from "./Footer/Footer"
 import ScriptTag from "react-script-tag"
 import useGlobalConfig from "../hooks/useGlobalConfig"
-import ThemeProvider from '../context/themeContext'
+import ThemeProvider from "../context/themeContext"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, options = {} }) => {
+  const defaultOptions = {
+    hasHeader: true,
+    hasFooter: true,
+  }
+
+  options = { ...defaultOptions, ...options }
+
   const config = useGlobalConfig()
   const scripts = config?.allStrapiGlobalConfig?.nodes.map(item =>
     item?.script?.map(script =>
@@ -25,10 +32,10 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider>
       {scripts}
-      <Header />
+      {options.hasHeader && <Header />}
 
       <main>{children}</main>
-      <Footer />
+      {options.hasFooter && <Footer />}
       {/*© {new Date().getFullYear()}, Built with*/}
     </ThemeProvider>
   )
