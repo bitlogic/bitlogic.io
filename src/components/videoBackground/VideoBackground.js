@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from "react"
-import { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./videoBackground.scss"
 const VideoBackground = ({ data: { video, description, button } }) => {
   const [isVideoPause, setIsVideoPause] = useState(false)
@@ -7,9 +6,9 @@ const VideoBackground = ({ data: { video, description, button } }) => {
 
   const pausePlay = () => {
     if (isVideoPause) {
-        videoRef.current.play()
+      videoRef.current.play()
     } else {
-        videoRef.current.pause()
+      videoRef.current.pause()
     }
     setIsVideoPause(prev => !prev)
   }
@@ -18,15 +17,15 @@ const VideoBackground = ({ data: { video, description, button } }) => {
   useEffect(() => {
 
     const isVideoPauseLocal = typeof window !== 'undefined' ? localStorage.getItem('videoPaused') : undefined
-    
+
     if (isVideoPauseLocal === "true") {
-        console.log(isVideoPauseLocal)
-        console.log("video pausado localmente")
-        videoRef.current.pause()
-        setIsVideoPause(isVideoPauseLocal)
+      console.log(isVideoPauseLocal)
+      console.log("video pausado localmente")
+      videoRef.current.pause()
+      setIsVideoPause(isVideoPauseLocal)
     }
   }, [])
-  
+
   useEffect(() => {
     localStorage.setItem('videoPaused', isVideoPause)
   }, [isVideoPause])
