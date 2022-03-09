@@ -22,7 +22,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-react-helmet",
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,7 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        //apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
+        // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
         // apiURL: `https://strapi.bitlogic.io`,
         apiURL: process.env.STRAPI_URL,
         queryLimit: 1000,
@@ -44,6 +43,7 @@ module.exports = {
           `ed-tech-submodules`,
           `article`,
           `blog-category`,
+          `landing-page`
         ],
         singleTypes: [
           `ed-tech-page`,
