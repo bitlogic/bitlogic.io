@@ -11,10 +11,8 @@ export default function SocialLinks() {
   const logo = getImage(dataFooter?.logo?.localFile?.childImageSharp?.gatsbyImageData);
 
   const dataSocialMedia = dataFooter?.socialMedia;
-  console.log(dataSocialMedia)
 
   const socialMedia = dataSocialMedia?.socialMedia?.map((item) => {
-    console.log(item.icon.type)
     return (
       <a
         key={item.id}
