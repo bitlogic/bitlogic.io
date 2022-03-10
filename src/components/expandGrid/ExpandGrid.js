@@ -37,7 +37,7 @@ const ListItem = ({ index, onClick, data }) => {
             >
               <img
                 alt=""
-                src={data.image.url}
+                src={data.image?.url}
                 className="avatar"
               />
             </Flipped>
@@ -81,7 +81,7 @@ const ExpandedListItem = ({ index, onClick, data }) => {
             >
               <img
                 alt=""
-                src={data.image.url}
+                src={data.image?.url}
                 className="avatar-expanded"
               />
             </Flipped>
