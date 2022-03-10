@@ -1,7 +1,7 @@
 import React from 'react';
 import './Hero.scss';
 
-export default function Hero({data}) {
+export default function Hero({ data }) {
     const richText = data.title
     const image = data.image.url
 
@@ -9,6 +9,7 @@ export default function Hero({data}) {
 
     const regexList = /(- )(.*)/g;
 
+    //Parametros en la funcion y validar el richText q acepte mas q h1
     const processRichText = () => {
         const processTitle = richText.match(regexTitle)[0].slice(2)
         const processList = richText.match(regexList).map(e => e.slice(2))
@@ -22,7 +23,7 @@ export default function Hero({data}) {
             <div className="container hero d-flex flex-column flex-xl-row-reverse">
 
                 <img
-                    src={image}
+                    src={'http://localhost:1337' + image}
                     placeholder="blurred"
                 />
 

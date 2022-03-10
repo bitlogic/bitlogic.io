@@ -5,18 +5,20 @@ import { Seo } from "../components/index.js"
 
 // componentes del body
 import Hero from "../components/Hero/Hero"
+import BannerList from '../components/BannerList/BannerLis';
+import ExpandGrid from "../components/expandGrid/ExpandGrid"
 
-const BlogDetail = ({ data }) => {
+const LandingPage = ({ data }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
 
   const bodyComponents = {
     "home.hero": data => <Hero data={data} />,
-    "components.banner-list": data => <p>banner list</p>,
-    "components.selected-grid": data => <p>selected grid</p>,
+    "components.banner-list": data => <BannerList data={data} />,
+    "components.selected-grid": data => <ExpandGrid data={data} />,
   }
 
   return (
-    <Layout options={{hasHeader: false}} >
+    <Layout options={{ hasHeader: false }} >
       <Seo title={pageData.name} />
       {/* Dynamic zone */}
       {pageData.body.map(component =>
@@ -36,4 +38,4 @@ export const query = graphql`
     }
   }
 `
-export default BlogDetail
+export default LandingPage
