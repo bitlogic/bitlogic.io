@@ -9,11 +9,6 @@ import sun from "../../images/sun-icon-1.png"
 const MENU_LINKS = [
   { id: 1, text: "home", url: "/" },
   { id: 2, text: "servicios", url: "/servicios" },
-  { id: 3, text: "edtech", url: "/edtech" },
-  { id: 4, text: "bitway", url: "/bitway" },
-  { id: 5, text: "blog", url: "/blog" },
-  { id: 6, text: "jobs", url: "/jobs" },
-  { id: 7, text: "contacto", url: "/contacto" },
 ]
 
 const MenuLinks = ({ styleClass }) => {

@@ -23,7 +23,7 @@ export default function Hero({ data }) {
             <div className="container hero d-flex flex-column flex-xl-row-reverse">
 
                 <img
-                    src={'http://localhost:1337' + image}
+                    src={image}
                     placeholder="blurred"
                 />
 
