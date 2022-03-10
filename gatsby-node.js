@@ -52,10 +52,10 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   LandingQueryData.allStrapiLandingPage.nodes.forEach(node => {
-    const BlogDetail = path.resolve("./src/templates/LandingPage.js")
+    const LandingPage = path.resolve("./src/templates/LandingPage.js")
     createPage({
-      path: "/landing/" + node.slug,
-      component: BlogDetail,
+      path: "/" + node.slug,
+      component: LandingPage,
       context: { slug: node.slug },
     })
   })
