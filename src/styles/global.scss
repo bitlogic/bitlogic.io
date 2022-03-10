@@ -20,6 +20,11 @@ main {
   background-color: $primary-container !important;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 *,
 *::before,
 *::after {
