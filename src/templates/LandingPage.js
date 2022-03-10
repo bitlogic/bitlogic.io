@@ -13,8 +13,6 @@ const LandingPage = ({ data }) => {
 
   const content = pageData.body.map((component, idx) => {
 
-    console.log(component)
-
     const hero = component.strapi_component === "home.hero" ? 
       <Hero data={component} /> :
       null
