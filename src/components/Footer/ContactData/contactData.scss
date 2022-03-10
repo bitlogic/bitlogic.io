@@ -1,0 +1,53 @@
+@import "../../../styles/global.scss";
+
+.ContactData__Item {
+  color: $white;
+  h3 {
+    color: $white;
+    font-size: $medium;
+  }
+
+  &__contact {
+    display: none;
+
+    .icon-text {
+      font-size: 16px;
+    }
+  }
+  &__link {
+    a {
+      color: #8761fc;
+      font-weight: bold;
+      text-decoration: underline #8761fc;
+      font-size: 18px;
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-md) {
+  .ContactData__Item {
+    &__contact {
+      display: block;
+    }
+    .icon-text {
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .ContactData__Item {
+    .icon-text {
+      font-size: 18px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    &__link {
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+}

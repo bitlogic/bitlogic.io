@@ -19,7 +19,7 @@ export default function Hero({data}) {
 
     return (
         <>
-            <div className="container d-flex flex-column flex-xl-row-reverse">
+            <div className="container hero d-flex flex-column flex-xl-row-reverse">
 
                 <img
                     src={image}

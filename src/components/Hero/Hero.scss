@@ -120,63 +120,65 @@
   }
 }
 
-.container {
-  padding: 50px 0px;
-  width: 100%;
+.hero {
 
-  .gatsby-image-wrapper {
-    display: block;
-  }
-
-  .content-text {
-    line-height: 40px;
-    height: 40px;
-    color: #333;
-    margin-top: 40px;
+  &.container {
+    padding: 50px 0px;
     width: 100%;
-
-    .visible {
-      font-weight: 600;
-      overflow: hidden;
+  
+    .gatsby-image-wrapper {
+      display: block;
+    }
+  
+    .content-text {
+      line-height: 40px;
       height: 40px;
+      color: #333;
+      margin-top: 40px;
       width: 100%;
-    }
-
-    h2 {
-      font-size: 30px;
-      margin: 0;
-      text-align: center;
-    }
-
-    ul {
-      margin-top: 0;
-      text-align: left;
-      list-style: none;
-      animation: 6s linear 0s normal none infinite change;
-      -webkit-animation: 6s linear 0s normal none infinite change;
-      -moz-animation: 6s linear 0s normal none infinite change;
-      -o-animation: 6s linear 0s normal none infinite change;
-
-      li {
-        line-height: 40px;
-        margin: 0;
-        color: #1ecad3;
-        text-align: center;
+  
+      .visible {
+        font-weight: 600;
+        overflow: hidden;
+        height: 40px;
+        width: 100%;
+      }
+  
+      h2 {
         font-size: 30px;
-
-        &:first-child {
-          color: lime !important;
-          padding-bottom: 3px;
-        }
-
-        &:last-child {
-          color: #ff0 !important;
+        margin: 0;
+        text-align: center;
+      }
+  
+      ul {
+        margin-top: 0;
+        text-align: left;
+        list-style: none;
+        animation: 6s linear 0s normal none infinite change;
+        -webkit-animation: 6s linear 0s normal none infinite change;
+        -moz-animation: 6s linear 0s normal none infinite change;
+        -o-animation: 6s linear 0s normal none infinite change;
+  
+        li {
+          line-height: 40px;
+          margin: 0;
+          color: #1ecad3;
+          text-align: center;
+          font-size: 30px;
+  
+          &:first-child {
+            color: lime !important;
+            padding-bottom: 3px;
+          }
+  
+          &:last-child {
+            color: #ff0 !important;
+          }
         }
       }
     }
-  }
+  }  
 }
-
 //estilos de 768 para arriba
 @media screen and (min-width: $breakpoint-md) {
   .container {
