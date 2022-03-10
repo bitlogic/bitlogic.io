@@ -1,0 +1,31 @@
+@import "../../styles/global.scss";
+
+.bannerList {
+  .card_item {
+    p {
+      text-align: justify;
+      margin: 0 !important;
+      font-size: 16px;
+    }
+    img {
+      width: 48px;
+    }
+  }
+  &__title {
+    font-size: $second-large;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .bannerList {
+    .card_item {
+      p {
+        font-size: 20px;
+      }
+      img {
+        width: 70px;
+      }
+    }
+  }
+}
