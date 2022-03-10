@@ -1,7 +1,7 @@
 import React from "react"
 import Navbar from "react-bootstrap/Navbar"
 import { MenuLinks } from "../../constants"
-import logoLight from "../../images/logoprincipal.png"
+import logoLight from "../../images/tipologo-azul.png"
 import { Link } from "gatsby"
 import "./NavBar.scss"
 
