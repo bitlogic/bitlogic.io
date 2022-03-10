@@ -5,24 +5,42 @@ import { Seo } from "../components/index.js"
 
 // componentes del body
 import Hero from "../components/Hero/Hero"
+import BannerList from '../components/BannerList/BannerLis';
 import ExpandGrid from "../components/expandGrid/ExpandGrid"
 
 const LandingPage = ({ data }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
 
-  const bodyComponents = {
-    "home.hero": data => <Hero data={data} />,
-    "components.banner-list": data => <p>banner list</p>,
-    "components.selected-grid": data => <ExpandGrid data={data} /> ,
-  }
+  const content = pageData.body.map((component, idx) => {
+
+    const hero = component.strapi_component === "home.hero" ? 
+      <Hero data={component} /> :
+      null
+
+    const bannerList = component.strapi_component === "components.banner-list" ? 
+      <BannerList data={component} /> :
+      null
+
+    const expandGrid = component.strapi_component === "components.selected-grid" ? 
+      <ExpandGrid data={component} /> :
+      null
+
+    return (
+      <div key={idx}>
+      <>
+        {component.strapi_component === "home.hero" && hero}
+        {component.strapi_component === "components.banner-list" && bannerList}
+        {component.strapi_component === "components.selected-grid" && expandGrid}
+      </>
+    </div>
+    )
+
+  })
 
   return (
-    <Layout options={{hasHeader: false}} >
+    <Layout options={{ hasHeader: false }} >
       <Seo title={pageData.name} />
-      {/* Dynamic zone */}
-      {pageData.body.map(component =>
-        bodyComponents[component.strapi_component](component)
-      )}
+      {content}
     </Layout>
   )
 }
