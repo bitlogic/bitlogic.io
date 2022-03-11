@@ -20,14 +20,14 @@ export default function Hero({ data }) {
 
     return (
         <>
-            <div className="container hero d-flex flex-column flex-xl-row-reverse">
+            <div className="hero d-flex flex-column flex-xl-row-reverse justify-content-around">
 
                 <img
                     src={image}
                     placeholder="blurred"
                 />
 
-                <div className="content-text align-self-center">
+                <div className="content-text align-self-center d-flex">
                     <h2>{title}</h2>
                     <h2 className="visible">
                         <ul>
