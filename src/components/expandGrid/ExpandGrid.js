@@ -1,16 +1,20 @@
 import React, { useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
+import MarkdownView from "react-showdown"
 import "./expandGrid.scss"
 
 const ExpandGrid = ({ data }) => {
   return (
+    <div className="container my-3 py-5">
     <section className="expandGrid">
       <div className="expandGrid-body">
         <h2>{data.title}</h2>
-        <h4>{data.subtitle}</h4>
+        <h6 className="px-5">{data.subtitle}</h6>
         <AnimatedList items={data.items} />
       </div>
-    </section>
+    </section>      
+    </div>
+
   )
 }
 
@@ -88,7 +92,7 @@ const ExpandedListItem = ({ index, onClick, data }) => {
 
             <div className="additional-content">
               <div>
-                <p>{data.text}</p>
+                <MarkdownView markdown={data.text} />
               </div>
             </div>
           </div>

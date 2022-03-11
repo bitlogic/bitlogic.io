@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .videoBackground {
   width: calc(100% - 6em);
   height: 80vh;
@@ -21,24 +23,20 @@
     flex-basis: 1;
     max-width: 600px;
     backdrop-filter: blur(14px);
-    color: #545468;
-    border-radius: 16px;
-    background: #e8e8e8b3;
+    color: white;
+    border-radius: 5px;
+    background: #e8e8e8c5;
     box-shadow: 0px 0px 3px #00000044;
-    margin: 3em;
+    margin: 1em;
     padding: 2em;
-    p {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 31px;
-      line-height: 46px;
-      /* Gray 600 */
-      color: #545468;
+    h4{
+      color: $grey;
     }
     button {
-      background: #545468;
-      border: none;
+      background: $grey;
+      border: 1px solid white;
       color: white;
+      font-weight: 500;
       border-radius: 3px;
       padding: .6em 3em;
     }

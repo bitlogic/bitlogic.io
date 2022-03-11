@@ -16,11 +16,13 @@ import BannerTop from "./Banners/BannerTop"
 import BannerActionCall from "./Banners/BannerActionCall"
 import PartnersSection from "./PartnersSection/PartnersSection"
 import JobsPage from "./JobsPage/JobsPage"
+import CasesSection from "./CasesSection/CasesSection"
 
 export {
   ServicesSection,
   ServiceCard,
   Cards,
+  CasesSection,
   SubModuleItems,
   SubModulesEdTech,
   Title,
