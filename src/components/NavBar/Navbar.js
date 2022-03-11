@@ -1,7 +1,7 @@
 import React from "react"
 import Navbar from "react-bootstrap/Navbar"
 import { MenuLinks } from "../../constants"
-import logoLight from "../../images/logoprincipal.png"
+import logoLight from "../../images/tipologo-azul.png"
 import { Link } from "gatsby"
 import "./NavBar.scss"
 
@@ -23,6 +23,10 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
           {/* Menu Links */}
           <MenuLinks />
+          <div className="NavBar_Side" >
+            <button>Let´s Talk</button>
+            <p>ES</p>
+          </div>
         </Navbar.Collapse>
       </Navbar>
     </>

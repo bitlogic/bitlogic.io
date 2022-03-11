@@ -1,5 +1,4 @@
-import React, { Component, useRef, useState } from "react"
-import MarkdownView from "react-showdown"
+import React, { useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import "./expandGrid.scss"
 
@@ -41,7 +40,7 @@ const ListItem = ({ index, onClick, data }) => {
             >
               <img
                 alt=""
-                src={data.image.url}
+                src={data.image?.url}
                 className="avatar"
               />
             </Flipped>
@@ -85,7 +84,7 @@ const ExpandedListItem = ({ index, onClick, data }) => {
             >
               <img
                 alt=""
-                src={data.image.url}
+                src={data.image?.url}
                 className="avatar-expanded"
               />
             </Flipped>

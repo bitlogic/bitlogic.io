@@ -11,7 +11,7 @@ export default function BannerLis({ data }) {
                 <div className="card_item col-3 mt-3 mt-xl-1">
                     <img
                         class="mx-auto d-block"
-                        src={'http://localhost:1337/uploads/Mesa_de_trabajo_51_2x_8_39520255e7.png'}//OJO CAMBIAR POR {image}
+                        src={image}
                         placeholder="blurred"
                     />
                 </div>

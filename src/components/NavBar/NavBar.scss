@@ -1,7 +1,7 @@
 @import "../../styles/global.scss";
 
 .NavBar {
-  background-color: $nav-footer-container;
+  background-color: none;
 }
 .NavBar__Logo {
   margin: 16px 28px;
@@ -25,8 +25,7 @@
 .NavBar__Link {
   text-decoration: none;
   text-transform: uppercase;
-  color: #fff;
-  font-family: Roboto;
+  color: #1F1D37;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -36,30 +35,55 @@
 }
 .NavBar__Link:hover {
   text-decoration: none;
-  color: #1ecad3;
+  color: #3f6BE8;
 }
 
 .NavBar__Link--active {
   text-decoration: none;
-  color: #1ecad3;
+  color: #3f6BE8;
 }
 
 
 
 @media screen and (min-width: 992px) {
+  .NavBar{
+    display: flex;
+    flex-direction: row;
+    & > a {
+      flex-basis: 30%;
+    }
+  }
   .NavBar__Logo {
     width: 143px;
     margin-left: 58px;
   }
   .NavBar__Collapse {
     /* DESKTOP */
-    justify-content: flex-end;
+    justify-content: space-around;
+    align-items: center;
   }
   .NavBar__List {
     margin-top: 0rem;
   }
   .NavBar__Item {
     margin-right: 2.5rem;
+    margin-top: .5em;
+  }
+
+  .NavBar_Side{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    button {
+      padding: .6em;
+      background-color: #3f6BE8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    p {
+      margin: 0 0 0 3em;
+    }
   }
 }
 
