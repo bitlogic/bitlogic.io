@@ -3,20 +3,17 @@
 .expandGrid {
   display: flex;
   flex-direction: column;
-  padding: 0 2em;
   justify-content: center;
-  @media screen and (max-width: 890px) {
-    padding: 0 10px;
-  }
   h2 {
-    font-size: 4em;
-    text-transform: uppercase;
     color: #333333;
     flex-grow: 1;
     text-align: center;
+    font-weight: 700;
   }
-  h4{
+  h6 {
     text-align: center;
+    line-height: 30px;
+    font-weight: 400;
 
   }
 }
@@ -114,6 +111,7 @@
   width: 100%;
   margin-top: 2rem;
 
+
   @media screen and (max-width: 890px) {
     margin: 0;
   }
@@ -123,6 +121,9 @@
   opacity: 0;
   border-radius: 3px;
   height: 5rem;
+  h4 {
+    text-align: left;
+  }
 }
 
 /* content fade in animations */

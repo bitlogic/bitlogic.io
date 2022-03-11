@@ -32,7 +32,8 @@ const VideoBackground = ({ data: { video, description, button } }) => {
 
 
   return (
-    <section className="videoBackground">
+    <div className="container my-3">
+          <section className="videoBackground">
       <video
         ref={videoRef}
         muted
@@ -44,12 +45,14 @@ const VideoBackground = ({ data: { video, description, button } }) => {
         onClick={pausePlay}
       />
       <div className="videoBackground-card" >
-        <p>{description}</p>
+        <h4>{description}</h4>
         <a href={button.url} target="_blank" rel="noreferrer">
-          <button >{button.content}</button>
+          <button className="px-4" >{button.content}</button>
         </a>
       </div>
     </section>
+      </div>
+
   )
 }
 

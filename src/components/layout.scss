@@ -1,5 +1,4 @@
 @import "../styles/global.scss";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -12,7 +11,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2a2c2e;
-  font-family: "Roboto", sans-serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -83,18 +81,13 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 2.25rem;
   line-height: 1.1;
 }
 mark {
   background-color: #ff0;
   color: #000;
-}
-small {
-  font-size: 80%;
 }
 sub,
 sup {
@@ -128,7 +121,6 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "Roboto", sans-serif;
   font-size: 1em;
 }
 figure {
@@ -261,10 +253,8 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.62671rem;
   line-height: 1.1;
 }
 h3 {
@@ -277,10 +267,8 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1.38316rem;
   line-height: 1.1;
 }
 h4 {
@@ -293,10 +281,8 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 1rem;
   line-height: 1.1;
 }
 h5 {
@@ -309,10 +295,8 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 0.85028rem;
   line-height: 1.1;
 }
 h6 {
@@ -325,10 +309,8 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 0.78405rem;
   line-height: 1.1;
 }
 hgroup {
@@ -417,7 +399,6 @@ table {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  font-size: 1rem;
   line-height: 1.45rem;
   border-collapse: collapse;
   width: 100%;
@@ -563,7 +544,6 @@ tt,
 code {
   background-color: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
-  font-family: "Roboto", sans-serif;
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;

@@ -1,6 +1,6 @@
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-$primary-font: "Roboto", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+$primary-font: 'Poppins', sans-serif;
 $medium: 20px;
 
 $nav-footer-container: var(--nav-footer-container);
@@ -47,6 +47,9 @@ $yellow: #ffe927;
 $blue: #1ecad3;
 $grey-light: #f5f5f5;
 
+$grey:#545468;
+$light-grey:#C4C4C4;
+
 
 
 /* Sizes */
@@ -55,6 +58,45 @@ $medium: 20px;
 $large: 25px;
 $second-large: 40px;
 $extra-large: 45px;
+
+// new sizes
+$h1bDesk: 69px;
+$h2bDesk: 53px;
+$h3bDesk: 39px;
+$h4bDesk: 31px;
+$h5bDesk: 25px;
+$h6bDesk: 20px;
+$textDesk: 18px;
+$textSDesk: 16px;
+$textXSDesk: 14px;
+
+body {
+  font-size: 18px;
+  p {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 69px;
+  }
+  h2 {
+    font-size: 53px;
+  }
+  h3 {
+    font-size: 39px;
+  }
+  h4 {
+    font-size: 31px;
+  }
+  h5 {
+    font-size: 25px;
+  }
+  h6 {
+    font-size: 20px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
 
 /* Weights */
 $normal: 400;
