@@ -27,8 +27,8 @@ export default function BannerLis({ data }) {
     return (
         <div className="container my-3 py-3">
             <div className="bannerList d-md-flex flex-row-reverse">
-            <h1 className="bannerList__title col-md-6 col-xl-5 align-self-center ps-4 mb-4">{title}</h1>
-            <div className="bannerList__cards col-md-6 col-xl-5 pe-5">{cards}</div>
+            <h1 className="bannerList__title col-md-6 col-xl-6 align-self-center ps-4 mb-4">{title}</h1>
+            <div className="bannerList__cards col-md-6 col-xl-6 pe-5">{cards}</div>
         </div>
         </div>
         
