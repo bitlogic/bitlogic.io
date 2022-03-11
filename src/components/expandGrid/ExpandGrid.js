@@ -1,4 +1,4 @@
-import React, { Component, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import "./expandGrid.scss"
 
