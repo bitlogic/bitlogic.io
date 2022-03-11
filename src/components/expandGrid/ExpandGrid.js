@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
+import MarkdownView from "react-showdown"
 import "./expandGrid.scss"
 
 const ExpandGrid = ({ data }) => {
