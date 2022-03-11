@@ -13,10 +13,11 @@ const VideoBackground = ({ data: { video, description, button } }) => {
     setIsVideoPause(prev => !prev)
   }
 
-
   useEffect(() => {
-
-    const isVideoPauseLocal = typeof window !== 'undefined' ? localStorage.getItem('videoPaused') : undefined
+    const isVideoPauseLocal =
+      typeof window !== "undefined"
+        ? localStorage.getItem("videoPaused")
+        : undefined
 
     if (isVideoPauseLocal === "true") {
       console.log(isVideoPauseLocal)
@@ -27,9 +28,8 @@ const VideoBackground = ({ data: { video, description, button } }) => {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('videoPaused', isVideoPause)
+    localStorage.setItem("videoPaused", isVideoPause)
   }, [isVideoPause])
-
 
   return (
     <section className="videoBackground">
@@ -43,10 +43,10 @@ const VideoBackground = ({ data: { video, description, button } }) => {
         controls={false}
         onClick={pausePlay}
       />
-      <div className="videoBackground-card" >
+      <div className="videoBackground-card">
         <p>{description}</p>
         <a href={button.url} target="_blank" rel="noreferrer">
-          <button >{button.content}</button>
+          <button>{button.content}</button>
         </a>
       </div>
     </section>
