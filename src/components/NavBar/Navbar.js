@@ -23,6 +23,10 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
           {/* Menu Links */}
           <MenuLinks />
+          <div className="NavBar_Side" >
+            <button>Let´s Talk</button>
+            <p>ES</p>
+          </div>
         </Navbar.Collapse>
       </Navbar>
     </>

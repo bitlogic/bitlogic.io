@@ -38,7 +38,7 @@ const LandingPage = ({ data }) => {
   })
 
   return (
-    <Layout options={{ hasHeader: false }} >
+    <Layout options={{ hasHeader: true }} >
       <Seo title={pageData.name} />
       {content}
     </Layout>

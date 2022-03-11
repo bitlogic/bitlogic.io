@@ -8,7 +8,7 @@ import sun from "../../images/sun-icon-1.png"
 
 const MENU_LINKS = [
   { id: 1, text: "home", url: "/" },
-  { id: 2, text: "servicios", url: "/servicios" },
+  { id: 2, text: "servicios", url: "/services" },
 ]
 
 const MenuLinks = ({ styleClass }) => {
