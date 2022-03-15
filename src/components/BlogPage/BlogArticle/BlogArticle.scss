@@ -56,17 +56,26 @@
   }
 
   &__link {
-    text-align: end;
-
     a {
       padding: 7px;
       margin-right: 0;
       font-size: 12px;
       font-weight: $max_bold;
-      text-decoration: none;
-      color: $blue;
-      border-bottom: 5px solid $yellow;
       cursor: pointer;
+
+      button {
+        background: $blue-primary;
+        color: $white;
+        box-shadow: 0px 2px 10px rgba(63, 107, 232, 0.5);
+        border-radius: 8px;
+        border: none;
+
+        &:hover {
+          background: $light-blue;
+          box-shadow: 0px 3px 10px rgba(138, 254, 113, 0.5);
+          color: $blue-secondary;
+        }
+      }
     }
   }
 }
