@@ -1,12 +1,12 @@
 @import "../../styles/global.scss";
 
 .videoBackground {
-  width: calc(100% - 6em);
+  // width: calc(100% - 6em);
   height: 80vh;
   position: relative;
   z-index: 3;
   display: flex;
-  margin: 3em;
+  // margin: 3em;
   video {
     top: 0;
     position: absolute;
@@ -15,7 +15,7 @@
     object-fit: cover;
     z-index: -1;
     cursor: pointer;
-    border-radius: 20px;
+    // border-radius: 20px;
   }
   &-card {
     z-index: 4;
@@ -29,7 +29,7 @@
     box-shadow: 0px 0px 3px #00000044;
     margin: 1em;
     padding: 2em;
-    h4{
+    h4 {
       color: $grey;
     }
     button {
@@ -39,6 +39,14 @@
       font-weight: 500;
       border-radius: 3px;
       padding: .6em 3em;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .videoBackground {
+    video {
+      border-radius: 20px;
     }
   }
 }
