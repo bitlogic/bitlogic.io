@@ -121,11 +121,21 @@
 }
 
 .hero {
-  background-image: url("../../images/Group.png");
+  /*  background-image: url("../../images/Group.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 700px;
+  min-height: 700px; */
+
+  button {
+    background: #3f6be8;
+    border-radius: 4px;
+    color: $white;
+    border: none;
+    width: 233px;
+    height: 52px;
+    margin-left: 60px;
+  }
 
   .gatsby-image-wrapper {
     display: block;
@@ -181,15 +191,14 @@
 @media screen and (min-width: $breakpoint-md) {
   .hero {
     img {
-      height: 450px;
-      width: 450px;
+      height: 580px;
+      width: 600px;
       margin-top: 50px;
     }
     .content-text {
       line-height: 65px;
       height: 65px;
       margin: 0;
-      margin-left: 190px;
 
       .visible {
         height: 65px;
@@ -207,6 +216,30 @@
         li {
           font-size: $extra-large;
           line-height: 60px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .hero {
+    &__button {
+      margin-top: -20px;
+    }
+    &__image {
+      padding-left: 100px;
+    }
+    .content-text {
+      margin-left: 100px;
+      h2 {
+        font-size: $h1bDesk;
+        font-weight: $max-bold;
+      }
+      ul {
+        li {
+          font-size: $h1bDesk;
+          font-weight: $max-bold;
         }
       }
     }
