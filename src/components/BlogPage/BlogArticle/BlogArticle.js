@@ -21,7 +21,7 @@ const BlogArticle = ({ title, summary, image, slug, text }) => {
         </div>
         <div className="article__link">
           <Link to={slug}>
-            <button className="px-4 py-2">{text}</button>
+            <button>{text}</button>
           </Link>
         </div>
       </div>
