@@ -2,40 +2,52 @@ import React from 'react';
 import './Hero.scss';
 
 export default function Hero({ data }) {
-    const richText = data.title
-    const image = data.image.url
+    const title = data.title;
+    const richList = data.listAnimation;
+    const image = data.image.url;
 
-    const regexTitle = /(# )(.*)/g;
-
+    console.log(richList, "lista")
     const regexList = /(- )(.*)/g;
 
     //Parametros en la funcion y validar el richText q acepte mas q h1
     const processRichText = () => {
-        const processTitle = richText.match(regexTitle)[0].slice(2)
-        const processList = richText.match(regexList).map(e => e.slice(2))
+        const processList = richList?.match(regexList)?.map(e => e.slice(2));
+        return [processList];
 
-        return [processTitle, processList]
     }
-    var [title, listOfWords] = processRichText()
+
+    let [listOfWords] = processRichText();
 
     return (
         <>
-            <div className="hero d-flex flex-column flex-xl-row-reverse justify-content-around">
+            <div className="hero">
+                <div className="hero d-flex flex-column flex-xl-row-reverse justify-content-around">
+                    <div className="hero__image col-xl-7">
+                        <img
+                            src={'http://localhost:1337' + image}
+                            placeholder="blurred"
+                        />
+                    </div>
+                    <div className="content-text d-flex align-self-center col-xl-5">
+                        <h1>{title}</h1>
+                        {listOfWords && (
+                            <div className="visible">
+                                <ul>
+                                    {listOfWords.map(word => <li>{word}</li>)};
+                                </ul>
+                            </div>
+                        )}
 
-                <img
-                    src={image}
-                    placeholder="blurred"
-                />
-
-                <div className="content-text align-self-center d-flex">
-                    <h2>{title}</h2>
-                    <h2 className="visible">
-                        <ul>
-                            {listOfWords.map(word => <li>{word}</li>)}
-                        </ul>
-                    </h2>
+                    </div>
                 </div>
 
+                {data.button && (
+                    <div className="hero__button">
+                        <a href={data.button.url} target="_blank" rel="noreferrer" >
+                            <button className="button-hero px-4">{data.button.content}</button>
+                        </a>
+                    </div>
+                )}
             </div>
         </>
 

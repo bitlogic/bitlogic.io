@@ -36,7 +36,7 @@ const LandingPage = ({ data }) => {
         {component.strapi_component === "home.hero" && hero}
         {component.strapi_component === "components.banner-list" && bannerList}
         {component.strapi_component === "components.selected-grid" && expandGrid}
-        {/* {component.strapi_component === "components.cases-section" && casesSection} */}
+        {component.strapi_component === "components.cases-section" && casesSection} 
       </>
     </div>
     )
