@@ -32,8 +32,8 @@ const VideoBackground = ({ data: { video, description, button } }) => {
   }, [isVideoPause])
 
   return (
-    <div className="container my-3">
-          <section className="videoBackground">
+    <div className="container-md my-3 px-0 px-lg-3">
+          <section className="videoBackground my-md-3">
       <video
         ref={videoRef}
         muted
