@@ -8,22 +8,22 @@
     margin-top: 0;
   }
   25% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   40% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   50% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   65% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   75% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   85% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   100% {
     margin-top: 0;
@@ -38,22 +38,22 @@
     margin-top: 0;
   }
   25% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   40% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   50% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   65% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   75% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   85% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   100% {
     margin-top: 0;
@@ -74,10 +74,10 @@
     margin-top: -65px;
   }
   50% {
-    margin-top: -120px;
+    margin-top: -130px;
   }
   65% {
-    margin-top: -120px;
+    margin-top: -130px;
   }
   75% {
     margin-top: -65px;
@@ -142,19 +142,17 @@
   }
 
   .content-text {
-    line-height: 40px;
-    height: 40px;
+    line-height: 45px;
+    height: 45px;
     color: #333;
-    margin-top: 40px;
+    margin: 40px 0px;
 
     .visible {
-      font-weight: 600;
       overflow: hidden;
-      height: 40px;
+      height: 45px;
     }
 
-    h2 {
-      font-size: 30px;
+    h1 {
       margin: 0;
     }
 
@@ -168,15 +166,15 @@
       -o-animation: 6s linear 0s normal none infinite change;
 
       li {
-        line-height: 40px;
+        line-height: 45px;
         margin: 0;
         color: #8afe71;
-        font-size: 30px;
-        padding-left: 30px;
+        font-size: 40px;
+        padding-left: 20px;
+        font-weight: $max-bold;
 
         &:first-child {
           color: #e8809a !important;
-          padding-bottom: 3px;
         }
 
         &:last-child {
@@ -195,17 +193,18 @@
       width: 600px;
       margin-top: 50px;
     }
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  .hero {
     .content-text {
       line-height: 65px;
       height: 65px;
-      margin: 0;
+      margin-left: 100px;
 
       .visible {
         height: 65px;
-      }
-
-      h2 {
-        font-size: $extra-large;
       }
       ul {
         animation: 6s linear 0s normal none infinite changeDesktop;
@@ -214,34 +213,16 @@
         -o-animation: 6s linear 0s normal none infinite changeDesktop;
 
         li {
-          font-size: $extra-large;
-          line-height: 60px;
+          font-size: 69px;
+          line-height: 65px;
         }
       }
     }
-  }
-}
-
-@media screen and (min-width: $breakpoint-xl) {
-  .hero {
     &__button {
       margin-top: -20px;
     }
     &__image {
       padding-left: 100px;
-    }
-    .content-text {
-      margin-left: 100px;
-      h2 {
-        font-size: $h1bDesk;
-        font-weight: $max-bold;
-      }
-      ul {
-        li {
-          font-size: $h1bDesk;
-          font-weight: $max-bold;
-        }
-      }
     }
   }
 }

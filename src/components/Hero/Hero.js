@@ -29,7 +29,7 @@ export default function Hero({ data }) {
                         />
                     </div>
                     <div className="content-text d-flex align-self-center col-xl-5">
-                        <h2>{title}</h2>
+                        <h1>{title}</h1>
                         {listOfWords && (
                             <div className="visible">
                                 <ul>
