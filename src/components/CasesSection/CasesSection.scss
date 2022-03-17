@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .casesSection {
     h2 {
         text-align: center;
@@ -8,13 +10,51 @@
     --bs-gutter-x: 0 !important;
     padding: 10px;
     &__img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
         border-radius: 10px;
-        background-color: aqua;
     }
     &__descr {
         padding-left: 10px;
-        &_title {
+        h5 {
             font-weight: 700;
         }
     }
+    button {
+        @include primaryBtn;
+        margin-left: 10px;
+    }
+    &__socials {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 10px;
+        svg {
+            margin-right: 10px;
+        }
+    }
 }
+
+@media screen and (min-width: $breakpoint-md) {
+    .case {
+        &__img {
+            height: 240px;
+            margin-bottom: 15px;
+        }
+        &__descr {
+            min-height: 120px;
+            max-height: 250px;
+            h5 {
+                margin-bottom: 10px;
+            }
+        }
+        &__socials {
+            justify-content: flex-end;
+            svg {
+                margin-left: 10px;
+                margin-right: 1px;
+            }
+        }
+    }
+}
+    
