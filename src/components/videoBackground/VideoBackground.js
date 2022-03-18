@@ -20,8 +20,6 @@ const VideoBackground = ({ data: { video, description, button } }) => {
         : undefined
 
     if (isVideoPauseLocal === "true") {
-      console.log(isVideoPauseLocal)
-      console.log("video pausado localmente")
       videoRef.current.pause()
       setIsVideoPause(isVideoPauseLocal)
     }

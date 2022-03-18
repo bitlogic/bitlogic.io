@@ -10,8 +10,6 @@ import ExpandGrid from "../components/expandGrid/ExpandGrid"
 
 const LandingPage = ({ data }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
-  console.log(pageData.body, "pageData")
-
   const content = pageData.body.map((component, idx) => {
 
     const hero = component.strapi_component === "home.hero" ? 
