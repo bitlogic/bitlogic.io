@@ -20,7 +20,9 @@ const BlogArticle = ({ title, summary, image, slug, text }) => {
           {/* <ReactMarkdown source={`${summary} ...`} /> */}
         </div>
         <div className="article__link">
-          <Link to={slug}>{text}</Link>
+          <Link to={slug}>
+            <button>{text}</button>
+          </Link>
         </div>
       </div>
     </div>
