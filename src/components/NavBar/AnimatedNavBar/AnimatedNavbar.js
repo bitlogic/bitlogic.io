@@ -6,7 +6,7 @@ import DropdownContainer from "./DropdownContainer"
 import Dropdown from "./DropdownContainer/Dropdown"
 
 const getComponentTitle = component => {
-  // TODO: falta definir los titulos para cada componente
+  // falta definir los titulos para cada componente y arreglar los vinculos internos
   const titleReference = {
     "home.hero": () => "Bitlogic",
     "components.banner-list": () => "Dual section",
