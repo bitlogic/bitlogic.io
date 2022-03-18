@@ -32,12 +32,16 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
           {/* Menu Links */}
-          <AnimatedNavbar
-            homeComponents={navbarData.allStrapiHome.nodes[0].body}
-            landingComponents={navbarData.allStrapiLandingPage.nodes}
-            navbarItems={navbarData.allStrapiLayout.nodes[0].navbar.navbarItem}
-            duration={300}
-          />
+          {navbarData && (
+            <AnimatedNavbar
+              homeComponents={navbarData.allStrapiHome?.nodes[0].body}
+              landingComponents={navbarData.allStrapiLandingPage?.nodes}
+              navbarItems={
+                navbarData.allStrapiLayout?.nodes[0].navbar.navbarItem
+              }
+              duration={300}
+            />
+          )}
           <div className="NavBar_Side">
             <button className="NavBar_Side-contact">Let´s Talk</button>
             <p>ES</p>
