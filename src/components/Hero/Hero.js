@@ -24,7 +24,7 @@ export default function Hero({ data }) {
                 <div className="hero d-flex flex-column flex-xl-row-reverse justify-content-around">
                     <div className="hero__image col-xl-7">
                         <img
-                            src={'http://localhost:1337' + image}
+                            src={image}
                             placeholder="blurred"
                         />
                     </div>
