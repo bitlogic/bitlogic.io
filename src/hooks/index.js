@@ -9,6 +9,7 @@ import useBlog from './useBlog'
 import useJobsPage from "./useJobsPage"
 import useServicePage from "./useServicePage"
 import useFooter from './useFooter';
+import useNavbar from './useNavbar';
 
 export {
   useServices,
@@ -21,5 +22,6 @@ export {
   useBlog,
   useJobsPage,
   useServicePage,
-  useFooter
+  useFooter,
+  useNavbar
 }
