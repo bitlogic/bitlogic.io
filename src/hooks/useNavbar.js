@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useNavbar = () => {
-  const query = useStaticQuery(graphql`
+  return useStaticQuery(graphql`
     {
       allStrapiLayout {
         nodes {
@@ -40,7 +40,6 @@ const useNavbar = () => {
     }
     
   `)
-  return query
 }
 
 export default useNavbar
