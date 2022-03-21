@@ -1241,7 +1241,76 @@ type StrapiLayoutFooter {
   location: StrapiLayoutFooterLocation
   contact: StrapiLayoutFooterContact
   internalLink: StrapiLayoutFooterInternalLink
+  navbar: StrapiLayoutNavbar
   logo: LocalFile
+}
+
+
+type StrapiLayoutNavbar {
+  id: Int
+  navbarItem: [StrapiLayoutNavbarNavbarItem]
+  logo: StrapiLayoutNavbarLogo
+}
+
+type StrapiLayoutNavbarNavbarItem {
+  id: Int
+  label: String
+  landing: StrapiLayoutNavbarNavbarItemLanding
+  url: String
+  visible: Boolean
+  dropdown: Boolean
+}
+
+type StrapiLayoutNavbarNavbarItemLanding {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
+
+type StrapiLayoutNavbarLogo {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
 }
 
 type StrapiLayoutFooterSubscription {
