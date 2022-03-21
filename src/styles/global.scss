@@ -95,10 +95,15 @@ body {
   font-size: 16px;
   font-family: $secondary-font;
   p {
+    em {
+      font-size: 16px;
+      font-family: $secondary-font;
+    }
     font-size: 16px;
     font-family: $secondary-font;
   }
   button {
+    font-size: 14px;
     font-family: $primary-font;
   }
   h1 {
@@ -110,6 +115,10 @@ body {
     font-family: $primary-font;
   }
   h3 {
+    span {
+      font-size: 32px;
+      font-family: $primary-font;
+    }
     font-size: 32px;
     font-family: $primary-font;
   }
@@ -128,16 +137,15 @@ body {
   small {
     font-size: 16px;
   }
-  button {
-    font-size: 16px;
-    font-family: $primary-font;
-  }
 }
 
 @media screen and (min-width: $breakpoint-lg) {
   body {
     font-size: 18px;
     p {
+      em {
+        font-size: 18px;
+      }
       font-size: 18px;
     }
     h1 {
@@ -147,6 +155,9 @@ body {
       font-size: 53px;
     }
     h3 {
+      span {
+        font-size: 39px;
+      }
       font-size: 39px;
     }
     h4 {
@@ -162,7 +173,7 @@ body {
       font-size: 16px;
     }
     button {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 }
