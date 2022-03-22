@@ -37,7 +37,7 @@ const NavBar = () => {
               homeComponents={navbarData.allStrapiHome?.nodes[0].body}
               landingComponents={navbarData.allStrapiLandingPage?.nodes}
               navbarItems={
-                navbarData.allStrapiLayout?.nodes[0].navbar.navbarItem
+                navbarData.allStrapiLayout?.nodes[0].navbar?.navbarItem
               }
               duration={300}
             />
