@@ -7,7 +7,6 @@ import BannerClientes from "./Banners/BannerClientes"
 import BannerTop from "./Banners/BannerTop"
 import BannerActionCall from "./Banners/BannerActionCall"
 import CasesSection from "./CasesSection/CasesSection"
-
 export {
   Cards,
   CasesSection,
