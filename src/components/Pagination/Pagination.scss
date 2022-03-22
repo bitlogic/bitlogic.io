@@ -18,7 +18,7 @@
   }
   &__link {
     font-weight: $bold;
-    color: $blue;
+    color: $primary;
     padding: 0.2rem;
 
     &:hover {
@@ -28,5 +28,5 @@
   }
 }
 .active-page {
-  border-bottom: 5px $yellow solid;
+  border-bottom: 5px $alt solid;
 }
