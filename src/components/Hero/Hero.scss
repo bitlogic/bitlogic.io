@@ -8,22 +8,22 @@
     margin-top: 0;
   }
   25% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   40% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   50% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   65% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   75% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   85% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   100% {
     margin-top: 0;
@@ -38,22 +38,22 @@
     margin-top: 0;
   }
   25% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   40% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   50% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   65% {
-    margin-top: -80px;
+    margin-top: -90px;
   }
   75% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   85% {
-    margin-top: -40px;
+    margin-top: -45px;
   }
   100% {
     margin-top: 0;
@@ -74,10 +74,10 @@
     margin-top: -65px;
   }
   50% {
-    margin-top: -120px;
+    margin-top: -130px;
   }
   65% {
-    margin-top: -120px;
+    margin-top: -130px;
   }
   75% {
     margin-top: -65px;
@@ -121,78 +121,88 @@
 }
 
 .hero {
+  /*  background-image: url("../../images/Group.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 700px; */
 
-  &.container {
-    padding: 50px 0px;
-    width: 100%;
-  
-    .gatsby-image-wrapper {
-      display: block;
+  button {
+    @include primaryBtn;
+    margin-left: 150px;
+  }
+
+  .gatsby-image-wrapper {
+    display: block;
+  }
+
+  .content-text {
+    line-height: 45px;
+    height: 45px;
+    color: #333;
+    margin: 40px 0px;
+
+    .visible {
+      overflow: hidden;
+      height: 45px;
     }
-  
-    .content-text {
-      line-height: 40px;
-      height: 40px;
-      color: #333;
-      margin-top: 40px;
-      width: 100%;
-  
-      .visible {
-        font-weight: 600;
-        overflow: hidden;
-        height: 40px;
-        width: 100%;
-      }
-  
-      h2 {
-        font-size: 30px;
+
+    h1 {
+      margin: 0;
+    }
+
+    ul {
+      margin-top: 0;
+      text-align: left;
+      list-style: none;
+      animation: 6s linear 0s normal none infinite change;
+      -webkit-animation: 6s linear 0s normal none infinite change;
+      -moz-animation: 6s linear 0s normal none infinite change;
+      -o-animation: 6s linear 0s normal none infinite change;
+
+      li {
+        line-height: 45px;
         margin: 0;
-        text-align: center;
-      }
-  
-      ul {
-        margin-top: 0;
-        text-align: left;
-        list-style: none;
-        animation: 6s linear 0s normal none infinite change;
-        -webkit-animation: 6s linear 0s normal none infinite change;
-        -moz-animation: 6s linear 0s normal none infinite change;
-        -o-animation: 6s linear 0s normal none infinite change;
-  
-        li {
-          line-height: 40px;
-          margin: 0;
-          color: #1ecad3;
-          text-align: center;
-          font-size: 30px;
-  
-          &:first-child {
-            color: lime !important;
-            padding-bottom: 3px;
-          }
-  
-          &:last-child {
-            color: #ff0 !important;
-          }
+        color: #8afe71;
+        font-size: 40px;
+        padding-left: 20px;
+        font-weight: $max-bold;
+
+        &:first-child {
+          color: #e8809a !important;
+        }
+
+        &:last-child {
+          color: #d047fa !important;
         }
       }
     }
-  }  
+  }
 }
+
 //estilos de 768 para arriba
 @media screen and (min-width: $breakpoint-md) {
-  .container {
+  .hero {
+    img {
+      height: 580px;
+      width: 600px;
+      margin-top: 50px;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  .hero {
     .content-text {
       line-height: 65px;
       height: 65px;
-      margin: 0;
+      margin-left: 100px;
 
-      .visible{
-        height: 65px;
+      h1 {
+        margin-left: 100px;
       }
-
-      h2 {
-        font-size: $extra-large;
+      .visible {
+        height: 65px;
       }
       ul {
         animation: 6s linear 0s normal none infinite changeDesktop;
@@ -201,10 +211,16 @@
         -o-animation: 6s linear 0s normal none infinite changeDesktop;
 
         li {
-          font-size: $extra-large;
+          font-size: 69px;
           line-height: 65px;
         }
       }
+    }
+    &__button {
+      margin-top: -20px;
+    }
+    &__image {
+      padding-left: 100px;
     }
   }
 }

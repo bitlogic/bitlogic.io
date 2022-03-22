@@ -6,7 +6,7 @@ import ScriptTag from "react-script-tag"
 import useGlobalConfig from "../hooks/useGlobalConfig"
 import ThemeProvider from "../context/themeContext"
 
-const Layout = ({ children, options = {} }) => {
+const Layout = ({ children, options = {}, location }) => {
   const defaultOptions = {
     hasHeader: true,
     hasFooter: true,
@@ -29,6 +29,17 @@ const Layout = ({ children, options = {} }) => {
       ) : null
     )
   )
+
+  React.useEffect(() => {
+    const hash = location?.state?.component
+    console.log(hash)
+    let el = hash && document.getElementById(hash)
+    console.log(el)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [location?.state?.component])
+
   return (
     <ThemeProvider>
       {scripts}

@@ -1,16 +1,19 @@
-import React, { Component, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
+import MarkdownView from "react-showdown"
 import "./expandGrid.scss"
 
 const ExpandGrid = ({ data }) => {
   return (
-    <section className="expandGrid">
-      <div className="expandGrid-body">
-        <h2>{data.title}</h2>
-        <h4>{data.subtitle}</h4>
-        <AnimatedList items={data.items} />
-      </div>
-    </section>
+    <div className="m-3 mx-5 sm:mx-3 py-5" id={data.strapi_component + "-" + data.id}>
+      <section className="expandGrid">
+        <div className="expandGrid-body">
+          <h2>{data.title}</h2>
+          <h6 className="px-5">{data.subtitle}</h6>
+          <AnimatedList items={data.items} />
+        </div>
+      </section>
+    </div>
   )
 }
 
@@ -35,11 +38,7 @@ const ListItem = ({ index, onClick, data }) => {
               shouldFlip={shouldFlip(index)}
               delayUntil={createCardFlipId(index)}
             >
-              <img
-                alt=""
-                src={data.image?.url}
-                className="avatar"
-              />
+              <img alt="" src={data.image?.url} className="avatar" />
             </Flipped>
           </div>
         </Flipped>
@@ -48,10 +47,8 @@ const ListItem = ({ index, onClick, data }) => {
   )
 }
 
-const ExpandedListItem = ({ index, onClick, data }) => {
+const ExpandedListItem = ({ index, onClick, data, scrollToRef }) => {
   const scrollRef = useRef(null)
-
-  const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop - 40)
 
   return (
     <Flipped
@@ -63,7 +60,6 @@ const ExpandedListItem = ({ index, onClick, data }) => {
           el.classList.add("animated-in")
         }, 400)
       }}
-      onExit={() => scrollToRef(scrollRef)}
     >
       <div
         ref={scrollRef}
@@ -79,16 +75,12 @@ const ExpandedListItem = ({ index, onClick, data }) => {
               stagger="card-image"
               delayUntil={createCardFlipId(index)}
             >
-              <img
-                alt=""
-                src={data.image?.url}
-                className="avatar-expanded"
-              />
+              <img alt="" src={data.image?.url} className="avatar-expanded" />
             </Flipped>
 
             <div className="additional-content">
               <div>
-                <p>{data.text}</p>
+                <MarkdownView markdown={data.text} />
               </div>
             </div>
           </div>
@@ -100,9 +92,16 @@ const ExpandedListItem = ({ index, onClick, data }) => {
 
 const AnimatedList = ({ items }) => {
   const [focused, setFocused] = useState(null)
+  const scrollRef = useRef(null)
   const onClick = index => {
     setFocused(focused === index ? null : index)
+    if (focused !== null) {
+      scrollToRef(scrollRef)
+    }
   }
+
+  const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop - 40)
+
   return (
     <Flipper
       flipKey={focused}
@@ -114,8 +113,9 @@ const AnimatedList = ({ items }) => {
         },
       }}
       decisionData={focused}
+
     >
-      <ul className="list">
+      <ul ref={scrollRef} className="list">
         {items.map((item, index) => {
           return (
             <>
@@ -124,6 +124,7 @@ const AnimatedList = ({ items }) => {
                   index={focused}
                   onClick={onClick}
                   data={item}
+                  scrollToRef={scrollToRef}
                 />
               ) : (
                 <ListItem

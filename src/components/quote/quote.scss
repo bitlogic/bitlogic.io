@@ -2,9 +2,7 @@
 
 .quote {
   display: grid;
-  padding: 0 4em;
   gap: 3em;
-  margin-bottom: 3em;
 
   &-body {
     grid-area: quote-body;
@@ -16,15 +14,16 @@
   }
 
   &-person {
+    padding-top: 1em;
     grid-area: quote-person;
     display: flex;
     flex-direction: column;
     &-title {
-      font-size: 3em;
-      margin-bottom: 0.3em;
+      margin-bottom: 1.5em;
+      font-weight: 700;
     }
     &-text {
-      font-size: 1em;
+      font-weight: 700;
     }
     @keyframes move-shadow {
       0% {
