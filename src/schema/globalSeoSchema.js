@@ -35,6 +35,41 @@ type StrapiGlobalSeo implements Node {
     pageDescription: String
     pageKeywords: String
   }
+
+
+type StrapiGlobalConfig implements Node {
+    id: ID!
+    parent: Node
+    children: [Node!]!
+    internal: Internal!
+    published_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    created_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    updated_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    script: [StrapiGlobalConfigScript]
+    strapiId: Int
+  }
+  
+  type StrapiGlobalConfigScript {
+    id: Int
+    name: String
+    enable: Boolean
+    src: String
+  }
 `
 module.exports = {
     value: globalSeoSchema,

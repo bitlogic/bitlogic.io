@@ -9,7 +9,7 @@ export default function Navegation() {
 
     const navegationItems = dataFooter?.navegation?.pageLink;
 
-    const navegationParts = navegationItems.map((section) =>
+    const navegationParts = navegationItems?.map((section) =>
         <li>
             <Link to={section.pathTo}>{section.name}</Link>
         </li>
