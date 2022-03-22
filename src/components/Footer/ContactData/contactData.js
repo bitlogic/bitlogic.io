@@ -19,11 +19,11 @@ export default function ContactData() {
   return (
     <>
       <div className='ContactData__Item'>
-        <h3>{dataFooter.contact.title}</h3>
+        <h3>{dataFooter.contact?.title}</h3>
         <p className='ContactData__Item__contact'>{contact}</p>
 
         <div className='ContactData__Item__link'>
-          <a href={dataFooter.internalLink.pathTo}>{dataFooter.internalLink.name}</a>
+          <a href={dataFooter.internalLink?.pathTo}>{dataFooter.internalLink?.name}</a>
         </div>
       </div>
     </>
