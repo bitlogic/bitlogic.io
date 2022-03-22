@@ -1,11 +1,11 @@
-import React from "react";
-import "./animatedTransitionContinous.scss";
+import React from "react"
+import "./animatedTransitionContinous.scss"
 
 const AnimatedTransitionContinous = ({ children }) => {
-  let longerText = "";
+  let longerText = ""
 
   while (longerText.length < 200) {
-    longerText = children + "  -  " + longerText;
+    longerText = children + "  -  " + longerText
   }
 
   return (
@@ -16,7 +16,7 @@ const AnimatedTransitionContinous = ({ children }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AnimatedTransitionContinous;
+export default AnimatedTransitionContinous

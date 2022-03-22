@@ -12,7 +12,13 @@ const NavbarItem = ({ title, children, index, to, ...props }) => {
       onMouseEnter={onMouseEnter}
       onFocus={onMouseEnter}
     >
-      <Link activeClassName="navbar_item-title-active" to={to} className="navbar_item-title">{title}</Link>
+      <Link
+        activeClassName="navbar_item-title-active"
+        to={to}
+        className="navbar_item-title"
+      >
+        {title}
+      </Link>
       <div className="navbar_item-dropdown_container">{children}</div>
     </li>
   )

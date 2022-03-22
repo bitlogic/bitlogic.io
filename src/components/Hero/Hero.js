@@ -1,5 +1,5 @@
-import React from 'react';
-import './Hero.scss';
+import React from "react"
+import "./Hero.scss"
 
 export default function Hero({ data }) {
     const title = data.title;
@@ -20,7 +20,7 @@ export default function Hero({ data }) {
 
     return (
         <>
-            <div className="hero">
+            <div className="hero" id={data.strapi_component + "-" + data.id}>
                 <div className="hero d-flex flex-column flex-xl-row-reverse justify-content-around">
                     <div className="hero__image col-xl-7">
                         <img

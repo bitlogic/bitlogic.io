@@ -8,7 +8,7 @@ const CasesSection = ({ data }) => {
   const casesCards = cases.map((caso, idx) => {
 
     return (
-      <div className="case col-12 col-md-4 row" key={`case-${idx}`}>
+      <div className="case col-12 col-md-4 row" key={`case-${idx}`} id={data.strapi_component + "-" + data.id}>
         <div className="col-6 col-md-12">
           <img className="case__img" src={caso.image?.url} alt="A kitten" />
         </div>

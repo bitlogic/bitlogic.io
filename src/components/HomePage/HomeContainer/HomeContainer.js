@@ -22,13 +22,13 @@ const bodyComponents = {
   "home.dual-section": data => <DualSection data={data} />,
 }
 
-const Home = () => {
+const Home = ({ location }) => {
   const data = useHomePage()
   const { pageTitle, pageDescription, pageKeywords } =
     data?.allStrapiHome?.nodes[0]?.pageMetadata || {}
 
   return (
-    <Layout>
+    <Layout location={location}>
       {data?.allStrapiHome?.nodes[0]?.pageMetadata && (
         <Seo
           title={pageTitle}
