@@ -21,7 +21,7 @@
     width: 100%;
     height: 150px;
     padding: 0 15px;
-    color: $primary;
+    color: $black;
     h1,
     h2,
     h3,
@@ -29,11 +29,10 @@
     h5,
     h6 {
       padding-left: 0;
+      font-size: 15px !important;
       margin-bottom: 15px;
-      font-size: $small;
       line-height: 1rem;
-      font-weight: $max-bold;
-      color: $blue;
+      color: $black;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
@@ -42,31 +41,35 @@
 
     p {
       margin-bottom: 15px;
-      font-size: 12px;
       line-height: 24px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       overflow: hidden;
-
-      em {
-        font-size: 12px;
-      }
     }
   }
 
   &__link {
-    text-align: end;
-
     a {
-      padding: 7px;
       margin-right: 0;
       font-size: 12px;
       font-weight: $max_bold;
-      text-decoration: none;
-      color: $blue;
-      border-bottom: 5px solid $yellow;
       cursor: pointer;
+
+      button {
+        @include primaryBtn;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .article {
+    &__description {
+      h6 {
+        margin-bottom: 2px;
+        line-height: 1.3rem;
+      }
     }
   }
 }
@@ -89,11 +92,8 @@
       height: 200px;
       padding: 0;
 
-      h3 {
-        margin-bottom: 1.5rem;
-        font-size: $large;
+      h6 {
         line-height: 1.6rem;
-        color: $blue;
         -webkit-line-clamp: 2;
       }
 

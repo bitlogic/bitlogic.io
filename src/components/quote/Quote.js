@@ -2,9 +2,9 @@ import "./quote.scss"
 
 import React from "react"
 
-const Quote = ({ data: { description, title, variant, profile, image } }) => {
+const Quote = ({ data: { description, title, variant, profile, image, strapi_component, id } }) => {
   return (
-    <div className="container my-3">
+    <div className="container my-3" id={strapi_component + "-" + id}>
       <section className={`quote variant-${variant}`}>
       <div className="quote-body">
         <img

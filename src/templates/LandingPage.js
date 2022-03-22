@@ -8,10 +8,8 @@ import Hero from "../components/Hero/Hero"
 import BannerList from '../components/BannerList/BannerLis';
 import ExpandGrid from "../components/expandGrid/ExpandGrid"
 
-const LandingPage = ({ data }) => {
+const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
-  console.log(pageData.body, "pageData")
-
   const content = pageData.body.map((component, idx) => {
 
     const hero = component.strapi_component === "home.hero" ? 
@@ -44,7 +42,7 @@ const LandingPage = ({ data }) => {
   })
 
   return (
-    <Layout options={{ hasHeader: true }} >
+    <Layout location={location} options={{ hasHeader: true }} >
       <Seo title={pageData.name} />
       {content}
     </Layout>

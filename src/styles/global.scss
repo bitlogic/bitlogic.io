@@ -1,8 +1,8 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-$primary-font: 'Poppins', sans-serif;
-$secondary-font: 'Roboto', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+$primary-font: "Poppins", sans-serif;
+$secondary-font: "Roboto", sans-serif;
 $medium: 20px;
 
 $nav-footer-container: var(--nav-footer-container);
@@ -49,10 +49,10 @@ $yellow: #ffe927;
 $blue: #1ecad3;
 $grey-light: #f5f5f5;
 //new colors
-$grey:#545468;
-$light-grey:#C4C4C4;
-$primary: #3F6BE8;
-$alt: #67F293;
+$grey: #545468;
+$light-grey: #c4c4c4;
+$primary: #3f6be8;
+$alt: #67f293;
 $blackBit: #242424;
 
 /* Sizes */
@@ -71,12 +71,12 @@ $extra-large: 45px;
   color: white;
   border-radius: 5px;
   &:hover {
-    background-color: #B2C4F6;
-    color: #3C6ED0; 
+    background-color: #b2c4f6;
+    color: #3c6ed0;
     box-shadow: 0px 3px 10px rgba(138, 254, 113, 0.5);
   }
   &:active {
-    background-color: #2A50BC;
+    background-color: #2a50bc;
     color: white;
   }
   @media screen and (min-width: $breakpoint-lg) {
@@ -95,10 +95,15 @@ body {
   font-size: 16px;
   font-family: $secondary-font;
   p {
+    em {
+      font-size: 16px;
+      font-family: $secondary-font;
+    }
     font-size: 16px;
     font-family: $secondary-font;
   }
   button {
+    font-size: 14px;
     font-family: $primary-font;
   }
   h1 {
@@ -110,6 +115,10 @@ body {
     font-family: $primary-font;
   }
   h3 {
+    span {
+      font-size: 32px;
+      font-family: $primary-font;
+    }
     font-size: 32px;
     font-family: $primary-font;
   }
@@ -123,14 +132,10 @@ body {
   }
   h6 {
     font-size: 18px;
-    font-family: $primary-font; 
+    font-family: $primary-font;
   }
   small {
     font-size: 16px;
-  }
-  button {
-    font-size: 16px;
-    font-family: $primary-font;
   }
 }
 
@@ -138,6 +143,9 @@ body {
   body {
     font-size: 18px;
     p {
+      em {
+        font-size: 18px;
+      }
       font-size: 18px;
     }
     h1 {
@@ -147,6 +155,9 @@ body {
       font-size: 53px;
     }
     h3 {
+      span {
+        font-size: 39px;
+      }
       font-size: 39px;
     }
     h4 {
@@ -162,11 +173,10 @@ body {
       font-size: 16px;
     }
     button {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 }
-
 
 /* Weights */
 $normal: 400;
@@ -183,7 +193,7 @@ $bottom-yellow: 4px solid $yellow;
   border-radius: 18px;
 }
 
-.notFoundPage{
+.notFoundPage {
   height: calc(100vh - 240px - 96px);
   display: flex;
   flex-direction: column;

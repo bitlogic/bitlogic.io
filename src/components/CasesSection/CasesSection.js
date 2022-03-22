@@ -20,9 +20,9 @@ const CasesSection = ({ data }) => {
     console.log(caso, "caso")
     
     return (
-      <div className="case col-12 col-md-4 row" key={`case-${idx}`}>
+      <div className="case col-12 col-md-4 row" key={`case-${idx}`} id={data.strapi_component + "-" + data.id}>
         <div className="col-6 col-md-12">
-        <img className="case__img" src={caso.image?.url} alt="A kitten" />
+          <img className="case__img" src={caso.image?.url} alt="A kitten" />
         </div>
         <div className="col-6 col-md-12">
           <div className="case__descr">
@@ -32,7 +32,7 @@ const CasesSection = ({ data }) => {
           <button>{caso.button.content}</button>
         </div>
         <div className="case__socials col-12">
-          <FaRegThumbsUp color="#3F6BE8" size={20}/>
+          <FaRegThumbsUp color="#3F6BE8" size={20} />
           <FaRegComment color="#3F6BE8" size={20} />
           <FaShareAlt color="#3F6BE8" size={20} />
         </div>

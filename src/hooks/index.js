@@ -10,6 +10,7 @@ import useJobsPage from "./useJobsPage"
 import useServicePage from "./useServicePage"
 import useFooter from './useFooter';
 import useCases from './useCases'
+import useNavbar from './useNavbar';
 
 export {
   useServices,
@@ -23,5 +24,6 @@ export {
   useJobsPage,
   useServicePage,
   useFooter,
-  useCases
+  useCases,
+  useNavbar
 }
