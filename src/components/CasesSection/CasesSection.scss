@@ -35,6 +35,22 @@
     }
 }
 
+.caseExpanded {
+    --bs-gutter-x: 0 !important;
+    padding: 10px;
+    &__img {
+        width: 100%;
+    }
+    .caseQuote {
+        --bs-gutter-x: 0 !important;
+        &__profileImg {
+            border-radius: 50%;
+            height: 65px;
+            width: 65px;
+        }
+    }
+}
+
 @media screen and (min-width: $breakpoint-md) {
     .case {
         &__img {
@@ -53,6 +69,15 @@
             svg {
                 margin-left: 10px;
                 margin-right: 1px;
+            }
+        }
+    }
+    .caseExpanded {
+        .caseQuote {
+            &__profileImg {
+                width: 100px;
+                height: 100px;
+                margin-left: 15px;
             }
         }
     }
