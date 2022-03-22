@@ -1,12 +1,23 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
+import { useCases } from "../../hooks/index"
 import "./CasesSection.scss"
 import { FaRegThumbsUp, FaShareAlt, FaRegComment } from "react-icons/fa";
 
 const CasesSection = ({ data }) => {
   const { title, cases } = data
+  console.log(cases, "cases")
+  const casesData = useCases()
+  console.log(casesData, "data")
 
-  const casesCards = cases.map((caso, idx) => {
+  const casos = cases.map(caso => 
+    casesData.allStrapiCases.nodes.find(ca => ca.id === caso.strapiId)  
+  )
+  console.log(casos, "casos reales")
+
+
+  const casesCards = casos.slice(0,3).map((caso, idx) => {
+    console.log(caso, "caso")
     
     return (
       <div className="case col-12 col-md-4 row" key={`case-${idx}`}>
@@ -18,7 +29,7 @@ const CasesSection = ({ data }) => {
             <h5 className="case__descr_title">{caso.title}</h5>
             <p className="case__descr_text">{caso.description}</p>
           </div>
-          <button>Ver más</button>
+          <button>{caso.button.content}</button>
         </div>
         <div className="case__socials col-12">
           <FaRegThumbsUp color="#3F6BE8" size={20}/>

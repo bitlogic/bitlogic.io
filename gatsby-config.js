@@ -38,6 +38,7 @@ module.exports = {
         queryLimit: 1000,
         collectionTypes: [
           `banners`,
+          `cases`,
           `services`,
           `edTeches`,
           `ed-tech-submodules`,

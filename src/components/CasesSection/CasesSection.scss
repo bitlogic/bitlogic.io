@@ -42,7 +42,7 @@
             margin-bottom: 15px;
         }
         &__descr {
-            min-height: 120px;
+            min-height: 150px;
             max-height: 250px;
             h5 {
                 margin-bottom: 10px;
@@ -54,6 +54,14 @@
                 margin-left: 10px;
                 margin-right: 1px;
             }
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+    .case {
+        &__descr {
+            min-height: 130px;
         }
     }
 }
