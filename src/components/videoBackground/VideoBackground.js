@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import "./videoBackground.scss"
-const VideoBackground = ({ data: { video, description, button } }) => {
+const VideoBackground = ({ data: { video, description, button, strapi_component, id } }) => {
   const [isVideoPause, setIsVideoPause] = useState(false)
   const videoRef = useRef(null)
 
@@ -30,7 +30,7 @@ const VideoBackground = ({ data: { video, description, button } }) => {
   }, [isVideoPause])
 
   return (
-    <div className="container my-3">
+    <div className="container my-3" id={strapi_component + "-" + id}>
           <section className="videoBackground">
       <video
         ref={videoRef}

@@ -1,15 +1,22 @@
+import { Link } from "gatsby"
 import React from "react"
 import "./dropdown.scss"
 
 const Dropdown = ({ sections }) => {
   return (
-    <div className="dropdown_elem">
+    <div className="dropdown_elem" style={!sections ? {maxHeight: "0"} : {}}>
       <div className="dropdown_elem-section" data-first-dropdown-section>
         <ul>
           {sections &&
             sections.map(section => (
               <p className="dropdown_elem-link">
-                <a href={section.href}>{section.name}</a>
+                <Link
+                  to={"/" + (section.slug || "")}
+                  state={{ component: section.id }}
+                  className="dropdown_elem-link-inner"
+                >
+                  {section.name}
+                </Link>
               </p>
             ))}
         </ul>
@@ -17,7 +24,5 @@ const Dropdown = ({ sections }) => {
     </div>
   )
 }
-
-
 
 export default Dropdown

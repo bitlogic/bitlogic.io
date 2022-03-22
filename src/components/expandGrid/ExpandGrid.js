@@ -5,7 +5,7 @@ import "./expandGrid.scss"
 
 const ExpandGrid = ({ data }) => {
   return (
-    <div className="m-3 mx-5 sm:mx-3 py-5">
+    <div className="m-3 mx-5 sm:mx-3 py-5" id={data.strapi_component + "-" + data.id}>
       <section className="expandGrid">
         <div className="expandGrid-body">
           <h2>{data.title}</h2>

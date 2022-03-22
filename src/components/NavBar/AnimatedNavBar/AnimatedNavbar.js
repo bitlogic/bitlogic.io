@@ -8,13 +8,14 @@ import Dropdown from "./DropdownContainer/Dropdown"
 const getComponentTitle = component => {
   // falta definir los titulos para cada componente y arreglar los vinculos internos
   const titleReference = {
-    "home.hero": () => "Bitlogic",
-    "components.banner-list": () => "Dual section",
-    "components.selected-grid": () => "Selected grid",
-    "components.cases-section": () => " Cases section",
-    "home.quote": () => "Quote",
-    "home.video-background": () => "Video background",
-    "home.dual-section": () => "Dual section",
+    "home.hero": () => component.title,
+    "components.banner-list": () => component.title,
+    "components.selected-grid": () => component.title,
+    "components.cases-section": () => component.title,
+    "home.quote": () => component.title,
+    "home.video-background": () => component.title,
+    "home.dual-section": () =>
+      component.dualSectionPart.map(section => section.title).join(" - "),
   }
   return (
     (titleReference[component.strapi_component] &&
@@ -41,7 +42,7 @@ const AnimatedNavbar = ({
             )
             .map(component => ({
               name: getComponentTitle(component),
-              href: "#" + component.strapi_component + "-" + component.id,
+              id: component.strapi_component + "-" + component.id,
             }))}
         />
       ),
@@ -57,13 +58,8 @@ const AnimatedNavbar = ({
                 .find(landing => landing.name === navItem.landing.name)
                 .body.map(component => ({
                   name: getComponentTitle(component),
-                  href:
-                    "/" +
-                    navItem.landing.slug +
-                    "#" +
-                    component.strapi_component +
-                    "-" +
-                    component.id,
+                  id: component.strapi_component + "-" + component.id,
+                  slug: navItem.landing.slug,
                 }))}
             />
           ),
@@ -72,10 +68,15 @@ const AnimatedNavbar = ({
         return {
           title: navItem.label,
           slug: navItem.url,
-          dropdown: () => <Dropdown sections={[]} />,
+          dropdown: () => <Dropdown sections={null} />,
         }
       }
     }),
+    {
+      title: "Blog",
+      slug: "blog",
+      dropdown: () => <Dropdown sections={null} />,
+    },
   ]
 
   const [activeIndex, setActiveIndex] = useState([])
