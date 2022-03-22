@@ -38,11 +38,6 @@ const Layout = ({ children, options = {}, location }) => {
     if (el) {
       el.scrollIntoView({ behavior: "smooth" })
     }
-    // setTimeout(()=> {
-    //   el = hash && document.getElementById(hash)
-    //   console.log(el)
-    // }, 300)
-
   }, [location?.state?.component])
 
   return (
