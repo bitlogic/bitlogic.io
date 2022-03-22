@@ -1,0 +1,61 @@
+@import "../../styles/global.scss";
+
+.banner {
+  &__bgImage {
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+  }
+  &__titleContainer {
+    background-color: rgba(36, 39, 42, 0.4);
+    padding: 27px 45px 28px 24px;
+    width: 100%;
+  }
+  &__title {
+    font-size: $medium;
+    color: $white;
+    font-weight: $max-bold;
+    margin: 0;
+  }
+  &__summary {
+    background-color: $secondary-container;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__txt {
+      color: $white;
+      font-size: $medium;
+      padding: 23px 16px;
+      font-weight: $normal;
+      line-height: 25px;
+      letter-spacing: 0em;
+      text-align: center;
+      margin: 20px 0 20px;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .banner {
+    &__bgImage {
+      min-height: 600px;
+    }
+    &__titleContainer {
+      padding: 30px;
+    }
+    &__title {
+      font-size: $extra-large;
+    }
+    &__summary {
+      &__txt {
+        font-size: $large;
+        line-height: 35px;
+        text-align: center;
+        padding: 4rem 6rem;
+        margin-top: 0;
+      }
+    }
+  }
+}
