@@ -35,6 +35,10 @@ type StrapiHome implements Node {
     pageKeywords: String
   }
 
+  type LocalFile {
+    localFile: File @link(from: "localFile___NODE")
+  }
+
 `
 module.exports = {
   value: homeSchema,

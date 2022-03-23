@@ -61,6 +61,10 @@ type StrapiIcon implements Node {
     ): Date
     localFile: File
   }
+
+  type LocalFile {
+    localFile: File @link(from: "localFile___NODE")
+  }
 `
 module.exports = {
   value: iconScheme,

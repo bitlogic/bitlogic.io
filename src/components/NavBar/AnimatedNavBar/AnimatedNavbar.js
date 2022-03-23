@@ -31,38 +31,23 @@ const AnimatedNavbar = ({
   duration,
 }) => {
   const navbarConfig = [
-    {
-      title: "Home",
-      slug: "",
-      dropdown: () => (
-        <Dropdown
-          sections={homeComponents
-            .filter(
-              component => component.strapi_component !== "home.transition"
-            )
-            .map(component => ({
-              name: getComponentTitle(component),
-              id: component.strapi_component + "-" + component.id,
-            }))}
-        />
-      ),
-    },
     ...navbarItems.map(navItem => {
       if (navItem.landing) {
         return {
           title: navItem.label,
           slug: navItem.landing.slug,
-          dropdown: () => (
-            <Dropdown
-              sections={landingComponents
-                .find(landing => landing.name === navItem.landing.name)
-                .body.map(component => ({
-                  name: getComponentTitle(component),
-                  id: component.strapi_component + "-" + component.id,
-                  slug: navItem.landing.slug,
-                }))}
-            />
-          ),
+          dropdown: () =>
+            navItem.dropdown ? (
+              <Dropdown
+                sections={landingComponents
+                  .find(landing => landing.name === navItem.landing.name)
+                  .body.map(component => ({
+                    name: getComponentTitle(component),
+                    id: component.strapi_component + "-" + component.id,
+                    slug: navItem.landing.slug,
+                  }))}
+              />
+            ) : null,
         }
       } else if (navItem.url) {
         return {
@@ -72,6 +57,11 @@ const AnimatedNavbar = ({
         }
       }
     }),
+    {
+      title: "Join Us",
+      slug: "jobs",
+      dropdown: () => <Dropdown sections={null} />,
+    },
     {
       title: "Blog",
       slug: "blog",
