@@ -1,54 +1,27 @@
 import React from "react"
 import "./Hero.scss"
 
-export default function Hero({ data }) {
-    const title = data.title;
-    const richList = data.listAnimation;
-    const image = data.image.url;
-
-    const regexList = /(- )(.*)/g;
-
-    //Parametros en la funcion y validar el richText q acepte mas q h1
-    const processRichText = () => {
-        const processList = richList?.match(regexList)?.map(e => e.slice(2));
-        return [processList];
-
-    }
-
-    let [listOfWords] = processRichText();
-
-    return (
-        <>
-            <div className="hero" id={data.strapi_component + "-" + data.id}>
-                <div className="hero d-flex flex-column flex-xl-row-reverse justify-content-around">
-                    <div className="hero__image col-xl-7">
-                        <img
-                            src={image}
-                            placeholder="blurred"
-                        />
-                    </div>
-                    <div className="content-text d-flex align-self-center col-xl-5">
-                        <h1>{title}</h1>
-                        {listOfWords && (
-                            <div className="visible">
-                                <ul>
-                                    {listOfWords.map(word => <li>{word}</li>)};
-                                </ul>
-                            </div>
-                        )}
-
-                    </div>
-                </div>
-
-                {data.button && (
-                    <div className="hero__button">
-                        <a href={data.button.url} target="_blank" rel="noreferrer" >
-                            <button className="button-hero px-4">{data.button.content}</button>
-                        </a>
-                    </div>
-                )}
-            </div>
-        </>
-
-    )
+const Hero = ({
+  data: { title, listAnimation, subtitle, image, button, strapi_component, id },
+}) => {
+  return (
+    <div className="hero" id={strapi_component + "-" + id}>
+      <div className="hero-title">
+        <h1>{title}</h1>
+        <h3>{listAnimation || subtitle}</h3>
+        {button && (
+          <button>
+            <a href={button.url} target="_blank" rel="noreferrer">
+              {button.content}
+            </a>
+          </button>
+        )}
+      </div>
+      <div className="hero-img">
+        <img src={image?.url} alt="hero" />
+      </div>
+    </div>
+  )
 }
+
+export default Hero
