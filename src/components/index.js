@@ -7,7 +7,9 @@ import BannerClientes from "./Banners/BannerClientes"
 import BannerTop from "./Banners/BannerTop"
 import BannerActionCall from "./Banners/BannerActionCall"
 import CasesSection from "./CasesSection/CasesSection"
+import JobsPage from "./JobsPage/JobsPage"
 export {
+  JobsPage,
   Cards,
   CasesSection,
   Seo,
