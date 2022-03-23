@@ -352,6 +352,10 @@ type StrapiLayoutFooter {
     navbar: StrapiLayoutNavbar
     strapiId: Int
   }
+
+  type LocalFile {
+    localFile: File @link(from: "localFile___NODE")
+  }
 `
 module.exports = {
   value: layoutSchema,

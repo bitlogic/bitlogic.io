@@ -35,6 +35,10 @@ type StrapiLandingPage implements Node {
     pageDescription: String
     pageKeywords: String
   }
+
+  type LocalFile {
+    localFile: File @link(from: "localFile___NODE")
+  }
 `
 module.exports = {
   value: landingSchema,
