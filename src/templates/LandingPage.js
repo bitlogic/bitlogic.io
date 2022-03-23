@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Seo, CasesSection } from "../components/index.js"
+import { Seo, CasesSection, CasesList } from "../components/index.js"
 
 // componentes del body
 import Hero from "../components/Hero/Hero"
@@ -28,9 +28,9 @@ const LandingPage = ({ data, location }) => {
       <CasesSection data={component} /> :
       null
 
-      // const casesList = (component.strapi_component === "components.cases-section" && component.allCases) ? 
-      // <CasesList /> :
-      // null
+      const casesList = (component.strapi_component === "components.cases-section" && component.allCases) ? 
+      <CasesList /> :
+      null
 
     return (
       <div key={idx}>
@@ -39,7 +39,7 @@ const LandingPage = ({ data, location }) => {
         {component.strapi_component === "components.banner-list" && bannerList}
         {component.strapi_component === "components.selected-grid" && expandGrid}
         {(component.strapi_component === "components.cases-section" && !component.allCases) && casesSection}
-        {/* {(component.strapi_component === "components.cases-section" && component.allCases) && casesList}   */}
+        {(component.strapi_component === "components.cases-section" && component.allCases) && casesList}  
       </>
     </div>
     )

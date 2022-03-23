@@ -3,14 +3,13 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { useCases } from "../../hooks/index"
 import "./CasesSection.scss"
 import { FaRegThumbsUp, FaShareAlt, FaRegComment } from "react-icons/fa";
-import Quote from "../quote/Quote";
 
 const CasesList = () => {
 
   const casesData = useCases()
-  const cases = casesData?.allStrapiCases?.nodes
+  const cases = casesData?.allStrapiCase?.nodes
 
-  
+  console.log(casesData, "casos")
 
   
   const expendedCards = cases.map(caso => {
