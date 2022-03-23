@@ -1,37 +1,39 @@
-import React from 'react'
-import Layout from '../layout'
-import Helmet from 'react-helmet'
+import React from "react"
+import Layout from "../layout"
+import Helmet from "react-helmet"
 import MarkdownView from "react-showdown"
-import { Seo } from '../index'
-import './JobsPage.scss'
+import { Seo } from "../index"
+import "./JobsPage.scss"
 
-export default function JobsPage() {
-    const jobsData = useJobsPage()
-    const title = jobsData?.strapiJobsPage?.title
-    const { pageTitle, pageDescription, pageKeywords } = jobsData?.strapiJobsPage?.pageMetadata || {}
+const JobsPage = () => {
 
-    return (
-        <Layout>
-            {jobsData?.strapiJobsPage?.pageMetadata && (
-                <Seo
-                    title={pageTitle}
-                    description={pageDescription}
-                    keywords={pageKeywords}
-                />
-            )}
-            <MarkdownView markdown={title} className="banner__head" />
-            <div id="cats-portal-widget" className="container widget-container"></div>
-            <Helmet>
-                <script>
-                    {`window.cjw=window.cjw||function(){(cjw.instance=cjw.instance||[]).push(arguments[0])};
+  return (
+    <Layout>
+      <Seo />
+      <div class="banner__head">
+        <h2 id="teinvitamosaspanpcrearpspan">
+          Te invitamos a{" "}
+          <span>
+            <p>crear</p>
+          </span>
+        </h2>
+        <h3 id="conocnuestrasbsquedasydescubrtuprximodesafoconnosotros">
+          Conocé nuestras búsquedas y descubrí tu próximo desafío con nosotros.
+        </h3>
+      </div>
+      <div id="cats-portal-widget" className="container widget-container"></div>
+      <Helmet>
+        <script>
+          {`window.cjw=window.cjw||function(){(cjw.instance=cjw.instance||[]).push(arguments[0])};
                     cjw({"id":91646,"domain":"catsone.com","target":"#cats-portal-widget"});`}
-                </script>
-                <script
-                    async
-                    src="https://app.catsone.com/resources/entry-jobwidget.js">
-                </script>
-            </Helmet>
-
-        </Layout>
-    )
+        </script>
+        <script
+          async
+          src="https://app.catsone.com/resources/entry-jobwidget.js"
+        ></script>
+      </Helmet>
+    </Layout>
+  )
 }
+
+export default JobsPage

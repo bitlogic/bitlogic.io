@@ -260,6 +260,10 @@ type StrapiCase implements Node {
     width: Int
     height: Int
   }
+
+  type LocalFile {
+    localFile: File @link(from: "localFile___NODE")
+  }
 `
 
 module.exports = {

@@ -6,7 +6,6 @@ export default function Hero({ data }) {
     const richList = data.listAnimation;
     const image = data.image.url;
 
-    console.log(richList, "lista")
     const regexList = /(- )(.*)/g;
 
     //Parametros en la funcion y validar el richText q acepte mas q h1

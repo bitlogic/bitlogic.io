@@ -27,6 +27,10 @@ type LocalFile {
     ): Date
     formats: StrapiBlogCategoryArticleAuthorImageFormats
   }
+
+  type LocalFile {
+    localFile: File @link(from: "localFile___NODE")
+  }
 `
 
 module.exports = {
