@@ -7,6 +7,7 @@ const useContactPage = () => {
             nodes {
               strapiId
               title
+              subtitle
               description
               quote {
                 description
