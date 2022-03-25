@@ -5,27 +5,26 @@
     .titleSubscription {
       display: none;
     }
+    form {
+      margin-bottom: 0px;
+    }
   }
 
   &__Form {
-    label {
-      margin-right: 5px;
-    }
     input {
-      width: 100%;
-      border-radius: 5px;
-      color: #b2b2b2;
-      padding: 5px;
+      width: 210px;
+      border-radius: 4px;
+      border: 1px solid $primary;
+      color: $primary;
+      padding: 8px;
+      height: 30px;
+      width: 95%;
     }
     button {
-      background: #8761fc;
-      border: none;
-      border-radius: 5px;
-      color: $white;
-      font-size: $small;
-      font-weight: bold;
-      padding: 5px;
-      width: 40%;
+      @include primaryBtn;
+      box-shadow: 0px 2px 10px rgba(63, 107, 232, 0.5);
+      padding: 5px !important;
+      width: 30%;
     }
   }
 }
@@ -39,7 +38,12 @@
     &__Form {
       input {
         margin-bottom: 10px;
+        width: 270px;
         height: 40px;
+      }
+      button {
+        width: 136px;
+        height: 48px;
       }
     }
   }

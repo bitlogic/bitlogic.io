@@ -2,9 +2,9 @@
 
 .ContactData__Item {
   color: $white;
-  h3 {
-    color: $white;
-    font-size: $medium;
+
+  h6 {
+    margin-bottom: 15px;
   }
 
   &__contact {
@@ -16,9 +16,9 @@
   }
   &__link {
     a {
-      color: #8761fc;
-      font-weight: bold;
-      text-decoration: underline #8761fc;
+      color: $primary;
+      font-weight: 600;
+      text-decoration: underline $primary;
       font-size: 18px;
     }
   }

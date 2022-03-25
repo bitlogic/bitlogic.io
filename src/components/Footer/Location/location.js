@@ -16,9 +16,9 @@ export default function Location() {
         )
     });
     return (
-        <div className='ContactData__Item__location'>
-            <h3>{dataFooter?.location?.title}</h3>
-            <p>{location}</p>
+        <div className='ContactData__Item'>
+            <h6>{dataFooter?.location?.title}</h6>
+            <p className='ContactData__Item__location'>{location}</p>
         </div>
     )
 }

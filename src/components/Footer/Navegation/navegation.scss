@@ -1,17 +1,12 @@
 @import "../../../styles/global.scss";
 
 .ContactData__Item {
-  h3 {
-    font-size: 18px;
-  }
   ul {
     li {
       list-style: none;
 
       a {
         color: $white;
-        font-weight: bold;
-        font-size: 16px;
       }
     }
   }
@@ -19,9 +14,6 @@
 
 @media screen and (min-width: $breakpoint-xl) {
   .ContactData__Item {
-    h3 {
-      font-size: 20px;
-    }
     ul li a {
       font-size: 18px;
     }
