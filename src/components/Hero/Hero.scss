@@ -1,226 +1,46 @@
 @import "../../styles/global.scss";
-
-@-webkit-keyframes change {
-  0% {
-    margin-top: 0;
-  }
-  15% {
-    margin-top: 0;
-  }
-  25% {
-    margin-top: -45px;
-  }
-  40% {
-    margin-top: -45px;
-  }
-  50% {
-    margin-top: -90px;
-  }
-  65% {
-    margin-top: -90px;
-  }
-  75% {
-    margin-top: -45px;
-  }
-  85% {
-    margin-top: -45px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-
-@keyframes change {
-  0% {
-    margin-top: 0;
-  }
-  15% {
-    margin-top: 0;
-  }
-  25% {
-    margin-top: -45px;
-  }
-  40% {
-    margin-top: -45px;
-  }
-  50% {
-    margin-top: -90px;
-  }
-  65% {
-    margin-top: -90px;
-  }
-  75% {
-    margin-top: -45px;
-  }
-  85% {
-    margin-top: -45px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-
-@-webkit-keyframes changeDesktop {
-  0% {
-    margin-top: 0;
-  }
-  15% {
-    margin-top: 0;
-  }
-  25% {
-    margin-top: -65px;
-  }
-  40% {
-    margin-top: -65px;
-  }
-  50% {
-    margin-top: -130px;
-  }
-  65% {
-    margin-top: -130px;
-  }
-  75% {
-    margin-top: -65px;
-  }
-  85% {
-    margin-top: -65px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-
-@keyframes changeDesktop {
-  0% {
-    margin-top: 0;
-  }
-  15% {
-    margin-top: 0;
-  }
-  25% {
-    margin-top: -65px;
-  }
-  40% {
-    margin-top: -65px;
-  }
-  50% {
-    margin-top: -130px;
-  }
-  65% {
-    margin-top: -130px;
-  }
-  75% {
-    margin-top: -65px;
-  }
-  85% {
-    margin-top: -65px;
-  }
-  100% {
-    margin-top: 0;
-  }
-}
-
 .hero {
-  /*  background-image: url("../../images/Group.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  min-height: 700px; */
-
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3em;
   button {
     @include primaryBtn;
-    margin-left: 150px;
+    margin-top: 20px;
   }
 
   .gatsby-image-wrapper {
     display: block;
   }
 
-  .content-text {
-    line-height: 45px;
-    height: 45px;
-    color: #333;
-    margin: 40px 0px;
-
-    .visible {
-      overflow: hidden;
-      height: 45px;
-    }
-
-    h1 {
-      margin: 0;
-    }
-
-    ul {
-      margin-top: 0;
-      text-align: left;
-      list-style: none;
-      animation: 6s linear 0s normal none infinite change;
-      -webkit-animation: 6s linear 0s normal none infinite change;
-      -moz-animation: 6s linear 0s normal none infinite change;
-      -o-animation: 6s linear 0s normal none infinite change;
-
-      li {
-        line-height: 45px;
-        margin: 0;
-        color: #8afe71;
-        font-size: 40px;
-        padding-left: 20px;
-        font-weight: $max-bold;
-
-        &:first-child {
-          color: #e8809a !important;
-        }
-
-        &:last-child {
-          color: #d047fa !important;
-        }
-      }
+  &-title{
+    padding: 0 0 0 10vw;
+    flex-basis: 45%;
+    h3{
+      font-weight: 400;
     }
   }
-}
 
-//estilos de 768 para arriba
-@media screen and (min-width: $breakpoint-md) {
-  .hero {
-    img {
-      height: 580px;
-      width: 600px;
-      margin-top: 50px;
+  &-img{
+    max-height: 80vh;
+    overflow: hidden;
+    flex-basis: 55%;
+    img{
+      width: 100%;
     }
   }
-}
 
-@media screen and (min-width: $breakpoint-lg) {
-  .hero {
-    .content-text {
-      line-height: 65px;
-      height: 65px;
-      margin-left: 100px;
-
-      h1 {
-        margin-left: 100px;
-      }
-      .visible {
-        height: 65px;
-      }
-      ul {
-        animation: 6s linear 0s normal none infinite changeDesktop;
-        -webkit-animation: 6s linear 0s normal none infinite changeDesktop;
-        -moz-animation: 6s linear 0s normal none infinite changeDesktop;
-        -o-animation: 6s linear 0s normal none infinite changeDesktop;
-
-        li {
-          font-size: 69px;
-          line-height: 65px;
-        }
-      }
+  @media screen and (max-width: $breakpoint-xl) {
+    flex-direction: column-reverse;
+    &-img{
+      flex-basis: 100%;
     }
-    &__button {
-      margin-top: -20px;
-    }
-    &__image {
-      padding-left: 100px;
+    &-title{
+      padding: 0 10vw;
+      flex-basis: 100%;
     }
   }
+
 }

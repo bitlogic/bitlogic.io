@@ -32,17 +32,10 @@ const Layout = ({ children, options = {}, location }) => {
 
   React.useEffect(() => {
     const hash = location?.state?.component
-    console.log(hash)
     let el = hash && document.getElementById(hash)
-    console.log(el)
     if (el) {
       el.scrollIntoView({ behavior: "smooth" })
     }
-    // setTimeout(()=> {
-    //   el = hash && document.getElementById(hash)
-    //   console.log(el)
-    // }, 300)
-
   }, [location?.state?.component])
 
   return (

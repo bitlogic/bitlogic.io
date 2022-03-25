@@ -1,11 +1,26 @@
 const path = require("path")
 
 exports.createSchemaCustomization = ({ actions }) => {
-  const schema = require("./src/schema/schema")
+  const blogSchema = require("./src/schema/blogSchema")
+  const caseSchema = require("./src/schema/caseSchema")
+  const globalSeoSchema = require("./src/schema/globalSeoSchema")
+  const homeSchema = require("./src/schema/homeSchema")
+  const iconSchema = require("./src/schema/iconSchema")
+  const landingSchema = require("./src/schema/landingSchema")
+  const layoutSchema = require("./src/schema/layoutSchema")
+  const generalSchema = require("./src/schema/generalSchema")
 
   const { createTypes } = actions
-  const typeDefs = schema.value // + luego se concatenan
-
+  const typeDefs =
+    blogSchema.value +
+    blogSchema.value +
+    caseSchema.value +
+    globalSeoSchema.value +
+    homeSchema.value +
+    iconSchema.value +
+    landingSchema.value +
+    layoutSchema.value + 
+    generalSchema.value
   createTypes(typeDefs)
 }
 

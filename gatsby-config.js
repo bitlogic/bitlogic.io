@@ -37,24 +37,17 @@ module.exports = {
         apiURL: process.env.STRAPI_URL,
         queryLimit: 1000,
         collectionTypes: [
-          `banners`,
-          `services`,
-          `edTeches`,
-          `ed-tech-submodules`,
           `article`,
           `blog-category`,
-          `landing-page`
+          `landing-page`,
+          `case`,
+          `icon`
         ],
         singleTypes: [
-          `ed-tech-page`,
           `global-seo`,
-          `services-page`,
           `home`,
           `blog-page`,
-          `bitway-page`,
-          `contact-page`,
           `global-config`,
-          `jobs-page`,
           `layout`,
         ],
       },
