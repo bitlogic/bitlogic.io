@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useContactPage = () => {
-  const query = useStaticQuery(graphql`
+  return useStaticQuery(graphql`
     {
         allStrapiCase {
             nodes {
@@ -40,7 +40,7 @@ const useContactPage = () => {
           }
     }
   `)
-  return query
+
 }
 
 export default useContactPage
