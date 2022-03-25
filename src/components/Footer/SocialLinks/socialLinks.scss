@@ -3,8 +3,10 @@
 .SocialMedia {
   &__Links {
     margin-bottom: 20px;
-    a {
+    .btn-social {
       color: $white;
+      width: 21px;
+      height: 21px;
     }
   }
 }

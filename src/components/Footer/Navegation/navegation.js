@@ -9,15 +9,15 @@ export default function Navegation() {
 
     const navegationItems = dataFooter?.navegation?.pageLink;
 
-    const navegationParts = navegationItems?.map((section) =>
-        <li>
+    const navegationParts = navegationItems.map((section) =>
+        <li className="mb-2">
             <Link to={section.pathTo}>{section.name}</Link>
         </li>
     );
 
     return (
         <div className='ContactData__Item ps-md-3'>
-            <h3>{dataFooter.navegation?.title}</h3>
+            <h6>{dataFooter.navegation?.title}</h6>
             <ul className='Navegation__Item'>
                 {navegationParts}
             </ul>
