@@ -8,17 +8,18 @@ export default function Subscription() {
 
     return (
         <div className="ContactData__Item">
-            <h3 className="titleSubscription">{dataSubscription.title}</h3>
+            <h6 className="titleSubscription">{dataSubscription.title}</h6>
             <form>
-                <div className="ContactData__Form d-flex flex-md-column">
+                <div className="ContactData__Form d-flex flex-md-column justify-content-between">
                     <label>
                         <input
                             type="email"
                             name="email"
-                            value="Enter your mail"
+                            placeholder="Enter your mail"
+                            className="col-7"
                         />
                     </label>
-                    <button type="submit">Subscribe</button>
+                    <button className="col-5" type="submit">Subscribe</button>
                 </div>
             </form>
         </div>
