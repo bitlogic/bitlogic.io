@@ -29,6 +29,7 @@ type StrapiCase implements Node {
     quote: StrapiCaseQuote
     image: LocalFile
     strapiId: Int
+    subtitle: String
   }
   
   type StrapiCaseButton {

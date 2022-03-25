@@ -19,7 +19,7 @@ export default function ContactData() {
   return (
     <>
       <div className='ContactData__Item'>
-        <h6>{dataFooter.contact.title}</h6>
+        <h6>{dataFooter?.contact?.title}</h6>
         <p className='ContactData__Item__contact'>{contact}</p>
 
         <div className='ContactData__Item__link'>
