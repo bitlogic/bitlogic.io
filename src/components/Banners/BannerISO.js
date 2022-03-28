@@ -5,7 +5,7 @@ import "./BannerISO.scss"
 
 const BannerISO = ({ banner }) => {
 
-  const { title, subtitle, image, imageDarkMode } = banner
+  const { title, subtitle, image } = banner
 
   const titles = subtitle
   let converter = new showdown.Converter()

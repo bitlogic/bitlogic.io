@@ -2,7 +2,6 @@ import * as React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 
-import { useBanner } from "../../hooks/index"
 import { useTheme } from "../../context/themeContext"
 
 import "./BannerLogo.scss"

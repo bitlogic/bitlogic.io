@@ -25,9 +25,8 @@ const getComponentTitle = component => {
 }
 
 const AnimatedNavbar = ({
-  homeComponents,
   landingComponents,
-  navbarItems,
+  navbarItems = [],
   duration,
 }) => {
   const navbarConfig = [
