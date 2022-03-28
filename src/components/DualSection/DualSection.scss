@@ -4,6 +4,11 @@
   p {
     text-align: justify;
     font-weight: 700;
+    max-height: 300px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   h4 {
     font-weight: 700;
