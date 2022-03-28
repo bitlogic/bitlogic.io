@@ -29,8 +29,13 @@
     box-shadow: 0px 0px 3px #00000044;
     margin: 1em;
     padding: 2em;
+
     h4 {
       color: $grey;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     button {
       background: $grey;
@@ -38,7 +43,7 @@
       color: white;
       font-weight: 500;
       border-radius: 3px;
-      padding: .6em 3em;
+      padding: 0.6em 3em;
     }
   }
 }
