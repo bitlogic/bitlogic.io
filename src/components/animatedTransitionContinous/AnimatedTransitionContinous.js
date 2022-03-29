@@ -2,13 +2,13 @@ import React from "react"
 import "./animatedTransitionContinous.scss"
 
 const AnimatedTransitionContinous = ({
-  data: { text, image, imagePosition },
+  data: { text = "", image, imagePosition },
 }) => {
   let longerText = ""
 
-  console.log(imagePosition)
-  while (longerText.length < 200) {
-    longerText = text + "-" + longerText
+  const amount = text ? 200 : 100
+  while (longerText.length < amount) {
+    longerText = (text || "") + "-" + longerText
   }
 
   return (
@@ -20,7 +20,7 @@ const AnimatedTransitionContinous = ({
               {imagePosition === "first" && (
                 <img src={image?.url} alt="" />
               )}
-              <h1>{innerText}</h1>
+              <h1>{innerText || ""}</h1>
               {(imagePosition === "last" || !imagePosition) && (
                 <img src={image?.url} alt="" />
               )}
