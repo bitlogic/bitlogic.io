@@ -1,0 +1,52 @@
+@import "../../styles/global.scss";
+//Pase todos los estilos de PageJobs, cuando este definido el estilo de la pag join-us lo cambiamos
+
+.banner {
+  width: 100%;
+  min-height: 300px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h3 {
+    color: $primary;
+    text-align: center;
+
+    span {
+      background-color: $primary;
+      display: inline-block;
+      -webkit-transform: skew(-15deg);
+      transform: skew(-15deg);
+
+      h3 {
+        padding: 5px 20px;
+        -webkit-transform: skew(15deg);
+        transform: skew(15deg);
+        color: $white !important;
+        margin: 0;
+      }
+    }
+  }
+  h6 {
+    color: $primary;
+    //border-bottom: 4px solid $blue;
+    //padding: 7px;
+    text-align: center;
+    //padding: 0px 15px;
+  }
+}
+
+.cats-mobile {
+  &-column-name {
+    font-size: $small;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .banner {
+    h6 {
+      border-bottom: 4px solid $primary !important;
+      padding: 7px;
+    }
+  }
+}

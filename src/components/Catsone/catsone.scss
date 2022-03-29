@@ -1,0 +1,181 @@
+@import "../../styles/global.scss";
+//Pase todos los estilos de PageJobs, cuando este definido el estilo de la pag join us lo cambiamos
+.cats-multiselect {
+  &-label {
+    color: $primary !important;
+  }
+  &-dropdown-menu {
+    background: $primary-container !important;
+    color: $primary !important;
+  }
+
+  &-option {
+    cursor: pointer;
+    &:hover {
+      background: rgba(128, 128, 128, 0.13) !important;
+    }
+  }
+
+  &-search input {
+    background: $primary-container !important;
+    color: $primary !important;
+  }
+}
+.cats-multiselect-label-block {
+  border: 2px solid $border-bottom !important;
+}
+
+.cats-job {
+  border-bottom: 1px solid $border-bottom !important;
+  padding-left: 15px !important;
+  > div {
+    overflow-x: hidden !important;
+  }
+
+  &-title {
+    overflow: hidden;
+    a {
+      color: $title-jobs;
+      font-weight: 700;
+      font-size: $medium;
+      padding-bottom: 10px;
+    }
+  }
+
+  &-column-value {
+    color: $primary !important;
+    font-size: $small;
+  }
+
+  &:hover {
+    background: $jobs-hover !important;
+    cursor: pointer;
+    & .cats-job-column-value {
+      color: $primary !important;
+    }
+  }
+}
+
+.cats-chevron {
+  color: $primary !important;
+  & path {
+    fill: $primary !important;
+  }
+}
+
+.widget-container {
+  min-height: 65vh;
+  margin-top: 20px !important;
+  padding-bottom: 70px !important;
+}
+
+.cats-powered-by {
+  display: none;
+}
+
+.cats-column-header {
+  padding-left: 15px !important;
+  border-bottom: 2px solid $border-bottom !important;
+  border-top: 2px solid $border-bottom !important;
+}
+
+.banner__head {
+  width: 100%;
+  background: #303234;
+  min-height: 300px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h2 {
+    color: $blue;
+    font-size: $large;
+    text-align: center;
+
+    span {
+      background-color: $blue;
+      display: inline-block;
+      -webkit-transform: skew(-15deg);
+      transform: skew(-15deg);
+
+      p {
+        padding: 5px 20px;
+        -webkit-transform: skew(15deg);
+        transform: skew(15deg);
+        color: $white !important;
+        font-size: $large;
+        margin: 0;
+      }
+    }
+  }
+  h3 {
+    color: $white;
+    //border-bottom: 4px solid $blue;
+    //padding: 7px;
+    font-size: $small;
+    text-align: center;
+    //padding: 0px 15px;
+  }
+}
+
+.cats-mobile {
+  &-column-name {
+    font-size: $small;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .cats-column-name {
+    span {
+      font-size: $large;
+    }
+  }
+  .cats-job {
+    &-title {
+      a {
+        font-size: $large;
+      }
+    }
+
+    &-column-value {
+      font-size: $medium;
+    }
+  }
+
+  .cats-mobile {
+    &-column-name {
+      font-size: $medium;
+    }
+  }
+
+  .cats-multiselect-label {
+    font-size: $large;
+  }
+
+  .widget-container {
+    margin-top: 70px !important;
+  }
+  .banner__head {
+    h2 {
+      font-size: $extra-large;
+      span {
+        p {
+          font-size: $extra-large;
+        }
+      }
+    }
+    h3 {
+      font-size: $large;
+      border-bottom: 4px solid $blue;
+      padding: 7px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .cats-job {
+    &-column-value {
+      font-size: $large;
+    }
+  }
+}
