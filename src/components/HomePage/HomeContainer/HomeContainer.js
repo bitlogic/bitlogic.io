@@ -15,7 +15,7 @@ import DualSection from "../../DualSection/DualSection"
 const bodyComponents = {
   "home.hero": data => <Hero data={data} />,
   "home.transition": data => (
-    <AnimatedTransitionContinous>{data.text}</AnimatedTransitionContinous>
+    <AnimatedTransitionContinous data={data} />
   ),
   "home.quote": data => <Quote data={data} />,
   "home.video-background": data => <VideoBackground data={data} />,
