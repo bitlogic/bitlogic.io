@@ -6,7 +6,6 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 const BannerHead = ({ data }) => {
 
     const title = data?.title;
-    console.log(title, "banner")
 
     const checkImage = (data) => {
 

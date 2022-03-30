@@ -4,7 +4,6 @@ import Layout from "../../components/layout"
 import BlogGrid from "./BlogGrid/BlogGrid"
 import BlogArticle from "./BlogArticle/BlogArticle"
 import { Seo, BannerHead } from "../index"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 import "./BlogContainer.scss"
 
@@ -15,8 +14,6 @@ const Blog = () => {
   const data = blogData?.allStrapiBlogCategory?.nodes
   const dataArticles = blogData?.allStrapiArticle?.nodes
   const bannerHead = blogData?.allStrapiBlogPage?.nodes[0]?.bannerHead[0]
-  const title = bannerHead.title
-  const image = getImage(bannerHead.image[0]?.localFile)
   const filterArticle = data.map(category => dataArticles.filter(article => category.name === article.blog_category.name))
 
   console.log(bannerHead)
