@@ -9,7 +9,7 @@ const BannerHead = ({ data }) => {
 
     const checkImage = () => {
 
-        if (data.image[0].url) {
+        if (data?.image[0]?.url) {
             return <img src={data?.image[0]?.url} alt={data?.image[0]?.name} />
         } else {
             const image = getImage(data?.image[0]?.localFile)
@@ -20,7 +20,7 @@ const BannerHead = ({ data }) => {
     return (
         <div class="banner d-flex justify-content-center">
             <div class="banner__image">
-                {checkImage(data)}
+                {checkImage()}
             </div>
 
             {title && (
