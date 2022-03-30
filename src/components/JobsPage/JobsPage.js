@@ -1,12 +1,10 @@
 import React from "react"
 import Layout from "../layout"
 import Helmet from "react-helmet"
-import MarkdownView from "react-showdown"
 import { Seo } from "../index"
 import "./JobsPage.scss"
 
 const JobsPage = () => {
-
   return (
     <Layout>
       <Seo />

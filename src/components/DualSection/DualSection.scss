@@ -4,6 +4,11 @@
   p {
     text-align: justify;
     font-weight: 700;
+    max-height: 300px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   h4 {
     font-weight: 700;
@@ -20,4 +25,56 @@
     border: none;
     padding: 0.3em;
   }
+}
+
+
+.one_sec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3em;
+  padding: 3em 0;
+  button {
+    background: $light-grey;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+    border: none;
+    padding: 0.3em;
+    a{
+      color: inherit;
+    }
+  }
+
+  .gatsby-image-wrapper {
+    display: block;
+  }
+
+  &-title{
+    flex-basis: 45%;
+    h3{
+      font-weight: 400;
+    }
+  }
+
+  &-img{
+    flex-basis: 55%;
+    img{
+      width: 100%;
+      padding: 0 0 0 3em;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-xl) {
+    flex-direction: column-reverse;
+    &-img{
+      flex-basis: 100%;
+    }
+    &-title{
+      padding: 0 10vw;
+      flex-basis: 100%;
+    }
+  }
+
 }

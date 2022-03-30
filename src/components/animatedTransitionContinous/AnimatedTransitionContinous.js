@@ -1,18 +1,31 @@
 import React from "react"
 import "./animatedTransitionContinous.scss"
 
-const AnimatedTransitionContinous = ({ children }) => {
+const AnimatedTransitionContinous = ({
+  data: { text = "", image, imagePosition },
+}) => {
   let longerText = ""
 
-  while (longerText.length < 200) {
-    longerText = children + "  -  " + longerText
+  const amount = text ? 200 : 100
+  while (longerText.length < amount) {
+    longerText = (text || "") + "-" + longerText
   }
 
   return (
     <div className="m-scroll">
       <div className="m-scroll__title">
         <div>
-          <h1>{longerText}</h1>
+          {longerText.split("-").map(innerText => (
+            <div className="m-scroll__title-inner">
+              {imagePosition === "first" && (
+                <img src={image?.url} alt="" />
+              )}
+              <h1>{innerText || ""}</h1>
+              {(imagePosition === "last" || !imagePosition) && (
+                <img src={image?.url} alt="" />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>

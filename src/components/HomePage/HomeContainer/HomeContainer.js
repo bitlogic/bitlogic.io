@@ -11,15 +11,19 @@ import Quote from "../../quote/Quote"
 import VideoBackground from "../../videoBackground/VideoBackground"
 import Hero from "../../Hero/Hero"
 import DualSection from "../../DualSection/DualSection"
+import OneSection from "../../DualSection/OneSection"
 
 const bodyComponents = {
   "home.hero": data => <Hero data={data} />,
-  "home.transition": data => (
-    <AnimatedTransitionContinous>{data.text}</AnimatedTransitionContinous>
-  ),
+  "home.transition": data => <AnimatedTransitionContinous data={data} />,
   "home.quote": data => <Quote data={data} />,
   "home.video-background": data => <VideoBackground data={data} />,
-  "home.dual-section": data => <DualSection data={data} />,
+  "home.dual-section": data =>
+  data.dualSectionPart.length === 1 ? (
+      <OneSection data={data} />
+    ) : (
+      <DualSection data={data} />
+    ),
 }
 
 const Home = ({ location }) => {

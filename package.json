@@ -46,7 +46,8 @@
     "react-markdown": "5.0.3",
     "react-script-tag": "^1.1.2",
     "react-showdown": "^2.3.1",
-    "sass": "^1.49.0"
+    "sass": "^1.49.0",
+    "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "devDependencies": {
     "prettier": "2.2.1"
