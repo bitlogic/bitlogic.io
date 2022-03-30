@@ -1198,41 +1198,6 @@ type StrapiGlobalConfigScript {
   src: String
 }
 
-type StrapiJobsPage implements Node {
-  id: ID!
-  parent: Node
-  children: [Node!]!
-  internal: Internal!
-  title: String
-  published_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  strapiId: Int
-  pageMetadata: StrapiJobsPagePageMetadata
-}
-
-type StrapiJobsPagePageMetadata {
-  id: Int
-  pageTitle: String
-  pageDescription: String
-  pageKeywords: String
-}
-
 type StrapiLayoutFooter {
   id: Int
   subscription: StrapiLayoutFooterSubscription
