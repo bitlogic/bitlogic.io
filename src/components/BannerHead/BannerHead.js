@@ -1,28 +1,32 @@
 import React from "react"
 import "./BannerHead.scss"
 import MarkdownView from "react-showdown"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const BannerHead = ({ data }) => {
 
     const title = data?.title;
-    const image = data?.image;
-    console.log(image)
+    console.log(title, "banner")
+
+    const checkImage = (data) => {
+
+        if (data.image[0].url) {
+            return <img src={data?.image[0]?.url} alt={data?.image[0]?.name} />
+        } else {
+            const image = getImage(data?.image[0]?.localFile)
+            return <GatsbyImage image={image} alt={`img-${title}`}></GatsbyImage>
+        }
+    }
+
     return (
         <div class="banner d-flex justify-content-center">
             <div class="banner__image">
-                {(image.length !== 0) && (
-                    <img
-                        src={image.url} alt={image.name}
-                    />
-                )}
+                {checkImage(data)}
             </div>
-            <div class="banner__title">
-                <h1>
-                    {title && (
-                        <MarkdownView markdown={title} />
-                    )}
-                </h1>
-            </div>
+
+            {title && (
+                <MarkdownView markdown={title} />
+            )}
         </div>
     )
 }
