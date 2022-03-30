@@ -24,11 +24,7 @@ const getComponentTitle = component => {
   )
 }
 
-const AnimatedNavbar = ({
-  landingComponents,
-  navbarItems = [],
-  duration,
-}) => {
+const AnimatedNavbar = ({ landingComponents, navbarItems = [], duration }) => {
   const navbarConfig = [
     ...navbarItems.map(navItem => {
       if (navItem.landing) {
@@ -56,11 +52,6 @@ const AnimatedNavbar = ({
         }
       }
     }),
-    {
-      title: "Join Us",
-      slug: "jobs",
-      dropdown: () => <Dropdown sections={null} />,
-    },
     {
       title: "Blog",
       slug: "blog",
