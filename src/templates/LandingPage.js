@@ -45,13 +45,13 @@ const LandingPage = ({ data, location }) => {
     return (
       <div key={idx}>
         <>
-          {component.strapi_component === "home.hero" && hero}
-          {component.strapi_component === "components.banner-list" && bannerList}
-          {component.strapi_component === "components.selected-grid" && expandGrid}
-          {(component.strapi_component === "components.cases-section" && !component.allCases) && casesSection}
-          {(component.strapi_component === "components.cases-section" && component.allCases) && casesList}
-          {component.strapi_component === "scripts.catsone" && catsone}
-          {component.strapi_component === "banners.banner-head" && bannerHead}
+          {hero}
+          {bannerList}
+          {expandGrid}
+          {casesSection}
+          {casesList}
+          {catsone}
+          {bannerHead}
         </>
       </div>
     )
