@@ -7,7 +7,7 @@ const BannerHead = ({ data }) => {
 
     const title = data?.title;
 
-    const checkImage = (data) => {
+    const checkImage = () => {
 
         if (data.image[0].url) {
             return <img src={data?.image[0]?.url} alt={data?.image[0]?.name} />
