@@ -3,7 +3,7 @@ import { useBlog } from "../../hooks"
 import Layout from "../../components/layout"
 import BlogGrid from "./BlogGrid/BlogGrid"
 import BlogArticle from "./BlogArticle/BlogArticle"
-import { Seo, BannerActionCall } from "../index"
+import { Seo, BannerHead } from "../index"
 
 import "./BlogContainer.scss"
 
@@ -13,11 +13,10 @@ const Blog = () => {
 
   const data = blogData?.allStrapiBlogCategory?.nodes
   const dataArticles = blogData?.allStrapiArticle?.nodes
-  const bannerActionCall = blogData?.allStrapiBlogPage?.nodes[0]?.actionCallBanner
-  const title = blogData?.allStrapiBlogPage?.nodes[0]?.title
-
+  const bannerHead = blogData?.allStrapiBlogPage?.nodes[0]?.bannerHead[0]
   const filterArticle = data.map(category => dataArticles.filter(article => category.name === article.blog_category.name))
 
+  console.log(bannerHead)
   const {
     pageTitle,
     pageDescription,
@@ -35,12 +34,9 @@ const Blog = () => {
       )}
       {data.length > 0 && (
         <div className="blog__container">
-          {title && (
-            <div className="banner__container">
-              <h3 dangerouslySetInnerHTML={{ __html: title }} />
-            </div>
-          )}
-          
+
+          {bannerHead && <BannerHead data={bannerHead} />}
+
           {filterArticle?.map((category, idx) => (
             <BlogGrid key={idx} title={category[0]?.blog_category?.name}>
               {category.map((item, idx) => (
@@ -57,8 +53,6 @@ const Blog = () => {
           ))}
         </div>
       )}
-      
-      {bannerActionCall && <BannerActionCall banner={bannerActionCall} />}
     </Layout>
   )
 }
