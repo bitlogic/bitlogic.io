@@ -448,7 +448,7 @@ type StrapiBlogCategory implements Node {
   type StrapiBlogPageBannerHead {
     id: Int
     title: String
-    image: localFile
+    image: LocalFile
   }
   
   type StrapiBlogPageBannerHeadImage {
@@ -479,6 +479,58 @@ type StrapiBlogCategory implements Node {
     ): Date
     localFile: File
   }
+
+  type StrapiBlogPageBannerHeadImageFormats {
+    large: StrapiBlogPageBannerHeadImageFormatsLarge
+    small: StrapiBlogPageBannerHeadImageFormatsSmall
+    medium: StrapiBlogPageBannerHeadImageFormatsMedium
+    thumbnail: StrapiBlogPageBannerHeadImageFormatsThumbnail
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsLarge {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsSmall {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsMedium {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsThumbnail {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
   
   type StrapiBlogPagePageMetadata {
     id: Int
