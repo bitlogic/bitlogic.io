@@ -13,7 +13,7 @@ const Blog = () => {
 
   const data = blogData?.allStrapiBlogCategory?.nodes
   const dataArticles = blogData?.allStrapiArticle?.nodes
-  const bannerHead = blogData?.allStrapiBlogPage?.nodes[0]?.bannerHead[0]
+  const bannerHead = blogData?.allStrapiBlogPage?.nodes[0]?.bannerHead
   const filterArticle = data.map(category => dataArticles.filter(article => category.name === article.blog_category.name))
 
   console.log(bannerHead)

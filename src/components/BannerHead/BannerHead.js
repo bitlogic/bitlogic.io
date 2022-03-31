@@ -4,15 +4,14 @@ import MarkdownView from "react-showdown"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const BannerHead = ({ data }) => {
-
     const title = data?.title;
 
     const checkImage = () => {
 
-        if (data?.image[0]?.url) {
-            return <img src={data?.image[0]?.url} alt={data?.image[0]?.name} />
+        if (data?.image?.url) {
+            return <img src={data?.image?.url} alt={data?.image?.name} />
         } else {
-            const image = getImage(data?.image[0]?.localFile)
+            const image = getImage(data?.image?.localFile)
             return <GatsbyImage image={image} alt={`img-${title}`}></GatsbyImage>
         }
     }
