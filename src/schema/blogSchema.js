@@ -442,22 +442,95 @@ type StrapiBlogCategory implements Node {
     pageMetadata: StrapiBlogPagePageMetadata
     strapiId: Int
     title: String
-    actionCallBanner: StrapiBlogPageActionCallBanner
+    bannerHead: StrapiBlogPageBannerHead
   }
-  
-  type StrapiBlogPageActionCallBanner {
+
+  type StrapiBlogPageBannerHead {
     id: Int
     title: String
-    link: StrapiBlogPageActionCallBannerLink
     image: LocalFile
-    imageDarkMode: LocalFile
   }
   
-  type StrapiBlogPageActionCallBannerLink {
+  type StrapiBlogPageBannerHeadImage {
     id: Int
     name: String
-    pathTo: String
+    alternativeText: String
+    caption: String
+    width: Int
+    height: Int
+    formats: StrapiBlogPageBannerHeadImageFormats
+    hash: String
+    ext: String
+    mime: String
+    size: Float
+    url: String
+    provider: String
+    created_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String  
+      locale: String
+    ): Date
+    updated_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    localFile: File
   }
+
+  type StrapiBlogPageBannerHeadImageFormats {
+    large: StrapiBlogPageBannerHeadImageFormatsLarge
+    small: StrapiBlogPageBannerHeadImageFormatsSmall
+    medium: StrapiBlogPageBannerHeadImageFormatsMedium
+    thumbnail: StrapiBlogPageBannerHeadImageFormatsThumbnail
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsLarge {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsSmall {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsMedium {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
+  type StrapiBlogPageBannerHeadImageFormatsThumbnail {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
   
   type StrapiBlogPagePageMetadata {
     id: Int
