@@ -64,7 +64,13 @@ const ExpandedListItem = ({ index, data }) => {
         }, 400)
       }}
     >
-      <div className="listItem-expanded">
+      <div
+        ref={scrollRef}
+        className="listItem-expanded"
+        onClick={_el => {
+          onClick(index)
+        }}
+      >
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent-expanded">
             <div className="listItem-more-expanded">

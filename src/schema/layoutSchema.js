@@ -14,7 +14,8 @@ type StrapiLayoutFooter {
   type StrapiLayoutNavbar {
     id: Int
     navbarItem: [StrapiLayoutNavbarNavbarItem]
-    logo: StrapiLayoutNavbarLogo
+    logo: LocalFile
+    logoDark: LocalFile
   }
   
   type StrapiLayoutNavbarNavbarItem {
@@ -24,6 +25,7 @@ type StrapiLayoutFooter {
     url: String
     visible: Boolean
     dropdown: Boolean
+    singleType: String
   }
   
   type StrapiLayoutNavbarNavbarItemLanding {

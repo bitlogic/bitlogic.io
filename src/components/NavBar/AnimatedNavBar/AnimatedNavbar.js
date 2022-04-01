@@ -27,7 +27,13 @@ const getComponentTitle = component => {
 const AnimatedNavbar = ({ landingComponents, navbarItems = [], duration }) => {
   const navbarConfig = [
     ...navbarItems.map(navItem => {
-      if (navItem.landing) {
+      if (navItem.singleType) {
+        return {
+          title: navItem.label,
+          slug: navItem.singleType,
+          dropdown: () => <Dropdown sections={null} />,
+        }
+      } else if (navItem.landing) {
         return {
           title: navItem.label,
           slug: navItem.landing.slug,
@@ -42,7 +48,9 @@ const AnimatedNavbar = ({ landingComponents, navbarItems = [], duration }) => {
                     slug: navItem.landing.slug,
                   }))}
               />
-            ) : null,
+            ) : (
+              <Dropdown sections={null} />
+            ),
         }
       } else if (navItem.url) {
         return {
@@ -52,11 +60,6 @@ const AnimatedNavbar = ({ landingComponents, navbarItems = [], duration }) => {
         }
       }
     }),
-    {
-      title: "Blog",
-      slug: "blog",
-      dropdown: () => <Dropdown sections={null} />,
-    },
   ]
 
   const [activeIndex, setActiveIndex] = useState([])
@@ -112,9 +115,9 @@ const AnimatedNavbar = ({ landingComponents, navbarItems = [], duration }) => {
         {navbarConfig.map((n, index) => {
           return (
             <NavbarItem
-              to={"/" + n.slug}
-              key={n.title}
-              title={n.title}
+              to={"/" + n?.slug}
+              key={n?.title}
+              title={n?.title}
               index={index}
               onMouseEnter={onMouseEnter}
             >
