@@ -50,7 +50,6 @@ const NavBar = () => {
           )}
           <div className="NavBar_Side">
             <button className="NavBar_Side-contact">Let´s Talk</button>
-            <p>ES</p>
             <button className="theme-toggle" onClick={toggleTheme}>
               {theme === "dark" ? (
                 <img
