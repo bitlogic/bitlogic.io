@@ -9,6 +9,7 @@ const useNavbar = () => {
             navbarItem {
               url
               label
+              singleType
               landing {
                 slug
                 name
@@ -17,6 +18,13 @@ const useNavbar = () => {
               id
             }
             logo {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            logoDark {
               localFile {
                 childImageSharp {
                   gatsbyImageData

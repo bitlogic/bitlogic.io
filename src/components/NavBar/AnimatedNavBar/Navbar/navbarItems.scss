@@ -1,3 +1,5 @@
+@import "../../../../styles/global.scss";
+
 .navbar {
   &-el {
     margin: auto;
@@ -7,6 +9,13 @@
     justify-content: center;
     list-style: none;
     margin: 0;
+    @media screen and (max-width: $breakpoint-xl) {
+      flex-direction: column;
+      justify-content: baseline;
+      a {
+        padding: 0.5em;
+      }
+    }
   }
   &_item {
     position: relative;
@@ -15,9 +24,14 @@
       border: 0;
       font-size: 18px;
       padding: 2rem 1.5rem 1.2rem 1.5rem;
-      color: #1F1D37;
+      color: #1f1d37;
       display: flex;
-      justify-content: center;
+      justify-content: baseline;
+      @media screen and (max-width: $breakpoint-xl) {
+        justify-content: baseline;
+        margin-left: 40px;
+        font-size: 1.4em;
+      }
       transition: opacity 250ms;
       cursor: pointer;
       /* position above the dropdown, otherwise the dropdown will cover up the bottom sliver of the buttons */

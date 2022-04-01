@@ -26,7 +26,7 @@
 .NavBar__Link {
   text-decoration: none;
   text-transform: uppercase;
-  color: #1F1D37;
+  color: #1f1d37;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -36,44 +36,61 @@
 }
 .NavBar__Link:hover {
   text-decoration: none;
-  color: #3f6BE8;
+  color: #3f6be8;
 }
 
-.NavBar__Link--active {
+.navbar_item-title-active {
   text-decoration: none;
-  color: #3f6BE8;
+  color: #3f6be8 !important;
 }
 
-.NavBar_Side{
+.NavBar_Side {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
   &-contact {
     white-space: nowrap;
     box-shadow: 0px 2px 10px #3f6be880;
-    padding: .6em;
-    background-color: #3F6BE8;
+    padding: 0.6em;
+    background-color: #3f6be8;
     color: white;
-    border: 1px solid #3F6BE8;
+    border: 1px solid #3f6be8;
     border-radius: 4px;
-    &:hover{
+    &:hover {
       background-color: white;
-      color: #3F6BE8;
+      color: #3f6be8;
     }
   }
   p {
-    color: #1F1D37;
-    margin: 0 3em;
+    color: #1f1d37;
+    margin: 0 2em 0 2.5em;
+  }
+  @media screen and (max-width: $breakpoint-xl) {
+    margin-left: 40px;
+    font-size: 1.4em;
+    &-contact {
+      font-size: 0.9em;
+    }
+    p {
+      font-size: 1em;
+      margin: 0 2em;
+    }
   }
 }
 
-@media screen and (min-width: 992px) {
-  .NavBar{
+.NavBar {
+  & > a {
+    margin: 1.5em 0 1em 50px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .NavBar {
     display: flex;
     flex-direction: row;
     & > a {
-      flex-basis: 20%;
+      flex-grow: 0;
+      margin-left: 2em;
     }
   }
   .NavBar__Logo {
@@ -82,26 +99,25 @@
   }
   .NavBar__Collapse {
     /* DESKTOP */
-    justify-content: space-around;
     align-items: center;
+    .NavBar_links {
+      flex-grow: 1;
+    }
   }
   .NavBar__List {
     margin-top: 0rem;
   }
   .NavBar__Item {
     margin-right: 2.5rem;
-    margin-top: .5em;
+    margin-top: 0.5em;
     white-space: nowrap;
   }
-  .NavBar_Side{
-    justify-content: unset;
+  .NavBar_Side {
+    margin-right: 1em;
   }
-  
 }
 
-
-
-.theme-toggle{
+.theme-toggle {
   background: none;
   border: none;
   height: 54px;
