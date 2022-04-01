@@ -34,6 +34,12 @@
         }
       }
     }
+    &-image{
+      animation: scrollText 240s infinite linear !important;
+      &:hover {
+        animation-play-state: unset !important;
+      }
+    }
     &-inner{
       display: flex;
       flex-direction: row;
