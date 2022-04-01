@@ -3,6 +3,9 @@
 .NavBar {
   background-color: white;
   z-index: 10;
+  & > a {
+    margin: 1.5em 0 1em 50px;
+  }
 }
 .NavBar__Logo {
   margin: 16px 28px;
@@ -75,12 +78,6 @@
       font-size: 1em;
       margin: 0 2em;
     }
-  }
-}
-
-.NavBar {
-  & > a {
-    margin: 1.5em 0 1em 50px;
   }
 }
 

@@ -7,9 +7,6 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 import { useNavbar } from "../../hooks/index"
 
-// default logo
-import logoLight from "../../images/tipologo-azul.png"
-
 import { useTheme } from "../../context/themeContext"
 // theme images
 import moon from "../../images/moon-solid.svg"
