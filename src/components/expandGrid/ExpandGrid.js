@@ -65,11 +65,7 @@ const ExpandedListItem = ({ index, data }) => {
       }}
     >
       <div
-        ref={scrollRef}
         className="listItem-expanded"
-        onClick={_el => {
-          onClick(index)
-        }}
       >
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent-expanded">
@@ -97,7 +93,6 @@ const ExpandedListItem = ({ index, data }) => {
 
 const AnimatedList = ({ items }) => {
   const [itemsArray, setItemsArray] = useState({ items, focused: null })
-  const scrollRef = useRef(null)
 
   useEffect(() => {
     setItemsArray(prev => ({ ...prev, focused: items[0].id }))
@@ -133,7 +128,7 @@ const AnimatedList = ({ items }) => {
       }}
       decisionData={itemsArray.focused}
     >
-      <ul ref={scrollRef} className="list">
+      <ul className="list">
         {itemsArray.items.map(item => {
           return (
             <>
