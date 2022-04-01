@@ -1,16 +1,19 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import MarkdownView from "react-showdown"
 import "./expandGrid.scss"
 
 const ExpandGrid = ({ data }) => {
   return (
-    <div className="m-3 mx-5 sm:mx-3 py-5" id={data.strapi_component + "-" + data.id}>
+    <div
+      className="m-3 mx-auto sm:mx-3 py-5 container"
+      id={data.strapi_component + "-" + data.id}
+    >
       <section className="expandGrid">
         <div className="expandGrid-body">
           <h2>{data.title}</h2>
           <h6 className="px-5">{data.subtitle}</h6>
-          <AnimatedList items={data.items} />
+          <AnimatedList items={data.items.slice(0,4)} />
         </div>
       </section>
     </div>
@@ -32,6 +35,9 @@ const ListItem = ({ index, onClick, data }) => {
       <div className="listItem" onClick={() => onClick(index)}>
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent">
+          <div className="listItem-more">
+            <p>Ver mas</p>
+          </div>
             <Flipped
               flipId={`avatar-${index}`}
               stagger="card-image"
@@ -47,15 +53,12 @@ const ListItem = ({ index, onClick, data }) => {
   )
 }
 
-const ExpandedListItem = ({ index, onClick, data, scrollToRef }) => {
-  const scrollRef = useRef(null)
-
+const ExpandedListItem = ({ index, data }) => {
   return (
     <Flipped
       flipId={createCardFlipId(index)}
       stagger="card"
       onStart={el => {
-        scrollToRef(scrollRef)
         setTimeout(() => {
           el.classList.add("animated-in")
         }, 400)
@@ -70,6 +73,9 @@ const ExpandedListItem = ({ index, onClick, data, scrollToRef }) => {
       >
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent-expanded">
+            <div className="listItem-more-expanded">
+              <p  ></p>
+            </div>
             <Flipped
               flipId={`avatar-${index}`}
               stagger="card-image"
@@ -77,7 +83,6 @@ const ExpandedListItem = ({ index, onClick, data, scrollToRef }) => {
             >
               <img alt="" src={data.image?.url} className="avatar-expanded" />
             </Flipped>
-
             <div className="additional-content">
               <div>
                 <MarkdownView markdown={data.text} />
@@ -91,45 +96,56 @@ const ExpandedListItem = ({ index, onClick, data, scrollToRef }) => {
 }
 
 const AnimatedList = ({ items }) => {
-  const [focused, setFocused] = useState(null)
+  const [itemsArray, setItemsArray] = useState({ items, focused: null })
   const scrollRef = useRef(null)
+
+  useEffect(() => {
+    setItemsArray(prev => ({ ...prev, focused: items[0].id }))
+  }, [])
+
   const onClick = index => {
-    setFocused(focused === index ? null : index)
-    if (focused !== null) {
-      scrollToRef(scrollRef)
+    for (let i = 0; i < items.length; i++) {
+      const item = itemsArray.items[i]
+      if (item.id === index) {
+        setItemsArray(prevItems => ({
+          items: [
+            item,
+            ...prevItems.items.slice(0, i),
+            ...prevItems.items.slice(i + 1),
+          ],
+          focused: item.id,
+        }))
+        break
+      }
     }
   }
 
-  const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop - 40)
 
   return (
     <Flipper
-      flipKey={focused}
+      flipKey={itemsArray.focused}
       className="staggered-list-content"
       spring="noWobble"
       staggerConfig={{
         card: {
-          reverse: focused !== null,
+          reverse: itemsArray.focused !== null,
         },
       }}
-      decisionData={focused}
-
+      decisionData={itemsArray.focused}
     >
       <ul ref={scrollRef} className="list">
-        {items.map((item, index) => {
+        {itemsArray.items.map(item => {
           return (
             <>
-              {index === focused ? (
+              {item.id === itemsArray.focused ? (
                 <ExpandedListItem
-                  index={focused}
-                  onClick={onClick}
+                  index={itemsArray.focused}
                   data={item}
-                  scrollToRef={scrollToRef}
                 />
               ) : (
                 <ListItem
-                  index={index}
-                  key={index}
+                  index={item.id}
+                  key={item.id}
                   onClick={onClick}
                   data={item}
                 />
