@@ -64,7 +64,7 @@ const ExpandedListItem = ({ index, onClick, data, scrollToRef }) => {
       <div
         ref={scrollRef}
         className="listItem-expanded"
-        onClick={el => {
+        onClick={_el => {
           onClick(index)
         }}
       >
