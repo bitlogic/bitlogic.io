@@ -5,21 +5,22 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const BannerHead = ({ data }) => {
     const title = data?.title;
+    const image = data?.image;
 
     const checkImage = () => {
 
-        if (data?.image?.url) {
-            return <img src={data?.image?.url} alt={data?.image?.name} />
+        if (image?.url) {
+            return <img src={image?.url} alt={image?.name} />
         } else {
-            const image = getImage(data?.image?.localFile)
-            return <GatsbyImage image={image} alt={`img-${title}`}></GatsbyImage>
+            const imagen = getImage(image?.localFile)
+            return <GatsbyImage image={imagen} alt={`img-${title}`}></GatsbyImage>
         }
     }
 
     return (
         <div class="banner d-flex justify-content-center">
             <div class="banner__image">
-                {checkImage()}
+                {image && checkImage()}
             </div>
 
             {title && (
