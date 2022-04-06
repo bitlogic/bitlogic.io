@@ -2,7 +2,7 @@ import React from "react"
 import "./animatedTransitionContinous.scss"
 
 const AnimatedTransitionContinous = ({
-  data: { text = "", image, imagePosition },
+  data: { text = "", image, imagePosition, color },
 }) => {
   let longerText = ""
 
@@ -20,7 +20,7 @@ const AnimatedTransitionContinous = ({
               {imagePosition === "first" && (
                 <img src={image?.url} alt="" />
               )}
-              <h1>{innerText || ""}</h1>
+              <h1 style={{color: color}}>{innerText || ""}</h1>
               {(imagePosition === "last" || !imagePosition) && (
                 <img src={image?.url} alt="" />
               )}
