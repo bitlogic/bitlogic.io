@@ -2,7 +2,7 @@
 
 .quote {
   display: grid;
-  gap: 3em;
+  gap: 2em;
 
   &-body {
     grid-area: quote-body;
@@ -10,9 +10,11 @@
       width: 100%;
       object-fit: cover;
     }
-    video {
+    iframe {
       width: 100%;
-      object-fit: cover;
+      margin-bottom: 0;
+      min-height: 250px;
+      max-height: 400px;
     }
   }
 
@@ -23,10 +25,13 @@
 
     &-title {
       font-weight: 700;
+      margin-bottom: 5px;
+      line-height: 35px;
     }
     &-text {
-      font-weight: 700;
       max-height: 300px;
+      margin-bottom: 0;
+      text-align: justify;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -42,8 +47,8 @@
     width: 100%;
     z-index: 4;
     img {
-      width: 100px;
-      height: 100px;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
     }
     .markdown {
@@ -62,39 +67,76 @@
   }
 }
 
+@media (min-width: $breakpoint-md) {
+  .quote {
+    &-body {
+      iframe {
+        min-height: 300px !important;
+      }
+    }
+  }
+}
 @media (min-width: $breakpoint-lg) {
   .quote {
+    &-body {
+      iframe {
+        min-height: 350px !important;
+      }
+    }
     &-btn {
       button {
         width: 150px;
         height: 40px;
       }
     }
+    &-profile {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
   }
 }
 
+@media (min-width: $breakpoint-xl) {
+  .quote {
+    &-body {
+      iframe {
+        min-height: 500px !important;
+      }
+    }
+    &-person {
+      &-title {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
 // variantes
 .variant {
   &-quote {
-    grid-template-areas: "quote-person quote-body" "quote-profile quote-body";
+    grid-template-areas:
+      "quote-person quote-body"
+      "quote-profile quote-body";
     grid-template-columns: 1fr 2fr;
     @extend .variant;
   }
 
-  &-image {
-    grid-template-areas: "quote-body quote-person" "quote-body quote-profile";
+  &-media {
+    grid-template-areas:
+      "quote-body quote-person"
+      "quote-body quote-profile";
     grid-template-columns: 2fr 1fr;
     @extend .variant;
   }
 
   grid-template-rows: auto 1fr;
-  @media screen and (max-width: $breakpoint-lg) {
+  @media screen and (max-width: calc($breakpoint-md - 3px)) {
     grid-template-areas: "quote-body quote-body" "quote-profile quote-person";
     grid-template-columns: auto 1fr;
-    padding: 1em;
+    padding: 0.5em;
   }
-
-  @media screen and (max-width: $breakpoint-md) {
+  @media screen and (max-width: calc($breakpoint-md - 3px)) {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -102,4 +144,15 @@
       margin-bottom: 0;
     }
   }
+  /*  @media screen and (max-width: calc($breakpoint-xl - 3px)) {
+    .variant {
+      &-quote {
+        grid-template-columns: 1fr 2fr !important;
+      }
+
+      &-media {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+  } */
 }
