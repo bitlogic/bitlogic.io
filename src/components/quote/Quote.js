@@ -3,7 +3,7 @@ import MarkdownView from "react-showdown"
 import React from "react"
 
 const Quote = ({
-  data: { description, title, variant, profile, profileDescription, button, image, videoUrl, strapi_component, id },
+  data: { description, title, variant, profileDescription, videoUrl, button, profile, image, strapi_component, id },
 }) => {
   const url = videoUrl.replace("watch?v=", "embed/")
   let code = url.substring(url.lastIndexOf("/") + 1, url.length)
