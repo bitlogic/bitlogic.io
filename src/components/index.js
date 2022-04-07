@@ -8,6 +8,7 @@ import BannerTop from "./Banners/BannerTop"
 import BannerHead from "./BannerHead/BannerHead"
 import CasesSection from "./CasesSection/CasesSection"
 import CasesList from "./CasesSection/CasesList"
+import LogosSection from "./LogosSection/logosSection"
 
 
 export {
@@ -20,5 +21,6 @@ export {
   BannerISO,
   BannerClientes,
   BannerTop,
-  BannerHead
+  BannerHead,
+  LogosSection,
 }
