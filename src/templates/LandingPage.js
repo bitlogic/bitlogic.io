@@ -9,6 +9,7 @@ import BannerList from "../components/BannerList/BannerLis"
 import ExpandGrid from "../components/expandGrid/ExpandGrid"
 import Catsone from "../components/Catsone/catsone"
 import BannerHead from '../components/BannerHead/BannerHead';
+import Text from '../components/Text/Text';
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
@@ -42,7 +43,10 @@ const LandingPage = ({ data, location }) => {
       <BannerHead data={component} /> :
       null
 
-      const logosSection = component.strapi_component === "components.logos-section" ?
+    const text = component.strapi_component === "components.text" ?
+      <Text data={component} /> :
+      null
+    const logosSection = component.strapi_component === "components.logos-section" ?
       <LogosSection data={component} /> :
       null
 
@@ -56,6 +60,7 @@ const LandingPage = ({ data, location }) => {
           {casesList}
           {catsone}
           {bannerHead}
+          {text}
           {logosSection}
         </>
       </div>
