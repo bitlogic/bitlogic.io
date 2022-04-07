@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Seo, CasesSection, CasesList } from "../components/index.js"
+import { Seo, CasesSection, CasesList, LogosSection } from "../components/index.js"
 
 // componentes del body
 import Hero from "../components/Hero/Hero"
@@ -14,7 +14,7 @@ import Text from '../components/Text/Text';
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
   const content = pageData.body.map((component, idx) => {
-    console.log(component)
+
     const hero = component.strapi_component === "home.hero" ?
       <Hero data={component} /> :
       null
@@ -46,6 +46,9 @@ const LandingPage = ({ data, location }) => {
     const text = component.strapi_component === "components.text" ?
       <Text data={component} /> :
       null
+    const logosSection = component.strapi_component === "components.logos-section" ?
+      <LogosSection data={component} /> :
+      null
 
     return (
       <div key={idx}>
@@ -58,6 +61,7 @@ const LandingPage = ({ data, location }) => {
           {catsone}
           {bannerHead}
           {text}
+          {logosSection}
         </>
       </div>
     )
