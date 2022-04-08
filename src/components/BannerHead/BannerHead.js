@@ -5,6 +5,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { useTheme } from "../../context/themeContext"
 
 const BannerHead = ({ data }) => {
+  console.log(data)
   const { theme } = useTheme()
 
   const title = data?.title
