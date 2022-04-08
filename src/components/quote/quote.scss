@@ -3,7 +3,7 @@
 .quote {
   display: grid;
   gap: 3em;
-
+  color: $primary;
   &-body {
     grid-area: quote-body;
     img {
