@@ -449,7 +449,88 @@ type StrapiBlogCategory implements Node {
     id: Int
     title: String
     image: LocalFile
+    imageDark: LocalFile
   }
+
+type StrapiBlogPageBannerHeadImageDark {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: StrapiBlogPageBannerHeadImageDarkFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiBlogPageBannerHeadImageDarkFormats {
+  thumbnail: StrapiBlogPageBannerHeadImageDarkFormatsThumbnail
+  large: StrapiBlogPageBannerHeadImageDarkFormatsLarge
+  medium: StrapiBlogPageBannerHeadImageDarkFormatsMedium
+  small: StrapiBlogPageBannerHeadImageDarkFormatsSmall
+}
+
+type StrapiBlogPageBannerHeadImageDarkFormatsThumbnail {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBlogPageBannerHeadImageDarkFormatsLarge {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBlogPageBannerHeadImageDarkFormatsMedium {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
+
+type StrapiBlogPageBannerHeadImageDarkFormatsSmall {
+  name: String
+  hash: String
+  ext: String
+  mime: String
+  width: Int
+  height: Int
+  size: Float
+  url: String
+}
   
   type StrapiBlogPageBannerHeadImage {
     id: Int

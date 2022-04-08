@@ -6,7 +6,7 @@ import "./expandGrid.scss"
 const ExpandGrid = ({ data }) => {
   return (
     <div
-      className="m-3 mx-auto sm:mx-3 py-5 container"
+      className="p-3 mx-auto sm:mx-3 py-5 container"
       id={data.strapi_component + "-" + data.id}
     >
       <section className="expandGrid">

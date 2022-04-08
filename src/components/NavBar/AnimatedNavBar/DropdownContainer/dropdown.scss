@@ -1,3 +1,4 @@
+@import "../../../../styles/global.scss";
 .dropdown {
   &_elem {
     width: 18.5rem;
@@ -10,7 +11,7 @@
       margin-top: 0;
       margin-bottom: 1rem;
       &-inner{
-        color: black;
+        color: $primary;
       }
     }
   }
@@ -53,8 +54,9 @@
   position: relative;
   top: -20px;
   &-background {
+    filter: brightness(120%);
     transform-origin: 0 0;
-    background-color: white;
+    background-color: $primary-container;
     border-radius: 4px;
     overflow: hidden;
     position: relative;
