@@ -3,7 +3,7 @@ import MarkdownView from "react-showdown";
 import './Text.scss';
 
 export default function Text({ data }) {
-    console.log(data)
+
     const title = data?.title;
     const description = data?.text;
 

@@ -16,7 +16,6 @@ const Blog = () => {
   const bannerHead = blogData?.allStrapiBlogPage?.nodes[0]?.bannerHead
   const filterArticle = data.map(category => dataArticles.filter(article => category.name === article.blog_category.name))
 
-  console.log(bannerHead)
   const {
     pageTitle,
     pageDescription,
