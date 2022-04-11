@@ -9,6 +9,7 @@ $nav-footer-container: var(--nav-footer-container);
 $blog-card-container: var(--blog-card-container);
 
 $primary: var(--primary);
+$primary-invert: var(--primary-invert);
 $primary-hover: var(--primary-hover);
 $primary-container: var(--primary-container);
 
@@ -17,6 +18,8 @@ $secondary-container: var(--secondary-container);
 $border-bottom: var(--border-bottom);
 $title-jobs: var(--title-jobs);
 $jobs-hover: var(--jobs-hover);
+
+
 
 main {
   background-color: $primary-container !important;
@@ -51,7 +54,6 @@ $grey-light: #f5f5f5;
 //new colors
 $grey: #545468;
 $light-grey: #c4c4c4;
-$primary: #3f6be8;
 $alt: #67f293;
 $blackBit: #242424;
 
@@ -67,17 +69,13 @@ $extra-large: 45px;
   padding: 5px 15px;
   font-weight: 500;
   border: none;
-  background-color: $primary;
-  color: white;
+  background-color: $secondary;
+  color: $primary-invert;
   border-radius: 5px;
+  transition: filter 200ms ease-in;
   &:hover {
-    background-color: #b2c4f6;
-    color: #3c6ed0;
+    filter: brightness(135%);
     box-shadow: 0px 3px 10px rgba(138, 254, 113, 0.5);
-  }
-  &:active {
-    background-color: #2a50bc;
-    color: white;
   }
   @media screen and (min-width: $breakpoint-lg) {
     padding: 8px 30px;
@@ -145,12 +143,12 @@ body {
 
 @media screen and (min-width: $breakpoint-lg) {
   body {
-    font-size: 18px;
+    font-size: 20px;
     p {
       em {
-        font-size: 18px;
+        font-size: 20px;
       }
-      font-size: 18px;
+      font-size: 20px;
     }
     h1 {
       font-size: 69px;

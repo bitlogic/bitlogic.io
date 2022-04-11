@@ -1,7 +1,7 @@
 @import "../../styles/global.scss";
 
 .NavBar {
-  background-color: white;
+  background-color: $primary-container;
   z-index: 10;
   & > a {
     margin: 1.5em 0 1em 50px;
@@ -44,7 +44,7 @@
 
 .navbar_item-title-active {
   text-decoration: none;
-  color: #3f6be8 !important;
+  color: $secondary !important;
 }
 
 .NavBar_Side {
@@ -52,18 +52,8 @@
   flex-direction: row;
   align-items: center;
   &-contact {
+    @include primaryBtn;
     white-space: nowrap;
-    box-shadow: 0px 2px 10px #3f6be880;
-    padding: 0.6em;
-    margin-right: 1em;
-    background-color: #3f6be8;
-    color: white;
-    border: 1px solid #3f6be8;
-    border-radius: 4px;
-    &:hover {
-      background-color: white;
-      color: #3f6be8;
-    }
   }
   p {
     color: #1f1d37;

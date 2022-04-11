@@ -45,7 +45,7 @@ const Home = ({ location }) => {
 
       {/* Dynamic zone */}
       {data.allStrapiHome.nodes[0].body.map(component =>
-        bodyComponents[component.strapi_component](component)
+        bodyComponents[component.strapi_component] ? bodyComponents[component.strapi_component](component) : null
       )}
     </Layout>
   )

@@ -1,11 +1,11 @@
 @import ".././../styles/global.scss";
 
 .expandGrid {
+  color: $primary;
   display: flex;
   flex-direction: column;
   justify-content: center;
   h2 {
-    color: #333333;
     flex-grow: 1;
     text-align: center;
     font-weight: 700;
@@ -40,7 +40,7 @@
   &-focus {
     flex: 0 1 calc(calc(100% / 3) - 10px);
   }
-  background-color: #ececec;
+  background-color: rgba(180, 180, 180, 0.24);
   cursor: pointer;
 
   @media screen and (max-width: $breakpoint-xxl) {
@@ -137,7 +137,6 @@
 .additional-content > div {
   opacity: 0;
   border-radius: 3px;
-  height: 5rem;
   h4 {
     text-align: left;
   }

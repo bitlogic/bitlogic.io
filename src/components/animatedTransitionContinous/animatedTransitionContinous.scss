@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .m-scroll {
   display: flex;
   position: relative;
@@ -56,7 +58,7 @@
         cursor: default;
         &:hover {
           text-decoration: none;
-          color: black;
+          color: $primary;
         }
       }
     }

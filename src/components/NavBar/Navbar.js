@@ -49,7 +49,7 @@ const NavBar = () => {
             </div>
           )}
           <div className="NavBar_Side">
-            <button className="NavBar_Side-contact">Let´s Talk</button>
+            <button className="NavBar_Side-contact">Hablemos</button>
             <button className="theme-toggle" onClick={toggleTheme}>
               {theme === "dark" ? (
                 <img
