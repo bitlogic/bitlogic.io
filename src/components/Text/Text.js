@@ -5,7 +5,7 @@ import "./Text.scss"
 export default function Text({ data }) {
     const title = data?.title
     const description = data?.text
-    const bgImage = data?.backgroundImage[0].url
+    const bgImage = data?.backgroundImage?.url
 
     return (
         <div className="container-text">
