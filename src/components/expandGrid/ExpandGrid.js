@@ -55,7 +55,6 @@ const ListItem = ({ index, onClick, data }) => {
 }
 
 const ExpandedListItem = ({ index, data, isFirst }) => {
-  console.log(data)
   return (
     <Flipped
       flipId={createCardFlipId(index)}
