@@ -20,6 +20,7 @@ const useBlog = () => {
               }
             }
           }
+          
           blog_category {
             name
           }
@@ -35,6 +36,13 @@ const useBlog = () => {
           bannerHead {
             title
             image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            imageDark {
               localFile {
                 childImageSharp {
                   gatsbyImageData

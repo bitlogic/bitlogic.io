@@ -1,12 +1,14 @@
 @import "../../styles/global.scss";
 
 .casesSection {
+    color: $primary;
     h2 {
         text-align: center;
         font-weight: 700;
     }
 }
 .case {
+    color: $primary;
     --bs-gutter-x: 0 !important;
     padding: 10px;
     &__img {

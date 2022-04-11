@@ -3,11 +3,9 @@ import "./NavBar.scss"
 import { Link } from "gatsby"
 import Navbar from "react-bootstrap/Navbar"
 import AnimatedNavbar from "./AnimatedNavBar/AnimatedNavbar"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 import { useNavbar } from "../../hooks/index"
-
-// default logo
-import logoLight from "../../images/tipologo-azul.png"
 
 import { useTheme } from "../../context/themeContext"
 // theme images
@@ -16,14 +14,20 @@ import sun from "../../images/sun.svg"
 const NavBar = () => {
   const { theme, toggleTheme } = useTheme()
   const navbarData = useNavbar()
+
+  const logoLight = getImage(
+    navbarData.allStrapiLayout?.nodes[0].navbar?.logo?.localFile
+  )
+  const logoDark = getImage(
+    navbarData.allStrapiLayout?.nodes[0].navbar?.logoDark?.localFile
+  )
   return (
     <>
       <Navbar variant="dark" expand="xl" className="NavBar">
         <Link to="/">
-          <img
-            src={logoLight}
-            alt="Logo Bitlogic"
-            className="d-inline-block align-top NavBar__Logo"
+          <GatsbyImage
+            image={theme === "dark" && logoDark ? logoDark : logoLight}
+            alt={"bitlogic"}
           />
         </Link>
         <Navbar.Toggle
@@ -33,18 +37,19 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
           {/* Menu Links */}
           {navbarData && (
-            <AnimatedNavbar
-              homeComponents={navbarData.allStrapiHome?.nodes[0].body}
-              landingComponents={navbarData.allStrapiLandingPage?.nodes}
-              navbarItems={
-                navbarData.allStrapiLayout?.nodes[0].navbar?.navbarItem
-              }
-              duration={300}
-            />
+            <div className="NavBar_links">
+              <AnimatedNavbar
+                homeComponents={navbarData.allStrapiHome?.nodes[0].body}
+                landingComponents={navbarData.allStrapiLandingPage?.nodes}
+                navbarItems={
+                  navbarData.allStrapiLayout?.nodes[0].navbar?.navbarItem
+                }
+                duration={300}
+              />
+            </div>
           )}
           <div className="NavBar_Side">
-            <button className="NavBar_Side-contact">Let´s Talk</button>
-            <p>ES</p>
+            <button className="NavBar_Side-contact">Hablemos</button>
             <button className="theme-toggle" onClick={toggleTheme}>
               {theme === "dark" ? (
                 <img
