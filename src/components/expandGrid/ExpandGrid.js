@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import MarkdownView from "react-showdown"
 import "./expandGrid.scss"
