@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React, { useEffect, useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import MarkdownView from "react-showdown"
@@ -36,7 +37,7 @@ const ListItem = ({ index, onClick, data }) => {
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent">
             <div className="listItem-more">
-              <p>Ver mas</p>
+              <h4>{data.title}</h4>
             </div>
             <Flipped
               flipId={`avatar-${index}`}
@@ -77,9 +78,15 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
             >
               <img alt="" src={data.image?.url} className="avatar-expanded" />
             </Flipped>
-            <div className={"additional-content " + isFirst ? "animated-in" : ""}>
+            <div
+              className={"additional-content " + (isFirst ? "animated-in" : "")}
+            >
               <div>
+                <h4>{data.title}</h4>
                 <MarkdownView markdown={data.text} />
+                {data.landing_page && (
+                  <Link to={"/" + data.landing_page.slug}>Ver más</Link>
+                )}
               </div>
             </div>
           </div>
@@ -113,7 +120,6 @@ const AnimatedList = ({ items }) => {
       }
     }
   }
-
   return (
     <Flipper
       flipKey={itemsArray.focused}
