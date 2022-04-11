@@ -2,32 +2,43 @@ import React from "react"
 import "./BannerHead.scss"
 import MarkdownView from "react-showdown"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { useTheme } from "../../context/themeContext"
 
 const BannerHead = ({ data }) => {
-    const title = data?.title;
-    const image = data?.image;
+  const { theme } = useTheme()
 
-    const checkImage = () => {
+  const title = data?.title
 
-        if (image?.url) {
-            return <img src={image?.url} alt={image?.name} />
-        } else {
-            const imagen = getImage(image?.localFile)
-            return <GatsbyImage image={imagen} alt={`img-${title}`}></GatsbyImage>
-        }
+  const checkImage = () => {
+    if (data?.image?.url) {
+      return (
+        <img
+          src={
+            theme === "dark" && data?.imageDark
+              ? data?.imageDark?.url
+              : data?.image?.url
+          }
+          alt={data?.image?.name}
+        />
+      )
+    } else {
+      const image = getImage(data?.image?.localFile)
+      const imageDark = data?.imageDark && getImage(data?.imageDark?.localFile)
+      return (
+        <GatsbyImage
+          image={theme === "dark" && imageDark ? imageDark : image}
+          alt={`img-${title}`}
+        ></GatsbyImage>
+      )
     }
+  }
 
-    return (
-        <div class="banner d-flex justify-content-center">
-            <div class="banner__image">
-                {image && checkImage()}
-            </div>
-
-            {title && (
-                <MarkdownView markdown={title} />
-            )}
-        </div>
-    )
+  return (
+    <div class="banner d-flex justify-content-center">
+      <div class="banner__image">{checkImage()}</div>
+      {title && <MarkdownView markdown={title} />}
+    </div>
+  )
 }
 
 export default BannerHead
