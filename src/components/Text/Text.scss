@@ -1,8 +1,71 @@
 @import "../../styles/global.scss";
 
 .text {
-  color: $primary;
+  margin-bottom: 50px;
   .title {
     text-transform: uppercase;
+    width: 100%;
+    min-height: 150px;
+    max-height: 65vh;
+    padding-top: 55px;
+  }
+  .description {
+    min-height: 60vh;
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .text {
+    .description {
+      padding-top: 55px;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .text {
+    .title {
+      max-height: 60vh;
+
+      .titleText {
+        max-width: 30vw;
+        padding-left: 5rem !important;
+      }
+    }
+    .description {
+      padding-top: 70px;
+      max-width: 60vw;
+      max-height: 55vh;
+      padding-right: 10rem !important;
+    }
+  }
+}
+
+#descriptionText {
+  height: 70vh;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+
+  p {
+    background-color: #ffffff;
+    padding: 2em 1em;
+    margin: 1em 1em 0;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  #descriptionText {
+    max-height: 60vh;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  #descriptionText {
+    p {
+      padding: 3em 3em;
+    }
   }
 }
