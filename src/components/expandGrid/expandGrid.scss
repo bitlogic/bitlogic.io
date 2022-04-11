@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 5em;
+  padding: 0 2em;
   width: 100%;
 }
 
@@ -40,7 +40,7 @@
   &-focus {
     flex: 0 1 calc(calc(100% / 3) - 10px);
   }
-  background-color: rgba(180, 180, 180, 0.24);
+  background-color: rgba(255, 255, 255, 0.158);
   cursor: pointer;
 
   @media screen and (max-width: $breakpoint-xxl) {
@@ -116,16 +116,16 @@
 
 .listItem-more{
   position: absolute;
-  inset: 0 0 0 0;
+  inset: 0 0 20px 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: baseline;
   transition: opacity 200ms ease;
   opacity: 1;
+  color: black;
   p{
     padding: 0;
     margin: 0;
-    @include primaryBtn;
   }
   &-expanded{
     @extend .listItem-more;
@@ -137,6 +137,19 @@
 .additional-content > div {
   opacity: 0;
   border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  p {
+    max-height: 10vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  a{
+    color: $secondary;
+    text-decoration: underline;
+    margin: auto 0 10px 10px;
+  } 
   h4 {
     text-align: left;
   }
