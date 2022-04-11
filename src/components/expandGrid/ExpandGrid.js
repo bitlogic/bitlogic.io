@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import MarkdownView from "react-showdown"
 import "./expandGrid.scss"
@@ -79,9 +79,10 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
               <img alt="" src={data.image?.url} className="avatar-expanded" />
             </Flipped>
             <div
-              className={"additional-content " + (isFirst ? "animated-in" : "")}
+            
+              className={"additional-content "}
             >
-              <div>
+              <div style={isFirst ? {opacity: "1"} : {}}>
                 <h4>{data.title}</h4>
                 <MarkdownView markdown={data.text} />
                 {data.landing_page && (
