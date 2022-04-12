@@ -8,7 +8,7 @@ const themes = {
     "--primary": "#000000",
     "--primary-invert": "#ffffff",
     "--primary-hover": "#000000",
-    "--primary-container": "#ffffff",
+    "--primary-container": "#faf8f8",
     "--title-jobs": "#5682c6",
     "--jobs-hover": "#f0f0f0",
 

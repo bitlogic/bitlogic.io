@@ -1,7 +1,8 @@
 @import "../../styles/global.scss";
 
 .text {
-  margin-bottom: 50px;
+  color: $primary;
+  padding-bottom: 50px;
   .title {
     text-transform: uppercase;
     width: 100%;
@@ -43,13 +44,14 @@
 }
 
 #descriptionText {
+  color: $primary;
   height: 70vh;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
   display: flex;
   align-items: center;
 
   p {
-    background-color: #ffffff;
+    background-color: $primary-container;
     padding: 2em 1em;
     margin: 1em 1em 0;
     border-radius: 20px;
