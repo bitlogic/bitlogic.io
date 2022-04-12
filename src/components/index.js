@@ -9,6 +9,7 @@ import BannerHead from "./BannerHead/BannerHead"
 import CasesSection from "./CasesSection/CasesSection"
 import CasesList from "./CasesSection/CasesList"
 import LogosSection from "./LogosSection/logosSection"
+import Form from "./Form/Form"
 
 
 export {
@@ -23,4 +24,5 @@ export {
   BannerTop,
   BannerHead,
   LogosSection,
+  Form
 }
