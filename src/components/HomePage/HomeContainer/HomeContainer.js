@@ -26,6 +26,7 @@ const bodyComponents = {
     ) : (
       <DualSection data={data} />
     ),
+  "components.banner-list" : data => <BannerList data={data} />
 }
 
 const Home = ({ location }) => {
