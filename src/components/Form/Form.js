@@ -1,5 +1,4 @@
-import React from "react"
-import { useEffect } from "react"
+import React , { useEffect } from "react"
 import MarkdownView from "react-showdown"
 import HubspotForm from "react-hubspot-form"
 import "./Form.scss"
@@ -21,23 +20,25 @@ const Form = ({ location, data }) => {
   }, []) 
 
   function handler(event) {
-    if (
-      event.data.type === "hsFormCallback" &&
-      event.data.eventName === "onFormReady"
-    ) {
-      console.log(event.data, "evento")
-      const hsFormId = "hsForm_" + formId
-      const formData = document?.getElementById("hs-form-iframe-0")
-        ?.contentWindow?.document?.forms[hsFormId]
-      if (formData) {
-        setInputValue(formData, "servicio_origen", location.pathname)
+    if (event.origin === 'https://forms.hsforms.com'){
+      if (
+        event.data.type === "hsFormCallback" &&
+        event.data.eventName === "onFormReady"
+      ) {
+        const hsFormId = "hsForm_" + formId
+        const formData = document?.getElementById("hs-form-iframe-0")
+          ?.contentWindow?.document?.forms[hsFormId]
+        if (formData) {
+          setInputValue(formData, "servicio_origen", location.pathname)
+        }
       }
     }
+    console.log(event.origin, 'origin')
+
   }
 
   const jqueryChange = elem => {
-    const event = document.createEvent("HTMLEvents")
-    event.initEvent("change", true, false)
+    var event= new Event("HTMLEvents", {"bubbles":true, "cancelable":false});
     elem.dispatchEvent(event)
   }
 
