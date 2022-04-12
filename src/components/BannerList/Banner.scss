@@ -7,13 +7,26 @@
       text-align: justify;
       margin: 0 !important;
     }
+    a{
+      color: inherit;
+    }
     img {
       width: 48px;
     }
   }
   &__title {
+    display: flex;
+    flex-direction: column;
     font-weight: 700;
     text-align: left;
+    button{
+      margin-top: 30px;
+      @include primaryBtn;
+      align-self: baseline;
+      a{
+        color: inherit;
+      }
+    }
   }
 }
 
