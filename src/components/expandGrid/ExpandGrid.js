@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react"
+import { Link } from "gatsby"
+import React, { useEffect, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import MarkdownView from "react-showdown"
 import "./expandGrid.scss"
@@ -13,7 +14,7 @@ const ExpandGrid = ({ data }) => {
         <div className="expandGrid-body">
           <h2>{data.title}</h2>
           <h6 className="px-5">{data.subtitle}</h6>
-          <AnimatedList items={data.items.slice(0,4)} />
+          <AnimatedList items={data.items.slice(0, 4)} />
         </div>
       </section>
     </div>
@@ -35,9 +36,9 @@ const ListItem = ({ index, onClick, data }) => {
       <div className="listItem" onClick={() => onClick(index)}>
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent">
-          <div className="listItem-more">
-            <p>Ver mas</p>
-          </div>
+            <div className="listItem-more">
+              <h4>{data.title}</h4>
+            </div>
             <Flipped
               flipId={`avatar-${index}`}
               stagger="card-image"
@@ -53,7 +54,7 @@ const ListItem = ({ index, onClick, data }) => {
   )
 }
 
-const ExpandedListItem = ({ index, data }) => {
+const ExpandedListItem = ({ index, data, isFirst }) => {
   return (
     <Flipped
       flipId={createCardFlipId(index)}
@@ -64,13 +65,11 @@ const ExpandedListItem = ({ index, data }) => {
         }, 400)
       }}
     >
-      <div
-        className="listItem-expanded"
-      >
+      <div className="listItem-expanded">
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent-expanded">
             <div className="listItem-more-expanded">
-              <p  ></p>
+              <p></p>
             </div>
             <Flipped
               flipId={`avatar-${index}`}
@@ -79,9 +78,16 @@ const ExpandedListItem = ({ index, data }) => {
             >
               <img alt="" src={data.image?.url} className="avatar-expanded" />
             </Flipped>
-            <div className="additional-content">
-              <div>
+            <div
+            
+              className={"additional-content "}
+            >
+              <div style={isFirst ? {opacity: "1"} : {}}>
+                <h4>{data.title}</h4>
                 <MarkdownView markdown={data.text} />
+                {data.landing_page && (
+                  <Link to={"/" + data.landing_page.slug}>Ver más</Link>
+                )}
               </div>
             </div>
           </div>
@@ -93,7 +99,7 @@ const ExpandedListItem = ({ index, data }) => {
 
 const AnimatedList = ({ items }) => {
   const [itemsArray, setItemsArray] = useState({ items, focused: null })
-
+  const [isFirst, setIsFirst] = useState(true)
   useEffect(() => {
     setItemsArray(prev => ({ ...prev, focused: items[0].id }))
   }, [])
@@ -102,6 +108,7 @@ const AnimatedList = ({ items }) => {
     for (let i = 0; i < items.length; i++) {
       const item = itemsArray.items[i]
       if (item.id === index) {
+        setIsFirst(false)
         setItemsArray(prevItems => ({
           items: [
             item,
@@ -114,8 +121,6 @@ const AnimatedList = ({ items }) => {
       }
     }
   }
-
-
   return (
     <Flipper
       flipKey={itemsArray.focused}
@@ -134,6 +139,7 @@ const AnimatedList = ({ items }) => {
             <>
               {item.id === itemsArray.focused ? (
                 <ExpandedListItem
+                  isFirst={isFirst}
                   index={itemsArray.focused}
                   data={item}
                 />
