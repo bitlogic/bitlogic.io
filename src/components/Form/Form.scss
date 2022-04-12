@@ -11,6 +11,14 @@
     border-radius: 10px;
     padding: 2rem;
     padding-bottom: 1rem;
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    > div{
+      width: 100%;
+    }
   }
   &__img {
     padding: 2rem 1rem;
