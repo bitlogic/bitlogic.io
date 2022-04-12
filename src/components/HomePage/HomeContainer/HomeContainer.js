@@ -13,7 +13,7 @@ import Hero from "../../Hero/Hero"
 import DualSection from "../../DualSection/DualSection"
 import OneSection from "../../DualSection/OneSection"
 import Text from "../../Text/Text"
-
+import BannerList from "../../BannerList/BannerLis";
 const bodyComponents = {
   "home.hero": data => <Hero data={data} />,
   "home.transition": data => <AnimatedTransitionContinous data={data} />,
@@ -26,6 +26,7 @@ const bodyComponents = {
     ) : (
       <DualSection data={data} />
     ),
+  "components.banner-list" : data => <BannerList data={data} />
 }
 
 const Home = ({ location }) => {
