@@ -5,7 +5,7 @@ import "./contactData.scss";
 
 export default function ContactData() {
   const data = useFooter();
-  const dataFooter = data?.allStrapiLayout?.nodes[0].footer;
+  const dataFooter = data?.allStrapiLayout?.nodes[0]?.footer;
 
   const contact = dataFooter?.contact?.iconText.map((item) => {
     return (

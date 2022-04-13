@@ -20,8 +20,6 @@ $title-jobs: var(--title-jobs);
 $jobs-hover: var(--jobs-hover);
 $bg-form: var(--bg-form);
 
-
-
 main {
   background-color: $primary-container !important;
 }
@@ -98,6 +96,10 @@ body {
       font-size: 16px;
       font-family: $secondary-font;
     }
+    strong {
+      font-size: 16px;
+      font-family: $secondary-font;
+    }
     font-size: 16px;
     font-family: $secondary-font;
   }
@@ -147,6 +149,9 @@ body {
     font-size: 20px;
     p {
       em {
+        font-size: 20px;
+      }
+      strong {
         font-size: 20px;
       }
       font-size: 20px;
