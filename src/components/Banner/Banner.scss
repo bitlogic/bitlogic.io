@@ -1,0 +1,244 @@
+@import "../../styles/global.scss";
+.banner {
+  color: $primary;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  align-items: center;
+  &.hero {
+    height: auto;
+    justify-content: end;
+    .button {
+      @include primaryBtn;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      img {
+        width: 100%;
+        max-width: 540px;
+      }
+    }
+    .title {
+      h1 {
+        text-transform: uppercase;
+      }
+    }
+  }
+  &.top {
+    height: auto;
+    justify-content: end;
+    .button {
+      @include primaryBtn;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      display: flex;
+      justify-content: flex-end;
+      img {
+        width: 100%;
+        max-width: 450px;
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      h1 {
+        text-transform: uppercase;
+        text-align: center;
+      }
+      h3 {
+        display: none;
+      }
+    }
+  }
+  &.diagonal {
+    height: auto;
+    justify-content: end;
+    background-color: #f2f0f7;
+    .button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      display: flex;
+      justify-content: flex-end;
+      img {
+        width: 100%;
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      h1 {
+        text-transform: uppercase;
+        color: #607ee7;
+        margin-bottom: 0;
+      }
+      h3 {
+        display: none;
+      }
+    }
+  }
+
+  &.diagonalReverse {
+    height: auto;
+    justify-content: end;
+    background-color: #f2f0f7;
+    .button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      display: flex;
+      justify-content: flex-end;
+      img {
+        width: 100%;
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      h1 {
+        text-transform: uppercase;
+        color: #607ee7;
+        margin-bottom: 0;
+      }
+      h3 {
+        display: none;
+      }
+    }
+  }
+
+  .gatsby-image-wrapper {
+    display: block;
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    flex-direction: row;
+    align-items: flex-start;
+    &.hero {
+      height: 80vh;
+      position: relative;
+      .imagen {
+        max-height: 80vh;
+        overflow: hidden;
+        padding: 0;
+        justify-content: flex-end;
+      }
+
+      .title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+    &.top {
+      height: 400px;
+      position: relative;
+      align-items: center;
+      .imagen {
+        max-height: 500px;
+        overflow: hidden;
+        padding: 0;
+        justify-content: flex-end;
+        img {
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+
+      .title {
+        position: absolute;
+        padding-top: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+          text-align: left;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+    &.diagonal {
+      height: 400px;
+      position: relative;
+      align-items: center;
+      .imagen {
+        height: 500px;
+        overflow: hidden;
+        padding: 0;
+        justify-content: flex-end;
+        img {
+          width: 100%;
+        }
+      }
+
+      .title {
+        position: absolute;
+        padding-top: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+    &.diagonalReverse {
+      height: 400px;
+      position: relative;
+      align-items: center;
+      .imagen {
+        height: 500px;
+        overflow: hidden;
+        padding: 0;
+        justify-content: flex-end;
+        img {
+          width: 100%;
+        }
+      }
+
+      .title {
+        position: absolute;
+        padding-top: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+  }
+}

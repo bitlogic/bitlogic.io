@@ -1,30 +1,24 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+
+// componentes del body
 import {
   Seo,
   CasesSection,
   CasesList,
   LogosSection,
-} from "../components/index.js"
-
-// componentes del body
-import Hero from "../components/Hero/Hero"
-import BannerList from "../components/BannerList/BannerLis"
-import ExpandGrid from "../components/expandGrid/ExpandGrid"
-import Catsone from "../components/Catsone/catsone"
-import BannerHead from "../components/BannerHead/BannerHead"
-import Text from "../components/Text/Text"
-import Form from "../components/Form/Form"
+  Banner,
+  Form,
+  BannerList,
+  ExpandGrid,
+  Catsone,
+  Text,
+} from "../components"
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
   const content = pageData.body.map((component, idx) => {
-    const hero =
-      component.strapi_component === "home.hero" ? (
-        <Hero data={component} />
-      ) : null
-
     const bannerList =
       component.strapi_component === "components.banner-list" ? (
         <BannerList data={component} />
@@ -52,11 +46,6 @@ const LandingPage = ({ data, location }) => {
         <Catsone data={component} />
       ) : null
 
-    const bannerHead =
-      component.strapi_component === "banners.banner-head" ? (
-        <BannerHead data={component} />
-      ) : null
-
     const text =
       component.strapi_component === "components.text" ? (
         <Text data={component} />
@@ -69,17 +58,20 @@ const LandingPage = ({ data, location }) => {
       component.strapi_component === "components.form" ? (
         <Form data={component} location={location} />
       ) : null
+    const banner =
+      component.strapi_component === "components.banner" ? (
+        <Banner data={component} />
+      ) : null
 
     return (
       <div key={idx}>
         <>
-          {hero}
+          {banner}
           {bannerList}
           {expandGrid}
           {casesSection}
           {casesList}
           {catsone}
-          {bannerHead}
           {text}
           {logosSection}
           {form}
