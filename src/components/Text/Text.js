@@ -9,7 +9,7 @@ export default function Text({ data }) {
 
   return (
     <div className="container-text" style={{
-      backgroundImage: `url("http://localhost:1337/uploads/Titulo_Texto_61d6e776fb.png")`,
+      backgroundImage: `url(${bgImage})`,
     }}>
       {title !== "" && title !== undefined && title !== null ? (
         <div className="text d-flex flex-column flex-md-row">
