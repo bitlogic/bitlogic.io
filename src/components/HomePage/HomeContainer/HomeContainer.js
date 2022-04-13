@@ -9,13 +9,13 @@ import "./HomeContainer.scss"
 import AnimatedTransitionContinous from "../../animatedTransitionContinous/AnimatedTransitionContinous"
 import Quote from "../../quote/Quote"
 import VideoBackground from "../../videoBackground/VideoBackground"
-import Hero from "../../Hero/Hero"
+import Banner from "../../Banner/Banner"
 import DualSection from "../../DualSection/DualSection"
 import OneSection from "../../DualSection/OneSection"
 import Text from "../../Text/Text"
 import BannerList from "../../BannerList/BannerLis"
 const bodyComponents = {
-  "home.hero": data => <Hero data={data} />,
+  "components.banner": data => <Banner data={data} />,
   "home.transition": data => <AnimatedTransitionContinous data={data} />,
   "home.quote": data => <Quote data={data} />,
   "home.video-background": data => <VideoBackground data={data} />,
