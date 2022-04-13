@@ -13,7 +13,7 @@ import Banner from "../../Banner/Banner"
 import DualSection from "../../DualSection/DualSection"
 import OneSection from "../../DualSection/OneSection"
 import Text from "../../Text/Text"
-import BannerList from "../../BannerList/BannerLis"
+import BannerList from "../../BannerList/BannerList"
 const bodyComponents = {
   "components.banner": data => <Banner data={data} />,
   "home.transition": data => <AnimatedTransitionContinous data={data} />,

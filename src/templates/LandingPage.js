@@ -20,12 +20,6 @@ import {
   Quote
 } from "../components"
 
-// componentes del body
-import BannerList from "../components/BannerList/BannerLis"
-import ExpandGrid from "../components/expandGrid/ExpandGrid"
-import Catsone from "../components/Catsone/catsone"
-import Text from "../components/Text/Text"
-import Form from "../components/Form/Form"
 import VideoBackground from "../components/videoBackground/VideoBackground"
 
 

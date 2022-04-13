@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import "./Banner.scss"
 
-export default function BannerLis({ data }) {
+export default function BannerList({ data }) {
   const title = data?.title
   const cards = data?.Card.map(item => {
     return (
