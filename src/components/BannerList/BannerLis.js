@@ -5,7 +5,7 @@ import "./Banner.scss"
 export default function BannerLis({ data }) {
   const title = data?.title
   const image = data?.Card[0]?.icon?.url
-  console.log(data)
+  
   const cards = data?.Card.map(item => {
     return (
       <div className="card_item d-flex mb-4">
