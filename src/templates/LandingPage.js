@@ -20,6 +20,14 @@ import {
   Quote
 } from "../components"
 
+// componentes del body
+import BannerList from "../components/BannerList/BannerLis"
+import ExpandGrid from "../components/expandGrid/ExpandGrid"
+import Catsone from "../components/Catsone/catsone"
+import Text from "../components/Text/Text"
+import Form from "../components/Form/Form"
+import VideoBackground from "../components/videoBackground/VideoBackground"
+
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
@@ -86,6 +94,11 @@ const LandingPage = ({ data, location }) => {
         <AnimatedTransitionContinous data={component} />
       ) : null
 
+      const videoBackground =
+      component.strapi_component === "home.video-background" ? (
+        <VideoBackground data={component} />
+      ) : null
+
     return (
       <div key={idx}>
         <>
@@ -98,6 +111,7 @@ const LandingPage = ({ data, location }) => {
           {text}
           {logosSection}
           {form}
+          {videoBackground}
           {quote}
           {dualSection}
           {animatedTransition}

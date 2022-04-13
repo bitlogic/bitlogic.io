@@ -13,7 +13,7 @@ import Banner from "../../Banner/Banner"
 import DualSection from "../../DualSection/DualSection"
 import OneSection from "../../DualSection/OneSection"
 import Text from "../../Text/Text"
-import BannerList from "../../BannerList/BannerLis";
+import BannerList from "../../BannerList/BannerLis"
 const bodyComponents = {
   "components.banner": data => <Banner data={data} />,
   "home.transition": data => <AnimatedTransitionContinous data={data} />,
@@ -26,11 +26,12 @@ const bodyComponents = {
     ) : (
       <DualSection data={data} />
     ),
-  "components.banner-list" : data => <BannerList data={data} />
+  "components.banner-list": data => <BannerList data={data} />,
 }
 
 const Home = ({ location }) => {
   const data = useHomePage()
+  
   const { pageTitle, pageDescription, pageKeywords } =
     data?.allStrapiHome?.nodes[0]?.pageMetadata || {}
 
@@ -46,7 +47,9 @@ const Home = ({ location }) => {
 
       {/* Dynamic zone */}
       {data.allStrapiHome.nodes[0].body.map(component =>
-        bodyComponents[component.strapi_component] ? bodyComponents[component.strapi_component](component) : null
+        bodyComponents[component.strapi_component]
+          ? bodyComponents[component.strapi_component](component)
+          : null
       )}
     </Layout>
   )
