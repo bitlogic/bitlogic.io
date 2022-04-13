@@ -8,13 +8,14 @@ const themes = {
     "--primary": "#000000",
     "--primary-invert": "#ffffff",
     "--primary-hover": "#000000",
-    "--primary-container": "#ffffff",
+    "--primary-container": "#faf8f8",
     "--title-jobs": "#5682c6",
     "--jobs-hover": "#f0f0f0",
 
     "--secondary": "#3f6be8",
     "--secondary-container": "#25cad3",
     "--border-bottom": "#cdcdcd",
+    "--bg-form": "#DBDBDD",
   },
   dark: {
     "--nav-footer-container": "#383838",
@@ -30,6 +31,8 @@ const themes = {
 
     "--secondary": "#67f293",
     "--secondary-container": "#191919",
+    "--bg-form": "#FAF8F8",
+
   },
 }
 

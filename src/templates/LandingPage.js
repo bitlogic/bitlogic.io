@@ -1,75 +1,121 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Seo, CasesSection, CasesList, LogosSection } from "../components/index.js"
 
 // componentes del body
-import Hero from "../components/Hero/Hero"
-import BannerList from "../components/BannerList/BannerLis"
-import ExpandGrid from "../components/expandGrid/ExpandGrid"
-import Catsone from "../components/Catsone/catsone"
-import BannerHead from '../components/BannerHead/BannerHead';
-import Text from '../components/Text/Text';
+import {
+  Seo,
+  CasesSection,
+  CasesList,
+  LogosSection,
+  Banner,
+  Form,
+  BannerList,
+  ExpandGrid,
+  Catsone,
+  Text,
+  AnimatedTransitionContinous,
+  DualSection,
+  OneSection,
+  Quote
+} from "../components"
+
+import VideoBackground from "../components/videoBackground/VideoBackground"
+
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
   const content = pageData.body.map((component, idx) => {
+    const bannerList =
+      component.strapi_component === "components.banner-list" ? (
+        <BannerList data={component} />
+      ) : null
 
-    const hero = component.strapi_component === "home.hero" ?
-      <Hero data={component} /> :
-      null
+    const expandGrid =
+      component.strapi_component === "components.selected-grid" ? (
+        <ExpandGrid data={component} />
+      ) : null
 
-    const bannerList = component.strapi_component === "components.banner-list" ?
-      <BannerList data={component} /> :
-      null
+    const casesSection =
+      component.strapi_component === "components.cases-section" &&
+      !component.allCases ? (
+        <CasesSection data={component} />
+      ) : null
 
-    const expandGrid = component.strapi_component === "components.selected-grid" ?
-      <ExpandGrid data={component} /> :
-      null
+    const casesList =
+      component.strapi_component === "components.cases-section" &&
+      component.allCases ? (
+        <CasesList />
+      ) : null
 
-    const casesSection = (component.strapi_component === "components.cases-section" && !component.allCases) ?
-      <CasesSection data={component} /> :
-      null
+    const catsone =
+      component.strapi_component === "scripts.catsone" ? (
+        <Catsone data={component} />
+      ) : null
 
-    const casesList = (component.strapi_component === "components.cases-section" && component.allCases) ?
-      <CasesList /> :
-      null
+    const text =
+      component.strapi_component === "components.text" ? (
+        <Text data={component} />
+      ) : null
+    const logosSection =
+      component.strapi_component === "components.logos-section" ? (
+        <LogosSection data={component} />
+      ) : null
+    const form =
+      component.strapi_component === "components.form" ? (
+        <Form data={component} location={location} />
+      ) : null
+    const banner =
+      component.strapi_component === "components.banner" ? (
+        <Banner data={component} />
+      ) : null
 
-    const catsone = component.strapi_component === "scripts.catsone" ?
-      <Catsone data={component} /> :
-      null
+    const quote =
+      component.strapi_component === "home.quote" ? (
+        <Quote data={component} />
+      ) : null
 
-    const bannerHead = component.strapi_component === "banners.banner-head" ?
-      <BannerHead data={component} /> :
-      null
+    const dualSection =
+      component.strapi_component === "home.dual-section" &&
+      (component.dualSectionPart.length === 1 ? (
+        <OneSection data={component} />
+      ) : (
+        <DualSection data={component} />
+      ))
 
-    const text = component.strapi_component === "components.text" ?
-      <Text data={component} /> :
-      null
-    const logosSection = component.strapi_component === "components.logos-section" ?
-      <LogosSection data={component} /> :
-      null
+    const animatedTransition =
+      component.strapi_component === "home.transition" ? (
+        <AnimatedTransitionContinous data={component} />
+      ) : null
+
+      const videoBackground =
+      component.strapi_component === "home.video-background" ? (
+        <VideoBackground data={component} />
+      ) : null
 
     return (
       <div key={idx}>
         <>
-          {hero}
+          {banner}
           {bannerList}
           {expandGrid}
           {casesSection}
           {casesList}
           {catsone}
-          {bannerHead}
           {text}
           {logosSection}
+          {form}
+          {videoBackground}
+          {quote}
+          {dualSection}
+          {animatedTransition}
         </>
       </div>
     )
-
   })
 
   return (
-    <Layout location={location} options={{ hasHeader: true }} >
+    <Layout location={location} options={{ hasHeader: true }}>
       <Seo title={pageData.name} />
       {content}
     </Layout>

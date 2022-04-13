@@ -4,11 +4,11 @@ import './subscription.scss';
 
 export default function Subscription() {
     const data = useFooter();
-    const dataSubscription = data?.allStrapiLayout?.nodes[0].footer.subscription;
+    const dataSubscription = data?.allStrapiLayout?.nodes[0]?.footer?.subscription;
 
     return (
         <div className="ContactData__Item">
-            <h6 className="titleSubscription">{dataSubscription.title}</h6>
+            <h6 className="titleSubscription">{dataSubscription?.title}</h6>
             <form>
                 <div className="ContactData__Form d-flex flex-md-column justify-content-between">
                     <label>

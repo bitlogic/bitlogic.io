@@ -1,57 +1,107 @@
 @import "../../styles/global.scss";
 
 .videoBackground {
-  // width: calc(100% - 6em);
-  height: 80vh;
-  position: relative;
-  z-index: 3;
-  display: flex;
-  // margin: 3em;
+  &-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
   video {
-    top: 0;
-    position: absolute;
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
-    z-index: -1;
-    cursor: pointer;
-    // border-radius: 20px;
+    display: block;
+    border-radius: 5px;
   }
   &-card {
-    z-index: 4;
-    align-self: flex-end;
-    flex-basis: 1;
-    max-width: 600px;
+    width: 100%;
     backdrop-filter: blur(14px);
     color: white;
     border-radius: 5px;
     background: #e8e8e8c5;
     box-shadow: 0px 0px 3px #00000044;
-    margin: 1em;
-    padding: 2em;
-
-    h4 {
-      color: $grey;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    button {
-      background: $grey;
-      border: 1px solid white;
-      color: white;
-      font-weight: 500;
-      border-radius: 3px;
-      padding: 0.6em 3em;
-    }
+    word-wrap: break-all;
+    padding: 15px;
+  }
+  h5 {
+    width: 100%;
+    color: $grey;
+   
+  }
+  button {
+    @include secondaryBtn;
   }
 }
+
+
+
+
 
 @media screen and (min-width: $breakpoint-md) {
+
   .videoBackground {
+    // width: calc(100% - 6em);
+    height: 550px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    // margin: 3em;
+    &-container {
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
     video {
-      border-radius: 20px;
+      top: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      cursor: pointer;
+      // border-radius: 20px;
+    }
+    &-card {
+      z-index: 4;
+      align-self: flex-end;
+      flex-basis: 1;
+      max-width: 700px;
+      backdrop-filter: blur(14px);
+      color: white;
+      border-radius: 5px;
+      background: #e8e8e8c5;
+      box-shadow: 0px 0px 3px #00000044;
+      margin: 2em;
+      padding: 2em;
+  
+      h5 {
+        color: $grey;
+      }
+      button {
+        @include secondaryBtn;
+      }
     }
   }
 }
+
+
+@media screen and (min-width: $breakpoint-lg) {
+
+  .videoBackground {
+    height: 80vh;
+    &-container {
+      margin-top: 130px;
+      margin-bottom: 80px;
+    }
+  }
+}
+
+// @media screen and (max-width: $breakpoint-md) {
+//   .videoBackground {
+//     height: 500px;
+//     video {
+//       height: 80%;
+//     }
+//     &-card {
+//       height: 20%;
+//     }
+//   }
+// }
