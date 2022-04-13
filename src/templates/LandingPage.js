@@ -16,6 +16,9 @@ import Catsone from "../components/Catsone/catsone"
 import BannerHead from "../components/BannerHead/BannerHead"
 import Text from "../components/Text/Text"
 import Form from "../components/Form/Form"
+import Quote from "../components/quote/Quote"
+import OneSection from "../components/DualSection/OneSection"
+import DualSection from "../components/DualSection/DualSection"
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
@@ -70,6 +73,20 @@ const LandingPage = ({ data, location }) => {
         <Form data={component} location={location} />
       ) : null
 
+    const quote =
+      component.strapi_component === "home.quote" ? (
+        <Quote data={component} />
+      ) : null
+
+    const dualSection =
+      component.strapi_component === "home.dual-section" ? (
+        component.dualSectionPart.length === 1 ? (
+          <OneSection data={component} />
+        ) : (
+          <DualSection data={component} />
+        )
+      ) : null
+
     return (
       <div key={idx}>
         <>
@@ -83,6 +100,8 @@ const LandingPage = ({ data, location }) => {
           {text}
           {logosSection}
           {form}
+          {quote}
+          {dualSection}
         </>
       </div>
     )
