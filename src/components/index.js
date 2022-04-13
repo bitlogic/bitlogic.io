@@ -13,6 +13,8 @@ import Quote from "./quote/Quote"
 import OneSection from "./DualSection/OneSection"
 import DualSection from "./DualSection/DualSection"
 import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
+import BannerTop from "./Banners/BannerTop"
+import BannerHead from "./BannerHead/BannerHead";
 
 
 export {
@@ -30,5 +32,7 @@ export {
   Quote,
   OneSection,
   DualSection,
-  AnimatedTransitionContinous
+  AnimatedTransitionContinous,
+  BannerTop,
+  BannerHead
 }
