@@ -1,15 +1,18 @@
 import Cards from "./Cards/Cards"
 import Seo from "./Seo/Seo"
-import BannerBgImage from "./Banners/BannerBgImage"
-import BannerLogo from "./Banners/BannerLogo"
-import BannerISO from "./Banners/BannerISO"
-import BannerClientes from "./Banners/BannerClientes"
-import BannerTop from "./Banners/BannerTop"
-import BannerHead from "./BannerHead/BannerHead"
 import CasesSection from "./CasesSection/CasesSection"
 import CasesList from "./CasesSection/CasesList"
 import LogosSection from "./LogosSection/logosSection"
 import Form from "./Form/Form"
+import Banner from "./Banner/Banner"
+import BannerList from "./BannerList/BannerLis"
+import ExpandGrid from "./expandGrid/ExpandGrid"
+import Catsone from "./Catsone/catsone"
+import Text from "./Text/Text"
+import Quote from "./quote/Quote"
+import OneSection from "./DualSection/OneSection"
+import DualSection from "./DualSection/DualSection"
+import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 
 
 export {
@@ -17,12 +20,15 @@ export {
   CasesList,
   CasesSection,
   Seo,
-  BannerBgImage,
-  BannerLogo,
-  BannerISO,
-  BannerClientes,
-  BannerTop,
-  BannerHead,
   LogosSection,
-  Form
+  Form,
+  Banner,
+  BannerList,
+  ExpandGrid,
+  Catsone,
+  Text,
+  Quote,
+  OneSection,
+  DualSection,
+  AnimatedTransitionContinous
 }

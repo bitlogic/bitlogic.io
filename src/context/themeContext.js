@@ -15,7 +15,7 @@ const themes = {
     "--secondary": "#3f6be8",
     "--secondary-container": "#25cad3",
     "--border-bottom": "#cdcdcd",
-    "--bg-form": "#FAF8F8",
+    "--bg-form": "#DBDBDD",
   },
   dark: {
     "--nav-footer-container": "#383838",
