@@ -43,7 +43,15 @@ export default function BannerLis({ data }) {
             </button>
           )}
         </h1>
-        <div className="bannerList__cards col-md-6 col-xl-6 pe-5">{cards}</div>
+        <div className="bannerList__cards col-md-6 col-xl-6 pe-5">{cards}
+        
+        </div>
+        {data.contactForm && (
+            <button className="bannerList__buttonMobile">
+              <a href={"#" + data.concactFormAnchor}>Contactanos</a>
+            </button>
+          )}
+        
       </div>
     </div>
   )
