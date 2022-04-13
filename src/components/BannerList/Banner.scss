@@ -3,14 +3,17 @@
 .bannerList {
   color: $primary;
   .card_item {
-    p {
-      text-align: justify;
-      margin: 0 !important;
+    h4{
+      margin: 0;
     }
     a{
       color: inherit;
+      &:hover{
+        color: $secondary;
+      }
     }
     img {
+      margin: 0 10px 0 auto;
       width: 48px;
     }
   }
@@ -20,7 +23,7 @@
     font-weight: 700;
     text-align: left;
     button{
-      margin-top: 30px;
+      margin-top: 10px;
       @include primaryBtn;
       align-self: baseline;
       a{
@@ -34,7 +37,7 @@
   .bannerList {
     .card_item {
       img {
-        width: 70px;
+        width: 80px;
       }
     }
   }

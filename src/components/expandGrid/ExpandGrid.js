@@ -37,7 +37,7 @@ const ListItem = ({ index, onClick, data }) => {
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent">
             <div className="listItem-more">
-              <h4>{data.title}</h4>
+              <h5>{data.title}</h5>
             </div>
             <Flipped
               flipId={`avatar-${index}`}
@@ -69,7 +69,7 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent-expanded">
             <div className="listItem-more-expanded">
-              <p></p>
+              <h5>{data.title}</h5>
             </div>
             <Flipped
               flipId={`avatar-${index}`}
@@ -78,15 +78,14 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
             >
               <img alt="" src={data.image?.url} className="avatar-expanded" />
             </Flipped>
-            <div
-            
-              className={"additional-content "}
-            >
-              <div style={isFirst ? {opacity: "1"} : {}}>
+            <div className={"additional-content "}>
+              <div style={isFirst ? { opacity: "1" } : {}}>
                 <h4>{data.title}</h4>
-                <MarkdownView markdown={data.text} />
+                <div className="additional-content-markdown">
+                  <MarkdownView markdown={data.text} />
+                </div>
                 {data.landing_page && (
-                  <Link to={"/" + data.landing_page.slug}>Ver más</Link>
+                  <Link to={"/" + data.landing_page?.slug}>Ver más</Link>
                 )}
               </div>
             </div>
