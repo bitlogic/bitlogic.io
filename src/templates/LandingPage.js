@@ -19,6 +19,7 @@ import Form from "../components/Form/Form"
 import Quote from "../components/quote/Quote"
 import OneSection from "../components/DualSection/OneSection"
 import DualSection from "../components/DualSection/DualSection"
+import AnimatedTransitionContinous from "../components/animatedTransitionContinous/AnimatedTransitionContinous"
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
@@ -87,6 +88,11 @@ const LandingPage = ({ data, location }) => {
         )
       ) : null
 
+      const animatedTransition =
+      component.strapi_component === "home.transition" ? (
+        <AnimatedTransitionContinous data={component} />
+      ) : null
+
     return (
       <div key={idx}>
         <>
@@ -102,6 +108,7 @@ const LandingPage = ({ data, location }) => {
           {form}
           {quote}
           {dualSection}
+          {animatedTransition}
         </>
       </div>
     )
