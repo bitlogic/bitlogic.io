@@ -14,6 +14,10 @@ import {
   ExpandGrid,
   Catsone,
   Text,
+  AnimatedTransitionContinous,
+  DualSection,
+  OneSection,
+  Quote
 } from "../components"
 
 const LandingPage = ({ data, location }) => {
@@ -63,6 +67,24 @@ const LandingPage = ({ data, location }) => {
         <Banner data={component} />
       ) : null
 
+    const quote =
+      component.strapi_component === "home.quote" ? (
+        <Quote data={component} />
+      ) : null
+
+    const dualSection =
+      component.strapi_component === "home.dual-section" &&
+      (component.dualSectionPart.length === 1 ? (
+        <OneSection data={component} />
+      ) : (
+        <DualSection data={component} />
+      ))
+
+    const animatedTransition =
+      component.strapi_component === "home.transition" ? (
+        <AnimatedTransitionContinous data={component} />
+      ) : null
+
     return (
       <div key={idx}>
         <>
@@ -75,6 +97,9 @@ const LandingPage = ({ data, location }) => {
           {text}
           {logosSection}
           {form}
+          {quote}
+          {dualSection}
+          {animatedTransition}
         </>
       </div>
     )
