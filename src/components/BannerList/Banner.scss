@@ -3,15 +3,26 @@
 .bannerList {
   color: $primary;
   .card_item {
-    p {
-      text-align: justify;
-      margin: 0 !important;
+    h4 {
+      margin: 0;
     }
-    a{
+    a {
       color: inherit;
+      &:hover {
+        color: $secondary;
+      }
     }
     img {
+      margin: 0 10px 0 auto;
       width: 48px;
+    }
+  }
+  button {
+    margin-top: 10px;
+    @include primaryBtn;
+    align-self: baseline;
+    a {
+      color: inherit;
     }
   }
   &__title {
@@ -19,14 +30,6 @@
     flex-direction: column;
     font-weight: 700;
     text-align: left;
-    button{
-      margin-top: 30px;
-      @include primaryBtn;
-      align-self: baseline;
-      a{
-        color: inherit;
-      }
-    }
   }
 }
 
@@ -34,8 +37,37 @@
   .bannerList {
     .card_item {
       img {
-        width: 70px;
+        width: 80px;
       }
+    }
+    &__buttonMobile{
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .bannerList {
+    &__buttonMobile{
+      margin-left: 1.5em;
+    }
+    &__title {
+      button {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .bannerList {
+    .card_item {
+      img {
+        width: 80px;
+      }
+    }
+    &__buttonMobile{
+      display: none;
     }
   }
 }
