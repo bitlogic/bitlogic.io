@@ -80,15 +80,14 @@ const LandingPage = ({ data, location }) => {
       ) : null
 
     const dualSection =
-      component.strapi_component === "home.dual-section" ? (
-        component.dualSectionPart.length === 1 ? (
-          <OneSection data={component} />
-        ) : (
-          <DualSection data={component} />
-        )
-      ) : null
+      component.strapi_component === "home.dual-section" &&
+      (component.dualSectionPart.length === 1 ? (
+        <OneSection data={component} />
+      ) : (
+        <DualSection data={component} />
+      ))
 
-      const animatedTransition =
+    const animatedTransition =
       component.strapi_component === "home.transition" ? (
         <AnimatedTransitionContinous data={component} />
       ) : null
