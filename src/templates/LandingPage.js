@@ -20,6 +20,7 @@ import {
   Quote
 } from "../components"
 
+
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
   const content = pageData.body.map((component, idx) => {

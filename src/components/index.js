@@ -9,6 +9,10 @@ import BannerList from "./BannerList/BannerLis"
 import ExpandGrid from "./expandGrid/ExpandGrid"
 import Catsone from "./Catsone/catsone"
 import Text from "./Text/Text"
+import Quote from "./quote/Quote"
+import OneSection from "./DualSection/OneSection"
+import DualSection from "./DualSection/DualSection"
+import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 
 
 export {
@@ -22,5 +26,9 @@ export {
   BannerList,
   ExpandGrid,
   Catsone,
-  Text
+  Text,
+  Quote,
+  OneSection,
+  DualSection,
+  AnimatedTransitionContinous
 }
