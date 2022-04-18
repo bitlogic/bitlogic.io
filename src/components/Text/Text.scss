@@ -18,7 +18,6 @@
         padding-top: 1rem;
       }
       p {
-        margin-bottom: 0;
         padding: 0rem 1rem;
       }
     }
@@ -33,8 +32,8 @@
       background-color: $primary-container;
       padding: 1rem;
       margin: 1rem;
-      p {
-        margin-bottom: 0;
+      p:nth-last-child(2) {
+        margin-bottom: 0px;
       }
     }
   }
@@ -59,7 +58,7 @@
     .text {
       .description {
         p {
-          padding: 0.5rem 2.5rem;
+          padding: 0rem 2.5rem;
           padding-right: 7rem;
         }
       }
