@@ -30,7 +30,7 @@
       @media screen and (max-width: $breakpoint-xl) {
         justify-content: baseline;
         margin-left: 40px;
-        font-size: 1.4em;
+        font-size: 1.2em;
       }
       transition: opacity 250ms;
       cursor: pointer;
@@ -48,6 +48,9 @@
       left: 50%;
       transform: translateX(-50%);
       perspective: 1500px;
+      @media screen and (max-width: $breakpoint-xl) {
+       display: none;
+      }
     }
   }
 }
