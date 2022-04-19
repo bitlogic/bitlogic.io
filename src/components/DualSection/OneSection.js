@@ -1,5 +1,6 @@
 import React from "react"
 import { useTheme } from "../../context/themeContext"
+import ButtonLink from "../ButtonLink/ButtonLink"
 
 const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
   const { theme } = useTheme()
@@ -11,7 +12,7 @@ const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
     backgroundImage,
     backgroundImageDark,
   } = dualSectionPart ? dualSectionPart[0] : {}
-
+  console.log(button)
   return (
     <div
       className="one_sec-background"
@@ -29,9 +30,7 @@ const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
           <h3 className="one_sec-title-body">{description}</h3>
           {button && (
             <button>
-              <a href={button.url} target="_blank" rel="noreferrer">
-                {button.content}
-              </a>
+              <ButtonLink button={button} />
             </button>
           )}
         </div>
