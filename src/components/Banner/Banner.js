@@ -11,9 +11,8 @@ const Banner = ({ data }) => {
   const image = data?.image
   const imageDark = data?.imageDark
   const button = data?.button
-  const id = data?.id
   return (
-    <div className={`banner ${variant}`} id={id}>
+    <div className={`banner ${variant}`} id={data.strapi_component + "-" + data.id}>
       <div className="title container-md">
         <div className="col-12 col-lg-6">
           {variant === 'hero' ? <h1>{title}</h1> : <h2>{title}</h2>}
