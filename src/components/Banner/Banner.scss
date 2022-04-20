@@ -27,6 +27,13 @@
     .title {
       h1 {
         text-transform: uppercase;
+        text-align: left;
+        margin-bottom: 0.8rem;
+        word-wrap: initial;
+      }
+      h3 {
+        font-weight: 400;
+        text-align: left;
       }
     }
   }
@@ -43,15 +50,46 @@
       display: flex;
       justify-content: flex-end;
       img {
+        max-width: 450px;
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      h2 {
+        text-transform: uppercase;
+        text-align: center;
+        word-wrap: initial;
+      }
+      h3 {
+        display: none;
+      }
+    }
+  }
+  &.topReverse {
+    height: auto;
+    justify-content: end;
+    .button {
+      @include primaryBtn;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      display: flex;
+      justify-content: flex-start;
+      img {
         width: 100%;
         max-width: 450px;
       }
     }
     .title {
       padding-top: 2rem;
-      h1 {
+      padding-bottom: 2rem;
+      h2 {
         text-transform: uppercase;
         text-align: center;
+        word-wrap: initial;
       }
       h3 {
         display: none;
@@ -59,13 +97,17 @@
     }
   }
   &.diagonal {
-    height: auto;
+    min-height: 300px;
     justify-content: end;
-    background-color: #f2f0f7;
+    background-color: $bg-diagonal;
     .button {
       margin-top: 20px;
       margin-bottom: 20px;
       display: inline-block;
+      font-weight: 600;
+      color: #607ee7;
+      text-decoration: underline;
+      padding-left: 5px;
     }
     .imagen {
       display: flex;
@@ -76,10 +118,12 @@
     }
     .title {
       padding-top: 2rem;
-      h1 {
+      padding-bottom: 2rem;
+      h2 {
         text-transform: uppercase;
         color: #607ee7;
         margin-bottom: 0;
+        word-wrap: initial;
       }
       h3 {
         display: none;
@@ -90,25 +134,32 @@
   &.diagonalReverse {
     height: auto;
     justify-content: end;
-    background-color: #f2f0f7;
+
     .button {
       margin-top: 20px;
       margin-bottom: 20px;
       display: inline-block;
+      color: #607ee7;
+      text-decoration: underline;
+      padding-left: 5px;
     }
     .imagen {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
+      align-items: center;
       img {
-        width: 100%;
+        max-width: 200px;
       }
     }
     .title {
       padding-top: 2rem;
-      h1 {
+      padding-bottom: 2rem;
+      background-color: $bg-diagonal;
+      h2 {
         text-transform: uppercase;
         color: #607ee7;
         margin-bottom: 0;
+        word-wrap: initial;
       }
       h3 {
         display: none;
@@ -158,7 +209,6 @@
         padding: 0;
         justify-content: flex-end;
         img {
-          width: 100%;
           max-width: 600px;
         }
       }
@@ -166,10 +216,41 @@
       .title {
         position: absolute;
         padding-top: 0;
+        padding-bottom: 0;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        h1 {
+        h2 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+          text-align: left;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+    &.topReverse {
+      height: 400px;
+      position: relative;
+      align-items: center;
+      flex-direction: row-reverse;
+      .imagen {
+        max-height: 500px;
+        overflow: hidden;
+        padding: 0;
+        img {
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+
+      .title {
+        padding-top: 0;
+        padding-bottom: 0;
+        flex-direction: row-reverse;
+        h2 {
           margin-bottom: 1rem;
           padding-right: 3rem;
           text-align: left;
@@ -181,10 +262,12 @@
       }
     }
     &.diagonal {
-      height: 400px;
+      height: 300px;
       position: relative;
       align-items: center;
       .imagen {
+        -webkit-clip-path: polygon(17% 0, 100% 0, 100% 55%, 91% 100%, 0 100%);
+        clip-path: polygon(17% 0, 100% 0, 100% 55%, 91% 100%, 0 100%);
         height: 500px;
         overflow: hidden;
         padding: 0;
@@ -197,12 +280,15 @@
       .title {
         position: absolute;
         padding-top: 0;
+        padding-bottom: 0;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        h1 {
+
+        h2 {
           margin-bottom: 1rem;
           padding-right: 3rem;
+          max-width: 400px;
         }
         h3 {
           font-weight: 400;
@@ -211,34 +297,55 @@
       }
     }
     &.diagonalReverse {
-      height: 400px;
+      height: 300px;
       position: relative;
       align-items: center;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
       .imagen {
         height: 500px;
         overflow: hidden;
         padding: 0;
         justify-content: flex-end;
-        img {
-          width: 100%;
-        }
       }
-
+      .button {
+        padding-left: 5rem;
+      }
       .title {
-        position: absolute;
-        padding-top: 0;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        h1 {
+        background-color: $bg-diagonal;
+        -webkit-clip-path: polygon(0 0, 92% 0, 100% 45%, 100% 100%, 17% 100%);
+        clip-path: polygon(0 0, 92% 0, 100% 45%, 100% 100%, 17% 100%);
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+        height: 100%;
+        align-items: center;
+        h2 {
           margin-bottom: 1rem;
-          padding-right: 3rem;
+          padding-left: 5rem;
         }
         h3 {
           font-weight: 400;
-          padding-right: 3rem;
+          padding-left: 5rem;
         }
       }
     }
+  }
+  @media screen and (min-width: $breakpoint-lg) {
+    &.diagonal {
+      height: 400px;
+    }
+    &.diagonalReverse {
+      height: 400px;
+      .title {
+        h2 {
+          padding-left: 10rem;
+        }
+      }
+      .button {
+        padding-left: 10rem;
+      }
+    }
+
   }
 }

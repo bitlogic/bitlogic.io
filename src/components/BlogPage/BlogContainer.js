@@ -3,7 +3,7 @@ import { useBlog } from "../../hooks"
 import Layout from "../../components/layout"
 import BlogGrid from "./BlogGrid/BlogGrid"
 import BlogArticle from "./BlogArticle/BlogArticle"
-import { Seo, BannerHead } from "../index"
+import { Seo } from "../index"
 
 import "./BlogContainer.scss"
 
@@ -13,7 +13,6 @@ const Blog = () => {
 
   const data = blogData?.allStrapiBlogCategory?.nodes
   const dataArticles = blogData?.allStrapiArticle?.nodes
-  const bannerHead = blogData?.allStrapiBlogPage?.nodes[0]?.bannerHead
   const filterArticle = data.map(category => dataArticles.filter(article => category.name === article.blog_category.name))
 
   const {
@@ -34,7 +33,7 @@ const Blog = () => {
       {data.length > 0 && (
         <div className="blog__container">
 
-          {bannerHead && <BannerHead data={bannerHead} />}
+          
 
           {filterArticle?.map((category, idx) => (
             <BlogGrid key={idx} title={category[0]?.blog_category?.name}>

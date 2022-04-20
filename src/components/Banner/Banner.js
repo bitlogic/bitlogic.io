@@ -1,18 +1,21 @@
 import React from "react"
 import { Link } from "gatsby"
 import "./Banner.scss"
+import { useTheme } from "../../context/themeContext"
 
 const Banner = ({ data }) => {
+  const { theme } = useTheme()
   const title = data?.title
   const variant = data?.variant
   const summary = data?.summary
   const image = data?.image
+  const imageDark = data?.imageDark
   const button = data?.button
   return (
     <div className={`banner ${variant}`} id={data.strapi_component + "-" + data.id}>
-      <div className="title container">
-        <div className="col-12 col-md-6">
-          <h1>{title}</h1>
+      <div className="title container-md">
+        <div className="col-12 col-lg-6">
+          {variant === 'hero' ? <h1>{title}</h1> : <h2>{title}</h2>}
           <h3>{summary}</h3>
           {button &&
             (button?.landing_page ? (
@@ -32,8 +35,16 @@ const Banner = ({ data }) => {
         </div>
       </div>
       
-      <div className="imagen col-12 col-md-6">
-        <img src={image?.url} alt={title} />
+      <div className={`imagen col-12 ${variant === 'diagonal' ? 'col-md-8' : variant === 'diagonalReverse' ? 'col-md-4' : 'col-md-6'} `}>
+        {/* <img src={image?.url} alt={title} /> */}
+        <img
+          src={
+            theme === "dark" && imageDark
+              ? imageDark?.url
+              : image?.url
+          }
+          alt={title}
+        />
       </div>
     </div>
   )
