@@ -30,7 +30,7 @@ const Professionals = ({ data }) => {
       <div className="col-6 col-md-12">
         <div className="pro__descr">
           <h6 className="pro__descr_title">{name}</h6>
-          {linkedin && <a href={linkedin}><FaLinkedinIn size={23}/></a>}
+          {linkedin && <a href={linkedin} target="_blank"><FaLinkedinIn size={23}/></a>}
           <h6 className="pro__descr_position">{position}</h6>
           <p className="pro__descr_text">"{quote}"</p>
         </div>
