@@ -20,8 +20,7 @@ const getComponentTitle = component => {
   }
   return (
     (titleReference[component.strapi_component] &&
-      titleReference[component.strapi_component]()) ||
-    "Titulo no definido"
+      titleReference[component.strapi_component]())
   )
 }
 
