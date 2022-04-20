@@ -54,6 +54,9 @@
   &-contact {
     @include primaryBtn;
     white-space: nowrap;
+    a{
+      color: inherit;
+    }
   }
   p {
     color: #1f1d37;
