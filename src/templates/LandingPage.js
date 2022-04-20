@@ -18,6 +18,7 @@ import {
   DualSection,
   OneSection,
   Quote,
+  Professionals,
   FeaturedBlogs
 } from "../components"
 
@@ -93,6 +94,11 @@ const LandingPage = ({ data, location }) => {
         <VideoBackground data={component} />
       ) : null
 
+      const professionals =
+      component.strapi_component === "components.professionals-section" ? (
+        <Professionals data={component} />
+        ) : null
+        
       const featuredBlogs =
       component.strapi_component === "components.featured-blogs" ? (
         <FeaturedBlogs data={component} />
@@ -114,6 +120,7 @@ const LandingPage = ({ data, location }) => {
           {quote}
           {dualSection}
           {animatedTransition}
+          {professionals}
           {featuredBlogs}
         </>
       </div>

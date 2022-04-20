@@ -41,7 +41,8 @@ module.exports = {
           `blog-category`,
           `landing-page`,
           `case`,
-          `icon`
+          `icon`,
+          `professional`,
         ],
         singleTypes: [
           `global-seo`,

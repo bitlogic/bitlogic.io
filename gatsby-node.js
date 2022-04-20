@@ -21,6 +21,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const landingSchema = require("./src/schema/landingSchema")
   const layoutSchema = require("./src/schema/layoutSchema")
   const generalSchema = require("./src/schema/generalSchema")
+  const professionalsSchema = require("./src/schema/professionalsSchema")
 
   const { createTypes } = actions
   const typeDefs =
@@ -32,6 +33,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     iconSchema.value +
     landingSchema.value +
     layoutSchema.value + 
+    professionalsSchema.value +
     generalSchema.value
   createTypes(typeDefs)
 }
