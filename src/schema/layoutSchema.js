@@ -16,7 +16,40 @@ type StrapiLayoutFooter {
     navbarItem: [StrapiLayoutNavbarNavbarItem]
     logo: LocalFile
     logoDark: LocalFile
+    navButton: StrapiLayoutNavbarNavButton
   }
+
+
+type StrapiLayoutNavbarNavButton {
+  id: Int
+  content: String
+  url: String
+  landing_page: StrapiLayoutNavbarNavButtonLanding_page
+}
+
+type StrapiLayoutNavbarNavButtonLanding_page {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
   
   type StrapiLayoutNavbarNavbarItem {
     id: Int

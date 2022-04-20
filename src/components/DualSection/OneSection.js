@@ -1,5 +1,6 @@
 import React from "react"
 import { useTheme } from "../../context/themeContext"
+import ButtonLink from "../ButtonLink/ButtonLink"
 
 const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
   const { theme } = useTheme()
@@ -11,7 +12,6 @@ const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
     backgroundImage,
     backgroundImageDark,
   } = dualSectionPart ? dualSectionPart[0] : {}
-
   return (
     <div
       className="one_sec-background"
