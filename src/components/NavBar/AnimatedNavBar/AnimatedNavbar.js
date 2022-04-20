@@ -14,6 +14,7 @@ const getComponentTitle = component => {
     "components.cases-section": () => component.title,
     "home.quote": () => component.title,
     "home.video-background": () => component.title,
+    "components.featured-blogs": () => component.title,
     "home.dual-section": () =>
       component.dualSectionPart.map(section => section.title).join(" - "),
   }
