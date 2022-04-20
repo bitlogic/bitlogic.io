@@ -73,7 +73,7 @@ const ListItem = ({ index, onClick, data }) => {
   )
 }
 
-const ExpandedListItem = ({ index, data, isFirst, scrollToRef }) => {
+const ExpandedListItem = ({ index, data, isFirst }) => {
   const scrollRef = useRef(null)
   return (
     <Flipped
