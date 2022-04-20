@@ -1,31 +1,20 @@
 @import "../../styles/global.scss";
 
 .dualSection {
-  p {
-    text-align: justify;
-    font-weight: 700;
-    max-height: 300px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+  color: $primary;
   h4 {
+    margin-top: 1rem;
     font-weight: 700;
   }
 
   &__image {
-    width: 300px;
+    width: 100%;
   }
   button {
-    background: $light-grey;
-    color: white;
-    font-weight: 500;
-    border-radius: 3px;
-    border: none;
-    padding: 0.3em;
+    @include primaryBtn;
   }
 }
+
 
 .one_sec {
   color: $primary;
@@ -39,7 +28,8 @@
   justify-content: space-around;
   align-items: center;
   gap: 3em;
-  padding: 3em 0;
+  padding-top: 3em;
+  padding-bottom: 3em;
   button {
     @include primaryBtn;
     a {
@@ -71,13 +61,12 @@
     }
   }
 
-  @media screen and (max-width: $breakpoint-xl) {
+  @media screen and (max-width: $breakpoint-sm) {
     flex-direction: column-reverse;
     &-img {
       flex-basis: 100%;
     }
     &-title {
-      padding: 0 10vw;
       flex-basis: 100%;
     }
   }
