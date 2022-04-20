@@ -17,7 +17,8 @@ import {
   AnimatedTransitionContinous,
   DualSection,
   OneSection,
-  Quote
+  Quote,
+  Professionals
 } from "../components"
 
 import VideoBackground from "../components/videoBackground/VideoBackground"
@@ -93,6 +94,11 @@ const LandingPage = ({ data, location }) => {
         <VideoBackground data={component} />
       ) : null
 
+      const professionals =
+      component.strapi_component === "components.professionals-section" ? (
+        <Professionals data={component} />
+      ) : null
+
     return (
       <div key={idx}>
         <>
@@ -109,6 +115,7 @@ const LandingPage = ({ data, location }) => {
           {quote}
           {dualSection}
           {animatedTransition}
+          {professionals}
         </>
       </div>
     )

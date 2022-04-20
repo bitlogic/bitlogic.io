@@ -15,6 +15,7 @@ import DualSection from "./DualSection/DualSection"
 import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 import BannerTop from "./Banners/BannerTop"
 import BannerHead from "./BannerHead/BannerHead";
+import Professionals from "./Professionals/Professionals"
 
 
 export {
@@ -34,5 +35,6 @@ export {
   DualSection,
   AnimatedTransitionContinous,
   BannerTop,
-  BannerHead
+  BannerHead,
+  Professionals,
 }
