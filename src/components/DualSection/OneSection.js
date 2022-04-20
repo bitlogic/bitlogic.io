@@ -20,19 +20,17 @@ const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
           theme === "dark" && backgroundImageDark?.url
             ? backgroundImageDark?.url
             : backgroundImage?.url
-        })`,
+          })`,
       }}
     >
-      <div className="one_sec container" id={strapi_component + "-" + id}>
+      <div className="container one_sec" id={strapi_component + "-" + id}>
         <div className="one_sec-title">
-          <h3>{title}</h3>
-          <h3 className="one_sec-title-body">{description}</h3>
+          <h4>{title}</h4>
+          <h4 className="one_sec-title-body">{description}</h4>
           {button && (
-            <button>
-              <a href={button.url} target="_blank" rel="noreferrer">
-                {button.content}
-              </a>
-            </button>
+            <a href={button?.url} target="_blank" rel="noreferrer" >
+              <button className="px-4">{button?.content}</button>
+            </a>
           )}
         </div>
         <div className="one_sec-img">
