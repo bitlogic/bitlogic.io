@@ -1,27 +1,46 @@
 import { Link } from "gatsby"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Flipper, Flipped } from "react-flip-toolkit"
 import MarkdownView from "react-showdown"
+import { useTheme } from "../../context/themeContext"
 import "./expandGrid.scss"
 
 const ExpandGrid = ({ data }) => {
+  const { theme } = useTheme()
+
+  const backgroundImage = data.backgroundImage?.url
+  const backgroundImageDark = data.backgroundImageDark?.url
+
   return (
     <div
-      className="p-3 mx-auto sm:mx-3 py-5 container"
-      id={data.strapi_component + "-" + data.id}
+      className="expandGrid-background"
+      style={{
+        backgroundImage: `url(${
+          theme === "dark" && backgroundImageDark
+            ? "http://localhost:1337" + backgroundImageDark
+            : "http://localhost:1337" + backgroundImage
+        })`,
+      }}
     >
-      <section className="expandGrid">
-        <div className="expandGrid-body">
-          <h2>{data.title}</h2>
-          <h6 className="px-5">{data.subtitle}</h6>
-          <AnimatedList items={data.items.slice(0, 4)} />
-        </div>
-      </section>
+      <div
+        className="p-3 mx-auto sm:mx-3 py-5 container"
+        id={data.strapi_component + "-" + data.id}
+      >
+        <section className="expandGrid">
+          <div className="expandGrid-body">
+            <h2>{data.title}</h2>
+            <h6 className="px-5">{data.subtitle}</h6>
+            <AnimatedList items={data.items.slice(0, 4)} />
+          </div>
+        </section>
+      </div>
     </div>
   )
 }
 
 const createCardFlipId = index => `listItem-${index}`
+
+const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop - 40)
 
 const shouldFlip = index => (prev, current) =>
   index === prev || index === current
@@ -54,18 +73,20 @@ const ListItem = ({ index, onClick, data }) => {
   )
 }
 
-const ExpandedListItem = ({ index, data, isFirst }) => {
+const ExpandedListItem = ({ index, data, isFirst, scrollToRef }) => {
+  const scrollRef = useRef(null)
   return (
     <Flipped
       flipId={createCardFlipId(index)}
       stagger="card"
       onStart={el => {
+        if (!isFirst) scrollToRef(scrollRef)
         setTimeout(() => {
           el.classList.add("animated-in")
         }, 400)
       }}
     >
-      <div className="listItem-expanded">
+      <div ref={scrollRef} className="listItem-expanded">
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent-expanded">
             <div className="listItem-more-expanded">
@@ -141,6 +162,7 @@ const AnimatedList = ({ items }) => {
                   isFirst={isFirst}
                   index={itemsArray.focused}
                   data={item}
+                  scrollToRef={scrollToRef}
                 />
               ) : (
                 <ListItem
