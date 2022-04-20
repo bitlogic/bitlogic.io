@@ -1,6 +1,7 @@
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 $primary-font: "Plain", sans-serif;
 $secondary-font: "Roboto", sans-serif;
 $medium: 20px;
@@ -19,6 +20,7 @@ $border-bottom: var(--border-bottom);
 $title-jobs: var(--title-jobs);
 $jobs-hover: var(--jobs-hover);
 $bg-form: var(--bg-form);
+$bg-diagonal: var(--bg-diagonal);
 
 main {
   background-color: $primary-container !important;
@@ -55,7 +57,7 @@ $grey: #545468;
 $light-grey: #c4c4c4;
 $alt: #67f293;
 $blackBit: #242424;
-
+$grey-light-bg: #FAF8F8;
 /* Sizes */
 $small: 15px;
 $medium: 20px;
@@ -65,19 +67,20 @@ $extra-large: 45px;
 
 //buttons
 @mixin primaryBtn {
-  padding: 5px 15px;
+  padding: 10px 15px;
   font-weight: 500;
   border: none;
   background-color: $secondary;
   color: $primary-invert;
   border-radius: 5px;
   transition: filter 200ms ease-in;
+  font-size: 18px;
   &:hover {
     filter: brightness(135%);
     box-shadow: 0px 3px 10px rgba(138, 254, 113, 0.5);
   }
   @media screen and (min-width: $breakpoint-lg) {
-    padding: 8px 30px;
+    padding: 12px 30px;
   }
 }
 
@@ -112,16 +115,18 @@ $breakpoint-xxl: 1400px;
 body {
   font-size: 16px;
   font-family: $secondary-font;
+  line-height: 1;
   p {
+    line-height: 1.2;
     em {
-      font-size: 16px;
+      font-size: 14px;
       font-family: $secondary-font;
     }
     strong {
-      font-size: 16px;
+      font-size: 14px;
       font-family: $secondary-font;
     }
-    font-size: 16px;
+    font-size: 14px;
     font-family: $secondary-font;
   }
   button {
@@ -133,23 +138,23 @@ body {
     font-family: $primary-font;
   }
   h1 {
-    font-size: 36px;
+    font-size: 32px;
     font-family: $primary-font;
   }
   h2 {
-    font-size: 32px;
+    font-size: 28px;
     font-family: $primary-font;
   }
   h3 {
     span {
-      font-size: 28px;
+      font-size: 24px;
       font-family: $primary-font;
     }
-    font-size: 28px;
+    font-size: 24px;
     font-family: $primary-font;
   }
   h4 {
-    font-size: 24px;
+    font-size: 22px;
     font-family: $primary-font;
   }
   h5 {
@@ -167,36 +172,36 @@ body {
 
 @media screen and (min-width: $breakpoint-lg) {
   body {
-    font-size: 20px;
+    font-size: 18px;
     p {
       em {
-        font-size: 20px;
+        font-size: 18px;
       }
       strong {
-        font-size: 20px;
+        font-size: 18px;
       }
-      font-size: 20px;
+      font-size: 18px;
     }
     h1 {
-      font-size: 60px;
+      font-size: 52px;
     }
     h2 {
-      font-size: 56px;
+      font-size: 42px;
     }
     h3 {
       span {
-        font-size: 48px;
+        font-size: 32px;
       }
-      font-size: 48px;
-    }
-    h4 {
-      font-size: 36px;
-    }
-    h5 {
       font-size: 32px;
     }
-    h6 {
+    h4 {
+      font-size: 28px;
+    }
+    h5 {
       font-size: 24px;
+    }
+    h6 {
+      font-size: 20px;
     }
     small {
       font-size: 18px;

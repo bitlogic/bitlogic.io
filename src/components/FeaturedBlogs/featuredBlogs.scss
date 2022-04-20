@@ -1,0 +1,27 @@
+@import "../../styles/global.scss";
+
+.featured {
+    color: $primary;
+  h2 {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: 700;
+  }
+  h6 {
+    text-align: center;
+    line-height: 30px;
+    font-weight: 400;
+  }
+
+  &-blogs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    & > * {
+      flex-basis: 33%;
+    }
+    @media screen and (max-width: $breakpoint-lg) {
+      flex-direction: column;
+    }
+  }
+}

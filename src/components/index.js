@@ -14,9 +14,9 @@ import OneSection from "./DualSection/OneSection"
 import DualSection from "./DualSection/DualSection"
 import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 import BannerTop from "./Banners/BannerTop"
-import BannerHead from "./BannerHead/BannerHead";
+import BannerHead from "./BannerHead/BannerHead"
 import Professionals from "./Professionals/Professionals"
-
+import FeaturedBlogs from './FeaturedBlogs/FeaturedBlogs'
 
 export {
   Cards,
@@ -37,4 +37,5 @@ export {
   BannerTop,
   BannerHead,
   Professionals,
+  FeaturedBlogs,
 }
