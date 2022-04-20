@@ -33,23 +33,7 @@ const useBlog = () => {
             pageKeywords
             pageDescription
           }
-          bannerHead {
-            title
-            image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-            imageDark {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-          }          
+         
         }
       }
     }
