@@ -15,7 +15,7 @@ import DualSection from "./DualSection/DualSection"
 import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 import BannerTop from "./Banners/BannerTop"
 import BannerHead from "./BannerHead/BannerHead";
-
+import FeaturedBlogs from './FeaturedBlogs/FeaturedBlogs'
 
 export {
   Cards,
@@ -34,5 +34,6 @@ export {
   DualSection,
   AnimatedTransitionContinous,
   BannerTop,
-  BannerHead
+  BannerHead,
+  FeaturedBlogs
 }
