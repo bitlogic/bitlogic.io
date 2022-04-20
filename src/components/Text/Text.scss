@@ -4,21 +4,23 @@
   .text {
     color: $primary;
     .title {
-      width: 100%;
       .titleText {
-        margin: 0;
         text-transform: uppercase;
         margin-top: 2rem;
       }
     }
     .description {
-      background-color: $primary-container;
-      padding-bottom: 3rem;
+      background-color: $grey-light-bg;
+     
       p:first-child {
         padding-top: 1rem;
       }
+      p:last-child {
+        margin-bottom: 0.5rem;
+      }
       p {
-        padding: 0rem 1rem;
+        color: $black;
+        padding: 0rem 0.5rem;
       }
     }
   }
@@ -29,10 +31,10 @@
     .notTitle {
       color: $primary;
       border-radius: 20px;
-      background-color: $primary-container;
+      background-color: $white;
       padding: 1rem;
-      margin: 1rem;
-      p:nth-last-child(2) {
+      margin: 1.5rem 0rem;
+      p:nth-last-child(-n+2) {
         margin-bottom: 0px;
       }
     }
@@ -46,9 +48,8 @@
         padding-top: 4rem;
       }
       .description {
-        p:first-child {
-          padding-top: 4rem;
-        }
+        margin-left: 2rem;
+        margin-top: 2rem;
       }
     }
   }
@@ -58,8 +59,7 @@
     .text {
       .description {
         p {
-          padding: 0rem 2.5rem;
-          padding-right: 7rem;
+          padding: 0rem 2rem;
         }
       }
     }

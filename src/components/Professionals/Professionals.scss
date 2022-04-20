@@ -1,0 +1,112 @@
+@import "../../styles/global.scss";
+
+.prosSection {
+    &__summary {
+        font-weight: 400;
+        text-align: center;
+        line-height: 33px;
+        color: $summary-color;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    a {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    color: $primary;
+    h2 {
+        text-align: center;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    h6 {
+        margin-bottom: 10px;
+    }
+}
+.pro {
+    color: $primary;
+    --bs-gutter-x: 0 !important;
+    padding: 10px;
+    &__img {
+        height: 260px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    &__descr {
+        padding-left: 10px;
+        &_title {
+            font-weight: 700;
+            width: 100%;
+        }
+        &_position {
+            font-weight: 400;
+        }
+    }
+    button {
+        @include primaryBtn;
+        margin-left: 10px;
+    }
+    &__socials {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 10px;
+        svg {
+            margin-right: 10px;
+        }
+    }
+}
+
+
+
+@media screen and (min-width: $breakpoint-md) {
+    .prosSection {
+        &__summary {
+            margin-top: 20px;
+            margin-bottom: 50px !important;
+        }
+    }
+    .pro {
+        &__img {
+            height: 240px;
+            margin-bottom: 15px;
+        }
+        &__descr {
+            h6 {
+                margin-bottom: 10px;
+            }
+            a {
+                width: 15%;
+            }
+            min-height: 210px;
+            &_title {
+                display: inline-block;
+                width: 85%;
+            }
+        }
+        &__socials {
+            justify-content: flex-end;
+            svg {
+                margin-left: 10px;
+                margin-right: 1px;
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+    .prosSection {
+        &__summary {
+            margin-top: 40px;
+            margin-bottom: 80px !important;
+        }
+    }
+    .pro {
+        &__descr {
+            min-height: 260px;
+        }
+    }
+}
+    

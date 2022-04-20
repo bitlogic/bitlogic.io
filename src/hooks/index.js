@@ -4,6 +4,7 @@ import useBlog from './useBlog'
 import useFooter from './useFooter';
 import useCases from './useCases'
 import useNavbar from './useNavbar';
+import useProfessionals from "./useProfessionals";
 
 export {
   useGlobalSeo,
@@ -11,5 +12,6 @@ export {
   useBlog,
   useFooter,
   useCases,
-  useNavbar
+  useNavbar,
+  useProfessionals,
 }

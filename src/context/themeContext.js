@@ -17,6 +17,7 @@ const themes = {
     "--border-bottom": "#cdcdcd",
     "--bg-form": "#DBDBDD",
     "--bg-diagonal": "#f2f0f7",
+    "--summary-color": "rgba(0, 0, 0, 0.5)"
   },
   dark: {
     "--nav-footer-container": "#383838",
@@ -34,6 +35,7 @@ const themes = {
     "--secondary-container": "#191919",
     "--bg-form": "#FAF8F8",
     "--bg-diagonal": "#4A494B",
+    "--summary-color": "#ffffff",
 
   },
 }

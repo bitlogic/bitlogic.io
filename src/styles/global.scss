@@ -22,6 +22,8 @@ $jobs-hover: var(--jobs-hover);
 $bg-form: var(--bg-form);
 $bg-diagonal: var(--bg-diagonal);
 
+$summary-color: var(--summary-color);
+
 main {
   background-color: $primary-container !important;
 }
@@ -57,7 +59,7 @@ $grey: #545468;
 $light-grey: #c4c4c4;
 $alt: #67f293;
 $blackBit: #242424;
-
+$grey-light-bg: #FAF8F8;
 /* Sizes */
 $small: 15px;
 $medium: 20px;
