@@ -22,11 +22,6 @@ const getComponentTitle = component => {
     "components.form": () => false,
     "components.banner": () => component.title,
   }
-  console.log(
-    (titleReference[component.strapi_component] &&
-      titleReference[component.strapi_component]()) ||
-      component.strapi_component
-  )
   return (
     titleReference[component.strapi_component] &&
     titleReference[component.strapi_component]()
