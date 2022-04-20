@@ -33,23 +33,25 @@ const useBlog = () => {
             pageKeywords
             pageDescription
           }
-          bannerHead {
+          banner {
+            id
             title
+            variant
+            summary
+            button {
+              content
+              id
+              url
+              landing_page {
+                name
+                slug
+                id
+              }
+            }
             image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
+              url
             }
-            imageDark {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-          }          
+          }
         }
       }
     }

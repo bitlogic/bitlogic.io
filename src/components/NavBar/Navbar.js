@@ -21,6 +21,9 @@ const NavBar = () => {
   const logoDark = getImage(
     navbarData.allStrapiLayout?.nodes[0].navbar?.logoDark?.localFile
   )
+
+  const navbarButton = navbarData.allStrapiLayout?.nodes[0].navbar?.navButton
+
   return (
     <>
       <Navbar variant="dark" expand="xl" className="NavBar">
@@ -49,7 +52,19 @@ const NavBar = () => {
             </div>
           )}
           <div className="NavBar_Side">
-            <button className="NavBar_Side-contact">Hablemos</button>
+            {navbarButton && (
+              <button className="NavBar_Side-contact">
+                <Link
+                  to={
+                    "/" + navbarButton.landing_page
+                      ? navbarButton.landing_page.slug
+                      : ""
+                  }
+                >
+                  {navbarButton.content}
+                </Link>
+              </button>
+            )}
             <button className="theme-toggle" onClick={toggleTheme}>
               {theme === "dark" ? (
                 <img

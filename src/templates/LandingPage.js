@@ -17,11 +17,11 @@ import {
   AnimatedTransitionContinous,
   DualSection,
   OneSection,
-  Quote
+  Quote,
+  FeaturedBlogs
 } from "../components"
 
 import VideoBackground from "../components/videoBackground/VideoBackground"
-
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
@@ -88,9 +88,14 @@ const LandingPage = ({ data, location }) => {
         <AnimatedTransitionContinous data={component} />
       ) : null
 
-      const videoBackground =
+    const videoBackground =
       component.strapi_component === "home.video-background" ? (
         <VideoBackground data={component} />
+      ) : null
+
+      const featuredBlogs =
+      component.strapi_component === "components.featured-blogs" ? (
+        <FeaturedBlogs data={component} />
       ) : null
 
     return (
@@ -109,6 +114,7 @@ const LandingPage = ({ data, location }) => {
           {quote}
           {dualSection}
           {animatedTransition}
+          {featuredBlogs}
         </>
       </div>
     )
