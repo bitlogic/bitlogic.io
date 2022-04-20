@@ -12,7 +12,6 @@ const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
     backgroundImage,
     backgroundImageDark,
   } = dualSectionPart ? dualSectionPart[0] : {}
-  console.log(button)
   return (
     <div
       className="one_sec-background"
