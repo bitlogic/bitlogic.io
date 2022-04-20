@@ -19,8 +19,8 @@ const getComponentTitle = component => {
       component.dualSectionPart.map(section => section.title).join(" - "),
   }
   return (
-    (titleReference[component.strapi_component] &&
-      titleReference[component.strapi_component]())
+    titleReference[component.strapi_component] &&
+    titleReference[component.strapi_component]()
   )
 }
 
