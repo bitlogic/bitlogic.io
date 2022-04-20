@@ -16,11 +16,15 @@ const getComponentTitle = component => {
     "home.video-background": () => component.title,
     "home.dual-section": () =>
       component.dualSectionPart.map(section => section.title).join(" - "),
+    "components.text": () => false,
+    "banners.banner-head": () => component.title,
+    "components.logos-section": () => component.title,
+    "components.form": () => false,
+    "components.banner": () => component.title,
   }
   return (
-    (titleReference[component.strapi_component] &&
-      titleReference[component.strapi_component]()) ||
-    "Titulo no definido"
+    titleReference[component.strapi_component] &&
+    titleReference[component.strapi_component]()
   )
 }
 
@@ -43,7 +47,7 @@ const AnimatedNavbar = ({ landingComponents, navbarItems = [], duration }) => {
                 sections={landingComponents
                   .find(landing => landing.name === navItem.landing.name)
                   .body.map(component => ({
-                    name: getComponentTitle(component),
+                    name: getComponentTitle(component) || "",
                     id: component.strapi_component + "-" + component.id,
                     slug: navItem.landing.slug,
                   }))}

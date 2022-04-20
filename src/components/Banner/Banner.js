@@ -8,9 +8,8 @@ const Banner = ({ data }) => {
   const summary = data?.summary
   const image = data?.image
   const button = data?.button
-  const id = data?.id
   return (
-    <div className={`banner ${variant}`} id={id}>
+    <div className={`banner ${variant}`} id={data.strapi_component + "-" + data.id}>
       <div className="title container">
         <div className="col-12 col-md-6">
           <h1>{title}</h1>
