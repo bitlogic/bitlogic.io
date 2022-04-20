@@ -10,7 +10,7 @@ export default function Text({ data }) {
   return (
     <div className="container-text" style={{
       backgroundImage: `url(${bgImage})`,
-    }}>
+    }} id={data.strapi_component + "-" + data.id}>
       {title !== "" && title !== undefined && title !== null ? (
         <div className="text d-flex flex-column flex-md-row">
           <div className="title">

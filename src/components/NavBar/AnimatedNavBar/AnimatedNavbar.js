@@ -19,7 +19,7 @@ const getComponentTitle = component => {
     "components.text": () => false,
     "banners.banner-head": () => component.title,
     "components.logos-section": () => component.title,
-    "components.form": () => component.title,
+    "components.form": () => false,
     "components.banner": () => component.title,
   }
   console.log(
