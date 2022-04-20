@@ -170,6 +170,23 @@
   .gatsby-image-wrapper {
     display: block;
   }
+  .banner-markdown{
+    font-size: 30px;
+    h1,h2,h3,h4,h5,h6{
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    p , a, span, small, li, i, em{
+      span, strong, small, i, b, em {
+        font-size: 30px;
+      }
+      font-size: 30px;
+    }
+    strong, b {
+      font-weight: 600;
+    }
+  }
 
   @media screen and (min-width: $breakpoint-md) {
     flex-direction: row;

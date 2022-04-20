@@ -33,7 +33,25 @@ const useBlog = () => {
             pageKeywords
             pageDescription
           }
-         
+          banner {
+            id
+            title
+            variant
+            summary
+            button {
+              content
+              id
+              url
+              landing_page {
+                name
+                slug
+                id
+              }
+            }
+            image {
+              url
+            }
+          }
         }
       }
     }
