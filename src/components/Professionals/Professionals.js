@@ -31,8 +31,8 @@ const Professionals = ({ data }) => {
         <div className="pro__descr">
           <h6 className="pro__descr_title">{name}</h6>
           {linkedin && <a href={linkedin} target="_blank"><FaLinkedinIn size={23}/></a>}
-          <h6 className="pro__descr_position">{position}</h6>
-          <p className="pro__descr_text">"{quote}"</p>
+          {position && <h6 className="pro__descr_position">{position}</h6>}
+          <p className="pro__descr_text">{quote}</p>
         </div>
       </div>
     </div>
