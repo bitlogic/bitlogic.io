@@ -443,6 +443,99 @@ type StrapiBlogCategory implements Node {
     strapiId: Int
     title: String
     bannerHead: StrapiBlogPageBannerHead
+    banner: StrapiBlogPageBanner
+  }
+  type StrapiBlogPageBanner {
+    id: Int
+    title: String
+    variant: String
+    summary: String
+    button: StrapiBlogPageBannerButton
+    image: StrapiBlogPageBannerImage
+  }
+  type StrapiBlogPageBannerButton {
+    id: Int
+    content: String
+    url: String
+    landing_page: StrapiBlogPageBannerButtonLanding_page
+  }
+  type StrapiBlogPageBannerButtonLanding_page {
+    id: Int
+    name: String
+    slug: String
+    published_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    created_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    updated_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+  }
+  
+  type StrapiBlogPageBannerImage {
+    id: Int
+    name: String
+    alternativeText: String
+    caption: String
+    width: Int
+    height: Int
+    formats: StrapiBlogPageBannerImageFormats
+    hash: String
+    ext: String
+    mime: String
+    size: Float
+    url: String
+    provider: String
+    created_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    updated_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
+    localFile: File
+  }
+  
+  type StrapiBlogPageBannerImageFormats {
+    small: StrapiBlogPageBannerImageFormatsSmall
+    thumbnail: StrapiBlogPageBannerImageFormatsThumbnail
+  }
+  type StrapiBlogPageBannerImageFormatsSmall {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
+  }
+  
+  type StrapiBlogPageBannerImageFormatsThumbnail {
+    ext: String
+    url: String
+    hash: String
+    mime: String
+    name: String
+    size: Float
+    width: Int
+    height: Int
   }
 
   type StrapiBlogPageBannerHead {

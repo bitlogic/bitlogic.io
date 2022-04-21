@@ -14,7 +14,7 @@ const Banner = ({ data }) => {
   const imageDark = data?.imageDark
   const button = data?.button
   const diagonalReverseState =
-    variant === "diagonalReverse" ? "col-md-4" : "col-md-6"
+    variant === "diagonalReverse" ? "col-md-4" : "col-lg-6"
   return (
     <div
       className={`banner ${variant}`}

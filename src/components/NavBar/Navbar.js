@@ -31,6 +31,7 @@ const NavBar = () => {
           <GatsbyImage
             image={theme === "dark" && logoDark ? logoDark : logoLight}
             alt={"bitlogic"}
+            className= "logo"
           />
         </Link>
         <Navbar.Toggle
