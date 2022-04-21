@@ -1,10 +1,10 @@
 import { Link } from "gatsby"
 import React from "react"
+import ButtonLink from "../ButtonLink/ButtonLink"
 import "./DualSection.scss"
 
 export default function DualSection({ data }) {
   const dualSectionParts = data?.dualSectionPart
-
   const listSectionParts = dualSectionParts.map(section => (
     <div className="dualSection col-md-6 my-2 p-md-3 p-xl-4">
       <div className="dualSection__image">
@@ -16,16 +16,7 @@ export default function DualSection({ data }) {
         <p>{section.description}</p>
         {section.button && (
           <button className="px-4">
-            <Link
-              to={
-                "/" +
-                (section.button?.landing?.slug ||
-                  section.button?.singleType ||
-                  "")
-              }
-            >
-              {section.button?.content}
-            </Link>
+            <ButtonLink button={section.button} />
           </button>
         )}
       </div>

@@ -29,9 +29,7 @@ const OneSection = ({ data: { id, strapi_component, dualSectionPart } }) => {
           <h4>{title}</h4>
           <h4 className="one_sec-title-body">{description}</h4>
           <button className="NavBar_Side-contact">
-            <Link to={"/" + (button.landing?.slug || button.singleType || "")}>
-              {button.content}
-            </Link>
+            <ButtonLink button={button} />
           </button>
         </div>
         <div className="one_sec-img">

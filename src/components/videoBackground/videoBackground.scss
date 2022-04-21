@@ -25,19 +25,16 @@
   h5 {
     width: 100%;
     color: $grey;
-   
   }
   button {
     @include secondaryBtn;
+    a {
+      color: $grey;
+    }
   }
 }
 
-
-
-
-
 @media screen and (min-width: $breakpoint-md) {
-
   .videoBackground {
     // width: calc(100% - 6em);
     height: 550px;
@@ -71,7 +68,7 @@
       box-shadow: 0px 0px 3px #00000044;
       margin: 2em;
       padding: 2em;
-  
+
       h5 {
         color: $grey;
       }
@@ -82,9 +79,7 @@
   }
 }
 
-
 @media screen and (min-width: $breakpoint-lg) {
-
   .videoBackground {
     height: 80vh;
     &-container {
