@@ -3,9 +3,7 @@
 .prosSection {
     &__summary {
         font-weight: 400;
-        text-align: center;
-        line-height: 33px;
-        color: $summary-color;
+        margin-bottom: 30px;
     }
     p {
         margin-bottom: 10px;
@@ -16,12 +14,9 @@
     }
     color: $primary;
     h2 {
-        text-align: center;
+        // text-align: center;
         font-weight: 700;
         text-transform: uppercase;
-    }
-    h6 {
-        margin-bottom: 10px;
     }
 }
 .pro {
@@ -35,25 +30,25 @@
         border-radius: 10px;
     }
     &__descr {
+        display: flex;
+        flex-direction: column;
         padding-left: 10px;
         &_title {
+            order: 1;
             font-weight: 700;
             width: 100%;
+            margin-bottom: 10px;
         }
         &_position {
             font-weight: 400;
+            order: 2;
+            margin-bottom: 10px;
         }
-    }
-    button {
-        @include primaryBtn;
-        margin-left: 10px;
-    }
-    &__socials {
-        display: flex;
-        justify-content: flex-start;
-        margin-top: 10px;
-        svg {
-            margin-right: 10px;
+        a {
+            order: 3;
+        }
+        &_text {
+            order: 4;
         }
     }
 }
@@ -62,9 +57,14 @@
 
 @media screen and (min-width: $breakpoint-md) {
     .prosSection {
+        h2 {
+            text-align: center;
+        }
         &__summary {
+            text-align: center;
             margin-top: 20px;
             margin-bottom: 50px !important;
+            line-height: 28px;
         }
     }
     .pro {
@@ -73,11 +73,13 @@
             margin-bottom: 15px;
         }
         &__descr {
+            display: block;
             h6 {
                 margin-bottom: 10px;
             }
             a {
                 width: 15%;
+                vertical-align: top;
             }
             min-height: 210px;
             &_title {
