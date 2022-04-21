@@ -27,12 +27,12 @@ export default function ContactData() {
         <div className="ContactData__Item__link">
           <Link
             to={
-              dataNav.landing_page
-                ? "/" + dataNav.landing_page.slug
+              dataNav?.landing_page
+                ? "/" + dataNav?.landing_page.slug
                 : ""
             }
           >
-            {dataFooter.internalLink?.name}
+            {dataFooter?.internalLink?.name}
           </Link>
         </div>
       </div>
