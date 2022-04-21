@@ -4,16 +4,10 @@
     color: $primary;
     &__title {
         font-weight: 700;
-        padding-bottom: 20px;
-        text-align: center;
-        width: fit-content;
-        margin: 0 auto;
+        text-transform: uppercase;
     }
     &__summary {
         font-weight: 400;
-        text-align: center;
-        line-height: 33px;
-        color: $summary-color
     }
     &__logos {
         margin-top: 10px;
@@ -30,6 +24,15 @@
 
 @media screen and (min-width: $breakpoint-md) {
     .logos {
+        &__title {
+            text-align: center;
+        }
+        &__summary {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 50px !important;
+            line-height: 28px;
+        }
         &__logos {
             margin: 30px 0;
             flex-direction: row;
