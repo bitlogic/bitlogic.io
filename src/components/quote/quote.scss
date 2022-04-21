@@ -29,11 +29,9 @@
       line-height: 35px;
     }
     &-text {
-      max-height: 300px;
       margin-bottom: 0;
-      text-align: justify;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 6;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
