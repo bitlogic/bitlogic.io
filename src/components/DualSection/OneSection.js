@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import React from "react"
 import { useTheme } from "../../context/themeContext"
 import ButtonLink from "../ButtonLink/ButtonLink"
