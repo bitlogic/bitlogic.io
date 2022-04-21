@@ -11,7 +11,6 @@ const themes = {
     "--primary-container": "#faf8f8",
     "--title-jobs": "#5682c6",
     "--jobs-hover": "#f0f0f0",
-
     "--secondary": "#3f6be8",
     "--secondary-container": "#25cad3",
     "--border-bottom": "#cdcdcd",

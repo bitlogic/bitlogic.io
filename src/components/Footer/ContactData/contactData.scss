@@ -19,11 +19,13 @@
       font-weight: 600;
       text-decoration: underline;
       font-size: 18px;
+      color: $secondary;
     }
   }
 }
 @media screen and (min-width: $breakpoint-md) {
   .ContactData__Item {
+    
     &__contact {
       display: block;
     }
@@ -49,4 +51,21 @@
       }
     }
   }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .ContactData__Item {
+    .icon-text {
+      font-size: 18px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    &__link {
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+  
 }

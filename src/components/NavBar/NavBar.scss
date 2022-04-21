@@ -6,13 +6,17 @@
   & > a {
     margin: 1.5em 0 1em 50px;
   }
+  .logo{
+    max-width: 140px;
+  }
 }
 .NavBar__Logo {
   margin: 16px 28px;
-  width: 79px;
+  width: 120px;
 }
+
 .navbar-toggler .navbar-toggler-icon {
-  background-image: url("https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com/burger_menu_3ae79f1b8e.svg") !important;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDMwIDMwIj48cGF0aCBzdHJva2U9IiMzZjZiZTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik00IDdoMjJNNCAxNWgyMk00IDIzaDIyIi8+PC9zdmc+") !important;
   width: 2rem;
   height: 2rem;
 }

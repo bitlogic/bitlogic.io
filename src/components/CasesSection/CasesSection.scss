@@ -3,8 +3,8 @@
 .casesSection {
     color: $primary;
     h2 {
-        text-align: center;
         font-weight: 700;
+        text-transform: uppercase;
     }
 }
 .case {
@@ -84,6 +84,11 @@
 }
 
 @media screen and (min-width: $breakpoint-md) {
+    .casesSection {
+        h2 {
+            text-align: center;
+        }
+    }
     .case {
         &__img {
             height: 240px;

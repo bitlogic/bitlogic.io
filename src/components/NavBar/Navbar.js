@@ -6,11 +6,12 @@ import AnimatedNavbar from "./AnimatedNavBar/AnimatedNavbar"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 import { useNavbar } from "../../hooks/index"
-
+import menusvg from '../../images/menu.svg'
 import { useTheme } from "../../context/themeContext"
 // theme images
 import moon from "../../images/moon-solid.svg"
 import sun from "../../images/sun.svg"
+console.log(menusvg)
 const NavBar = () => {
   const { theme, toggleTheme } = useTheme()
   const navbarData = useNavbar()
@@ -27,10 +28,11 @@ const NavBar = () => {
   return (
     <>
       <Navbar variant="dark" expand="xl" className="NavBar">
-        <Link to="/">
+        <Link to="/" className="NavBar__Logo" >
           <GatsbyImage
             image={theme === "dark" && logoDark ? logoDark : logoLight}
             alt={"bitlogic"}
+            className= "logo"
           />
         </Link>
         <Navbar.Toggle
@@ -56,8 +58,8 @@ const NavBar = () => {
               <button className="NavBar_Side-contact">
                 <Link
                   to={
-                    "/" + navbarButton.landing_page
-                      ? navbarButton.landing_page.slug
+                    navbarButton.landing_page
+                      ? "/" + navbarButton.landing_page.slug
                       : ""
                   }
                 >

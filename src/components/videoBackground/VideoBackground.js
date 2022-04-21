@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
+import ButtonLink from "../ButtonLink/ButtonLink"
 import "./videoBackground.scss"
 const VideoBackground = ({
   data: { video, description, button, strapi_component, id, backgroundImage },
@@ -33,16 +34,19 @@ const VideoBackground = ({
 
   return (
     <div
-      className="pt-5 py-3"
+      className={`${backgroundImage && "pt-5"} pb-3`}
       style={{
-        backgroundImage: `url(${backgroundImage?.url})`,
+        backgroundImage: `url(${backgroundImage?.url})`, backgroundRepeatY: 'no-repeat',
       }}
     >
       <div
         className="container px-md-0 px-lg-3 videoBackground-container"
         id={strapi_component + "-" + id}
       >
-        <section className="videoBackground">
+        <section
+          className="videoBackground"
+          style={{ marginTop: backgroundImage && 130 }}
+        >
           <video
             ref={videoRef}
             muted
@@ -55,9 +59,9 @@ const VideoBackground = ({
           />
           <div className="videoBackground-card">
             <h5>{description}</h5>
-            <a href={button.url} target="_blank" rel="noreferrer">
-              <button className="px-4">{button.content}</button>
-            </a>
+            <button className="px-4">
+              <ButtonLink button={button} />
+            </button>
           </div>
         </section>
       </div>
