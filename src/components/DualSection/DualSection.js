@@ -1,38 +1,40 @@
-import React from 'react'
-import './DualSection.scss'
+import { Link } from "gatsby"
+import React from "react"
+import "./DualSection.scss"
 
 export default function DualSection({ data }) {
-    const dualSectionParts = data?.dualSectionPart
+  const dualSectionParts = data?.dualSectionPart
 
-    const listSectionParts = dualSectionParts.map((section) =>
-        <div className="dualSection col-md-6 my-2 p-md-3 p-xl-4">
-            <div className="dualSection__image">
-                <img
-                    src={section.image.url}
-                    alt="naturaleza"
-                />
-            </div>
+  const listSectionParts = dualSectionParts.map(section => (
+    <div className="dualSection col-md-6 my-2 p-md-3 p-xl-4">
+      <div className="dualSection__image">
+        <img src={section.image.url} alt="naturaleza" />
+      </div>
 
-            <div className="dualSection__textContainer">
-                <h4>{section.title}</h4>
-                <p>{section.description}</p>
-                {section.button && (
-                    <a href={section.button?.url} target="_blank" rel="noreferrer" >
-                        <button className="px-4">{section.button?.content}</button>
-                    </a>
-                )}
-            </div>
-        </div>
-    );
+      <div className="dualSection__textContainer">
+        <h4>{section.title}</h4>
+        <p>{section.description}</p>
+        {section.button && (
+          <button className="px-4">
+            <Link
+              to={
+                "/" +
+                (section.button?.landing?.slug ||
+                  section.button?.singleType ||
+                  "")
+              }
+            >
+              {section.button?.content}
+            </Link>
+          </button>
+        )}
+      </div>
+    </div>
+  ))
 
-    return (
-        <div className="container py-3" id={data.strapi_component + "-" + data.id}>
-            <div className="d-flex flex-column flex-md-row">
-                {listSectionParts}
-            </div>
-        </div>
-
-
-
-    )
+  return (
+    <div className="container py-3" id={data.strapi_component + "-" + data.id}>
+      <div className="d-flex flex-column flex-md-row">{listSectionParts}</div>
+    </div>
+  )
 }
