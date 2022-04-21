@@ -33,7 +33,7 @@ const VideoBackground = ({
 
   return (
     <div
-      className="pt-5 py-3"
+      className={`${backgroundImage && "pt-5"} pb-3`}
       style={{
         backgroundImage: `url(${backgroundImage?.url})`,
       }}
@@ -42,7 +42,7 @@ const VideoBackground = ({
         className="container px-md-0 px-lg-3 videoBackground-container"
         id={strapi_component + "-" + id}
       >
-        <section className="videoBackground">
+        <section className="videoBackground" style={{ marginTop: backgroundImage && 130}}>
           <video
             ref={videoRef}
             muted
