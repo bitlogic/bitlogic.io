@@ -6,6 +6,13 @@ const useFooter = () => {
       allStrapiLayout {
         nodes {
           navbar {
+            navButton {
+              landing_page {
+                slug
+              }
+              url
+              content
+            }
             navbarItem {
               url
               label
