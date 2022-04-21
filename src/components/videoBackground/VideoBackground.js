@@ -35,7 +35,7 @@ const VideoBackground = ({
     <div
       className="pt-5 py-3"
       style={{
-        backgroundImage: `url(${backgroundImage?.url})`,
+        backgroundImage: `url(${backgroundImage?.url})`, backgroundRepeatY: 'no-repeat',
       }}
     >
       <div
