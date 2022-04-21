@@ -2,9 +2,7 @@
 
 .ContactData {
   &__Item {
-    .titleSubscription {
-      display: none;
-    }
+
     form {
       margin-bottom: 0px;
     }
@@ -28,6 +26,9 @@
   }
 }
 @media screen and (min-width: $breakpoint-md) {
+  .contactData-mobile_button{
+    display: none;
+  }
   .ContactData {
     &__Item {
       .titleSubscription {
@@ -58,5 +59,32 @@
         width: 35%;
       }
     }
+  }
+}
+
+
+@media screen and (max-width: $breakpoint-md) {
+  .ContactData {
+    &__Form {
+      input {
+        width: 75%;
+      }
+      button:not(.contactData-mobile_button) {
+        width: 70%;
+        display: none;
+      }
+    }
+  }
+  .titleSubscription {
+    display: none;
+  }
+  .contactData-mobile_button{
+    width: 70%;
+    @include primaryBtn;
+    margin-top: 3em;
+  }
+  .contactData-container{
+    display: flex;
+    justify-content: center;
   }
 }
