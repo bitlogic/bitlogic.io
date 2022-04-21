@@ -35,7 +35,7 @@ const VideoBackground = ({
     <div
       className={`${backgroundImage && "pt-5"} pb-3`}
       style={{
-        backgroundImage: `url(${backgroundImage?.url})`,
+        backgroundImage: `url(${backgroundImage?.url})`, backgroundRepeatY: 'no-repeat',
       }}
     >
       <div
