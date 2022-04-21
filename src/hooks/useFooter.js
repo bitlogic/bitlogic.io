@@ -5,6 +5,17 @@ const useFooter = () => {
     {
       allStrapiLayout {
         nodes {
+          navbar {
+            navbarItem {
+              url
+              label
+              singleType
+              landing {
+                slug
+                name
+              }
+            }
+          }
           footer {
             contact {
               title
@@ -41,10 +52,6 @@ const useFooter = () => {
             }
             navegation {
               title
-              pageLink {
-                name
-                pathTo
-              }
             }
             socialMedia {
               socialMedia {

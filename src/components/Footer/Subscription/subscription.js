@@ -11,14 +11,6 @@ export default function Subscription() {
             <h6 className="titleSubscription">{dataSubscription?.title}</h6>
             <form>
                 <div className="ContactData__Form d-flex flex-md-column justify-content-between">
-                    <label>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your mail"
-                            className="col-7"
-                        />
-                    </label>
                     <button className="col-5" type="submit">Subscribe</button>
                 </div>
             </form>
