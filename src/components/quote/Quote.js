@@ -14,7 +14,6 @@ const Quote = ({
   if (codeIndex !== -1 && code !== undefined) {
     code = code.substring(0, code.indexOf("?"))
   }    
-  console.log(url + '?rel=0', 'url de yt')
 
   return (
     <div className="container my-3 mb-lg-5" id={strapi_component + "-" + id}>
