@@ -35,9 +35,9 @@
   &-title {
     overflow: hidden;
     a {
-      color: $title-jobs;
+      color: $secondary;
       font-weight: 700;
-      font-size: $medium;
+      font-size: $small;
       padding-bottom: 10px;
     }
   }
@@ -89,7 +89,7 @@
   justify-content: center;
   h2 {
     color: $blue;
-    font-size: $large;
+    font-size: $small;
     text-align: center;
 
     span {
@@ -103,7 +103,7 @@
         -webkit-transform: skew(15deg);
         transform: skew(15deg);
         color: $white !important;
-        font-size: $large;
+        font-size: $small;
         margin: 0;
       }
     }
@@ -127,29 +127,29 @@
 @media (min-width: $breakpoint-md) {
   .cats-column-name {
     span {
-      font-size: $large;
+      font-size: $small;
     }
   }
   .cats-job {
     &-title {
       a {
-        font-size: $large;
+        font-size: $small;
       }
     }
 
     &-column-value {
-      font-size: $medium;
+      font-size: $small;
     }
   }
 
   .cats-mobile {
     &-column-name {
-      font-size: $medium;
+      font-size: $small;
     }
   }
 
   .cats-multiselect-label {
-    font-size: $large;
+    font-size: $small;
   }
 
   .widget-container {
@@ -165,7 +165,7 @@
       }
     }
     h3 {
-      font-size: $large;
+      font-size: $small;
       border-bottom: 4px solid $blue;
       padding: 7px;
     }
@@ -175,7 +175,7 @@
 @media (min-width: $breakpoint-lg) {
   .cats-job {
     &-column-value {
-      font-size: $large;
+      font-size: $small;
     }
   }
 }
