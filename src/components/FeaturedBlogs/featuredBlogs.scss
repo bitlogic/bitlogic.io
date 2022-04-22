@@ -6,14 +6,18 @@
   h2 {
     margin-top: 2em;
     flex-grow: 1;
-    text-align: center;
     font-weight: 700;
     text-transform: uppercase;
+    @media screen and (min-width: $breakpoint-md) {
+      text-align: center;
+    }
   }
   h6 {
-    text-align: center;
-    line-height: 30px;
+    line-height: 28px;
     font-weight: 400;
+    @media screen and (min-width: $breakpoint-md) {
+      text-align: center;
+    }
   }
 
   &-blogs {
@@ -32,12 +36,11 @@
 
     .article {
       &__container {
-        color: $black;
+        color: $primary;
         margin: 0.5em;
-        background-color: #efefef;
+        background-color: $blog-card-container;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 8px;
-        padding: 1em;
         h6 {
           text-align: left;
           font-weight: 700;
@@ -46,6 +49,7 @@
       }
       &__link {
         button {
+          font-size: 18px;
           background: none;
           color: $secondary;
           text-decoration: underline;
