@@ -11,7 +11,6 @@
     border-radius: 10px;
     padding: 2rem;
     padding-bottom: 1rem;
-    min-height: 540px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +23,6 @@
     padding: 2rem 1rem;
     img {
       max-width: 250px;
-      width: 100%;
     }
   }
   &__content {
