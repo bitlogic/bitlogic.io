@@ -13,8 +13,8 @@
       }
     }
     img {
-      margin: 0 10px 0 auto;
-      width: 48px;
+      margin: 0;
+      width: 80px;
     }
   }
   button {
@@ -30,6 +30,7 @@
     flex-direction: column;
     font-weight: 700;
     text-align: left;
+    text-transform: uppercase;
   }
 }
 
@@ -48,9 +49,6 @@
 
 @media screen and (max-width: $breakpoint-md) {
   .bannerList {
-    &__buttonMobile{
-      margin-left: 1.5em;
-    }
     &__title {
       button {
         display: none;
