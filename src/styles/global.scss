@@ -85,6 +85,11 @@ $extra-large: 45px;
     padding: 12px 30px;
     font-size: 18px;
   }
+
+  a {
+    font: inherit;
+    color: inherit;
+  }
 }
 
 @mixin secondaryBtn {
@@ -105,6 +110,11 @@ $extra-large: 45px;
   }
   @media screen and (min-width: $breakpoint-lg) {
     padding: 8px 30px;
+  }
+
+  a {
+    font: inherit;
+    color: inherit;
   }
 }
 
