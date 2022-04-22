@@ -18,9 +18,9 @@ const BlogArticle = ({ title, summary, image, slug, text }) => {
         <img src={image?.url} alt={title} className="article__image" />
       )}
       <div className="article__description">
-        <h6>{`${title} ...`}</h6>
+        <h6>{`${title}`}</h6>
         <div>
-          <MarkdownView markdown={`${summary} ...`} />
+          <MarkdownView markdown={`${summary}`} />
           {/* <ReactMarkdown source={`${summary} ...`} /> */}
         </div>
         <div className="article__link">
