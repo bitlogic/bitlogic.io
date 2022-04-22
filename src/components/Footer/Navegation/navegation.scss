@@ -18,13 +18,15 @@
   }
 }
 
+
+
 @media screen and (min-width: $breakpoint-xl) {
   .ContactData__Item {
     ul li a {
       font-size: 18px;
     }
-  }
-  h6 {
-    font-size: inherit;
+    h6 {
+      font-size: unset;
+    }
   }
 }
