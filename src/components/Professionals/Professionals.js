@@ -40,7 +40,7 @@ const Professionals = ({ data }) => {
   })
 
   return (
-    <div className="container py-5 prosSection">
+    <div className="container pt-5 pb-1 prosSection">
       {title && <h2>{title}</h2>}
       {summary && <h6 className="prosSection__summary px-lg-3">{summary}</h6>}
       {(professionalsCards !== undefined && professionalsCards.length > 0) && 
