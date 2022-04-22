@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React from "react"
 import { useFooter } from "../../../hooks"
 import "./subscription.scss"
@@ -9,15 +10,15 @@ export default function Subscription() {
   return (
     <div className="ContactData__Item contactData-container">
       <h6 className="titleSubscription">{dataSubscription?.title}</h6>
-      <form>
+      <div>
         <div className="ContactData__Form d-flex flex-md-column justify-content-between">
-          <button className="col-5" type="submit">
-            Subscribe
+          <button className="col-5">
+            <Link to="/recibe-nuestra-newsletter" >Subscribe</Link>
           </button>
         </div>
-      </form>
-      <button className="col-5 contactData-mobile_button" type="submit">
-        {dataSubscription?.title}
+      </div>
+      <button className="col-5 contactData-mobile_button">
+        <Link to="/recibe-nuestra-newsletter" >{dataSubscription?.title}</Link>
       </button>
     </div>
   )
