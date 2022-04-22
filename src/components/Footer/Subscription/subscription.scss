@@ -1,6 +1,9 @@
 @import "../../../styles/global.scss";
 
 .ContactData {
+  h6 {
+    font-size: unset;
+  }
   &__Item {
 
     form {
@@ -63,7 +66,7 @@
 }
 
 
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: calc($breakpoint-md - 1px)) {
   .ContactData {
     &__Form {
       input {
@@ -79,9 +82,9 @@
     display: none;
   }
   .contactData-mobile_button{
+    @include primaryBtn;
     width: auto;
     max-width: 100%;
-    @include primaryBtn;
     margin-top: 3em;
     a {
       color: inherit;
