@@ -15,7 +15,6 @@ const Quote = ({
     code = code.substring(0, code.indexOf("?"))
   }    
 
-
   return (
     <div className="container my-3 mb-lg-5" id={strapi_component + "-" + id}>
       <section className={`quote variant-${variant}`}>
@@ -34,16 +33,16 @@ const Quote = ({
               <iframe
               loading="lazy"
               type="text/html"
-              src={url}
+              srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
+                width:100%;height:100%;object-fit: cover;top:0;bottom:0;max-height: 500px}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
+                <a href=${url  + "?rel=0"}>
+                <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video'>
+                <span>▶</span></a>`}
+              src={url + "?rel=0"}
               frameBorder="0"
               allowFullScreen
               title="benefits_video"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
-                            width:100%;height:100%;object-fit: cover;top:0;bottom:0;max-height: 500px}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
-                            <a href=${url}>
-                            <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video'>
-                            <span>▶</span></a>`}
               webkitallowfullscreen="true"
               mozallowfullscreen="true"
             ></iframe>

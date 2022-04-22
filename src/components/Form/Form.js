@@ -57,14 +57,14 @@ const Form = ({ location, data }) => {
   return (
     <div id={anchor} className="form">
       <div className="container d-flex px-lg-2 flex-wrap">
-        <div className="col-12 col-md-6 px-4 ps-md-0 pe-md-5">
+        <div className="col-12 col-md-6 pe-md-5">
           {title && (
-            <h2 className="title text-center text-md-start">{title}</h2>
+            <h2 className="title text-start">{title}</h2>
           )}
           {content && (
             <MarkdownView
               markdown={content}
-              className="form__content text-center text-md-start"
+              className="form__content text-start"
             />
           )}
           <div className="form__img mt-md-5 text-center text-md-start">
