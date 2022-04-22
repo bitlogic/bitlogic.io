@@ -32,9 +32,6 @@
   padding-bottom: 3em;
   button {
     @include primaryBtn;
-    a {
-      color: inherit;
-    }
   }
 
   .gatsby-image-wrapper {

@@ -17,7 +17,7 @@ const Quote = ({
 
   return (
     <div className="container my-3 mb-lg-5" id={strapi_component + "-" + id}>
-      <section className={`quote variant-${variant}`}>
+      <section className={`quote variant-${variant} py-5`}>
         {(image && !videoUrl) && (
           <div className="quote-body">
             <img
@@ -54,7 +54,7 @@ const Quote = ({
 
         <div className="quote-person">
           <h4 className="quote-person-title">{title}</h4>
-          <p className="quote-person-text">{description}</p>
+          <MarkdownView markdown={description} className="quote-person-text" />
 
           {profile && (
             <div className="quote-profile make-it-fast my-3 my-md-2 my-xl-4 d-flex gap-3 justify-content-between">
