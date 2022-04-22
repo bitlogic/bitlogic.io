@@ -11,27 +11,36 @@
   }
   h2 {
     flex-grow: 1;
-    text-align: center;
     font-weight: 700;
+    text-transform: uppercase;
+    @media screen and (min-width: $breakpoint-md) {
+      text-align: center;
+    }
   }
   h6 {
-    text-align: center;
-    line-height: 30px;
     font-weight: 400;
+    margin-bottom: 10px;
+    @media screen and (min-width: $breakpoint-md) {
+      text-align: center;
+      line-height: 28px;
+      margin-bottom: 50px;
+    }
   }
 }
 .staggered-list-content {
-  margin-top: 3em;
+  margin-top: 2em;
   width: 100%;
   display: flex;
   justify-content: center;
+  @media screen and (min-width: $breakpoint-md) {
+    margin-top: 3em;
+  }
 }
 .list {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 2em;
   width: 100%;
 }
 .listItem {

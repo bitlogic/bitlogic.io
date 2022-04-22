@@ -63,7 +63,7 @@ const Quote = ({
                 src={profile.url}
                 alt="quote author"
               />
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 align-self-center">
                 <MarkdownView markdown={profileDescription} className="markdown" />
               </div>
             </div>

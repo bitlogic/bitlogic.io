@@ -29,7 +29,7 @@ const ExpandGrid = ({ data }) => {
         <section className="expandGrid">
           <div className="expandGrid-body">
             <h2>{data.title}</h2>
-            <h6 className="px-5">{data.subtitle}</h6>
+            <h6 className="px-md-3">{data.subtitle}</h6>
             <AnimatedList items={data.items.slice(0, 4)} />
           </div>
         </section>
