@@ -5,7 +5,7 @@ import BlogArticle from "../BlogPage/BlogArticle/BlogArticle"
 
 const FeaturedBlogs = ({ data }) => {
   return (
-    <div className="container featured" id={data.strapi_component + "-" + data.id}>
+    <div className="container featured pb-3" id={data.strapi_component + "-" + data.id}>
       <h2>{data.title}</h2>
       <h6 className="px-md-3">{data.subtitle}</h6>
 
