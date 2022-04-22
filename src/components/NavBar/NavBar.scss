@@ -3,9 +3,6 @@
 .NavBar {
   background-color: $primary-container;
   z-index: 10;
-  & > a {
-    margin: 1.5em 0 1em 50px;
-  }
   .logo{
     max-width: 140px;
   }

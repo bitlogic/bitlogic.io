@@ -51,8 +51,8 @@ a {
 /* Colors */
 $black: #2a2c2e;
 $white: #ffffff;
-$yellow: #ffe927;
-$blue: #1ecad3;
+$yellow: #67F293;
+$blue: #3F6BE8;
 $grey-light: #f5f5f5;
 //new colors
 $grey: #545468;
@@ -76,13 +76,14 @@ $extra-large: 45px;
   color: $primary-invert;
   border-radius: 5px;
   transition: filter 200ms ease-in;
-  font-size: 18px;
+  font-size: 14px;
   &:hover {
     filter: brightness(135%);
     box-shadow: 0px 3px 10px rgba(138, 254, 113, 0.5);
   }
   @media screen and (min-width: $breakpoint-lg) {
     padding: 12px 30px;
+    font-size: 18px;
   }
 }
 

@@ -11,7 +11,7 @@ export default function Text({ data }) {
     <div className="container-text mt-3 mt-xl-5" style={{
       backgroundImage: `url(${bgImage})`,
     }}>
-
+      
       {title !== "" && title !== undefined && title !== null ? (
         <div className="container text d-flex flex-column flex-md-row gap-xl-5">
           <div className="title">
@@ -20,10 +20,11 @@ export default function Text({ data }) {
           <MarkdownView
             markdown={description}
             className="description"
+            style={{margin: !bgImage && '0rem'}}
           />
         </div>
       ) : (
-        <div className="container container-markdown">
+        <div className="container container-markdown" style={{padding: !bgImage && '0rem'}}>
           <MarkdownView
             markdown={description}
             className="notTitle"
