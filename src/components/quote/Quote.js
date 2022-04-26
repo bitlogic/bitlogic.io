@@ -17,7 +17,7 @@ const Quote = ({
 
   return (
     <div className="container mb-3 mb-lg-5" id={strapi_component + "-" + id}>
-      <section className={`quote variant-${variant}`}>
+      <section className={`quote variant-${variant} py-lg-4`}>
         {(image && !videoUrl) && (
           <div className="quote-body">
             <img
