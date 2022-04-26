@@ -27,14 +27,18 @@ const useNavbar = () => {
             logo {
               localFile {
                 childImageSharp {
-                  gatsbyImageData
+                  gatsbyImageData(
+                    placeholder: TRACED_SVG
+                  )
                 }
               }
             }
             logoDark {
               localFile {
                 childImageSharp {
-                  gatsbyImageData
+                  gatsbyImageData(
+                    placeholder: TRACED_SVG
+                  )
                 }
               }
             }
