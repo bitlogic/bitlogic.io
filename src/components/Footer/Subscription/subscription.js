@@ -13,7 +13,7 @@ export default function Subscription() {
       <div>
         <div className="ContactData__Form d-flex flex-md-column justify-content-between">
           <button className="col-5">
-            <Link to="/recibe-nuestra-newsletter" >Subscribe</Link>
+            <Link to="/recibe-nuestra-newsletter" >¡Aquí!</Link>
           </button>
         </div>
       </div>

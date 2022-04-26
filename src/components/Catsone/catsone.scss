@@ -3,6 +3,8 @@
 .cats-multiselect {
   &-label {
     color: $primary !important;
+    padding: 5px !important;
+    font-size: 16px !important;
   }
   &-dropdown-menu {
     background: $primary-container !important;
@@ -14,11 +16,15 @@
     &:hover {
       background: rgba(128, 128, 128, 0.13) !important;
     }
+    &label {
+      font-size: 16px !important;
+    }
   }
 
   &-search input {
     background: $primary-container !important;
     color: $primary !important;
+    font-size: 16px !important;
   }
 }
 .cats-multiselect-label-block {
@@ -30,13 +36,14 @@
   padding-left: 15px !important;
   > div {
     overflow-x: hidden !important;
+    padding-bottom: 10px;
   }
 
   &-title {
     overflow: hidden;
     a {
       color: $secondary;
-      font-weight: 700;
+      font-weight: $max-bold;
       font-size: $small;
       padding-bottom: 10px;
     }
@@ -65,7 +72,6 @@
 
 .widget-container {
   min-height: 65vh;
-  margin-top: 20px !important;
   padding-bottom: 70px !important;
 }
 
@@ -79,45 +85,6 @@
   border-top: 2px solid $border-bottom !important;
 }
 
-.banner__head {
-  width: 100%;
-  background: #303234;
-  min-height: 300px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  h2 {
-    color: $blue;
-    font-size: $small;
-    text-align: center;
-
-    span {
-      background-color: $blue;
-      display: inline-block;
-      -webkit-transform: skew(-15deg);
-      transform: skew(-15deg);
-
-      p {
-        padding: 5px 20px;
-        -webkit-transform: skew(15deg);
-        transform: skew(15deg);
-        color: $white !important;
-        font-size: $small;
-        margin: 0;
-      }
-    }
-  }
-  h3 {
-    color: $white;
-    //border-bottom: 4px solid $blue;
-    //padding: 7px;
-    font-size: $small;
-    text-align: center;
-    //padding: 0px 15px;
-  }
-}
-
 .cats-mobile {
   &-column-name {
     font-size: $small;
@@ -125,57 +92,31 @@
 }
 
 @media (min-width: $breakpoint-md) {
-  .cats-column-name {
-    span {
-      font-size: $small;
-    }
-  }
-  .cats-job {
-    &-title {
-      a {
-        font-size: $small;
-      }
-    }
-
-    &-column-value {
-      font-size: $small;
-    }
-  }
-
-  .cats-mobile {
-    &-column-name {
-      font-size: $small;
-    }
-  }
-
-  .cats-multiselect-label {
-    font-size: $small;
-  }
-
   .widget-container {
-    margin-top: 70px !important;
-  }
-  .banner__head {
-    h2 {
-      font-size: $extra-large;
-      span {
-        p {
-          font-size: $extra-large;
-        }
-      }
-    }
-    h3 {
-      font-size: $small;
-      border-bottom: 4px solid $blue;
-      padding: 7px;
-    }
+    margin-top: 40px !important;
   }
 }
 
 @media (min-width: $breakpoint-lg) {
+  .widget-container {
+    margin-top: 70px !important;
+  }
   .cats-job {
     &-column-value {
-      font-size: $small;
+      font-size: $medium;
+    }
+
+    &-title a {
+      font-size: $medium;
+    }
+  }
+
+  .cats-multiselect {
+    &-label {
+      font-size: $medium !important;
+    }
+    &-search input {
+      font-size: $medium !important;
     }
   }
 }
