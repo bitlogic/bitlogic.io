@@ -2,7 +2,7 @@
 
 .quote {
   display: grid;
-  gap: 3em;
+  gap: 2em;
   color: $primary;
   &-body {
     grid-area: quote-body;
@@ -24,9 +24,7 @@
     flex-direction: column;
 
     &-title {
-      font-weight: 700;
-      margin-bottom: 5px;
-      line-height: 35px;
+      margin-bottom: 1rem;
     }
     &-text {
       margin-bottom: 0;
@@ -132,7 +130,6 @@
   @media screen and (max-width: calc($breakpoint-md - 3px)) {
     grid-template-areas: "quote-body quote-body" "quote-profile quote-person";
     grid-template-columns: auto 1fr;
-    padding: 0.5em;
   }
   @media screen and (max-width: calc($breakpoint-md - 3px)) {
     display: flex;
