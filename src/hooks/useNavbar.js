@@ -28,7 +28,7 @@ const useNavbar = () => {
               localFile {
                 childImageSharp {
                   gatsbyImageData(
-                    placeholder: TRACED_SVG
+                    placeholder: BLURRED
                   )
                 }
               }
@@ -37,7 +37,7 @@ const useNavbar = () => {
               localFile {
                 childImageSharp {
                   gatsbyImageData(
-                    placeholder: TRACED_SVG
+                    placeholder: BLURRED
                   )
                 }
               }
