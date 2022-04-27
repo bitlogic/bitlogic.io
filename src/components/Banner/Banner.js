@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
+import Lottie from 'react-lottie'
 import { useTheme } from "../../context/themeContext"
 
 import "./Banner.scss"
@@ -15,6 +16,18 @@ const Banner = ({ data }) => {
   const button = data?.button
   const diagonalReverseState =
     variant === "diagonalReverse" ? "col-md-4" : "col-lg-6"
+
+  console.log(image)
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    },
+    path: image?.url,
+  }
+
   return (
     <div
       className={`banner ${variant}`}
@@ -44,15 +57,16 @@ const Banner = ({ data }) => {
       </div>
 
       <div
-        className={`imagen col-12 ${
-          variant === "diagonal" ? "col-md-8" : diagonalReverseState
-        } `}
+        className={`imagen col-12 ${variant === "diagonal" ? "col-md-8" : diagonalReverseState
+          } `}
       >
         {/* <img src={image?.url} alt={title} /> */}
-        <img
+
+        {image?.mime === "application/json" ? <Lottie options={{ ...defaultOptions }} /> : <img
           src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
           alt={title}
-        />
+        />}
+
       </div>
     </div>
   )
