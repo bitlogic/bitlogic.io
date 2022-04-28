@@ -1,37 +1,42 @@
 import * as React from "react"
 import { useHomePage } from "../../../hooks/index"
 import Layout from "../../layout"
-import {
-  Seo,
-  CustomSection,
-  BannerLogo,
-  BannerBgImage,
-  BannerISO,
-  ServiceCards,
-  EdTechCards,
-  PartnersSection,
-} from "../../index"
+import { Seo } from "../../index"
 
 import "./HomeContainer.scss"
 
-const Home = () => {
-  const data = useHomePage()
+// Dynamic zone components:
+import AnimatedTransitionContinous from "../../animatedTransitionContinous/AnimatedTransitionContinous"
+import Quote from "../../quote/Quote"
+import VideoBackground from "../../videoBackground/VideoBackground"
+import Banner from "../../Banner/Banner"
+import DualSection from "../../DualSection/DualSection"
+import OneSection from "../../DualSection/OneSection"
+import Text from "../../Text/Text"
+import BannerList from "../../BannerList/BannerList"
+const bodyComponents = {
+  "components.banner": data => <Banner data={data} />,
+  "home.transition": data => <AnimatedTransitionContinous data={data} />,
+  "home.quote": data => <Quote data={data} />,
+  "home.video-background": data => <VideoBackground data={data} />,
+  "components.text": data => <Text data={data} />,
+  "home.dual-section": data =>
+    data.dualSectionPart.length === 1 ? (
+      <OneSection data={data} />
+    ) : (
+      <DualSection data={data} />
+    ),
+  "components.banner-list": data => <BannerList data={data} />,
+}
 
-  const homeSections = data?.allStrapiHome?.nodes[0]?.sections
+const Home = ({ location }) => {
+  const data = useHomePage()
+  
   const { pageTitle, pageDescription, pageKeywords } =
     data?.allStrapiHome?.nodes[0]?.pageMetadata || {}
-  const {
-    topHomeBanner,
-    infoImgBanner,
-    infoBgBanner,
-    infoBanner,
-    servicesBlock,
-    partnersBlock,
-    edtechBlock,
-  } = data?.allStrapiHome?.nodes[0]
 
   return (
-    <Layout>
+    <Layout location={location}>
       {data?.allStrapiHome?.nodes[0]?.pageMetadata && (
         <Seo
           title={pageTitle}
@@ -39,29 +44,13 @@ const Home = () => {
           keywords={pageKeywords}
         />
       )}
-      {topHomeBanner && <BannerLogo banner={topHomeBanner} />}
-      {servicesBlock && (
-        <ServiceCards
-          title={servicesBlock?.title}
-          services={servicesBlock?.services}
-        />
+
+      {/* Dynamic zone */}
+      {data.allStrapiHome.nodes[0].body.map(component =>
+        bodyComponents[component.strapi_component]
+          ? bodyComponents[component.strapi_component](component)
+          : null
       )}
-      {edtechBlock && (
-        <EdTechCards
-          title={edtechBlock.title}
-          edteches={edtechBlock.edteches}
-        />
-      )}
-      {infoBgBanner && <BannerBgImage banner={infoBgBanner} />}
-      {infoImgBanner && <BannerISO banner={infoImgBanner} />}
-      {partnersBlock && (
-        <PartnersSection
-          title={partnersBlock.title}
-          partners={partnersBlock.partners}
-        />
-      )}
-      {infoBanner && <BannerBgImage banner={infoBanner} />}
-      {homeSections && <CustomSection sections={homeSections} />}
     </Layout>
   )
 }

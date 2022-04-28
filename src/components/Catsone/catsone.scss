@@ -1,0 +1,122 @@
+@import "../../styles/global.scss";
+//Pase todos los estilos de PageJobs, cuando este definido el estilo de la pag join us lo cambiamos
+.cats-multiselect {
+  &-label {
+    color: $primary !important;
+    padding: 5px !important;
+    font-size: 16px !important;
+  }
+  &-dropdown-menu {
+    background: $primary-container !important;
+    color: $primary !important;
+  }
+
+  &-option {
+    cursor: pointer;
+    &:hover {
+      background: rgba(128, 128, 128, 0.13) !important;
+    }
+    &label {
+      font-size: 16px !important;
+    }
+  }
+
+  &-search input {
+    background: $primary-container !important;
+    color: $primary !important;
+    font-size: 16px !important;
+  }
+}
+.cats-multiselect-label-block {
+  border: 2px solid $border-bottom !important;
+}
+
+.cats-job {
+  border-bottom: 1px solid $border-bottom !important;
+  padding-left: 15px !important;
+  > div {
+    overflow-x: hidden !important;
+    padding-bottom: 10px;
+  }
+
+  &-title {
+    overflow: hidden;
+    a {
+      color: $secondary;
+      font-weight: $max-bold;
+      font-size: $small;
+      padding-bottom: 10px;
+    }
+  }
+
+  &-column-value {
+    color: $primary !important;
+    font-size: $small;
+  }
+
+  &:hover {
+    background: $jobs-hover !important;
+    cursor: pointer;
+    & .cats-job-column-value {
+      color: $primary !important;
+    }
+  }
+}
+
+.cats-chevron {
+  color: $primary !important;
+  & path {
+    fill: $primary !important;
+  }
+}
+
+.widget-container {
+  min-height: 65vh;
+  padding-bottom: 70px !important;
+}
+
+.cats-powered-by {
+  display: none;
+}
+
+.cats-column-header {
+  padding-left: 15px !important;
+  border-bottom: 2px solid $border-bottom !important;
+  border-top: 2px solid $border-bottom !important;
+}
+
+.cats-mobile {
+  &-column-name {
+    font-size: $small;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .widget-container {
+    margin-top: 40px !important;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .widget-container {
+    margin-top: 70px !important;
+  }
+  .cats-job {
+    &-column-value {
+      font-size: $medium;
+    }
+
+    &-title a {
+      font-size: $medium;
+    }
+  }
+
+  .cats-multiselect {
+    &-label {
+      font-size: $medium !important;
+    }
+    &-search input {
+      font-size: $medium !important;
+    }
+  }
+}

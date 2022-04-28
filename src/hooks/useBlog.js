@@ -20,6 +20,7 @@ const useBlog = () => {
               }
             }
           }
+          
           blog_category {
             name
           }
@@ -27,31 +28,28 @@ const useBlog = () => {
       }
       allStrapiBlogPage {
         nodes {
-          title
           seo: pageMetadata {
             pageTitle
             pageKeywords
             pageDescription
           }
-          actionCallBanner {
+          banner {
+            id
             title
-            link {
-              name
-              pathTo
+            variant
+            summary
+            button {
+              content
+              id
+              url
+              landing_page {
+                name
+                slug
+                id
+              }
             }
             image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-            imageDarkMode {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
+              url
             }
           }
         }

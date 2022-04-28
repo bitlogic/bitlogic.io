@@ -1,0 +1,114 @@
+@import "../../styles/global.scss";
+
+.prosSection {
+    &__summary {
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    a {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    color: $primary;
+    h2 {
+        // text-align: center;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+}
+.pro {
+    color: $primary;
+    --bs-gutter-x: 0 !important;
+    padding: 10px;
+    &__img {
+        height: 260px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    &__descr {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        &_title {
+            order: 1;
+            font-weight: 700;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        &_position {
+            font-weight: 400;
+            order: 2;
+            margin-bottom: 10px;
+        }
+        a {
+            order: 3;
+        }
+        &_text {
+            order: 4;
+        }
+    }
+}
+
+
+
+@media screen and (min-width: $breakpoint-md) {
+    .prosSection {
+        h2 {
+            text-align: center;
+        }
+        &__summary {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 50px !important;
+            line-height: 28px;
+        }
+    }
+    .pro {
+        &__img {
+            height: 240px;
+            margin-bottom: 15px;
+        }
+        &__descr {
+            display: block;
+            h6 {
+                margin-bottom: 10px;
+            }
+            a {
+                width: 15%;
+                vertical-align: top;
+            }
+            min-height: 210px;
+            &_title {
+                display: inline-block;
+                width: 85%;
+            }
+        }
+        &__socials {
+            justify-content: flex-end;
+            svg {
+                margin-left: 10px;
+                margin-right: 1px;
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+    .prosSection {
+        &__summary {
+            margin-top: 40px;
+            margin-bottom: 80px !important;
+        }
+    }
+    .pro {
+        &__descr {
+            min-height: 260px;
+        }
+    }
+}
+    

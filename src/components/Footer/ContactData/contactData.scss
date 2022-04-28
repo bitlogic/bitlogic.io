@@ -1,0 +1,71 @@
+@import "../../../styles/global.scss";
+
+.ContactData__Item {
+  color: $white;
+
+  h6 {
+    margin-bottom: 15px;
+  }
+
+  &__contact {
+    display: none;
+
+    .icon-text {
+      font-size: 16px;
+    }
+  }
+  &__link {
+    a {
+      font-weight: 600;
+      text-decoration: underline;
+      font-size: 18px;
+      color: $secondary;
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-md) {
+  .ContactData__Item {
+    
+    &__contact {
+      display: block;
+    }
+    .icon-text {
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .ContactData__Item {
+    .icon-text {
+      font-size: 18px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    &__link {
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .ContactData__Item {
+    .icon-text {
+      font-size: 18px;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    &__link {
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+  
+}

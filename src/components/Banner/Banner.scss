@@ -1,0 +1,432 @@
+@import "../../styles/global.scss";
+.banner {
+  color: $primary;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  align-items: center;
+  &.hero {
+    height: auto;
+    justify-content: end;
+    .button {
+      @include primaryBtn;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      img {
+        width: 100%;
+        max-width: 540px;
+      }
+    }
+    .title {
+      h1 {
+        text-transform: uppercase;
+        text-align: left;
+        margin-bottom: 0.8rem;
+        word-wrap: initial;
+      }
+      h3 {
+        font-weight: 400;
+        text-align: left;
+      }
+    }
+  }
+  &.top {
+    height: auto;
+    justify-content: end;
+    .button {
+      @include primaryBtn;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      display: flex;
+      justify-content: flex-end;
+      height: 100%;
+      width: 100%;
+      img {
+        max-width: 100%;
+        
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      h2 {
+        text-transform: uppercase;
+        text-align: left;
+        word-wrap: initial;
+      }
+      .banner-markdown {
+        display: none;
+      }
+    }
+  }
+  &.topReverse {
+    height: auto;
+    justify-content: end;
+    .button {
+      @include primaryBtn;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .imagen {
+      display: flex;
+      justify-content: flex-start;
+      img {
+        width: 100%;
+        max-width: 450px;
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      h2 {
+        text-transform: uppercase;
+        text-align: center;
+        word-wrap: initial;
+      }
+      .banner-markdown {
+        display: none;
+      }
+    }
+  }
+  &.diagonal {
+    min-height: 300px;
+    justify-content: end;
+    background-color: $bg-diagonal;
+    .button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+      font-weight: 600;
+      color: #607ee7;
+      text-decoration: underline;
+      padding-left: 5px;
+    }
+    .imagen {
+      display: flex;
+      justify-content: flex-end;
+      overflow: hidden;
+      max-height: 300px;
+      align-items: center;
+      img {
+        width: 100%;
+        height: fit-content;
+        min-height: 100%;
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      h2 {
+        text-transform: uppercase;
+        color: #607ee7;
+        margin-bottom: 0;
+        word-wrap: initial;
+      }
+      .banner-markdown {
+        display: none;
+      }
+    }
+  }
+
+  &.diagonalReverse {
+    height: auto;
+    justify-content: end;
+
+    .button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+      color: #607ee7;
+      text-decoration: underline;
+      padding-left: 5px;
+    }
+    .imagen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        max-width: 200px;
+      }
+    }
+    .title {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      background-color: $bg-diagonal;
+      h2 {
+        text-transform: uppercase;
+        color: #607ee7;
+        margin-bottom: 0;
+        word-wrap: initial;
+      }
+      .banner-markdown {
+        display: none;
+      }
+    }
+  }
+
+  .gatsby-image-wrapper {
+    display: block;
+  }
+  .banner-markdown {
+    font-size: 30px;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    p,
+    a,
+    span,
+    small,
+    li,
+    i,
+    em {
+      span,
+      strong,
+      small,
+      i,
+      b,
+      em {
+        font-size: 30px;
+      }
+      font-size: 30px;
+    }
+    strong,
+    b {
+      font-weight: 600;
+    }
+  }
+  @media screen and (min-width: $breakpoint-sm) {
+    &.hero{
+      .imagen{
+        justify-content: flex-end;
+      }
+    }
+  }
+  @media screen and (min-width: $breakpoint-md) {
+    align-items: flex-start;
+    &.hero{
+      .imagen{
+        justify-content: flex-end;
+      }
+    }
+    &.top {
+      height: 300px;
+      position: relative;
+      align-items: center;
+      .imagen {
+        max-height: 300px;
+        overflow: hidden;
+        padding: 0;
+        justify-content: flex-end;
+        img {
+          max-width: 400px;
+        }
+      }
+
+      .title {
+        position: absolute;
+        padding-top: 0;
+        padding-bottom: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        h2 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+          text-align: left;
+          max-width: 400px;
+        }
+      }
+    }
+    &.topReverse {
+      height: 400px;
+      position: relative;
+      align-items: center;
+      flex-direction: row-reverse;
+      .imagen {
+        max-height: 500px;
+        overflow: hidden;
+        padding: 0;
+        img {
+          width: 100%;
+          max-width: 600px;
+        }
+      }
+
+      .title {
+        padding-top: 0;
+        padding-bottom: 0;
+        flex-direction: row-reverse;
+        h2 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+          text-align: left;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+    &.diagonal {
+      flex-direction: row;
+      height: 300px;
+      position: relative;
+      align-items: center;
+      .imagen {
+        -webkit-clip-path: polygon(17% 0, 100% 0, 100% 55%, 91% 100%, 0 100%);
+        clip-path: polygon(17% 0, 100% 0, 100% 55%, 91% 100%, 0 100%);
+        height: 300px;
+        max-height: 300px;
+        overflow: hidden;
+        padding: 0;
+        justify-content: flex-end;
+        img {
+          width: 100%;
+        }
+      }
+
+      .title {
+        position: absolute;
+        padding-top: 0;
+        padding-bottom: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        h2 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+          max-width: 300px;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+    &.diagonalReverse {
+      height: 300px;
+      position: relative;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      .imagen {
+        height: 500px;
+        overflow: hidden;
+        padding: 0;
+        justify-content: flex-end;
+      }
+      .button {
+        padding-left: 5rem;
+      }
+      .title {
+        background-color: $bg-diagonal;
+        -webkit-clip-path: polygon(0 0, 92% 0, 100% 45%, 100% 100%, 17% 100%);
+        clip-path: polygon(0 0, 92% 0, 100% 45%, 100% 100%, 17% 100%);
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+        height: 100%;
+        align-items: center;
+        h2 {
+          margin-bottom: 1rem;
+          padding-left: 5rem;
+        }
+        h3 {
+          font-weight: 400;
+          padding-left: 5rem;
+        }
+      }
+    }
+  }
+  
+
+  @media screen and (min-width: $breakpoint-lg) {
+    flex-direction: row;
+
+    &.hero {
+      height: 500px;
+      position: relative;
+      .imagen {
+        max-height: 500px;
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        h1 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+        }
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
+      }
+    }
+    &.top {
+      height: 400px;
+      .imagen {
+        max-height: 400px;
+        img {
+          max-width: 700px;
+        }
+      }
+      .title{
+        h2 {
+          padding-right: 0rem;
+        }
+      }
+    }
+    &.diagonal {
+      height: 400px;
+      .imagen {
+        height: 400px;
+        max-height: 400px;
+      }
+      .title {
+        h2 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+          max-width: 400px;
+        }
+      }
+    }
+    &.diagonalReverse {
+      height: 400px;
+      .title {
+        h2 {
+          padding-left: 10rem;
+        }
+      }
+      .button {
+        padding-left: 10rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@import "../../styles/global.scss";
+
+.dualSection {
+  color: $primary;
+  h4 {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+
+  &__image {
+    width: 100%;
+  }
+  button {
+    @include primaryBtn;
+  }
+}
+
+
+.one_sec {
+  color: $primary;
+  &-background{
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 1em 0 0 0;
+  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3em;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  button {
+    @include primaryBtn;
+  }
+
+  .gatsby-image-wrapper {
+    display: block;
+  }
+
+  &-title {
+    flex-basis: 45%;
+    h3 {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 40px;
+    }
+    &-body{
+      font-weight: 400 !important;
+    }
+  }
+
+  &-img {
+    flex-basis: 55%;
+    img {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-sm) {
+    flex-direction: column-reverse;
+    &-img {
+      flex-basis: 100%;
+    }
+    &-title {
+      flex-basis: 100%;
+    }
+  }
+}
+

@@ -1,0 +1,71 @@
+@import "../../styles/global.scss";
+
+.bannerList {
+  color: $primary;
+  .card_item {
+    h4 {
+      margin: 0;
+    }
+    a {
+      color: inherit;
+      &:hover {
+        color: $secondary;
+      }
+    }
+    img {
+      margin: 0;
+      width: 80px;
+    }
+  }
+  button {
+    margin-top: 10px;
+    @include primaryBtn;
+    align-self: baseline;
+    a {
+      color: inherit;
+    }
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .bannerList {
+    .card_item {
+      img {
+        width: 80px;
+      }
+    }
+    &__buttonMobile{
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .bannerList {
+    &__title {
+      button {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .bannerList {
+    .card_item {
+      img {
+        width: 80px;
+      }
+    }
+    &__buttonMobile{
+      display: none;
+    }
+  }
+}

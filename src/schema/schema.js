@@ -1,4 +1,69 @@
 const schema = `
+
+type StrapiLandingPage implements Node {
+  body: JSON
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  strapiId: Int
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+type StrapiHome implements Node {
+  body: JSON
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  pageMetadata: StrapiHomePageMetadata
+  strapiId: Int
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+type StrapiHomePageMetadata {
+  id: Int
+  pageTitle: String
+  pageDescription: String
+  pageKeywords: String
+}
+
 type StrapiServicesPage implements Node {
   id: ID!
   parent: Node
@@ -88,289 +153,6 @@ type StrapiServices implements Node {
   icon: LocalFile
   strapiId: Int
   iconDarkMode: LocalFile
-}
-
-type StrapiHome implements Node {
-  id: ID!
-  parent: Node
-  children: [Node!]!
-  internal: Internal!
-  published_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  sections: [StrapiHomeSections]
-  pageMetadata: StrapiHomePageMetadata
-  strapiId: Int
-  topHomeBanner: StrapiHomeTopHomeBanner
-  infoBgBanner: StrapiHomeInfoBgBanner
-  infoImgBanner: StrapiHomeInfoImgBanner
-  infoBanner: StrapiHomeInfoBanner
-  servicesBlock: StrapiHomeServicesBlock
-  edtechBlock: StrapiHomeEdtechBlock
-  partnersBlock: StrapiHomePartnersBlock
-}
-
-type StrapiHomeTopHomeBanner {
-  id: Int
-  title: String
-  image: LocalFile
-  imageDarkMode: LocalFile
-  bgImage: LocalFile
-  bgImageDarkMode: LocalFile
-}
-
-type StrapiHomeInfoBgBanner {
-  id: Int
-  title: String
-  link: StrapiHomeInfoBgBannerLink
-  bgImage: LocalFile
-  bgImageDarkMode: LocalFile
-}
-
-type StrapiHomeInfoBgBannerLink {
-  id: Int
-  name: String
-  pathTo: String
-}
-
-type StrapiHomeInfoImgBanner {
-  id: Int
-  title: String
-  subtitle: String
-  image: LocalFile
-  imageDarkMode: LocalFile
-}
-
-type StrapiHomeInfoBanner {
-  id: Int
-  title: String
-  link: StrapiHomeInfoBannerLink
-}
-
-type StrapiHomeInfoBannerLink {
-  id: Int
-  name: String
-  pathTo: String
-}
-
-type StrapiHomeServicesBlock {
-  id: Int
-  title: String
-  type: String
-  enable: Boolean
-  services: [StrapiHomeServicesBlockServices]
-}
-
-type StrapiHomeServicesBlockServices {
-  id: Int
-  title: String
-  description: String
-  visible: Boolean
-  homeIntro: String
-  homeTitle: String
-  published_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  icon: LocalFile
-  iconDarkMode: LocalFile
-}
-
-type StrapiHomeEdtechBlock {
-  id: Int
-  title: String
-  type: String
-  enable: Boolean
-  edteches: [StrapiHomeEdtechBlockEdteches]
-}
-
-type StrapiHomeEdtechBlockEdteches {
-  id: Int
-  title: String
-  content: String
-  homeIntro: String
-  homeTitle: String
-  published_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  icon: LocalFile
-  homeIcon: LocalFile
-  iconDarkMode: LocalFile
-  homeIconDarkMode: LocalFile
-}
-
-type StrapiHomePartnersBlock {
-  id: Int
-  title: String
-  partners: [StrapiHomePartnersBlockPartners]
-}
-
-type StrapiHomePartnersBlockPartners {
-  id: Int
-  text: String
-  caption: String
-  image: LocalFile
-  imageDark: LocalFile
-}
-
-
-
-type StrapiHomePageMetadata {
-  id: Int
-  pageTitle: String
-  pageDescription: String
-  pageKeywords: String
-}
-
-type StrapiHomeSections {
-  id: Int
-  banner: StrapiHomeSectionsBanner
-  title: String
-  type: String
-  enable: Boolean
-  services: [StrapiHomeSectionsServices]
-  edteches: [StrapiHomeSectionsEdteches]
-  partners: [StrapiHomeSectionsPartners]
-}
-
-type StrapiHomeSectionsPartners {
-  id: Int
-  text: String
-  caption: String
-  image: LocalFile
-  imageDark: LocalFile
-}
-
-type StrapiHomeSectionsBanner {
-  id: Int
-  title: String
-  enable: Boolean
-  page: String
-  type: String
-  published_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  image: LocalFile
-  logo: LocalFile
-  summary: String
-}
-
-type StrapiHomeSectionsServices {
-  id: Int
-  title: String
-  description: String
-  visible: Boolean
-  homeIntro: String
-  homeTitle: String
-  published_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  icon: LocalFile
-  iconDarkMode: LocalFile
-}
-
-type StrapiHomeSectionsEdteches {
-  id: Int
-  title: String
-  content: String
-  homeIntro: String
-  homeTitle: String
-  published_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  created_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  updated_at(
-    formatString: String
-    fromNow: Boolean
-    difference: String
-    locale: String
-  ): Date
-  icon: LocalFile
-  homeIcon: LocalFile
-  iconDarkMode: LocalFile
-  homeIconDarkMode: LocalFile
 }
 
 type StrapiGlobalSeo implements Node {
@@ -1416,12 +1198,38 @@ type StrapiGlobalConfigScript {
   src: String
 }
 
-type StrapiJobsPage implements Node {
-  id: ID!
-  parent: Node
-  children: [Node!]!
-  internal: Internal!
-  title: String
+type StrapiLayoutFooter {
+  id: Int
+  subscription: StrapiLayoutFooterSubscription
+  navegation: StrapiLayoutFooterNavegation
+  socialMedia: StrapiLayoutFooterSocialMedia
+  location: StrapiLayoutFooterLocation
+  contact: StrapiLayoutFooterContact
+  internalLink: StrapiLayoutFooterInternalLink
+  navbar: StrapiLayoutNavbar
+  logo: LocalFile
+}
+
+
+type StrapiLayoutNavbar {
+  id: Int
+  navbarItem: [StrapiLayoutNavbarNavbarItem]
+  logo: StrapiLayoutNavbarLogo
+}
+
+type StrapiLayoutNavbarNavbarItem {
+  id: Int
+  label: String
+  landing: StrapiLayoutNavbarNavbarItemLanding
+  url: String
+  visible: Boolean
+  dropdown: Boolean
+}
+
+type StrapiLayoutNavbarNavbarItemLanding {
+  id: Int
+  name: String
+  slug: String
   published_at(
     formatString: String
     fromNow: Boolean
@@ -1440,20 +1248,286 @@ type StrapiJobsPage implements Node {
     difference: String
     locale: String
   ): Date
-  strapiId: Int
-  pageMetadata: StrapiJobsPagePageMetadata
 }
 
-type StrapiJobsPagePageMetadata {
+type StrapiLayoutNavbarLogo {
   id: Int
-  pageTitle: String
-  pageDescription: String
-  pageKeywords: String
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
 }
 
+type StrapiLayoutFooterSubscription {
+  id: Int
+  title: String
+}
+
+type StrapiLayoutFooterNavegation {
+  id: Int
+  title: String
+  pageLink: [StrapiLayoutFooterNavegationPageLink]
+}
+
+type StrapiLayoutFooterNavegationPageLink {
+  id: Int
+  name: String
+  pathTo: String
+}
+
+type StrapiLayoutFooterSocialMedia {
+  id: Int
+  socialMedia: [StrapiLayoutFooterSocialMediaSocialMedia]
+}
+
+type StrapiLayoutFooterSocialMediaSocialMedia {
+  id: Int
+  url: String
+  name: String
+  icon: StrapiLayoutFooterSocialMediaSocialMediaIcon
+  order: Int
+}
+
+type StrapiLayoutFooterSocialMediaSocialMediaIcon {
+  id: Int
+  name: String
+  code: String
+  type: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  icon: StrapiLayoutFooterSocialMediaSocialMediaIconIcon
+}
+
+type StrapiLayoutFooterSocialMediaSocialMediaIconIcon {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiLayoutFooterLocation {
+  id: Int
+  title: String
+  iconText: [StrapiLayoutFooterLocationIconText]
+}
+
+type StrapiLayoutFooterLocationIconText {
+  id: Int
+  name: String
+  icon: StrapiLayoutFooterLocationIconTextIcon
+}
+
+type StrapiLayoutFooterLocationIconTextIcon {
+  id: Int
+  name: String
+  code: String
+  type: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  icon: StrapiLayoutFooterLocationIconTextIconIcon
+}
+
+type StrapiLayoutFooterLocationIconTextIconIcon {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiLayoutFooterContact {
+  id: Int
+  title: String
+  iconText: [StrapiLayoutFooterContactIconText]
+}
+
+type StrapiLayoutFooterContactIconText {
+  id: Int
+  name: String
+  icon: StrapiLayoutFooterContactIconTextIcon
+}
+
+type StrapiLayoutFooterContactIconTextIcon {
+  id: Int
+  name: String
+  code: String
+  type: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  icon: StrapiLayoutFooterContactIconTextIconIcon
+}
+
+type StrapiLayoutFooterContactIconTextIconIcon {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
+
+type StrapiLayoutFooterInternalLink {
+  id: Int
+  name: String
+  pathTo: String
+}
+
+type StrapiLayoutFooterLogo {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
 
 `
-
 
 
 module.exports = {

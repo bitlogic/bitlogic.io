@@ -2,45 +2,14 @@
 
 .Footer {
   background-color: $nav-footer-container;
-  padding: 30px 30px 34px;
-}
-.Footer__Logo {
-  margin-bottom: 1.5rem;
-}
-.Footer__Col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-right: 0;
-  padding-left: 0;
-}
-.Footer__Col__Logo {
-  align-self: center;
+  padding: 24px 0px 34px;
 }
 
-.Footer__Title__Text {
-  text-transform: uppercase;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 16px;
-  color: #1ecad3;
-  margin-bottom: 1rem;
-}
-
-@media screen and (min-width: 992px) {
+@media screen and (min-width: $breakpoint-xl) {
   .Footer {
-    padding: 65px 15px 64px;
-  }
-  .Footer__Logo {
-    margin-bottom: 0;
-  }
-  .Footer__Col {
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .Footer__Title__Text {
-    margin-bottom: 1rem;
-    text-align: center;
+    padding: 30px 50px;
+    &__Col {
+      padding-left: 20px;
+    }
   }
 }

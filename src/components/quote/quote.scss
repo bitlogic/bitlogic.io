@@ -1,0 +1,153 @@
+@import "../../styles/global.scss";
+
+.quote {
+  display: grid;
+  gap: 2em;
+  color: $primary;
+  &-body {
+    grid-area: quote-body;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    iframe {
+      width: 100%;
+      margin-bottom: 0;
+      min-height: 250px;
+      max-height: 400px;
+    }
+  }
+
+  &-person {
+    grid-area: quote-person;
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      margin-bottom: 1rem;
+    }
+    &-text {
+      margin-bottom: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  &-profile {
+    grid-area: quote-profile;
+    flex-grow: 0;
+    align-self: flex-start;
+    border-radius: 50%;
+    width: 100%;
+    z-index: 4;
+    img {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+    }
+    .markdown {
+      p {
+        margin: 0;
+      }
+    }
+  }
+  &-btn {
+    button {
+      @include primaryBtn;
+      border-radius: 8px;
+      width: 131px;
+      height: 30px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .quote {
+    &-body {
+      iframe {
+        min-height: 300px !important;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint-lg) {
+  .quote {
+    &-body {
+      iframe {
+        min-height: 350px !important;
+      }
+    }
+    &-btn {
+      button {
+        width: 150px;
+        height: 40px;
+      }
+    }
+    &-profile {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .quote {
+    &-body {
+      iframe {
+        min-height: 500px !important;
+      }
+    }
+    &-person {
+      &-title {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+// variantes
+.variant {
+  &-quote {
+    grid-template-areas:
+      "quote-person quote-body"
+      "quote-profile quote-body";
+    grid-template-columns: 1fr 2fr;
+    @extend .variant;
+  }
+
+  &-media {
+    grid-template-areas:
+      "quote-body quote-person"
+      "quote-body quote-profile";
+    grid-template-columns: 2fr 1fr;
+    @extend .variant;
+  }
+
+  grid-template-rows: auto 1fr;
+  @media screen and (max-width: calc($breakpoint-md - 3px)) {
+    grid-template-areas: "quote-body quote-body" "quote-profile quote-person";
+    grid-template-columns: auto 1fr;
+  }
+  @media screen and (max-width: calc($breakpoint-md - 3px)) {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  /*  @media screen and (max-width: calc($breakpoint-xl - 3px)) {
+    .variant {
+      &-quote {
+        grid-template-columns: 1fr 2fr !important;
+      }
+
+      &-media {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+  } */
+}

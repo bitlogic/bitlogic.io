@@ -1,0 +1,140 @@
+@import "../../styles/global.scss";
+
+.casesSection {
+    color: $primary;
+    h2 {
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+}
+.case {
+    color: $primary;
+    --bs-gutter-x: 0 !important;
+    padding: 10px;
+    &__img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    &__descr {
+        padding-left: 10px;
+        h5 {
+            font-weight: 700;
+        }
+        &_text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden; 
+        }
+    }
+    button {
+        @include primaryBtn;
+        margin-left: 10px;
+    }
+    &__socials {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 10px;
+        svg {
+            margin-right: 10px;
+        }
+    }
+}
+
+.caseExpanded {
+    align-items: flex-start;
+    --bs-gutter-x: 0 !important;
+    padding: 10px;
+    &__descr {
+        text-align: justify;
+    }
+    &__subtitle {
+        color: $primary;
+        font-weight: 400;
+    }
+    &__share {
+        max-width: fit-content;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 8px 5px;
+        font-weight: 400;
+        border-bottom: 1px solid #F7B454;
+    }
+    &__icons {
+        margin-top: 10px;
+        svg {
+            margin: 0 5px;
+        }
+    }
+    &__img {
+        width: 100%;
+        max-height: 340px;
+    }
+    .caseQuote {
+        --bs-gutter-x: 0 !important;
+        &__profileImg {
+            border-radius: 50%;
+            height: 65px;
+            width: 65px;
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+    .casesSection {
+        h2 {
+            text-align: center;
+        }
+    }
+    .case {
+        &__img {
+            height: 240px;
+            margin-bottom: 15px;
+        }
+        &__descr {
+            min-height: 150px;
+            max-height: 250px;
+            h5 {
+                margin-bottom: 10px;
+            }
+        }
+        &__socials {
+            justify-content: flex-end;
+            svg {
+                margin-left: 10px;
+                margin-right: 1px;
+            }
+        }
+    }
+    .caseExpanded {
+        &__share {
+            padding: 8px 25px;
+        }
+        &__descr {
+            text-align:left;
+            padding-right: 30px;
+        }
+        &__subtitle, &__title {
+            padding-right: 30px;
+        }
+        .caseQuote {
+            &__profileImg {
+                width: 100px;
+                height: 100px;
+                margin-left: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+    .case {
+        &__descr {
+            min-height: 130px;
+        }
+    }
+}
+    

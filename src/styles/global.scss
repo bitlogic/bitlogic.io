@@ -1,12 +1,16 @@
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-$primary-font: "Roboto", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+$primary-font: "Plain", sans-serif;
+$secondary-font: "Roboto", sans-serif;
 $medium: 20px;
 
 $nav-footer-container: var(--nav-footer-container);
 $blog-card-container: var(--blog-card-container);
 
 $primary: var(--primary);
+$primary-invert: var(--primary-invert);
 $primary-hover: var(--primary-hover);
 $primary-container: var(--primary-container);
 
@@ -15,9 +19,18 @@ $secondary-container: var(--secondary-container);
 $border-bottom: var(--border-bottom);
 $title-jobs: var(--title-jobs);
 $jobs-hover: var(--jobs-hover);
+$bg-form: var(--bg-form);
+$bg-diagonal: var(--bg-diagonal);
+
+$summary-color: var(--summary-color);
 
 main {
   background-color: $primary-container !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 *,
@@ -38,18 +51,182 @@ a {
 /* Colors */
 $black: #2a2c2e;
 $white: #ffffff;
-$yellow: #ffe927;
-$blue: #1ecad3;
+$yellow: #67F293;
+$blue: #3F6BE8;
 $grey-light: #f5f5f5;
-
-
-
+//new colors
+$grey: #545468;
+$light-grey: #c4c4c4;
+$alt: #67f293;
+$blackBit: #242424;
+$grey-light-bg: #FAF8F8;
 /* Sizes */
 $small: 15px;
 $medium: 20px;
 $large: 25px;
 $second-large: 40px;
 $extra-large: 45px;
+
+//buttons
+@mixin primaryBtn {
+  padding: 10px 15px;
+  font-weight: 500;
+  border: none;
+  background-color: $secondary;
+  color: $primary-invert;
+  border-radius: 5px;
+  transition: filter 200ms ease-in;
+  font-size: 14px;
+  &:hover {
+    filter: brightness(135%);
+    box-shadow: 0px 3px 10px rgba(138, 254, 113, 0.5);
+  }
+  @media screen and (min-width: $breakpoint-lg) {
+    padding: 12px 30px;
+    font-size: 18px;
+  }
+
+  a {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+@mixin secondaryBtn {
+  padding: 5px 15px;
+  font-weight: 500;
+  border: 1px solid $grey;
+  background-color: transparent;
+  color: $grey;
+  border-radius: 5px;
+  transition: filter 200ms ease-in;
+  &:hover {
+    color: white;
+    background-color: #7D7D92;
+    border: 1px solid #7D7D92;
+  }
+  &:active {
+    background-color: $grey;
+  }
+  @media screen and (min-width: $breakpoint-lg) {
+    padding: 8px 30px;
+  }
+
+  a {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+// new sizes
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+body {
+  font-size: 16px;
+  font-family: $secondary-font;
+  line-height: 1;
+  p {
+    line-height: 1.2;
+    em {
+      font-size: 16px;
+      font-family: $secondary-font;
+    }
+    strong {
+      font-size: 16px;
+      font-family: $secondary-font;
+    }
+    font-size: 16px;
+    font-family: $secondary-font;
+  }
+  button {
+    font-size: 16px;
+    font-family: $primary-font;
+  }
+  input {
+    font-size: 16px;
+    font-family: $primary-font;
+  }
+  h1 {
+    font-size: 32px;
+    font-family: $primary-font;
+  }
+  h2 {
+    font-size: 28px;
+    font-family: $primary-font;
+  }
+  h3 {
+    span {
+      font-size: 24px;
+      font-family: $primary-font;
+    }
+    font-size: 24px;
+    font-family: $primary-font;
+  }
+  h4 {
+    font-size: 22px;
+    font-family: $primary-font;
+  }
+  h5 {
+    font-size: 20px;
+    font-family: $primary-font;
+  }
+  h6 {
+    font-size: 18px;
+    font-family: $primary-font;
+  }
+  small {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  body {
+    font-size: 18px;
+    p {
+      em {
+        font-size: 18px;
+      }
+      strong {
+        font-size: 18px;
+      }
+      font-size: 18px;
+    }
+    h1 {
+      font-size: 52px;
+    }
+    h2 {
+      font-size: 42px;
+    }
+    h3 {
+      span {
+        font-size: 32px;
+      }
+      font-size: 32px;
+    }
+    h4 {
+      font-size: 28px;
+    }
+    h5 {
+      font-size: 24px;
+    }
+    h6 {
+      font-size: 20px;
+    }
+    small {
+      font-size: 18px;
+    }
+    button {
+      font-size: 18px;
+    }
+    input {
+      font-size: 18px;
+    }
+  }
+}
 
 /* Weights */
 $normal: 400;
@@ -66,11 +243,7 @@ $bottom-yellow: 4px solid $yellow;
   border-radius: 18px;
 }
 
-$breakpoint-mobile: 480px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1025px;
-
-.notFoundPage{
+.notFoundPage {
   height: calc(100vh - 240px - 96px);
   display: flex;
   flex-direction: column;

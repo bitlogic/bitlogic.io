@@ -8,19 +8,25 @@ import "./BlogArticle.scss"
 const BlogArticle = ({ title, summary, image, slug, text }) => {
   return (
     <div className="article__container">
-      <GatsbyImage
-        image={getImage(image?.localFile)}
-        alt={title}
-        className="article__image"
-      />
+      {image?.localFile ? (
+        <GatsbyImage
+          image={getImage(image?.localFile)}
+          alt={title}
+          className="article__image"
+        />
+      ) : (
+        <img src={image?.url} alt={title} className="article__image" />
+      )}
       <div className="article__description">
-        <h3>{`${title} ...`}</h3>
+        <h6>{`${title}`}</h6>
         <div>
-          <MarkdownView markdown={`${summary} ...`} />
+          <MarkdownView markdown={`${summary}`} />
           {/* <ReactMarkdown source={`${summary} ...`} /> */}
         </div>
         <div className="article__link">
-          <Link to={slug}>{text}</Link>
+          <Link to={slug}>
+            <button>{text}</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,72 @@
+@import "../../styles/global.scss";
+
+.featured {
+  color: $primary;
+  padding-bottom: 3rem;
+  h2 {
+    margin-top: 2em;
+    flex-grow: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    @media screen and (min-width: $breakpoint-md) {
+      text-align: center;
+    }
+  }
+  h6 {
+    line-height: 28px;
+    font-weight: 400;
+    @media screen and (min-width: $breakpoint-md) {
+      text-align: center;
+    }
+  }
+
+  &-blogs {
+    align-items: center;
+    img {
+      object-fit: cover;
+      max-width: 140px;
+    }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    & > * {
+      flex-basis: 33%;
+    }
+
+    .article {
+      &__container {
+        color: $primary;
+        margin: 0.5em;
+        background-color: $blog-card-container;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 8px;
+        h6 {
+          text-align: left;
+          font-weight: 700;
+          font-size: 18px !important;
+        }
+      }
+      &__link {
+        button {
+          font-size: 18px;
+          background: none;
+          color: $secondary;
+          text-decoration: underline;
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-lg) {
+      flex-direction: column;
+    }
+
+    @media screen and (min-width: $breakpoint-lg) {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+@import "../../../styles/global.scss";
+
+.ContactData {
+  h6 {
+    font-size: unset;
+  }
+  &__Item {
+
+    form {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__Form {
+    input {
+      border-radius: 4px;
+      border: 1px solid $primary;
+      color: $primary;
+      padding: 8px;
+      height: 30px;
+      width: 95%;
+    }
+    button {
+      @include primaryBtn;
+      box-shadow: 0px 2px 10px rgba(63, 107, 232, 0.5);
+      padding: 5px !important;
+      width: 30%;
+      a {
+        color: inherit;
+      }
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-md) {
+  .contactData-mobile_button{
+    display: none;
+  }
+  .ContactData {
+    &__Item {
+      .titleSubscription {
+        display: block;
+      }
+    }
+    &__Form {
+      input {
+        margin-bottom: 10px;
+        width: 270px;
+        height: 40px;
+      }
+      button {
+        width: 136px;
+        height: 48px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .ContactData {
+    &__Form {
+      input {
+        width: 75%;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: calc($breakpoint-md - 1px)) {
+  .ContactData {
+    &__Form {
+      input {
+        width: 75%;
+      }
+      button:not(.contactData-mobile_button) {
+        width: 70%;
+        display: none;
+      }
+    }
+  }
+  .titleSubscription {
+    display: none;
+  }
+  .contactData-mobile_button{
+    @include primaryBtn;
+    width: auto;
+    max-width: 100%;
+    margin-top: 3em;
+    a {
+      color: inherit;
+    }
+  }
+  .contactData-container{
+    display: flex;
+    justify-content: center;
+  }
+}

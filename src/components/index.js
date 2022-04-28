@@ -1,39 +1,41 @@
-import ServicesSection from "./ServicesPage/ServicesSection"
-import ServiceCard from "./ServicesPage/ServiceCard"
 import Cards from "./Cards/Cards"
-import SubModuleItems from "./SubmoduleItems/SubmoduleItems"
-import SubModulesEdTech from "./SubModulesEdTech/SubModulesEdTech"
-import Title from "./Title/Title"
 import Seo from "./Seo/Seo"
-import EdTechCards from "./EdTechCards/EdTechCards"
-import ServiceCards from "./ServiceCards/ServiceCards"
-import CustomSection from "./CustomSection/CustomSection"
-import BannerBgImage from "./Banners/BannerBgImage"
-import BannerLogo from "./Banners/BannerLogo"
-import BannerISO from "./Banners/BannerISO"
-import BannerClientes from "./Banners/BannerClientes"
+import CasesSection from "./CasesSection/CasesSection"
+import CasesList from "./CasesSection/CasesList"
+import LogosSection from "./LogosSection/logosSection"
+import Form from "./Form/Form"
+import Banner from "./Banner/Banner"
+import BannerList from "./BannerList/BannerList"
+import ExpandGrid from "./expandGrid/ExpandGrid"
+import Catsone from "./Catsone/catsone"
+import Text from "./Text/Text"
+import Quote from "./quote/Quote"
+import OneSection from "./DualSection/OneSection"
+import DualSection from "./DualSection/DualSection"
+import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 import BannerTop from "./Banners/BannerTop"
-import BannerActionCall from "./Banners/BannerActionCall"
-import PartnersSection from "./PartnersSection/PartnersSection"
-import JobsPage from "./JobsPage/JobsPage"
+import BannerHead from "./BannerHead/BannerHead"
+import Professionals from "./Professionals/Professionals"
+import FeaturedBlogs from './FeaturedBlogs/FeaturedBlogs'
 
 export {
-  ServicesSection,
-  ServiceCard,
   Cards,
-  SubModuleItems,
-  SubModulesEdTech,
-  Title,
+  CasesList,
+  CasesSection,
   Seo,
-  EdTechCards,
-  ServiceCards,
-  CustomSection,
-  BannerBgImage,
-  BannerLogo,
-  BannerISO,
-  BannerClientes,
+  LogosSection,
+  Form,
+  Banner,
+  BannerList,
+  ExpandGrid,
+  Catsone,
+  Text,
+  Quote,
+  OneSection,
+  DualSection,
+  AnimatedTransitionContinous,
   BannerTop,
-  BannerActionCall,
-  PartnersSection,
-  JobsPage,
+  BannerHead,
+  Professionals,
+  FeaturedBlogs,
 }
