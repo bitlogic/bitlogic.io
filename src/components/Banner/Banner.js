@@ -32,12 +32,8 @@ const Banner = ({ data }) => {
   useEffect(() => {
     //if (image.mime === "application/json") {
 
-    fetch("https://strapi-s3-bitlogic-dev.s3.sa-east-1.amazonaws.com/coffe_b531a703f3.json", {
+    fetch(image?.url, {
       method: 'GET', // or 'PUT'
-      mode: 'cors',
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(res => setLottieLight(res));
