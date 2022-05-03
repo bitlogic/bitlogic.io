@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
 import Lottie from 'react-lottie'
@@ -17,7 +17,9 @@ const Banner = ({ data }) => {
   const diagonalReverseState =
     variant === "diagonalReverse" ? "col-md-4" : "col-lg-6"
 
-  console.log(image)
+  console.log(image?.url)
+
+  const [lottieLight, setLottieLight] = useState(null)
 
   const defaultOptions = {
     loop: true,
@@ -25,8 +27,17 @@ const Banner = ({ data }) => {
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     },
-    path: image?.url,
   }
+
+  useEffect(() => {
+    //if (image.mime === "application/json") {
+
+    fetch(image?.url, {
+      method: 'GET', // or 'PUT'
+    }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(res => setLottieLight(res));
+  }, [])
 
   return (
     <div
@@ -62,7 +73,10 @@ const Banner = ({ data }) => {
       >
         {/* <img src={image?.url} alt={title} /> */}
 
-        {image?.mime === "application/json" ? <Lottie options={{ ...defaultOptions }} /> : <img
+        {image?.mime === "application/json" ? <Lottie options={{
+          ...defaultOptions,
+          animationData: lottieLight,
+        }} /> : <img
           src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
           alt={title}
         />}

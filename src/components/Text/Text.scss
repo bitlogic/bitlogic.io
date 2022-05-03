@@ -13,7 +13,7 @@
       background-color: $primary-container;
       border-radius: 10px;
       p:first-child {
-        padding-top: 1rem;
+        padding-top: 29px;
       }
       p {
         color: $primary;
@@ -26,13 +26,27 @@
     padding-bottom: 3rem;
 
     .notTitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       color: $primary;
       border-radius: 20px;
       background-color: $primary-container;
-      padding: 1rem;
-      margin: 1.5rem 0rem;
-      p:nth-last-child(-n + 2) {
+      padding: 0rem 1rem;
+
+      p:first-child {
+        padding-top: 29px;
+      }
+
+      h6 {
         margin-bottom: 0px;
+
+        &:last-child {
+          padding-bottom: 29px;
+        }
+        strong {
+          font-size: 16px !important;
+        }
       }
     }
   }
