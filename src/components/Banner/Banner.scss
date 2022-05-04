@@ -19,6 +19,10 @@
       padding: 1rem;
       display: flex;
       justify-content: center;
+      .cont-image {
+        width: 300px;
+        height: 300px;
+      }
       img {
         width: 100%;
         max-width: 540px;
@@ -53,7 +57,6 @@
       width: 100%;
       img {
         max-width: 100%;
-        
       }
     }
     .title {
@@ -216,17 +219,21 @@
     }
   }
   @media screen and (min-width: $breakpoint-sm) {
-    &.hero{
-      .imagen{
+    &.hero {
+      .imagen {
         justify-content: flex-end;
       }
     }
   }
   @media screen and (min-width: $breakpoint-md) {
     align-items: flex-start;
-    &.hero{
-      .imagen{
+    &.hero {
+      .imagen {
         justify-content: flex-end;
+        .cont-image {
+          width: 600px;
+          height: 600px;
+        }
       }
     }
     &.top {
@@ -360,18 +367,21 @@
       }
     }
   }
-  
 
   @media screen and (min-width: $breakpoint-lg) {
     flex-direction: row;
 
     &.hero {
-      height: 500px;
+      height: 600px;
       position: relative;
       .imagen {
-        max-height: 500px;
+        max-height: 600px;
         overflow: hidden;
         padding: 0;
+        .cont-image {
+          width: 650px;
+          height: 650px;
+        }
       }
 
       .title {
@@ -397,7 +407,7 @@
           max-width: 700px;
         }
       }
-      .title{
+      .title {
         h2 {
           padding-right: 0rem;
         }
