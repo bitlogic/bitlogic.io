@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import MarkdownView from "react-showdown"
 import HubspotForm from "react-hubspot-form"
+import Lottie from 'react-lottie'
 import "./Form.scss"
 
 const Form = ({ location, data }) => {
@@ -10,6 +11,15 @@ const Form = ({ location, data }) => {
   const portalId = data?.portalId
   const formId = data?.formId
   const image = data?.image
+  const animation = data?.animation
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    },
+  }
 
   useEffect(() => {
     window.addEventListener("message", handler)
@@ -23,7 +33,7 @@ const Form = ({ location, data }) => {
     if (
       event.origin === "https://forms.hsforms.com" ||
       event.origin === "https://site.dev.bitlogic.io" ||
-      event.origin === "https://www.bitlogic.io"||
+      event.origin === "https://www.bitlogic.io" ||
       event.origin === "https://preprod.d2mi1do1cquuwf.amplifyapp.com"
     ) {
       if (
@@ -38,7 +48,6 @@ const Form = ({ location, data }) => {
         }
       }
     }
-    console.log(event.origin, "origin")
   }
 
   const jqueryChange = elem => {
@@ -67,8 +76,15 @@ const Form = ({ location, data }) => {
               className="form__content text-start"
             />
           )}
-          <div className="form__img mt-md-5 text-center text-md-start">
-            <img src={image?.url} alt="hero" />
+          <div className="form__img text-center text-md-start">
+            {image?.url && <img
+              src={image?.url} alt="hero"
+            />}
+
+            {animation && <Lottie options={{
+              ...defaultOptions,
+              animationData: data?.animation,
+            }} />}
           </div>
         </div>
         <div className="col-12 col-md-6">
