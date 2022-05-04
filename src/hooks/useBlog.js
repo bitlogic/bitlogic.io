@@ -51,6 +51,7 @@ const useBlog = () => {
             image {
               url
             }
+            animation
           }
         }
       }
