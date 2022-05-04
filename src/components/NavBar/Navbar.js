@@ -11,7 +11,7 @@ import { useTheme } from "../../context/themeContext"
 // theme images
 import moon from "../../images/moon-solid.svg"
 import sun from "../../images/sun.svg"
-console.log(menusvg)
+
 const NavBar = () => {
   const { theme, toggleTheme } = useTheme()
   const navbarData = useNavbar()
@@ -32,7 +32,7 @@ const NavBar = () => {
           <GatsbyImage
             image={theme === "dark" && logoDark ? logoDark : logoLight}
             alt={"bitlogic"}
-            className= "logo"
+            className="logo"
           />
         </Link>
         <Navbar.Toggle
