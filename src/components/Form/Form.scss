@@ -15,14 +15,17 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    > div{
+    > div {
       width: 100%;
     }
   }
   &__img {
-    padding: 2rem 1rem;
     img {
       max-width: 250px;
+    }
+
+    svg {
+      max-width: 350px !important;
     }
   }
   &__content {
