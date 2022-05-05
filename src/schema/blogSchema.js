@@ -452,7 +452,170 @@ type StrapiBlogCategory implements Node {
     summary: String
     button: StrapiBlogPageBannerButton
     image: StrapiBlogPageBannerImage
+    animation: JSON
   }
+  type StrapiBlogPageBannerAnimation {
+    h: Int
+    v: String
+    w: Int
+    fr: Int
+    ip: Int
+    nm: String
+    op: Int
+    ddd: Int
+    layers: [StrapiBlogPageBannerAnimationLayers]
+  }
+  
+  type StrapiBlogPageBannerAnimationLayers {
+    ao: Int
+    bm: Int
+    ip: Int
+    ks: StrapiBlogPageBannerAnimationLayersKs
+    nm: String
+    op: Int
+    sr: Int
+    st: Int
+    ty: Int
+    ddd: Int
+    ind: Int
+    shapes: [StrapiBlogPageBannerAnimationLayersShapes]
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersKs {
+    a: StrapiBlogPageBannerAnimationLayersKsA
+    o: StrapiBlogPageBannerAnimationLayersKsO
+    p: StrapiBlogPageBannerAnimationLayersKsP
+    r: StrapiBlogPageBannerAnimationLayersKsR
+    s: StrapiBlogPageBannerAnimationLayersKsS
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersKsA {
+    a: Int
+    k: [Float]
+    l: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersKsO {
+    a: Int
+    k: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersKsP {
+    a: Int
+    k: [Int]
+    l: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersKsR {
+    a: Int
+    k: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersKsS {
+    a: Int
+    k: [Int]
+    l: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapes {
+    bm: Int
+    hd: Boolean
+    it: [StrapiBlogPageBannerAnimationLayersShapesIt]
+    ix: Int
+    mn: String
+    nm: String
+    np: Int
+    ty: String
+    cix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesIt {
+    hd: Boolean
+    ix: Int
+    ks: StrapiBlogPageBannerAnimationLayersShapesItKs
+    mn: String
+    nm: String
+    ty: String
+    ind: Int
+    c: StrapiBlogPageBannerAnimationLayersShapesItC
+    o: StrapiBlogPageBannerAnimationLayersShapesItO
+    w: StrapiBlogPageBannerAnimationLayersShapesItW
+    bm: Int
+    lc: Int
+    lj: Int
+    a: StrapiBlogPageBannerAnimationLayersShapesItA
+    p: StrapiBlogPageBannerAnimationLayersShapesItP
+    s: StrapiBlogPageBannerAnimationLayersShapesItS
+    sa: StrapiBlogPageBannerAnimationLayersShapesItSa
+    sk: StrapiBlogPageBannerAnimationLayersShapesItSk
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItKs {
+    a: Int
+    k: StrapiBlogPageBannerAnimationLayersShapesItKsK
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItKsK {
+    c: Boolean
+    i: [[Float]]
+    o: [[Float]]
+    v: [[Float]]
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItC {
+    a: Int
+    k: [Float]
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItO {
+    a: Int
+    k: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItW {
+    a: Int
+    k: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItA {
+    a: Int
+    k: [Int]
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItP {
+    a: Int
+    k: [Float]
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItS {
+    a: Int
+    k: [Int]
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItSa {
+    a: Int
+    k: Int
+    ix: Int
+  }
+  
+  type StrapiBlogPageBannerAnimationLayersShapesItSk {
+    a: Int
+    k: Int
+    ix: Int
+  }
+    
   type StrapiBlogPageBannerButton {
     id: Int
     content: String

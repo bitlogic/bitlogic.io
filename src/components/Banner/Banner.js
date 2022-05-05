@@ -11,13 +11,12 @@ const Banner = ({ data }) => {
   const title = data?.title
   const variant = data?.variant
   const summary = data?.summary
+  const animation = data?.animation
   const image = data?.image
   const imageDark = data?.imageDark
   const button = data?.button
   const diagonalReverseState =
     variant === "diagonalReverse" ? "col-md-4" : "col-lg-6"
-
-  console.log(data)
 
   const defaultOptions = {
     loop: true,
@@ -60,14 +59,19 @@ const Banner = ({ data }) => {
           } `}
       >
         {/* <img src={image?.url} alt={title} /> */}
+        <div className="cont-image">
+          {image?.url && <img
+            src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
+            alt={title}
+          />}
 
-        {image?.mime === "application/json" ? <Lottie options={{
-          ...defaultOptions,
-          animationData: data?.animation,
-        }} /> : <img
-          src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
-          alt={title}
-        />}
+          {animation && <Lottie options={{
+            ...defaultOptions,
+            animationData: animation,
+          }}
+          />}
+        </div>
+
 
       </div>
     </div>

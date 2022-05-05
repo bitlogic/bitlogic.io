@@ -7,7 +7,6 @@ export default function Navegation() {
   const data = useFooter()
   const dataFooter = data?.allStrapiLayout?.nodes[0].footer
   const dataNav = data?.allStrapiLayout?.nodes[0].navbar
-  console.log(dataNav)
 
   return (
     <div className="ContactData__Item ps-md-3">
