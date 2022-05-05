@@ -77,14 +77,18 @@ const Form = ({ location, data }) => {
             />
           )}
           <div className="form__img text-center text-md-start">
-            {image?.url && <img
-              src={image?.url} alt="hero"
-            />}
-
-            {animation && <Lottie options={{
-              ...defaultOptions,
-              animationData: data?.animation,
-            }} />}
+            {image?.url ?
+              <img
+                src={image?.url} alt="hero"
+              /> :
+              <>
+                {animation && <Lottie options={{
+                  ...defaultOptions,
+                  animationData: animation,
+                }}
+                />}
+              </>
+            }
           </div>
         </div>
         <div className="col-12 col-md-6">
