@@ -59,20 +59,20 @@ const Banner = ({ data }) => {
           } `}
       >
         {/* <img src={image?.url} alt={title} /> */}
-        <div className="cont-image">
-          {image?.url && <img
+
+        {image?.url ?
+          <img
             src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
             alt={title}
-          />}
-
-          {animation && <Lottie options={{
-            ...defaultOptions,
-            animationData: animation,
-          }}
-          />}
-        </div>
-
-
+          /> :
+          <div className="cont-lottie">
+            {animation && <Lottie options={{
+              ...defaultOptions,
+              animationData: animation,
+            }}
+            />}
+          </div>
+        }
       </div>
     </div>
   )
