@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
+import Lottie from 'react-lottie'
 import { useTheme } from "../../context/themeContext"
 
 import "./Banner.scss"
@@ -10,11 +11,21 @@ const Banner = ({ data }) => {
   const title = data?.title
   const variant = data?.variant
   const summary = data?.summary
+  const animation = data?.animation
   const image = data?.image
   const imageDark = data?.imageDark
   const button = data?.button
   const diagonalReverseState =
     variant === "diagonalReverse" ? "col-md-4" : "col-lg-6"
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    },
+  }
+
   return (
     <div
       className={`banner ${variant}`}
@@ -44,15 +55,24 @@ const Banner = ({ data }) => {
       </div>
 
       <div
-        className={`imagen col-12 ${
-          variant === "diagonal" ? "col-md-8" : diagonalReverseState
-        } `}
+        className={`imagen col-12 ${variant === "diagonal" ? "col-md-8" : diagonalReverseState
+          } `}
       >
         {/* <img src={image?.url} alt={title} /> */}
-        <img
-          src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
-          alt={title}
-        />
+
+        {image?.url ?
+          <img
+            src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
+            alt={title}
+          /> :
+          <div className="cont-lottie">
+            {animation && <Lottie options={{
+              ...defaultOptions,
+              animationData: animation,
+            }}
+            />}
+          </div>
+        }
       </div>
     </div>
   )
