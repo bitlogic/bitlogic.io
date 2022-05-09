@@ -45,6 +45,7 @@
     "react-intersection-observer": "^8.33.1",
     "react-lottie": "^1.2.3",
     "react-markdown": "5.0.3",
+    "react-multi-carousel": "^2.8.0",
     "react-script-tag": "^1.1.2",
     "react-showdown": "^2.3.1",
     "sass": "^1.49.0",
