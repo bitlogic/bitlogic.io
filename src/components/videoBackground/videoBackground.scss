@@ -5,9 +5,10 @@
     margin-top: 50px;
     margin-bottom: 50px;
   }
-  video {
+  video,
+  iframe {
     width: 100%;
-    height: 250px;
+    height: 220px;
     object-fit: cover;
     display: block;
     border-radius: 5px;
@@ -37,7 +38,7 @@
 @media screen and (min-width: $breakpoint-md) {
   .videoBackground {
     // width: calc(100% - 6em);
-    height: 550px;
+    height: 400px;
     position: relative;
     z-index: 3;
     display: flex;
@@ -46,7 +47,7 @@
       margin-top: 80px;
       margin-bottom: 80px;
     }
-    video {
+    .video {
       top: 0;
       position: absolute;
       width: 100%;
@@ -81,10 +82,16 @@
 
 @media screen and (min-width: $breakpoint-lg) {
   .videoBackground {
-    height: 80vh;
+    height: 520px;
     &-container {
       margin-bottom: 80px;
     }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .videoBackground {
+    height: 720px;
   }
 }
 
