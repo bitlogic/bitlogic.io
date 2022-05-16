@@ -42,6 +42,14 @@ const Banner = ({ data }) => {
       </a>
     ))
 
+  const showTitle = () => {
+    if (variant === "hero") {
+      return <h1>{title}</h1>
+    } else {
+      return <h2>{title}</h2>
+    }
+  }
+
   return (
     <div
       className={`banner ${variant}`}
@@ -49,7 +57,7 @@ const Banner = ({ data }) => {
     >
       {variant === "background" ?
         <div className="bgImage" style={{
-          backgroundImage: "url(http://localhost:1337/uploads/trama_gris_arriba_4dab8e35c4.png)",
+          backgroundImage: `url(${image?.url})`,
         }}>
           <div className="title-background">
             <h1 style={{ color: theme === 'dark' ? 'white' : '#3F6BE8' }}>{title}</h1>
@@ -59,8 +67,8 @@ const Banner = ({ data }) => {
         <>
           <div className="title container-md">
             <div className="col-12 col-lg-6">
-              {variant === "hero" ? <h1>{title}</h1> : <h2>{title}</h2>}
-              {/* <h3>{summary}</h3> */}
+              {/* {variant === "hero" ? <h1>{title}</h1> : <h2>{title}</h2>} */}
+              {showTitle()}
               <ReactMarkdown source={summary} className="banner-markdown" />
               {addButton}
             </div>
