@@ -26,6 +26,22 @@ const Banner = ({ data }) => {
     },
   }
 
+  const addButton = button &&
+    (button?.landing_page ? (
+      <Link to={`../${button.landing_page.slug}`} className="button">
+        {button.content}
+      </Link>
+    ) : (
+      <a
+        href={button.url}
+        target="_blank"
+        rel="noreferrer"
+        className="button"
+      >
+        {button.content}
+      </a>
+    ))
+
   return (
     <div
       className={`banner ${variant}`}
@@ -37,21 +53,7 @@ const Banner = ({ data }) => {
         }}>
           <div className="title-background">
             <h1 style={{ color: theme === 'dark' ? 'white' : '#3F6BE8' }}>{title}</h1>
-            {button &&
-              (button?.landing_page ? (
-                <Link to={`../${button.landing_page.slug}`} className="button">
-                  {button.content}
-                </Link>
-              ) : (
-                <a
-                  href={button.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button"
-                >
-                  {button.content}
-                </a>
-              ))}
+            {addButton}
           </div>
         </div> :
         <>
@@ -60,21 +62,7 @@ const Banner = ({ data }) => {
               {variant === "hero" ? <h1>{title}</h1> : <h2>{title}</h2>}
               {/* <h3>{summary}</h3> */}
               <ReactMarkdown source={summary} className="banner-markdown" />
-              {button &&
-                (button?.landing_page ? (
-                  <Link to={`../${button.landing_page.slug}`} className="button">
-                    {button.content}
-                  </Link>
-                ) : (
-                  <a
-                    href={button.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="button"
-                  >
-                    {button.content}
-                  </a>
-                ))}
+              {addButton}
             </div>
           </div>
 
