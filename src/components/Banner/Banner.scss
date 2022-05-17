@@ -6,6 +6,25 @@
   flex-direction: column-reverse;
   justify-content: space-around;
   align-items: center;
+
+  &.background {
+    .button {
+      @include primaryBtn;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .bgImage {
+      height: 320px;
+      width: 100%;
+    }
+
+    .title-background {
+      margin-top: 120px;
+      text-align: center;
+      padding: 0px 10px;
+    }
+  }
   &.hero {
     height: auto;
     justify-content: end;
@@ -227,6 +246,13 @@
   }
   @media screen and (min-width: $breakpoint-md) {
     align-items: flex-start;
+
+    &.background {
+      .title-background {
+        padding: 0px 150px;
+      }
+    }
+
     &.hero {
       .imagen {
         justify-content: flex-end;
@@ -371,6 +397,17 @@
   @media screen and (min-width: $breakpoint-lg) {
     flex-direction: row;
 
+    &.background {
+      .bgImage {
+        height: 400px;
+      }
+      .title-background {
+        h1 {
+          padding-bottom: 20px;
+        }
+      }
+    }
+
     &.hero {
       height: 600px;
       position: relative;
@@ -436,6 +473,25 @@
       }
       .button {
         padding-left: 10rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-xl) {
+    &.background {
+      .title-background {
+        padding: 0px 350px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1560px) {
+    &.background {
+      .title-background {
+        padding: 0px 500px;
+        h1 {
+          padding-bottom: 35px;
+        }
       }
     }
   }
