@@ -5,12 +5,11 @@
     flex-direction: column;
     justify-content: center;
     padding: 40px 0;
-    border-bottom: 4px solid $alt;
+    border-bottom: 4px solid #dedede;
 
-    h3 {
-      padding-left: 5px;
-      font-size: $medium;
-      color: $blackBit;
+    h4 {
+      padding-left: 0.5rem;
+      color: $primary;
     }
   }
 }
@@ -18,9 +17,8 @@
 @media (min-width: $breakpoint-lg) {
   .grid {
     &__container {
-      h3 {
-        padding-left: 35px;
-        font-size: $large;
+      h4 {
+        padding-left: 1rem;
       }
     }
 
