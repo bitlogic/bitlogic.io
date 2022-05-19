@@ -18,12 +18,11 @@
   }
   &__link {
     font-weight: $bold;
-    color: $primary;
+    color: $link-blog;
     padding: 0.2rem;
 
     &:hover {
       text-decoration: none;
-      color: $blue;
     }
   }
 }

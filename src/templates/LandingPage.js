@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import BlogContainer from '../components/BlogPage/BlogContainer'
 
 // componentes del body
 import {
@@ -19,7 +20,7 @@ import {
   OneSection,
   Quote,
   Professionals,
-  FeaturedBlogs
+  FeaturedBlogs,
 } from "../components"
 
 import VideoBackground from "../components/videoBackground/VideoBackground"
@@ -39,13 +40,13 @@ const LandingPage = ({ data, location }) => {
 
     const casesSection =
       component.strapi_component === "components.cases-section" &&
-      !component.allCases ? (
+        !component.allCases ? (
         <CasesSection data={component} />
       ) : null
 
     const casesList =
       component.strapi_component === "components.cases-section" &&
-      component.allCases ? (
+        component.allCases ? (
         <CasesList />
       ) : null
 
@@ -58,14 +59,17 @@ const LandingPage = ({ data, location }) => {
       component.strapi_component === "components.text" ? (
         <Text data={component} />
       ) : null
+
     const logosSection =
       component.strapi_component === "components.logos-section" ? (
         <LogosSection data={component} />
       ) : null
+
     const form =
       component.strapi_component === "components.form" ? (
         <Form data={component} location={location} />
       ) : null
+
     const banner =
       component.strapi_component === "components.banner" ? (
         <Banner data={component} />
@@ -94,15 +98,22 @@ const LandingPage = ({ data, location }) => {
         <VideoBackground data={component} />
       ) : null
 
-      const professionals =
+    const professionals =
       component.strapi_component === "components.professionals-section" ? (
         <Professionals data={component} />
-        ) : null
-        
-      const featuredBlogs =
-      component.strapi_component === "components.featured-blogs" ? (
+      ) : null
+
+    const featuredBlogs =
+      component.strapi_component === "components.featured-blogs" && !component.allBlog ? (
         <FeaturedBlogs data={component} />
       ) : null
+
+    const blogContainer =
+      component.strapi_component === "components.featured-blogs" &&
+        component.allBlog ? (
+        <BlogContainer />
+      ) : null
+
 
     return (
       <div key={idx}>
@@ -122,6 +133,7 @@ const LandingPage = ({ data, location }) => {
           {animatedTransition}
           {professionals}
           {featuredBlogs}
+          {blogContainer}
         </>
       </div>
     )
