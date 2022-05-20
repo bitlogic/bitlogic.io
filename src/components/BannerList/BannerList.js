@@ -32,7 +32,7 @@ export default function BannerList({ data }) {
   })
 
   return (
-    <div className="container py-4" id={data.strapi_component + "-" + data.id}>
+    <div className="container pt-5" id={data.strapi_component + "-" + data.id}>
       <div className="bannerList d-md-flex flex-row">
         <h1 className="bannerList__title col-md-6 col-xl-6 align-self-center mb-4">
           {title}
@@ -43,14 +43,14 @@ export default function BannerList({ data }) {
           )}
         </h1>
         <div className="bannerList__cards col-md-6 col-xl-6">{cards}
-        
+
         </div>
         {data.contactForm && (
-            <button className="bannerList__buttonMobile">
-              <a href={"#" + data.concactFormAnchor}>Contáctanos</a>
-            </button>
-          )}
-        
+          <button className="bannerList__buttonMobile">
+            <a href={"#" + data.concactFormAnchor}>Contáctanos</a>
+          </button>
+        )}
+
       </div>
     </div>
   )
