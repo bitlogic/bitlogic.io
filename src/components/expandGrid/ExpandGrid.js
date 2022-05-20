@@ -15,15 +15,14 @@ const ExpandGrid = ({ data }) => {
     <div
       className="expandGrid-background"
       style={{
-        backgroundImage: `url(${
-          theme === "dark" && backgroundImageDark
-            ? "http://localhost:1337" + backgroundImageDark
-            : "http://localhost:1337" + backgroundImage
-        })`,
+        backgroundImage: `url(${theme === "dark" && backgroundImageDark
+          ? "http://localhost:1337" + backgroundImageDark
+          : "http://localhost:1337" + backgroundImage
+          })`,
       }}
     >
       <div
-        className="p-3 mx-auto sm:mx-3 py-5 container"
+        className="mx-auto sm:mx-3 pb-5 container"
         id={data.strapi_component + "-" + data.id}
       >
         <section className="expandGrid">
