@@ -21,6 +21,7 @@ $title-jobs: var(--title-jobs);
 $jobs-hover: var(--jobs-hover);
 $bg-form: var(--bg-form);
 $bg-diagonal: var(--bg-diagonal);
+$link-blog: var(--link-blog);
 
 $summary-color: var(--summary-color);
 
@@ -51,15 +52,15 @@ a {
 /* Colors */
 $black: #2a2c2e;
 $white: #ffffff;
-$yellow: #67F293;
-$blue: #3F6BE8;
+$yellow: #67f293;
+$blue: #3f6be8;
 $grey-light: #f5f5f5;
 //new colors
 $grey: #545468;
 $light-grey: #c4c4c4;
 $alt: #67f293;
 $blackBit: #242424;
-$grey-light-bg: #FAF8F8;
+$grey-light-bg: #faf8f8;
 /* Sizes */
 $small: 15px;
 $medium: 20px;
@@ -102,8 +103,8 @@ $extra-large: 45px;
   transition: filter 200ms ease-in;
   &:hover {
     color: white;
-    background-color: #7D7D92;
-    border: 1px solid #7D7D92;
+    background-color: #7d7d92;
+    border: 1px solid #7d7d92;
   }
   &:active {
     background-color: $grey;
