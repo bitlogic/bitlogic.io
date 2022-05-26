@@ -28,7 +28,7 @@ const LogosSection = ({ data }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3
+      items: 4
     },
     tablet: {
       breakpoint: { max: 1024, min: 768 },
@@ -63,14 +63,13 @@ const LogosSection = ({ data }) => {
 
       <Carousel
         responsive={responsive}
-        autoPlay={logoList.length > 3}
+        autoPlay={logoList.length > 4}
         autoPlaySpeed={3000}
-        rewind={true}
-        infinite={true}
+        infinite={logoList.length > 4}
         containerClass={'containerCarrusel'}
         customRightArrow={<CustomRightArrow />}
         customLeftArrow={<CustomLeftArrow />}
-        removeArrowOnDeviceType={logoList.length <= 3 && ['tablet', 'desktop']}
+        removeArrowOnDeviceType={logoList.length <= 4 && ['tablet', 'desktop']}
       >
         {logoList}
       </Carousel>
