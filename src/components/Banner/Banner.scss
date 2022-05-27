@@ -2,9 +2,17 @@
 .banner {
   color: $primary;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   &.background {
@@ -27,6 +35,8 @@
   }
   &.hero {
     height: auto;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
     .button {
       @include primaryBtn;
@@ -36,7 +46,11 @@
     }
     .imagen {
       padding: 1rem;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
       img {
         width: 100%;
@@ -62,6 +76,8 @@
   }
   &.top {
     height: auto;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
     .button {
       @include primaryBtn;
@@ -70,7 +86,11 @@
       display: inline-block;
     }
     .imagen {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
       justify-content: flex-end;
       height: 100%;
       width: 100%;
@@ -93,6 +113,8 @@
   }
   &.topReverse {
     height: auto;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
     .button {
       @include primaryBtn;
@@ -101,7 +123,11 @@
       display: inline-block;
     }
     .imagen {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
       justify-content: flex-start;
       img {
         width: 100%;
@@ -123,6 +149,8 @@
   }
   &.diagonal {
     min-height: 300px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
     background-color: $bg-diagonal;
     .button {
@@ -135,13 +163,21 @@
       padding-left: 5px;
     }
     .imagen {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
       justify-content: flex-end;
       overflow: hidden;
       max-height: 300px;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
       img {
         width: 100%;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
         height: fit-content;
         min-height: 100%;
       }
@@ -163,6 +199,8 @@
 
   &.diagonalReverse {
     height: auto;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
 
     .button {
@@ -174,8 +212,14 @@
       padding-left: 5px;
     }
     .imagen {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
       img {
         max-width: 200px;
@@ -240,11 +284,15 @@
   @media screen and (min-width: $breakpoint-sm) {
     &.hero {
       .imagen {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
       }
     }
   }
   @media screen and (min-width: $breakpoint-md) {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
 
     &.background {
@@ -255,6 +303,8 @@
 
     &.hero {
       .imagen {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
         .cont-lottie {
           width: 600px;
@@ -265,11 +315,15 @@
     &.top {
       height: 300px;
       position: relative;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
       .imagen {
         max-height: 300px;
         overflow: hidden;
         padding: 0;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
         img {
           max-width: 400px;
@@ -282,6 +336,8 @@
         padding-bottom: 0;
         left: 50%;
         top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         h2 {
           margin-bottom: 1rem;
@@ -294,7 +350,12 @@
     &.topReverse {
       height: 400px;
       position: relative;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
       flex-direction: row-reverse;
       .imagen {
         max-height: 500px;
@@ -309,6 +370,9 @@
       .title {
         padding-top: 0;
         padding-bottom: 0;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
         h2 {
           margin-bottom: 1rem;
@@ -322,9 +386,14 @@
       }
     }
     &.diagonal {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
       flex-direction: row;
       height: 300px;
       position: relative;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
       .imagen {
         -webkit-clip-path: polygon(17% 0, 100% 0, 100% 55%, 91% 100%, 0 100%);
@@ -333,6 +402,8 @@
         max-height: 300px;
         overflow: hidden;
         padding: 0;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
         img {
           width: 100%;
@@ -345,6 +416,8 @@
         padding-bottom: 0;
         left: 50%;
         top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
 
         h2 {
@@ -361,13 +434,22 @@
     &.diagonalReverse {
       height: 300px;
       position: relative;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
       justify-content: flex-start;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
       flex-direction: row-reverse;
       .imagen {
         height: 500px;
         overflow: hidden;
         padding: 0;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
       }
       .button {
@@ -377,10 +459,19 @@
         background-color: $bg-diagonal;
         -webkit-clip-path: polygon(0 0, 92% 0, 100% 45%, 100% 100%, 17% 100%);
         clip-path: polygon(0 0, 92% 0, 100% 45%, 100% 100%, 17% 100%);
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
         height: 100%;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         h2 {
           margin-bottom: 1rem;
@@ -395,6 +486,9 @@
   }
 
   @media screen and (min-width: $breakpoint-lg) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
 
     &.background {
@@ -425,6 +519,8 @@
         position: absolute;
         left: 50%;
         top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         h1 {
           margin-bottom: 1rem;
