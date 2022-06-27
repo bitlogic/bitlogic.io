@@ -5,65 +5,39 @@ import { Flipper } from "react-flip-toolkit"
 import DropdownContainer from "./DropdownContainer"
 import Dropdown from "./DropdownContainer/Dropdown"
 
-const getComponentTitle = component => {
-  // falta definir los titulos para cada componente y arreglar los vinculos internos
-  const titleReference = {
-    "home.hero": () => component.title,
-    "components.banner-list": () => component.title,
-    "components.selected-grid": () => component.title,
-    "components.cases-section": () => component.title,
-    "home.quote": () => component.title,
-    "home.video-background": () => component.title,
-    "components.featured-blogs": () => component.title,
-    "home.dual-section": () =>
-      component.dualSectionPart.map(section => section.title).join(" - "),
-    "components.text": () => false,
-    "banners.banner-head": () => component.title,
-    "components.logos-section": () => component.title,
-    "components.form": () => false,
-    "components.banner": () => component.title,
-  }
-  return (
-    titleReference[component.strapi_component] &&
-    titleReference[component.strapi_component]()
-  )
-}
-
 const AnimatedNavbar = ({ landingComponents, navbarItems = [], duration }) => {
   const navbarConfig = [
     ...navbarItems.map(navItem => {
+      let res 
       if (navItem.singleType) {
-        return {
+        res = {
           title: navItem.label,
           slug: navItem.singleType,
           dropdown: () => <Dropdown sections={null} />,
         }
       } else if (navItem.landing) {
-        return {
+        res = {
           title: navItem.label,
           slug: navItem.landing.slug,
           dropdown: () =>
             navItem.dropdown ? (
               <Dropdown
                 sections={landingComponents
-                  .find(landing => landing.name === navItem.landing.name)
-                  .body.map(component => ({
-                    name: getComponentTitle(component) || "",
-                    id: component.strapi_component + "-" + component.id,
-                    slug: navItem.landing.slug,
-                  }))}
+                  .find(landing => landing.name === navItem.landing.name).body}
+                slug={navItem.landing.slug}
               />
             ) : (
               <Dropdown sections={null} />
             ),
         }
       } else if (navItem.url) {
-        return {
+        res = {
           title: navItem.label,
           slug: navItem.url,
           dropdown: () => <Dropdown sections={null} />,
         }
       }
+      return res
     }),
   ]
 
