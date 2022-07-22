@@ -10,8 +10,8 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BlogItemDetail.scss"
 
 const BlogDetail = ({ data }) => {
-  const { title, description, image, author } = data?.allStrapiArticle?.nodes[0]
-  const bannerTop = { title, image }
+  const { title, description, imagePage, author } = data?.allStrapiArticle?.nodes[0]
+  const bannerTop = { title, imagePage }
 
   let { summary } = author
   
@@ -74,6 +74,13 @@ export const query = graphql`
         description
         slug
         image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        imagePage{
           localFile {
             childImageSharp {
               gatsbyImageData
