@@ -10,8 +10,9 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BlogItemDetail.scss"
 
 const BlogDetail = ({ data }) => {
-  const { title, description, imagePage, author } = data?.allStrapiArticle?.nodes[0]
-  const bannerTop = { title, imagePage }
+  const { title, description, image, imagePage, author } = data?.allStrapiArticle?.nodes[0]
+
+  const bannerTop = imagePage ? { title, imagePage }  : { title, image }
 
   let { summary } = author
   
