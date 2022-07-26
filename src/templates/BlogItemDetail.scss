@@ -41,7 +41,7 @@
     strong,
     em {
       font-size: $small;
-      line-height: 24px;
+      line-height: normal;
       text-align: justify;
     }
 
@@ -236,6 +236,7 @@
       ol {
         li {
           font-size: 18px;
+          line-height: normal;
 
           &::marker {
             font-size: 18px;
@@ -314,13 +315,14 @@
       strong,
       em {
         font-size: $medium;
-        line-height: 34px;
+        line-height: normal;
       }
 
       ul,
       ol {
         li {
           font-size: $medium;
+          line-height: normal;
           &::marker {
             font-size: $medium;
           }
@@ -338,7 +340,7 @@
       blockquote {
         p {
           font-size: 17px;
-          line-height: 28px;
+          line-height: normal;
         }
       }
     }
@@ -359,7 +361,7 @@
 
       p {
         font-size: 16px;
-        line-height: 24px;
+        line-height: normal;
       }
     }
 
@@ -382,7 +384,7 @@
 
       &__blog-card-description {
         p {
-          line-height: 24px;
+          line-height: normal;
         }
       }
     }
