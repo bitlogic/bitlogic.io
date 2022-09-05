@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://www.bitlogic.io/`,
+        siteUrl: process.env.SITE_URL,
       },
     },
     {
