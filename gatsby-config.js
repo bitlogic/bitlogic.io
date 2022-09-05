@@ -3,6 +3,9 @@ module.exports = {
     title: `Bitlogic`,
     description: `Bitlogic Web es una empresa dedicada al diseño, ingeniería y desarrollo ágil de productos de software, especializada en la transformación digital de instituciones educativas .`,
     author: `Bitlogic.io`,
+    options: {
+      siteUrl: process.env.SITE_URL,
+    },
   },
   plugins: [
     `gatsby-plugin-sitemap`,
