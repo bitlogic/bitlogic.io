@@ -10,7 +10,6 @@ const CasesSection = ({ data }) => {
   const casos = cases.map(caso =>
     casesData?.allStrapiCase?.nodes.find(ca => ca.strapiId === caso.id)
   )
-  console.log(casos)
   const casesCards = casos.map((caso, idx) => {
     const image = getImage(caso?.image?.localFile)
 
