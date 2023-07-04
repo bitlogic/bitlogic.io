@@ -10,12 +10,15 @@ const CasesSection = ({ data }) => {
   const casos = cases.map(caso =>
     casesData?.allStrapiCase?.nodes.find(ca => ca.strapiId === caso.id)
   )
+  console.log(casos)
   const casesCards = casos.map((caso, idx) => {
     const image = getImage(caso?.image?.localFile)
 
     return (
       <div
-        className="case col-12 col-md-4 row"
+        className={`case col-12 ${
+          casos.length === 3 ? "col-md-4" : "col-md-6"
+        }  row`}
         key={`case-${idx}`}
         id={data.strapi_component + "-" + data.id}
       >
