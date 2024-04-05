@@ -7,7 +7,7 @@ const BlogGrid = ({ title, children }) => {
     <div className="grid__container">
       <h4>{title}</h4>
       {/* <div className="grid__content">{children}</div> */}
-      <Pagination initialState={true} postPerPage="3" posts={children} />
+      <Pagination initialState={true} postPerPage="9" posts={children} />
     </div>
   )
 }
