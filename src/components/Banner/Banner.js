@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
 import Lottie from 'react-lottie'
 import { useTheme } from "../../context/themeContext"
+import useLandingUrl from "../../hooks/useLandingUrl"
 
 import "./Banner.scss"
 
@@ -26,16 +27,18 @@ const Banner = ({ data }) => {
     },
   }
 
+  const getUrl = useLandingUrl();
+
   const addButton = button &&
     (button?.landing_page ? (
-      <Link to={`../${button.landing_page.slug}`} className="button">
+      <Link to={getUrl(button.landing_page.slug)} className="button">
         {button.content}
       </Link>
     ) : (
       <a
         href={button.url}
-        target="_blank"
-        rel="noreferrer"
+        target={button.url.startsWith('http') && '_blank'}
+        rel={button.url.startsWith('http') && 'noreferrer noopener'}
         className="button"
       >
         {button.content}

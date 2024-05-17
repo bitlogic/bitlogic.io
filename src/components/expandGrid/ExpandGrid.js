@@ -4,6 +4,7 @@ import { Flipper, Flipped } from "react-flip-toolkit"
 import MarkdownView from "react-showdown"
 import { useTheme } from "../../context/themeContext"
 import "./expandGrid.scss"
+import { useLandingUrl } from "../../hooks"
 
 const ExpandGrid = ({ data }) => {
   const { theme } = useTheme()
@@ -16,8 +17,8 @@ const ExpandGrid = ({ data }) => {
       className="expandGrid-background"
       style={{
         backgroundImage: `url(${theme === "dark" && backgroundImageDark
-          ? "http://localhost:1337" + backgroundImageDark
-          : "http://localhost:1337" + backgroundImage
+          ? backgroundImageDark
+          : backgroundImage
           })`,
       }}
     >
@@ -73,6 +74,7 @@ const ListItem = ({ index, onClick, data }) => {
 }
 
 const ExpandedListItem = ({ index, data, isFirst }) => {
+  const getUrl = useLandingUrl()
   const scrollRef = useRef(null)
   return (
     <Flipped
@@ -105,7 +107,7 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
                   <MarkdownView markdown={data.text} />
                 </div>
                 {data.landing_page && (
-                  <Link to={"/" + data.landing_page?.slug}>Ver más</Link>
+                  <Link to={getUrl(data.landing_page.slug)}>Ver más</Link>
                 )}
               </div>
             </div>

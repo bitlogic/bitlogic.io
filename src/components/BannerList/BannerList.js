@@ -1,9 +1,11 @@
 import { Link } from "gatsby"
 import React from "react"
 import "./Banner.scss"
+import useLandingUrl from "../../hooks/useLandingUrl"
 
 export default function BannerList({ data }) {
   const title = data?.title
+  const getUrl = useLandingUrl()
   const cards = data?.Card.map(item => {
     return (
       <div className="card_item d-flex mb-2">
@@ -16,7 +18,7 @@ export default function BannerList({ data }) {
           className="card_item col-9 pe-2"
         >
           {item.landing_page ? (
-            <Link to={"/" + item.landing_page?.slug}>
+            <Link to={getUrl(item.landing_page.slug)}>
               <h4>{item.title}</h4>
               <p>{item.description}</p>
             </Link>

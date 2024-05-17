@@ -1,9 +1,11 @@
 import React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
-import { useCases } from "../../hooks/index"
+import { useCases, useLandingUrl } from "../../hooks/index"
 import "./CasesSection.scss"
+import { Link } from 'gatsby'
 
 const CasesSection = ({ data }) => {
+  const getUrl = useLandingUrl()
   const { title, cases } = data
   const casesData = useCases()
 
@@ -15,9 +17,8 @@ const CasesSection = ({ data }) => {
 
     return (
       <div
-        className={`case col-12 ${
-          casos.length === 3 ? "col-md-4" : "col-md-6"
-        }  row`}
+        className={`case col-12 ${casos.length === 3 ? "col-md-4" : "col-md-6"
+          }  row`}
         key={`case-${idx}`}
         id={data.strapi_component + "-" + data.id}
       >
@@ -29,16 +30,18 @@ const CasesSection = ({ data }) => {
             <h5 className="case__descr_title">{caso?.title}</h5>
             <p className="case__descr_text">"{caso?.quote?.description}"</p>
           </div>
-          {caso.button?.landing_page && (
-            <a href={caso.button?.landing_page?.slug + "/#" + caso?.title}>
+          {caso?.button?.landing_page ? (
+            <Link to={getUrl(caso.button.landing_page.slug) + "/#" + caso?.title}>
+              <button>{caso?.button?.content}</button>
+            </Link>
+          ) : (caso.button?.url && (
+            <a href={caso.button?.url}
+              target={caso.button.url.startsWith('http') && '_blank'}
+              rel={caso.button.url.startsWith('http') && 'noreferrer noopener'}
+            >
               <button>{caso?.button?.content}</button>
             </a>
-          )}
-          {caso.button?.url && (
-            <a href={caso.button?.url}>
-              <button>{caso?.button?.content}</button>
-            </a>
-          )}
+          ))}
         </div>
       </div>
     )
