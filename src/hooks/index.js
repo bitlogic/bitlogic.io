@@ -5,6 +5,7 @@ import useFooter from './useFooter';
 import useCases from './useCases'
 import useNavbar from './useNavbar';
 import useProfessionals from "./useProfessionals";
+import useLandingUrl from "./useLandingUrl";
 
 export {
   useGlobalSeo,
@@ -14,4 +15,5 @@ export {
   useCases,
   useNavbar,
   useProfessionals,
+  useLandingUrl
 }

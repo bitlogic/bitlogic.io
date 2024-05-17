@@ -49,6 +49,10 @@ const useNavbar = () => {
         nodes {
           body
           name
+          slug
+          parent_page {
+            slug
+          }
         }
       }
       allStrapiHome {

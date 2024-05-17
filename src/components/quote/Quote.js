@@ -1,19 +1,21 @@
 import "./quote.scss"
 import MarkdownView from "react-showdown"
 import React from "react"
+import { Link } from 'gatsby'
+import { useLandingUrl } from "../../hooks"
 
 const Quote = ({
   data: { description, title, variant, profileDescription, videoUrl, button, profile, image, strapi_component, id },
 }) => {
 
-
+  const getUrl = useLandingUrl()
   const url = videoUrl?.replace("watch?v=", "embed/")
   let code = url?.substring(url.lastIndexOf("/") + 1, url.length)
   const codeIndex = code?.indexOf("?")
 
   if (codeIndex !== -1 && code !== undefined) {
     code = code.substring(0, code.indexOf("?"))
-  }    
+  }
 
   return (
     <div className="container mb-3 mb-lg-5" id={strapi_component + "-" + id}>
@@ -29,26 +31,26 @@ const Quote = ({
 
         {(videoUrl !== null && videoUrl !== undefined) && (
           <div className="quote-body">
-            {(url !== undefined && code !==undefined) && (
+            {(url !== undefined && code !== undefined) && (
               <iframe
-              loading="lazy"
-              type="text/html"
-              srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
+                loading="lazy"
+                type="text/html"
+                srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
                 width:100%;height:100%;object-fit: cover;top:0;bottom:0;max-height: 500px}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
-                <a href=${url  + "?rel=0"}>
+                <a href=${url + "?rel=0"}>
                 <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video'>
                 <span>▶</span></a>`}
-              src={url + "?rel=0"}
-              frameBorder="0"
-              allowFullScreen
-              title="benefits_video"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              webkitallowfullscreen="true"
-              mozallowfullscreen="true"
-            ></iframe>
+                src={url + "?rel=0"}
+                frameBorder="0"
+                allowFullScreen
+                title="benefits_video"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                webkitallowfullscreen="true"
+                mozallowfullscreen="true"
+              ></iframe>
 
             )}
-            
+
           </div>
         )}
 
@@ -69,9 +71,19 @@ const Quote = ({
           )}
           {button && (
             <div className="quote-btn">
-              <a href={button.url || button.landing_page?.slug}>
-                <button>{button.content}</button>
-              </a>
+              {button.landing_page ? (
+                <Link to={getUrl(button.landing_page.slug)}>
+                  {button.content}
+                </Link>
+              ) : (button.url && (
+                <a href={button.url}
+                  target={button.url.startsWith('http') && '_blank'}
+                  rel={button.url.startsWith('http') && 'noreferrer noopener'}
+                >
+                  <button>{button.content}</button>
+                </a>
+              )
+              )}
             </div>
           )}
         </div>

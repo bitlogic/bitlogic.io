@@ -277,6 +277,7 @@ type StrapiBlogCategory implements Node {
       locale: String
     ): Date
     image: LocalFile
+    imagePage: LocalFile
     blog_categories: [StrapiArticleBlog_categories]
     strapiId: Int
     slug: String
