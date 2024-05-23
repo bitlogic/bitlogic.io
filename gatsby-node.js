@@ -47,6 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allStrapiArticle {
         nodes {
           slug
+          updated_at
         }
       }
     }
@@ -61,7 +62,10 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: "/blog/" + node.slug,
       component: BlogDetail,
-      context: { slug: node.slug },
+      context: {
+        slug: node.slug,
+        lastmod: node.updated_at
+      },
     })
   })
 
@@ -71,6 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allStrapiLandingPage {
         nodes {
           slug
+          updated_at
           parent_page {
             slug
           }
@@ -106,7 +111,10 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: url,
       component: LandingPage,
-      context: { slug: node.slug },
+      context: {
+        slug: node.slug,
+        lastmod: node.updated_at
+      },
     })
   })
 }
