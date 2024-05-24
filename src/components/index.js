@@ -1,4 +1,3 @@
-import Cards from "./Cards/Cards"
 import Seo from "./Seo/Seo"
 import CasesSection from "./CasesSection/CasesSection"
 import CasesList from "./CasesSection/CasesList"
@@ -14,12 +13,11 @@ import OneSection from "./DualSection/OneSection"
 import DualSection from "./DualSection/DualSection"
 import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 import BannerTop from "./Banners/BannerTop"
-import BannerHead from "./BannerHead/BannerHead"
 import Professionals from "./Professionals/Professionals"
 import FeaturedBlogs from './FeaturedBlogs/FeaturedBlogs'
+import CustomSection from "./CustomSection/CustomSection"
 
 export {
-  Cards,
   CasesList,
   CasesSection,
   Seo,
@@ -35,7 +33,7 @@ export {
   DualSection,
   AnimatedTransitionContinous,
   BannerTop,
-  BannerHead,
   Professionals,
   FeaturedBlogs,
+  CustomSection
 }
