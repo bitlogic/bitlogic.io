@@ -49,7 +49,7 @@
       transform: translateX(-50%);
       perspective: 1500px;
       @media screen and (max-width: $breakpoint-xl) {
-       display: none;
+       display: contents;
       }
     }
   }

@@ -13,8 +13,8 @@ const ButtonLink = ({ button }) => {
 
   return (
     <a href={button?.url}
-      target={button.url.startsWith('http') && "_blank"}
-      rel={button.url.startsWith('http') && "noreferrer noopener"}
+      target={button.url?.startsWith('http') && "_blank"}
+      rel={button.url?.startsWith('http') && "noreferrer noopener"}
     >
       {button.content}
     </a>)

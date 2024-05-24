@@ -24,7 +24,7 @@ const VideoBackground = ({
         : undefined
 
     if (isVideoPauseLocal === "true") {
-      videoRef.current.pause()
+      videoRef.current?.pause()
       setIsVideoPause(isVideoPauseLocal)
     }
   }, [])
