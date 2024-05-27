@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar"
 import AnimatedNavbar from "./AnimatedNavBar/AnimatedNavbar"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
-import { useNavbar } from "../../hooks/index"
+import { useLandingUrl, useNavbar } from "../../hooks/index"
 import menusvg from '../../images/menu.svg'
 import { useTheme } from "../../context/themeContext"
 // theme images
@@ -15,6 +15,9 @@ import sun from "../../images/sun.svg"
 const NavBar = () => {
   const { theme, toggleTheme } = useTheme()
   const navbarData = useNavbar()
+  const getUrl = useLandingUrl();
+
+  const menuData = navbarData.allStrapiLayout?.nodes[0].menu
 
   const logoLight = getImage(
     navbarData.allStrapiLayout?.nodes[0].navbar?.logo?.localFile
@@ -41,13 +44,12 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
           {/* Menu Links */}
-          {navbarData && (
+          {menuData && (
             <div className="NavBar_links">
               <AnimatedNavbar
-                homeComponents={navbarData.allStrapiHome?.nodes[0].body}
-                landingComponents={navbarData.allStrapiLandingPage?.nodes}
+                // homeComponents={navbarData.allStrapiHome?.nodes[0].body}
                 navbarItems={
-                  navbarData.allStrapiLayout?.nodes[0].navbar?.navbarItem
+                  menuData
                 }
                 duration={300}
               />

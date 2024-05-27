@@ -1554,6 +1554,101 @@ type StrapiLayoutFooterLogo {
   localFile: File
 }
 
+type StrapiLayoutMenu {
+  title: String
+  id: Int
+  url: String
+  visible: Boolean
+  dropdown:Boolean
+  english_landing_page: StrapiMenuEnglishLandingPage
+  landing_page: StrapiMenuLandingPage
+  topLevelItem: StrapiMenuDropdownItem
+  dropdownItems: [StrapiMenuDropdownItem]
+}
+type StrapiMenuDropdownItem {
+  id: Int
+  label: String
+  icon: LocalFile
+  url: String
+  text: String
+  english_landing_page: StrapiMenuEnglishLandingPage
+  landing_page: StrapiMenuLandingPage
+}
+type StrapiMenuDropdownItemIcon {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
+type StrapiMenuLandingPage {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
+type StrapiMenuEnglishLandingPage {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
+
+
 `
 
 
