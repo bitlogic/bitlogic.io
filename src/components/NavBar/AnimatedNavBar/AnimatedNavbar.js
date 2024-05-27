@@ -8,14 +8,14 @@ import { useLandingUrl } from "../../../hooks"
 
 const AnimatedNavbar = ({ navbarItems = [], duration }) => {
 
-  const getUrl = useLandingUrl();
+  const getUrl = useLandingUrl()
 
   const url = (item) => {
     if (item.dropdown) return ''
 
     const landing = getUrl(item?.landing_page?.slug);
 
-    if (landing) return 
+    if(landing) return landing
 
     let slug = item?.url ? item.url : ''
 
@@ -28,10 +28,10 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
         title: navItem.title,
         slug: url(navItem),
         dropdown: () => {
-          if (navItem.dropdown) {
+          if(navItem.dropdown) {
             return <Dropdown sections={navItem?.dropdownItems} topLevel={navItem?.toplevelItem} />
           }
-          return <Dropdown sections={null} topLevel={null}/>
+          return <Dropdown sections={null} topLevel={null} />
         },
         isDropdown: navItem?.dropdown
       }
@@ -73,11 +73,11 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
   let PrevDropdown
   let direction
 
-  const currentIndex = activeIndex.length > 0 && activeIndex[activeIndex.length - 1]
+  const currentIndex = activeIndex[activeIndex.length - 1]
   const prevIndex =
     activeIndex.length > 1 && activeIndex[activeIndex.length - 2]
 
-  if (typeof currentIndex === "number" && activeIndex.length > 0)
+  if (typeof currentIndex === "number")
     CurrentDropdown = navbarConfig[currentIndex].dropdown
   if (typeof prevIndex === "number") {
     PrevDropdown = navbarConfig[prevIndex].dropdown
@@ -93,12 +93,12 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
         {navbarConfig.map((n, index) => {
           return (
             <NavbarItem
-            to={n.slug}
-            key={n?.title}
-            title={n?.title}
-            index={index}
-            onMouseEnter={onMouseEnter}
-            isDropdown={n.isDropdown}
+              to={n?.slug}
+              key={n?.title}
+              title={n?.title}
+              index={index}
+              onMouseEnter={onMouseEnter}
+              isDropdown={n?.isDropdown}
             >
               {currentIndex === index && (
                 <DropdownContainer

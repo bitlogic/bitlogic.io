@@ -5,7 +5,8 @@ import Navbar from "react-bootstrap/Navbar"
 import AnimatedNavbar from "./AnimatedNavBar/AnimatedNavbar"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
-import { useNavbar, useLandingUrl } from "../../hooks/index"
+import { useLandingUrl, useNavbar } from "../../hooks/index"
+import menusvg from '../../images/menu.svg'
 import { useTheme } from "../../context/themeContext"
 // theme images
 import moon from "../../images/moon-solid.svg"
@@ -16,6 +17,8 @@ const NavBar = () => {
   const navbarData = useNavbar()
   const getUrl = useLandingUrl();
 
+  const menuData = navbarData.allStrapiLayout?.nodes[0].menu
+
   const logoLight = getImage(
     navbarData.allStrapiLayout?.nodes[0].navbar?.logo?.localFile
   )
@@ -25,24 +28,15 @@ const NavBar = () => {
 
   const navbarButton = navbarData.allStrapiLayout?.nodes[0].navbar?.navButton
 
-  const menuData = navbarData.allStrapiLayout?.nodes[0].navbar?.menu
-
   return (
     <>
       <Navbar variant="dark" expand="xl" className="NavBar">
         <Link to="/" className="NavBar__Logo" >
-          {logoLight && (
-            <GatsbyImage
-              image={theme === "dark" && logoDark ? logoDark : logoLight}
-              alt={logoLight?.alternativeText
-                ? `${logoLight.alternativeText}`
-                : "Bitlogic - Home"
-              }
-              className="logo"
-              width={120}
-              height={35}
-            />
-          )}
+          <GatsbyImage
+            image={theme === "dark" && logoDark ? logoDark : logoLight}
+            alt={"bitlogic"}
+            className="logo"
+          />
         </Link>
         <Navbar.Toggle
           className="NavBar__Toggler"
@@ -53,7 +47,7 @@ const NavBar = () => {
           {menuData && (
             <div className="NavBar_links">
               <AnimatedNavbar
-                //homeComponents={navbarData.allStrapiHome?.nodes[0].body}
+                // homeComponents={navbarData.allStrapiHome?.nodes[0].body}
                 navbarItems={
                   menuData
                 }
@@ -67,8 +61,8 @@ const NavBar = () => {
                 <Link
                   to={
                     navbarButton.landing_page
-                      ? getUrl(navbarButton.landing_page.slug)
-                      : `${navbarButton.url ? navbarButton.url : ""}`
+                      ? "/" + navbarButton.landing_page.slug
+                      : ""
                   }
                 >
                   {navbarButton.content}

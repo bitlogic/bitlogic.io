@@ -1,15 +1,15 @@
 import { Link } from "gatsby"
 import React from "react"
 import "./dropdown.scss"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useLandingUrl } from "../../../../hooks"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Dropdown = ({ sections, topLevel }) => {
 
   const getUrl = useLandingUrl()
 
   const url = (item) => {
-    const landing = getUrl(item?.english_landing_page?.slug);
+    const landing = getUrl(item?.landing_page?.slug);
 
     if (landing) return landing;
 
@@ -19,7 +19,7 @@ const Dropdown = ({ sections, topLevel }) => {
   return (
     <div className="dropdown_elem" style={!sections ? { maxHeight: "0" } : {}}>
       <div className="dropdown_elem-section" data-first-dropdown-section>
-      {topLevel && (
+        {topLevel && (
           <div className="dropdown_elem_topLevel"
             style={{ borderBottom: "2px solid #808080", marginBottom: "15px", paddingBottom: "8px" }}>
             <div className="dropdown_elem-link-topLevelLink">
@@ -57,7 +57,7 @@ const Dropdown = ({ sections, topLevel }) => {
           </div>
         )}
         <div className="dropdown_section">
-        {sections?.map(section =>
+          {sections?.map(section =>
             <div>
               <div className="dropdown_elem-link" key={section.id}>
                 {section.icon && (
