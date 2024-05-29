@@ -6,8 +6,8 @@ import "./subscription.scss"
 export default function Subscription() {
   const data = useFooter()
   const dataSubscription = data?.allStrapiLayout?.nodes[0]?.footer?.subscription
-  const subscriptionUrl = data?.allStrapiLayout?.nodes[0]?.footer?.subscription?.url
-  const subscriptionLanding = data?.allStrapiLayout?.nodes[0]?.footer?.subscription?.landing_page?.slug
+  const subscriptionUrl = dataSubscription?.url
+  const subscriptionLanding = dataSubscription?.landing_page?.slug
 
   const isExternalLink = subscriptionUrl?.startsWith('http')
 
