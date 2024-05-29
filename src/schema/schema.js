@@ -1308,6 +1308,32 @@ type StrapiLayoutNavbarLogo {
 type StrapiLayoutFooterSubscription {
   id: Int
   title: String
+  url: String
+  landing_page: StrapiLayoutFooterSubscriptionLanding
+}
+
+type StrapiLayoutFooterSubscriptionLanding {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
 }
 
 type StrapiLayoutFooterNavegation {
