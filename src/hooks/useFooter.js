@@ -23,6 +23,23 @@ const useFooter = () => {
               }
             }
           }
+          Sites {
+            title
+            websites {
+              id
+              name
+              url
+              icon {
+                alternativeText
+                url
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
           footer {
             contact {
               title

@@ -35,7 +35,7 @@ export default function Navegation() {
   })
 
   return (
-    <div className="ContactData__Item ps-md-3">
+    <div className="ContactData__Item">
       <h6>{dataFooter.navegation?.title}</h6>
       <ul className="Navegation__Item">
         {navegationItems}
