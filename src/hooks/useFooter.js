@@ -91,6 +91,10 @@ const useFooter = () => {
             }
             subscription {
               title
+              url
+              landing_page {
+                slug
+              }
             }
           }
         }
@@ -100,4 +104,3 @@ const useFooter = () => {
 }
 
 export default useFooter
-

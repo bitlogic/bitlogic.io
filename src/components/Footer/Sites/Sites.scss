@@ -1,0 +1,36 @@
+@import "../../../styles/global.scss";
+
+.Sites {
+  flex-direction: column;
+  // margin-top: 42px;
+
+  h6 {
+    color: $white;
+    margin-bottom: 16px;
+    font-size: 22px;
+
+    @media (min-width: $breakpoint-xxl) {
+      font-size: 20px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    a {
+      color: $white;
+      font-size: 18px;
+      font-weight: $normal;
+    }
+
+    img {
+      width: 30px;
+      height: 15px;
+      object-fit: cover;
+      margin-right: 8px;
+    }
+  }
+}
