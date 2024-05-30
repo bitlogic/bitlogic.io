@@ -1,11 +1,15 @@
 import React from "react";
 import { useFooter } from '../../../hooks';
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import './Sites.scss'
 
 const Sites = () => {
   const sitesData = useFooter()?.allStrapiLayout?.nodes[0]?.Sites
 
   const websitesItems = sitesData?.websites?.map(website => {
+    const image = website?.icon?.localFile?.childImageSharp?.gatsbyImageData
+      ? getImage(website?.icon?.localFile?.childImageSharp?.gatsbyImageData)
+      : undefined;
 
     return (
       <div>
@@ -13,11 +17,12 @@ const Sites = () => {
           key={website.id}
           aria-label={`Visita nuestro sitio web: ${website.url}`}
         >
-          {website.icon && (
-            <img src={website.icon?.url}
+          {image && (
+            <GatsbyImage image={image}
               alt={website.icon?.alternativeText
                 ? website.icon.alternativeText
-                : 'Website Icon'}
+                : 'Website Icon'
+              }
               width={30}
               height={15}
             />
