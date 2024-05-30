@@ -12,9 +12,8 @@ const Sites = () => {
       : undefined;
 
     return (
-      <div>
+      <div key={website.id}>
         <a href={website.url}
-          key={website.id}
           aria-label={`Visita nuestro sitio web: ${website.url}`}
         >
           {image && (

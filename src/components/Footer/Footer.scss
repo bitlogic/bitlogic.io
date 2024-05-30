@@ -7,7 +7,6 @@
   &__Row {
     display: grid;
     grid-template-columns: repeat(2, minmax(130px, 400px));
-    // place-content: center;
     gap: 32px;
   }
 
@@ -48,10 +47,5 @@
 @media screen and (min-width: $breakpoint-xl) {
   .Footer {
     padding: 30px 50px;
-
-    // &__Col {
-    //   padding-left: 20px;
-    //   flex: 1;
-    // }
   }
 }
