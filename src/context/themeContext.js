@@ -53,6 +53,7 @@ const ThemeProvider = ({ children }) => {
   const deviseTheme = getDeviseTheme()
   const [theme, setTheme] = useState(localTheme || deviseTheme || DEFAULT_THEME)
 
+  // ESTE USEEFFECT PUEDE SER UTIL PARA RESOLVER EL BUG DE RENDERIZACIÓN DE TEMA CLARO/OSCURO
   // useEffect(() => {
 
   //   // local storage > devise theme
@@ -69,7 +70,7 @@ const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
-      <div style={themes[theme]}>{children}</div>
+      <div key={theme} style={themes[theme]}>{children}</div>
     </ThemeContext.Provider>
   )
 }
