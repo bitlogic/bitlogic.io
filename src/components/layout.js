@@ -5,6 +5,7 @@ import Footer from "./Footer/Footer"
 import ScriptTag from "react-script-tag"
 import useGlobalConfig from "../hooks/useGlobalConfig"
 import ThemeProvider from "../context/themeContext"
+import BannerRedirect from "./BannerRedirect/BannerRedirect"
 
 const Layout = ({ children, options = {}, location }) => {
   const defaultOptions = {
@@ -42,7 +43,7 @@ const Layout = ({ children, options = {}, location }) => {
     <ThemeProvider>
       {scripts}
       {options.hasHeader && <Header />}
-
+      <BannerRedirect location={location} />
       <main>{children}</main>
       {options.hasFooter && <Footer />}
       {/*© {new Date().getFullYear()}, Built with*/}
