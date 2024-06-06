@@ -5,6 +5,7 @@ import Footer from "./Footer/Footer"
 import ScriptTag from "react-script-tag"
 import useGlobalConfig from "../hooks/useGlobalConfig"
 import ThemeProvider from "../context/themeContext"
+import { Helmet } from 'react-helmet';
 import BannerRedirect from "./BannerRedirect/BannerRedirect"
 
 const Layout = ({ children, options = {}, location }) => {
@@ -44,6 +45,35 @@ const Layout = ({ children, options = {}, location }) => {
       {scripts}
       {options.hasHeader && <Header />}
       <BannerRedirect />
+      <Helmet>
+        <script>
+          {`
+            window.pipedriveLeadboosterConfig = {
+              base: 'leadbooster-chat.pipedrive.com',
+              companyId: 10496688,
+              playbookUuid: '40a6237e-a2d8-44df-847a-2e3095301529',
+              version: 2
+            };
+            (function () {
+              var w = window;
+              if (w.LeadBooster) {
+                console.warn('LeadBooster already exists');
+              } else {
+                w.LeadBooster = {
+                  q: [],
+                  on: function (n, h) {
+                    this.q.push({ t: 'o', n: n, h: h });
+                  },
+                  trigger: function (n) {
+                    this.q.push({ t: 't', n: n });
+                  },
+                };
+              }
+            })();
+          `}
+        </script>
+        <script src="https://leadbooster-chat.pipedrive.com/assets/loader.js" async></script>
+      </Helmet>
       <main>{children}</main>
       {options.hasFooter && <Footer />}
       {/*© {new Date().getFullYear()}, Built with*/}
