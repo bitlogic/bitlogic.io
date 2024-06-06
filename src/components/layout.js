@@ -43,7 +43,7 @@ const Layout = ({ children, options = {}, location }) => {
     <ThemeProvider>
       {scripts}
       {options.hasHeader && <Header />}
-      <BannerRedirect location={location} />
+      <BannerRedirect />
       <main>{children}</main>
       {options.hasFooter && <Footer />}
       {/*© {new Date().getFullYear()}, Built with*/}

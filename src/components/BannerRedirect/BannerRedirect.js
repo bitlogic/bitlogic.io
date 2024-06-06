@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './BannerRedirect.scss';
 import { MdClose } from "react-icons/md";
 
-function BannerRedirect({ location }) {
+function BannerRedirect() {
   const [isOpen, setIsOpen] = useState(true);
 
   const WEBSITES = Object.freeze({
@@ -22,7 +22,7 @@ function BannerRedirect({ location }) {
   };
 
   const userLanguage = navigator?.language;
-  const userLocation = location?.origin || window?.location?.origin;
+  const userLocation = typeof window !== 'undefined' ? window?.location?.origin : ''
 
   useEffect(() => {
     if (
