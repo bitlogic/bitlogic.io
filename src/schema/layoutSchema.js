@@ -118,6 +118,7 @@ type StrapiLayoutNavbarNavButtonLanding_page {
     id: Int
     title: String
     url: String
+    callToAction: String
     landing_page: StrapiLayoutFooterSubscriptionLanding
   }
 

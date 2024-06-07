@@ -92,6 +92,7 @@ const useFooter = () => {
             subscription {
               title
               url
+              callToAction
               landing_page {
                 slug
               }
