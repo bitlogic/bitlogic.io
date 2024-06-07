@@ -6,7 +6,7 @@ import MarkdownView from "react-showdown"
 import "./BlogArticle.scss"
 
 const BlogArticle = ({ title, summary, image, slug, text }) => {
-  const imageArticle = getImage(image?.localFile)
+  const imageArticle = image?.localFile ? getImage(image?.localFile) : undefined;
 
   return (
     <div className="article__container">
