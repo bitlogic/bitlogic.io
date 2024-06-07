@@ -1,7 +1,30 @@
 import { Link } from "gatsby"
+import PropTypes from "prop-types"
 import React from "react"
 import { useFooter, useLandingUrl } from "../../../hooks"
 import "./subscription.scss"
+
+const SubscriptionLink = ({ children, subscriptionUrl, landing }) => {
+  const isExternalLink = subscriptionUrl?.startsWith('http')
+
+  if (landing) {
+    return <Link to={landing}>{children}</Link>
+  } else if (isExternalLink) {
+    return (
+      <a href={subscriptionUrl} rel="noopener noreferrer" target="_blank">
+        {children}
+      </a>
+    )
+  } else {
+    return <a href={subscriptionUrl}>{children}</a>
+  }
+}
+
+SubscriptionLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  subscriptionUrl: PropTypes.string,
+  landing: PropTypes.string,
+}
 
 export default function Subscription() {
   const data = useFooter()
@@ -12,30 +35,7 @@ export default function Subscription() {
   const subscriptionUrl = dataSubscription?.url
   const landing = getUrl(dataSubscription?.landing_page?.slug)
 
-  if(!dataSubscription?.landing_page && !subscriptionUrl) return <></>
-
-  const SubscriptionLink = ({ children }) => {
-    const isExternalLink = subscriptionUrl?.startsWith('http')
-
-    if (landing) return (
-      <Link to={landing}>
-        {children}
-      </Link>
-    )
-    else if (isExternalLink) return (
-      <a href={subscriptionUrl}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        {children}
-      </a>
-    )
-    else {
-      <a href={subscriptionUrl}>
-        {children}
-      </a>
-    }
-  }
+  if (!dataSubscription?.landing_page && !subscriptionUrl) return null
 
   return (
     <div className="ContactData__Item contactData-container">
@@ -43,12 +43,16 @@ export default function Subscription() {
       <div>
         <div className="ContactData__Form d-flex flex-md-column justify-content-between">
           <button className="col-5">
-            <SubscriptionLink>{dataSubscription?.callToAction}</SubscriptionLink>
+            <SubscriptionLink subscriptionUrl={subscriptionUrl} landing={landing}>
+              {dataSubscription?.callToAction}
+            </SubscriptionLink>
           </button>
         </div>
       </div>
       <button className="col-5 contactData-mobile_button">
-        <SubscriptionLink>{dataSubscription?.title}</SubscriptionLink>
+        <SubscriptionLink subscriptionUrl={subscriptionUrl} landing={landing}>
+          {dataSubscription?.title}
+        </SubscriptionLink>
       </button>
     </div>
   )
