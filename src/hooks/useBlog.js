@@ -14,6 +14,8 @@ const useBlog = () => {
           summary
           slug
           image {
+            url
+            alternativeText
             localFile {
               childImageSharp {
                 gatsbyImageData
