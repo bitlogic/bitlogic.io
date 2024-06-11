@@ -411,6 +411,7 @@
 
     &.hero {
       .banner__wrapper {
+        min-height: 600px;
         flex-direction: row;
         gap: 32px;
       }
