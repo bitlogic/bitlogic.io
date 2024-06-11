@@ -27,10 +27,7 @@ const Banner = ({ data }) => {
   }
 
   return (
-    <div
-      className={`banner ${variant}`}
-      id={data?.strapi_component + "-" + data?.id}
-    >
+    <div className={`banner ${variant}`}>
       <div className="container banner__wrapper">
         {variant === "background" ?
           <div

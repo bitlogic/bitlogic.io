@@ -18,31 +18,32 @@ const CustomLink = ({ content, url, landing, className }) => {
         {content}
       </Link>
     )
-  } else {
-    if (url?.startsWith('http')) {
-      return (
-        <a href={url}
-          target="_blank"
-          rel="noreferrer"
-          className={className}
-          aria-label="External Link"
-        >
-          {content}
-        </a>
-      )
-    } else {
-      return (
-        <a
-          href={url}
-          className={className}
-          aria-label={`Navigate to ${content}`}
-        >
-          {content}
-        </a>
-      )
-    }
   }
-};
+
+  if (url?.startsWith('http')) {
+    return (
+      <a href={url}
+        target="_blank"
+        rel="noreferrer"
+        className={className}
+        aria-label="External Link"
+      >
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <a
+      href={url}
+      className={className}
+      aria-label={`Navigate to ${content}`}
+    >
+      {content}
+    </a>
+  )
+}
+
 
 CustomLink.propTypes = {
   content: PropTypes.string.isRequired,
