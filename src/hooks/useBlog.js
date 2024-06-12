@@ -30,6 +30,7 @@ const useBlog = () => {
       }
       allStrapiBlogPage {
         nodes {
+          callToActionArticle
           seo: pageMetadata {
             pageTitle
             pageKeywords

@@ -5,6 +5,7 @@ import MarkdownView from "react-showdown"
 import { useTheme } from "../../context/themeContext"
 import "./expandGrid.scss"
 import { useLandingUrl } from "../../hooks"
+import PropTypes from "prop-types"
 
 const ExpandGrid = ({ data }) => {
   const { theme } = useTheme()
@@ -22,15 +23,14 @@ const ExpandGrid = ({ data }) => {
           })`,
       }}
     >
-      <div
-        className="mx-auto sm:mx-3 pb-5 container"
-        id={data.strapi_component + "-" + data.id}
-      >
+      <div className="mx-auto sm:mx-3 pb-5 container">
         <section className="expandGrid">
           <div className="expandGrid-body">
             <h2>{data.title}</h2>
             <h6 className="px-md-3">{data.subtitle}</h6>
-            <AnimatedList items={data.items.slice(0, 4)} />
+            {data.item && data.items.length > 0 && (
+              <AnimatedList items={data?.items?.slice(0, 4)} />
+            )}
           </div>
         </section>
       </div>
@@ -51,8 +51,9 @@ const ListItem = ({ index, onClick, data }) => {
       flipId={createCardFlipId(index)}
       stagger="card"
       shouldInvert={shouldFlip(index)}
+      onClick={() => onClick(index)}
     >
-      <div className="listItem" onClick={() => onClick(index)}>
+      <div className="listItem">
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent">
             <div className="listItem-more">
@@ -64,7 +65,10 @@ const ListItem = ({ index, onClick, data }) => {
               shouldFlip={shouldFlip(index)}
               delayUntil={createCardFlipId(index)}
             >
-              <img alt="" src={data.image?.url} className="avatar" />
+              <img src={data.image?.url}
+                alt={data.image.alternativeText || 'Avatar image'}
+                className="avatar"
+              />
             </Flipped>
           </div>
         </Flipped>
@@ -98,16 +102,21 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
               stagger="card-image"
               delayUntil={createCardFlipId(index)}
             >
-              <img alt="" src={data.image?.url} className="avatar-expanded" />
+              <img src={data.image?.url}
+                alt={data.image.alternativeText || 'Avatar image expanded'}
+                className="avatar-expanded"
+              />
             </Flipped>
             <div className={"additional-content "}>
               <div style={isFirst ? { opacity: "1" } : {}}>
                 <h4>{data.title}</h4>
-                <div className="additional-content-markdown">
-                  <MarkdownView markdown={data.text} />
-                </div>
-                {data.landing_page && (
-                  <Link to={getUrl(data.landing_page.slug)}>Ver más</Link>
+                {data?.text && (
+                  <div className="additional-content-markdown">
+                    <MarkdownView markdown={data.text} />
+                  </div>
+                )}
+                {data?.landing_page && (
+                  <Link to={getUrl(data.landing_page.slug)}>{data?.callToAction || 'Ver más'}</Link>
                 )}
               </div>
             </div>
@@ -121,9 +130,10 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
 const AnimatedList = ({ items }) => {
   const [itemsArray, setItemsArray] = useState({ items, focused: null })
   const [isFirst, setIsFirst] = useState(true)
+
   useEffect(() => {
-    setItemsArray(prev => ({ ...prev, focused: items[0].id }))
-  }, [])
+    setItemsArray(prev => ({ ...prev, focused: items[0]?.id }))
+  }, [items])
 
   const onClick = index => {
     for (let i = 0; i < items.length; i++) {
@@ -160,6 +170,7 @@ const AnimatedList = ({ items }) => {
             <>
               {item.id === itemsArray.focused ? (
                 <ExpandedListItem
+                  key={item.id}
                   isFirst={isFirst}
                   index={itemsArray.focused}
                   data={item}
@@ -179,6 +190,36 @@ const AnimatedList = ({ items }) => {
       </ul>
     </Flipper>
   )
+}
+
+ExpandGrid.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    callToAction: PropTypes.string,
+    backgroundImage: PropTypes.shape({
+      url: PropTypes.string
+    }),
+    backgroundImageDark: PropTypes.shape({
+      url: PropTypes.string
+    }),
+    items: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string,
+      text: PropTypes.string,
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string.isRequired
+      }),
+      image: PropTypes.shape({
+        alternativeText: PropTypes.string,
+        url: PropTypes.string.isRequired,
+        localFile: PropTypes.shape({
+          childImageSharp: PropTypes.shape({
+            gatsbyImageDate: PropTypes.object.isRequired
+          })
+        })
+      })
+    }))
+  })
 }
 
 export default ExpandGrid
