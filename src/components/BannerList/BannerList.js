@@ -12,7 +12,7 @@ export default function BannerList({ data }) {
       <div className="card_item d-flex mb-2">
         {item?.icon && (
           <div className="card_item">
-            <img class="d-block"
+            <img className="d-block"
               alt={item?.icon?.alternativeText || 'card-icon'}
               src={item.icon.url}
               placeholder="blurred"
@@ -65,7 +65,7 @@ BannerList.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
     contactForm: PropTypes.bool,
-    contactFormAnchor: PropTypes.string,
+    concactFormAnchor: PropTypes.string,
     callToAction: PropTypes.string,
     Card: PropTypes.arrayOf(
       PropTypes.shape({

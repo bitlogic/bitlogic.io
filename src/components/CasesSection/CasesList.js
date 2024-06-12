@@ -12,7 +12,7 @@ const CasesList = ({ data }) => {
   const expendedCards = cases.map(caso => {
 
     return (
-      <div className="col-12 row caseExpanded my-3">
+      <div className="col-12 row caseExpanded my-3" key={caso.strapiId}>
         <div className="col-12">
           <CustomImage
             image={caso?.image}

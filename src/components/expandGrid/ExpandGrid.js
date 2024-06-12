@@ -28,7 +28,7 @@ const ExpandGrid = ({ data }) => {
           <div className="expandGrid-body">
             <h2>{data.title}</h2>
             <h6 className="px-md-3">{data.subtitle}</h6>
-            {data.item && data.items.length > 0 && (
+            {data.items && data.items.length > 0 && (
               <AnimatedList items={data?.items?.slice(0, 4)} />
             )}
           </div>
@@ -36,6 +36,36 @@ const ExpandGrid = ({ data }) => {
       </div>
     </div>
   )
+}
+
+ExpandGrid.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    callToAction: PropTypes.string,
+    backgroundImage: PropTypes.shape({
+      url: PropTypes.string
+    }),
+    backgroundImageDark: PropTypes.shape({
+      url: PropTypes.string
+    }),
+    items: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string,
+      text: PropTypes.string,
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string.isRequired
+      }),
+      image: PropTypes.shape({
+        alternativeText: PropTypes.string,
+        url: PropTypes.string.isRequired,
+        localFile: PropTypes.shape({
+          childImageSharp: PropTypes.shape({
+            gatsbyImageDate: PropTypes.object.isRequired
+          })
+        })
+      })
+    }))
+  })
 }
 
 const createCardFlipId = index => `listItem-${index}`
@@ -77,6 +107,18 @@ const ListItem = ({ index, onClick, data }) => {
   )
 }
 
+ListItem.propTypes = {
+  index: PropTypes.number,
+  onClick: PropTypes.func,
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      alternativeText: PropTypes.string
+    }).isRequired
+  }).isRequired
+}
+
 const ExpandedListItem = ({ index, data, isFirst }) => {
   const getUrl = useLandingUrl()
   const scrollRef = useRef(null)
@@ -112,7 +154,9 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
                 <h4>{data.title}</h4>
                 {data?.text && (
                   <div className="additional-content-markdown">
-                    <MarkdownView markdown={data.text} />
+                    <MarkdownView markdown={data.text}
+                      dangerouslySetInnerHTML={{ __html: data.text }}
+                    />
                   </div>
                 )}
                 {data?.landing_page && (
@@ -125,6 +169,23 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
       </div>
     </Flipped>
   )
+}
+
+ExpandedListItem.propTypes = {
+  index: PropTypes.number,
+  isFirst: PropTypes.bool,
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string,
+    callToAction: PropTypes.string,
+    landing_page: PropTypes.shape({
+      slug: PropTypes.string.isRequired
+    }),
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      alternativeText: PropTypes.string
+    }),
+  })
 }
 
 const AnimatedList = ({ items }) => {
@@ -192,34 +253,13 @@ const AnimatedList = ({ items }) => {
   )
 }
 
-ExpandGrid.propTypes = {
-  data: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    callToAction: PropTypes.string,
-    backgroundImage: PropTypes.shape({
-      url: PropTypes.string
-    }),
-    backgroundImageDark: PropTypes.shape({
-      url: PropTypes.string
-    }),
-    items: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string,
-      text: PropTypes.string,
-      landing_page: PropTypes.shape({
-        slug: PropTypes.string.isRequired
-      }),
-      image: PropTypes.shape({
-        alternativeText: PropTypes.string,
-        url: PropTypes.string.isRequired,
-        localFile: PropTypes.shape({
-          childImageSharp: PropTypes.shape({
-            gatsbyImageDate: PropTypes.object.isRequired
-          })
-        })
-      })
-    }))
-  })
+AnimatedList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  )
 }
+
 
 export default ExpandGrid

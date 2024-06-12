@@ -15,12 +15,10 @@ const CasesSection = ({ data }) => {
     casesData?.find(ca => ca.strapiId === caso.id)
   )
 
-  const casesCards = casos.map((caso, idx) => {
-
-    const image = getImage(caso?.image?.localFile)
+  const casesCards = casos.map(caso => {
 
     return (
-      <div key={`case-${idx}`}
+      <div key={caso.strapiId}
         className={`case col-12 row ${casos.length === 3
           ? "col-md-4"
           : "col-md-6"
@@ -76,26 +74,28 @@ const CasesSection = ({ data }) => {
 CasesSection.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    cases: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string,
-      image: PropTypes.shape({
-        alternativeText: PropTypes.string,
-        url: PropTypes.string.isRequired,
-        localFile: PropTypes.shape({
-          childImageSharp: PropTypes.shape({
-            gatsbyImageData: PropTypes.object.isRequired
+    cases: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        image: PropTypes.shape({
+          alternativeText: PropTypes.string,
+          url: PropTypes.string.isRequired,
+          localFile: PropTypes.shape({
+            childImageSharp: PropTypes.shape({
+              gatsbyImageData: PropTypes.object.isRequired
+            })
+          })
+        }).isRequired,
+        button: PropTypes.shape({
+          content: PropTypes.string.isRequired,
+          url: PropTypes.string,
+          landing_page: PropTypes.shape({
+            slug: PropTypes.string.isRequired
           })
         })
-      }).isRequired,
-      button: PropTypes.shape({
-        content: PropTypes.string.isRequired,
-        url: PropTypes.string,
-        landing_page: PropTypes.shape({
-          slug: PropTypes.string.isRequired
-        })
       })
-    })
+    )
   })
 }
 
