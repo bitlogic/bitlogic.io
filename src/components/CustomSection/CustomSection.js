@@ -3,8 +3,8 @@ import PropTypes from "prop-types"
 
 /* Imports sections */
 // import BlogContainer from '../BlogPage/BlogContainer'
-import PipedriveForm from "../";
 import VideoBackground from "../videoBackground/VideoBackground";
+import PipedriveForm from "../Form/PipedriveForm";
 import Hero from '../Hero/Hero';
 import {
   AnimatedTransitionContinous,
@@ -50,7 +50,7 @@ const COMPONENTS = Object.freeze({
 const CustomSection = ({ sections }) => {
   const sectionResult = sections.map((section) => {
 
-    if (!section || !section?.strapi_component) return null
+    if (section?.strapi_component) return null
 
     const Component = COMPONENTS[section.strapi_component]
 
