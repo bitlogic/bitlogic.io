@@ -16,8 +16,8 @@ import Professionals from "./Professionals/Professionals"
 import FeaturedBlogs from './FeaturedBlogs/FeaturedBlogs'
 import CustomSection from "./CustomSection/CustomSection"
 import CustomLink from "./CustomLink/CustomLink"
-import PipedriveForm from "./Form/PipedriveForm"
 import CustomImage from "./CustomImage/CustomImage"
+import PipedriveForm from "./Form/PipedriveForm"
 
 export {
   CasesList,
@@ -38,6 +38,6 @@ export {
   FeaturedBlogs,
   CustomSection,
   CustomLink,
+  CustomImage,
   PipedriveForm,
-  CustomImage
 }
