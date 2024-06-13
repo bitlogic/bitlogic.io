@@ -443,6 +443,7 @@ type StrapiBlogCategory implements Node {
     pageMetadata: StrapiBlogPagePageMetadata
     strapiId: Int
     title: String
+    callToActionArticle: String
     bannerHead: StrapiBlogPageBannerHead
     banner: StrapiBlogPageBanner
   }

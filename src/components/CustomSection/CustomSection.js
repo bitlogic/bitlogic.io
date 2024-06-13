@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types"
 
 /* Imports sections */
 // import BlogContainer from '../BlogPage/BlogContainer'
@@ -15,15 +16,14 @@ import {
   OneSection,
   ExpandGrid,
   FeaturedBlogs,
-  // PipedriveForm,
+  PipedriveForm,
   LogosSection,
   Professionals,
   Quote,
   Text,
-  Form
 } from '../';
 
-const CustomSection = ({ sections, location }) => {
+const CustomSection = ({ sections }) => {
 
   const sectionResult = sections.map((section) => {
     if (section?.strapi_component === null ||
@@ -92,19 +92,10 @@ const CustomSection = ({ sections, location }) => {
       />
     }
 
-    // if (section.strapi_component === 'components.pipedrive-form') {
-    //   return <PipedriveForm data={section}
-    //     key={section.strapi_component + section.id}
-    //   />
-    // }
-
-    if (section.strapi_component === 'components.form') {
-      return (
-        <Form key={section.strapi_component + section.id}
-          location={location}
-          data={section}
-        />
-      )
+    if (section.strapi_component === 'components.pipedrive-form') {
+      return <PipedriveForm data={section}
+        key={section.strapi_component + section.id}
+      />
     }
 
     if (section.strapi_component === 'components.logos-section') {
@@ -150,6 +141,12 @@ const CustomSection = ({ sections, location }) => {
     <>
       {sectionResult}
     </>
+  )
+}
+
+CustomSection.propTypes = {
+  sections: PropTypes.arrayOf(
+    PropTypes.node
   )
 }
 

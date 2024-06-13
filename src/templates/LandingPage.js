@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import PropTypes from "prop-types"
 
 import {
   Seo,
@@ -18,6 +19,22 @@ const LandingPage = ({ data, location }) => {
       )}
     </Layout>
   )
+}
+
+LandingPage.propTypes = {
+  data: PropTypes.shape({
+    allStrapiLandingPage: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          body: PropTypes.arrayOf(
+            PropTypes.object
+          )
+        })
+      )
+    })
+  }),
+  location: PropTypes.object.isRequired
 }
 
 export const query = graphql`
