@@ -50,7 +50,7 @@ const COMPONENTS = Object.freeze({
 const CustomSection = ({ sections }) => {
   const sectionResult = sections.map((section) => {
 
-    if (section?.strapi_component) return null
+    if (!section?.strapi_component) return null
 
     const Component = COMPONENTS[section.strapi_component]
 
