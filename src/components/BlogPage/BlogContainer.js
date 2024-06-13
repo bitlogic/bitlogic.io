@@ -15,6 +15,7 @@ const Blog = () => {
   const defaultCategory = data[0]?.name
   const filterArticle = data.map(category => dataArticles.filter(article => category.name === article?.blog_category?.name || defaultCategory))
   const { seo, banner } = blogData.allStrapiBlogPage.nodes[0]
+  const callToAction = blogData?.allStrapiBlogPage?.callToActionArticle
 
   return (
     <Layout>
@@ -35,7 +36,7 @@ const Blog = () => {
                   title={item.title}
                   summary={item.summary}
                   slug={"/blog/" + item.slug}
-                  text="Ver más"
+                  text={callToAction}
                 />
               ))}
             </BlogGrid>

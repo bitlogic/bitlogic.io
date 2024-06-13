@@ -14,6 +14,8 @@ const useContactPage = () => {
                 title
                 variant
                 profile {
+                  alternativeText
+                  url
                   localFile {
                     childImageSharp {
                       gatsbyImageData
@@ -22,6 +24,8 @@ const useContactPage = () => {
                 }
               }
               image {
+                alternativeText
+                url
                 localFile {
                   childImageSharp {
                     gatsbyImageData

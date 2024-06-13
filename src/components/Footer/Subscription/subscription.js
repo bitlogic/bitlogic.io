@@ -29,7 +29,7 @@ SubscriptionLink.propTypes = {
 export default function Subscription() {
   const data = useFooter()
   const getUrl = useLandingUrl()
-  
+
   const dataSubscription = data?.allStrapiLayout?.nodes[0]?.footer?.subscription
 
   const subscriptionUrl = dataSubscription?.url
@@ -44,7 +44,7 @@ export default function Subscription() {
         <div className="ContactData__Form d-flex flex-md-column justify-content-between">
           <button className="col-5">
             <SubscriptionLink subscriptionUrl={subscriptionUrl} landing={landing}>
-              {dataSubscription?.callToAction}
+              {dataSubscription?.callToAction || '¡Aqui!'}
             </SubscriptionLink>
           </button>
         </div>

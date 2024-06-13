@@ -1,47 +1,61 @@
 import React from "react"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
-import { useCases, useLandingUrl } from "../../hooks/index"
+import { useCases } from "../../hooks/index"
 import "./CasesSection.scss"
-import { Link } from 'gatsby'
+import PropTypes from "prop-types"
+import MarkdownView from "react-showdown"
+import CustomLink from "../CustomLink/CustomLink";
+import CustomImage from "../CustomImage/CustomImage"
 
 const CasesSection = ({ data }) => {
-  const getUrl = useLandingUrl()
   const { title, cases } = data
-  const casesData = useCases()
+  const casesData = useCases()?.allStrapiCase?.nodes
 
   const casos = cases.map(caso =>
-    casesData?.allStrapiCase?.nodes.find(ca => ca.strapiId === caso.id)
+    casesData?.find(ca => ca.strapiId === caso.id)
   )
-  const casesCards = casos.map((caso, idx) => {
-    const image = getImage(caso?.image?.localFile)
+
+  const casesCards = casos.map(caso => {
 
     return (
-      <div
-        className={`case col-12 ${casos.length === 3 ? "col-md-4" : "col-md-6"
-          }  row`}
-        key={`case-${idx}`}
-        id={data.strapi_component + "-" + data.id}
+      <div key={caso.strapiId}
+        className={`case col-12 row ${casos.length === 3
+          ? "col-md-4"
+          : "col-md-6"
+          }`
+        }
       >
         <div className="col-6 col-md-12">
-          <GatsbyImage image={image} alt={caso?.title} className="case__img" />
+          <CustomImage
+            image={caso?.image}
+            className="case__img"
+            alt={caso?.image?.alternativeText || caso.title}
+          />
         </div>
         <div className="col-6 col-md-12">
           <div className="case__descr">
-            <h5 className="case__descr_title">{caso?.title}</h5>
-            <p className="case__descr_text">"{caso?.quote?.description}"</p>
+            <h5 className="case__descr_title">
+              {caso.title}
+            </h5>
+            {caso?.description && (
+              <div className="case__descr_text">
+                <MarkdownView
+                  markdown={caso.description}
+                  dangerouslySetInnerHTML={{ __html: caso.description }}
+                />
+              </div>
+            )}
           </div>
-          {caso?.button?.landing_page ? (
-            <Link to={getUrl(caso.button.landing_page.slug) + "/#" + caso?.title}>
-              <button>{caso?.button?.content}</button>
-            </Link>
-          ) : (caso.button?.url && (
-            <a href={caso.button?.url}
-              target={caso.button.url.startsWith('http') && '_blank'}
-              rel={caso.button.url.startsWith('http') && 'noreferrer noopener'}
-            >
-              <button>{caso?.button?.content}</button>
-            </a>
-          ))}
+          {caso?.button && (
+            <button>
+              <CustomLink
+                content={caso.button.content}
+                url={caso?.button?.url}
+                landing={caso?.button?.landing_page}
+                className=''
+              />
+            </button>
+          )}
         </div>
       </div>
     )
@@ -49,12 +63,40 @@ const CasesSection = ({ data }) => {
 
   return (
     <div className="container py-5 casesSection">
-      {title && <h2>{title}</h2>}
+      <h2>{title}</h2>
       {casesCards !== undefined && casesCards.length > 0 && (
         <div className="cases row">{casesCards}</div>
       )}
     </div>
   )
+}
+
+CasesSection.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    cases: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        image: PropTypes.shape({
+          alternativeText: PropTypes.string,
+          url: PropTypes.string.isRequired,
+          localFile: PropTypes.shape({
+            childImageSharp: PropTypes.shape({
+              gatsbyImageData: PropTypes.object.isRequired
+            })
+          })
+        }).isRequired,
+        button: PropTypes.shape({
+          content: PropTypes.string.isRequired,
+          url: PropTypes.string,
+          landing_page: PropTypes.shape({
+            slug: PropTypes.string.isRequired
+          })
+        })
+      })
+    )
+  })
 }
 
 export default CasesSection
