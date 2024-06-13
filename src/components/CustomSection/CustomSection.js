@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types"
 
 /* Imports sections */
 // import BlogContainer from '../BlogPage/BlogContainer'
 import VideoBackground from "../videoBackground/VideoBackground";
+import PipedriveForm from "../Form/PipedriveForm";
 import Hero from '../Hero/Hero';
 import {
   AnimatedTransitionContinous,
@@ -15,141 +17,64 @@ import {
   OneSection,
   ExpandGrid,
   FeaturedBlogs,
-  // PipedriveForm,
   LogosSection,
   Professionals,
   Quote,
-  Text,
-  Form
+  Text
 } from '../';
 
-const CustomSection = ({ sections, location }) => {
+const COMPONENTS = Object.freeze({
+  'home.transition': AnimatedTransitionContinous,
+  'components.banner': Banner,
+  'components.banner-list': BannerList,
+  'components.selected-grid': ExpandGrid,
+  'components.featured-blogs': FeaturedBlogs,
+  'components.pipedrive-form': PipedriveForm,
+  'components.logos-section': LogosSection,
+  'components.professionals-section': Professionals,
+  'home.quote': Quote,
+  'components.text': Text,
+  'home.video-background': VideoBackground,
+  'home.hero': Hero,
+  'scripts.catsone': Catsone,
+  'components.cases-section': ({ data }) => (data?.allCases
+    ? <CasesList data={data} />
+    : <CasesSection data={data} />
+  ),
+  'home.dual-section': ({ data }) => (data?.dualSectionPart?.length === 1
+    ? <OneSection data={data} />
+    : <DualSection data={data} />
+  )
+});
 
+const CustomSection = ({ sections }) => {
   const sectionResult = sections.map((section) => {
-    if (section?.strapi_component === null ||
-      section?.strapi_component === undefined) {
-      return <></>
-    }
 
-    if (section.strapi_component === 'home.transition') {
-      return <AnimatedTransitionContinous data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
+    if (!section?.strapi_component) return null
 
-    if (section.strapi_component === 'components.banner') {
-      return <Banner data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
+    const Component = COMPONENTS[section.strapi_component]
 
-    if (section.strapi_component === 'components.banner-list') {
-      return <BannerList data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'components.cases-section'
-      && !section?.allCases) {
-      return <CasesSection data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'components.cases-section'
-      && section?.allCases) {
-      return <CasesList data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'scripts.catsone') {
-      return <Catsone data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-    if (section.strapi_component === 'home.dual-section') {
-      const sectionComponent = section?.dualSectionPart.length === 1
-        ? <OneSection data={section}
-          key={section.strapi_component + section.id}
-        />
-        : <DualSection data={section}
-          key={section.strapi_component + section.id}
-        />
-
-      return sectionComponent
-    }
-
-    if (section.strapi_component === 'components.selected-grid') {
-      return <ExpandGrid data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'components.featured-blogs') {
-      return <FeaturedBlogs data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    // if (section.strapi_component === 'components.pipedrive-form') {
-    //   return <PipedriveForm data={section}
-    //     key={section.strapi_component + section.id}
-    //   />
-    // }
-
-    if (section.strapi_component === 'components.form') {
+    if (Component) {
       return (
-        <Form key={section.strapi_component + section.id}
-          location={location}
-          data={section}
+        <Component data={section}
+          key={`${section.strapi_component}-${section.id}`}
         />
       )
     }
 
-    if (section.strapi_component === 'components.logos-section') {
-      return <LogosSection data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'components.professionals-section') {
-      return <Professionals data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'home.quote') {
-      return <Quote data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'components.text') {
-      return <Text data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'home.video-background') {
-      return <VideoBackground data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    if (section.strapi_component === 'home.hero') {
-      return <Hero data={section}
-        key={section.strapi_component + section.id}
-      />
-    }
-
-    return <></>
+    return null
   })
 
   return (
     <>
       {sectionResult}
     </>
+  )
+}
+
+CustomSection.propTypes = {
+  sections: PropTypes.arrayOf(
+    PropTypes.node
   )
 }
 

@@ -4,6 +4,7 @@ import Layout from "../../layout"
 import { Seo } from "../../index"
 import { CustomSection } from "../../index"
 import "./HomeContainer.scss"
+import PropTypes from "prop-types"
 
 
 const Home = ({ location }) => {
@@ -23,10 +24,14 @@ const Home = ({ location }) => {
 
       {/* Dynamic zone */}
       {data?.body?.length > 0 && (
-        <CustomSection sections={data?.body} location={location} />
+        <CustomSection sections={data?.body} />
       )}
     </Layout>
   )
+}
+
+Home.propTypes = {
+  location: PropTypes.object.isRequired
 }
 
 export default Home
