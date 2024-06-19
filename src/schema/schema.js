@@ -4,6 +4,7 @@ type StrapiLandingPage implements Node {
   body: JSON
   name: String
   slug: String
+  parent_page : StrapiLandingPageParentPage
   published_at(
     formatString: String
     fromNow: Boolean
@@ -62,6 +63,32 @@ type StrapiHomePageMetadata {
   pageTitle: String
   pageDescription: String
   pageKeywords: String
+}
+
+type StrapiLandingPageParentPage {
+  id: ID!
+  name: String
+  slug: String
+  body: JSON
+  seo: StrapiLandingPageSeo
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
 }
 
 type StrapiServicesPage implements Node {
@@ -1281,6 +1308,32 @@ type StrapiLayoutNavbarLogo {
 type StrapiLayoutFooterSubscription {
   id: Int
   title: String
+  url: String
+  landing_page: StrapiLayoutFooterSubscriptionLanding
+}
+
+type StrapiLayoutFooterSubscriptionLanding {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
 }
 
 type StrapiLayoutFooterNavegation {
@@ -1526,6 +1579,101 @@ type StrapiLayoutFooterLogo {
   ): Date
   localFile: File
 }
+
+type StrapiLayoutMenu {
+  title: String
+  id: Int
+  url: String
+  visible: Boolean
+  dropdown:Boolean
+  english_landing_page: StrapiMenuEnglishLandingPage
+  landing_page: StrapiMenuLandingPage
+  topLevelItem: StrapiMenuDropdownItem
+  dropdownItems: [StrapiMenuDropdownItem]
+}
+type StrapiMenuDropdownItem {
+  id: Int
+  label: String
+  icon: LocalFile
+  url: String
+  text: String
+  english_landing_page: StrapiMenuEnglishLandingPage
+  landing_page: StrapiMenuLandingPage
+}
+type StrapiMenuDropdownItemIcon {
+  id: Int
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  localFile: File
+}
+type StrapiMenuLandingPage {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
+type StrapiMenuEnglishLandingPage {
+  id: Int
+  name: String
+  slug: String
+  published_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  created_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updated_at(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
+
 
 `
 

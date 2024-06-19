@@ -1,37 +1,51 @@
 import React from "react"
 import MarkdownView from "react-showdown"
 import "./Text.scss"
+import PropTypes from "prop-types"
 
 export default function Text({ data }) {
-  const title = data?.title
-  const description = data?.text
+  const { title, text } = data
   const bgImage = data?.backgroundImage?.url
 
   return (
     <div className="container-text mt-3 mt-xl-5" style={{
-      backgroundImage: `url(${bgImage})`,
+      backgroundImage: bgImage ? `url(${bgImage})` : '',
+      backgroundPosition: 'center'
     }}>
-      
-      {title !== "" && title !== undefined && title !== null ? (
-        <div className="container text d-flex flex-column flex-md-row gap-xl-5">
+      {title ? (
+        <div className="container text d-flex flex-column flex-md-row gap-xl-5 py-3">
           <div className="title">
-            <h2 className="titleText pt-5 ps-md-0 pt-md-3">{title}</h2>
+            <h2 className="titleText ps-md-0 pt-md-3">{title}</h2>
           </div>
-          <MarkdownView
-            markdown={description}
-            className="description"
-            style={{margin: !bgImage && '0rem'}}
-          />
+          <div className="description">
+            <MarkdownView
+              markdown={text}
+              dangerouslySetInnerHTML={{ __html: text }}
+              style={{ margin: !bgImage && '0rem' }}
+            />
+          </div>
         </div>
       ) : (
-        <div className="container container-markdown" style={{padding: !bgImage && '0rem'}}>
-          <MarkdownView
-            markdown={description}
-            className="notTitle"
-          />
+        <div className="container container-markdown" style={{ padding: !bgImage && '0rem' }}>
+          <div className="notTitle">
+            <MarkdownView
+              markdown={text}
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
+          </div>
         </div>
       )}
     </div>
 
   )
+}
+
+Text.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.shape({
+      url: PropTypes.string
+    })
+  })
 }

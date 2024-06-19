@@ -43,12 +43,65 @@ const useNavbar = () => {
               }
             }
           }
+          menu {
+            title
+            id
+            visible
+            dropdown
+            url
+            landing_page {
+              slug
+            }
+            dropdownItems {
+              id
+              label
+              text
+              url
+              icon {
+                alternativeText
+                url
+                localFile {
+                  childrenImageSharp {
+                    gatsbyImageData(
+                      placeholder: BLURRED
+                    )
+                  }
+                }
+              }
+              landing_page {
+                slug
+              }
+            }
+            toplevelItem {
+              id
+              label
+              text
+              url
+              icon {
+                localFile {
+                  childrenImageSharp {
+                    gatsbyImageData(
+                      placeholder: BLURRED
+                    )
+                  }
+                }
+                alternativeText
+              }
+              landing_page {
+                slug
+              }
+            }
+          }
         }
       }
       allStrapiLandingPage {
         nodes {
           body
           name
+          slug
+          parent_page {
+            slug
+          }
         }
       }
       allStrapiHome {

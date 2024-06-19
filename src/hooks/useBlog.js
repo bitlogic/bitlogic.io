@@ -14,6 +14,17 @@ const useBlog = () => {
           summary
           slug
           image {
+            url
+            alternativeText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          imagePage {
+            url
+            alternativeText
             localFile {
               childImageSharp {
                 gatsbyImageData
@@ -28,6 +39,7 @@ const useBlog = () => {
       }
       allStrapiBlogPage {
         nodes {
+          callToActionArticle
           seo: pageMetadata {
             pageTitle
             pageKeywords

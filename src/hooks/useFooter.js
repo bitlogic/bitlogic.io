@@ -23,10 +23,28 @@ const useFooter = () => {
               }
             }
           }
+          Sites {
+            title
+            websites {
+              id
+              name
+              url
+              icon {
+                alternativeText
+                url
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
           footer {
             contact {
               title
               iconText {
+                id
                 name
                 icon {
                   code
@@ -42,6 +60,7 @@ const useFooter = () => {
             location {
               title
               iconText {
+                id
                 name
                 icon {
                   code
@@ -74,6 +93,11 @@ const useFooter = () => {
             }
             subscription {
               title
+              url
+              callToAction
+              landing_page {
+                slug
+              }
             }
           }
         }
@@ -83,4 +107,3 @@ const useFooter = () => {
 }
 
 export default useFooter
-

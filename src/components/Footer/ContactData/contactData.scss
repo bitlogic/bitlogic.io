@@ -12,8 +12,11 @@
 
     .icon-text {
       font-size: 16px;
+      margin-bottom: 16px;
     }
+
   }
+
   &__link {
     a {
       font-weight: 600;
@@ -23,12 +26,14 @@
     }
   }
 }
+
 @media screen and (min-width: $breakpoint-md) {
   .ContactData__Item {
-    
+
     &__contact {
       display: block;
     }
+
     .icon-text {
       svg {
         margin-right: 5px;
@@ -41,10 +46,12 @@
   .ContactData__Item {
     .icon-text {
       font-size: 18px;
+
       svg {
         margin-right: 10px;
       }
     }
+
     &__link {
       a {
         font-size: 20px;
@@ -57,15 +64,17 @@
   .ContactData__Item {
     .icon-text {
       font-size: 18px;
+
       svg {
         margin-right: 10px;
       }
     }
+
     &__link {
       a {
         font-size: 20px;
       }
     }
   }
-  
+
 }

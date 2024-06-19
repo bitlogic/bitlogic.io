@@ -247,6 +247,7 @@ type StrapiBlogCategory implements Node {
       locale: String
     ): Date
     image: LocalFile
+    imagePage: LocalFile
     slug: String
   }
   
@@ -277,6 +278,7 @@ type StrapiBlogCategory implements Node {
       locale: String
     ): Date
     image: LocalFile
+    imagePage: LocalFile
     blog_categories: [StrapiArticleBlog_categories]
     strapiId: Int
     slug: String
@@ -442,6 +444,7 @@ type StrapiBlogCategory implements Node {
     pageMetadata: StrapiBlogPagePageMetadata
     strapiId: Int
     title: String
+    callToActionArticle: String
     bannerHead: StrapiBlogPageBannerHead
     banner: StrapiBlogPageBanner
   }

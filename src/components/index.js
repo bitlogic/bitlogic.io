@@ -1,9 +1,7 @@
-import Cards from "./Cards/Cards"
 import Seo from "./Seo/Seo"
 import CasesSection from "./CasesSection/CasesSection"
 import CasesList from "./CasesSection/CasesList"
 import LogosSection from "./LogosSection/logosSection"
-import Form from "./Form/Form"
 import Banner from "./Banner/Banner"
 import BannerList from "./BannerList/BannerList"
 import ExpandGrid from "./expandGrid/ExpandGrid"
@@ -14,17 +12,18 @@ import OneSection from "./DualSection/OneSection"
 import DualSection from "./DualSection/DualSection"
 import AnimatedTransitionContinous from "./animatedTransitionContinous/AnimatedTransitionContinous"
 import BannerTop from "./Banners/BannerTop"
-import BannerHead from "./BannerHead/BannerHead"
 import Professionals from "./Professionals/Professionals"
 import FeaturedBlogs from './FeaturedBlogs/FeaturedBlogs'
+import CustomSection from "./CustomSection/CustomSection"
+import CustomLink from "./CustomLink/CustomLink"
+import CustomImage from "./CustomImage/CustomImage"
+import PipedriveForm from "./Form/PipedriveForm"
 
 export {
-  Cards,
   CasesList,
   CasesSection,
   Seo,
   LogosSection,
-  Form,
   Banner,
   BannerList,
   ExpandGrid,
@@ -35,7 +34,10 @@ export {
   DualSection,
   AnimatedTransitionContinous,
   BannerTop,
-  BannerHead,
   Professionals,
   FeaturedBlogs,
+  CustomSection,
+  CustomLink,
+  CustomImage,
+  PipedriveForm,
 }
