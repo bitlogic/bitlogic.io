@@ -10,10 +10,14 @@ import {
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
+  const { pageTitle, pageDescription, pageKeywords } = pageData?.seo
 
   return (
     <Layout location={location} options={{ hasHeader: true }}>
-      <Seo title={pageData.name} />
+      <Seo title={pageTitle}
+        description={pageDescription}
+        keywords={pageKeywords}
+      />
       {pageData?.body?.length > 0 && (
         <CustomSection sections={pageData.body} />
       )}
@@ -29,7 +33,12 @@ LandingPage.propTypes = {
           name: PropTypes.string.isRequired,
           body: PropTypes.arrayOf(
             PropTypes.object
-          )
+          ),
+          seo: PropTypes.shape({
+            pageTitle: PropTypes.string.isRequired,
+            pageDescription: PropTypes.string.isRequired,
+            pageKeywords: PropTypes.string
+          })
         })
       )
     })
@@ -43,6 +52,11 @@ export const query = graphql`
       nodes {
         body
         name
+        seo {
+          pageTitle
+          pageKeywords
+          pageDescription
+        }
       }
     }
   }

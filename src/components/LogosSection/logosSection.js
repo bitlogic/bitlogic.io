@@ -10,16 +10,20 @@ const LogosSection = ({ data }) => {
   const { title, summary, media } = data
   const { theme } = useTheme()
 
-  const logoList = media.map(logo => {
+  const logoList = media?.map(logo => {
+
+    if (!logo.img && !logo.imageDark) return null
+
     return (
-      <div className="logos__image">
-        <img
-          src={
-            theme === "dark" && logo.imageDark
-              ? logo.imageDark.url
-              : logo.img.url
+      <div className="logos__image" key={logo.id}>
+        <img alt={logo.name}
+          loading="lazy"
+          width={196}
+          height={186}
+          src={theme === "dark" && logo.imageDark
+            ? logo?.imageDark?.url
+            : logo?.img?.url
           }
-          alt={logo.name}
         />
       </div>
     )
@@ -43,37 +47,39 @@ const LogosSection = ({ data }) => {
       items: 1
     }
   };
+
   const CustomLeftArrow = ({ onClick }) => {
     return <FontAwesomeIcon
-      class="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
+      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
       icon="fa-solid fa-chevron-left"
       onClick={() => onClick()} />;
   };
+
   const CustomRightArrow = ({ onClick }) => {
     return <FontAwesomeIcon
-      class="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
+      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
       icon="fa-solid fa-chevron-right"
       onClick={() => onClick()} />;
   };
 
   return (
-    <div className="logos container py-3 my-3" id={data.strapi_component + "-" + data.id}>
+    <div className="logos container py-3 my-3">
       {title && <h2 className="logos__title">{title}</h2>}
-      {summary && <h6 className="logos__summary px-lg-3">{summary}</h6>}
-
-      <Carousel
-        responsive={responsive}
-        autoPlay={logoList.length > 4}
-        autoPlaySpeed={3000}
-        infinite={logoList.length > 4}
-        containerClass={'containerCarrusel'}
-        customRightArrow={<CustomRightArrow />}
-        customLeftArrow={<CustomLeftArrow />}
-        removeArrowOnDeviceType={logoList.length <= 4 && ['tablet', 'desktop']}
-      >
-        {logoList}
-      </Carousel>
-
+      {summary && <p className="logos__summary px-lg-3">{summary}</p>}
+      {media?.length > 0 && (
+        <Carousel
+          responsive={responsive}
+          autoPlay={logoList.length > 4}
+          autoPlaySpeed={3000}
+          infinite={logoList.length > 4}
+          containerClass={'containerCarrusel'}
+          customRightArrow={<CustomRightArrow />}
+          customLeftArrow={<CustomLeftArrow />}
+          removeArrowOnDeviceType={logoList.length <= 4 && ['tablet', 'desktop']}
+        >
+          {logoList}
+        </Carousel>
+      )}
     </div>
   )
 }

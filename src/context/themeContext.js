@@ -50,7 +50,7 @@ const getDeviseTheme = () => {
   }
 }
 ThemeProvider.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.node,
 }
 
 export default ThemeProvider

@@ -4,21 +4,23 @@ import FaIcon from "../../FaIcon/FaIcon"
 import "./location.scss";
 
 export default function Location() {
-    const data = useFooter();
-    const dataFooter = data?.allStrapiLayout?.nodes[0].footer;
+  const dataFooter = useFooter()?.allStrapiLayout?.nodes[0].footer;
 
-    const location = dataFooter.location?.iconText.map((item) => {
-        return (
-            <p className="icon-text d-flex">
-                <FaIcon type={item.icon.type} code={item.icon.code} />
-                {item.name}
-            </p>
-        )
-    });
+  const location = dataFooter?.location?.iconText?.map((item) => {
     return (
-        <div className='ContactData__Item'>
-            <h6>{dataFooter?.location?.title}</h6>
-            <p className='ContactData__Item__location'>{location}</p>
-        </div>
+      <div className="icon-text d-flex" key={item.id}>
+        <FaIcon type={item.icon.type} code={item.icon.code} />
+        {item.name}
+      </div>
     )
+  });
+
+  return (
+    <div className='ContactData__Item'>
+      <h6>{dataFooter?.location?.title}</h6>
+      <div className='ContactData__Item__location'>
+        {location}
+      </div>
+    </div>
+  )
 }

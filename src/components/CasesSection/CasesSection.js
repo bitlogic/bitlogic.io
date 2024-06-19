@@ -1,5 +1,4 @@
 import React from "react"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { useCases } from "../../hooks/index"
 import "./CasesSection.scss"
 import PropTypes from "prop-types"
@@ -28,15 +27,17 @@ const CasesSection = ({ data }) => {
         <div className="col-6 col-md-12">
           <CustomImage
             image={caso?.image}
+            width={130}
+            height={200}
             className="case__img"
             alt={caso?.image?.alternativeText || caso.title}
           />
         </div>
         <div className="col-6 col-md-12">
           <div className="case__descr">
-            <h5 className="case__descr_title">
+            <h4 className="case__descr_title">
               {caso.title}
-            </h5>
+            </h4>
             {caso?.description && (
               <div className="case__descr_text">
                 <MarkdownView
@@ -47,7 +48,7 @@ const CasesSection = ({ data }) => {
             )}
           </div>
           {caso?.button && (
-            <button>
+            <button aria-label={`Ir a ${caso.button.content}`}>
               <CustomLink
                 content={caso.button.content}
                 url={caso?.button?.url}

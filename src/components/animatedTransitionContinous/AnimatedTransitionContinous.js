@@ -1,9 +1,10 @@
 import React from "react"
 import "./animatedTransitionContinous.scss"
+import PropTypes from "prop-types"
 
-const AnimatedTransitionContinous = ({
-  data: { text = "", image, imagePosition, color },
-}) => {
+const AnimatedTransitionContinous = ({ data }) => {
+  const { text = "", image, imagePosition, color } = data;
+
   let longerText = ""
 
   const amount = text ? 200 : 50
@@ -15,14 +16,24 @@ const AnimatedTransitionContinous = ({
     <div className="m-scroll">
       <div className="m-scroll__title">
         <div className={text ? "" : "m-scroll__title-image"}>
-          {longerText.split("-").map(innerText => (
-            <div className="m-scroll__title-inner">
-              {imagePosition === "first" && (
-                <img src={image?.url} alt="" />
+          {longerText.split("-").map((innerText) => (
+            <div className="m-scroll__title-inner" key={`AnimatedScroll-${crypto?.randomUUID()}`}>
+              {imagePosition === "first" && image && (
+                <img loading="lazy"
+                  src={image?.url}
+                  alt={image?.alternativeText || 'Image Animated'}
+                  width={40}
+                  height={40}
+                />
               )}
-              <h1 style={{color: color}}>{innerText || ""}</h1>
-              {(imagePosition === "last" || !imagePosition) && (
-                <img src={image?.url} alt="" />
+              <h2 style={{ color: color }}>{innerText || ""}</h2>
+              {(imagePosition === "last" || !imagePosition) && image && (
+                <img loading="lazy"
+                  src={image?.url}
+                  alt={image?.alternativeText || 'Image Animated'}
+                  width={40}
+                  height={40}
+                />
               )}
             </div>
           ))}
@@ -30,6 +41,18 @@ const AnimatedTransitionContinous = ({
       </div>
     </div>
   )
+}
+
+AnimatedTransitionContinous.propTypes = {
+  data: PropTypes.shape({
+    text: PropTypes.string,
+    color: PropTypes.string,
+    imagePosition: PropTypes.string,
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      alternativeText: PropTypes.string
+    })
+  })
 }
 
 export default AnimatedTransitionContinous

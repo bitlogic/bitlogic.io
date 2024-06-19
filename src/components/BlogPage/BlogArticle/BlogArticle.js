@@ -10,18 +10,17 @@ const BlogArticle = ({ title, summary, image, slug, text }) => {
 
   return (
     <div className="article__container">
-      <CustomImage
-        image={image}
+      <CustomImage image={image}
         alt={image?.alternativeText || title}
         className="article__image"
+        width={140}
+        height={170}
       />
       <div className="article__description">
-        <h6>{`${title}`}</h6>
-        <div>
-          <MarkdownView markdown={`${summary}`}
-            dangerouslySetInnerHTML={{ __html: summary }}
-          />
-        </div>
+        <h4>{title}</h4>
+        <MarkdownView markdown={`${summary}`}
+          dangerouslySetInnerHTML={{ __html: summary }}
+        />
         <div className="article__link">
           <Link to={slug}>
             <small>{text || 'Ver más'}</small>

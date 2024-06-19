@@ -14,13 +14,11 @@ const Home = ({ location }) => {
 
   return (
     <Layout location={location}>
-      {data?.allStrapiHome?.nodes[0]?.pageMetadata && (
-        <Seo
-          title={pageTitle}
-          description={pageDescription}
-          keywords={pageKeywords}
-        />
-      )}
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        keywords={pageKeywords}
+      />
 
       {/* Dynamic zone */}
       {data?.body?.length > 0 && (

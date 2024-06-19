@@ -12,7 +12,7 @@ const CustomLink = ({ content, url, landing, className }) => {
     return (
       <Link
         className={className}
-        aria-label={`Navigate to ${content}`}
+        aria-label={`Ir a ${content}`}
         to={getUrl(landing.slug)}
       >
         {content}
@@ -37,7 +37,7 @@ const CustomLink = ({ content, url, landing, className }) => {
     <a
       href={url}
       className={className}
-      aria-label={`Navigate to ${content}`}
+      aria-label={`Ir a ${content}`}
     >
       {content}
     </a>

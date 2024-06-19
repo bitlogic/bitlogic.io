@@ -6,9 +6,11 @@ import { useTheme } from "../../context/themeContext"
 import "./expandGrid.scss"
 import { useLandingUrl } from "../../hooks"
 import PropTypes from "prop-types"
+import CustomImage from "../CustomImage/CustomImage"
 
 const ExpandGrid = ({ data }) => {
   const { theme } = useTheme()
+  const { title, subtitle, items } = data
 
   const backgroundImage = data.backgroundImage?.url
   const backgroundImageDark = data.backgroundImageDark?.url
@@ -26,9 +28,9 @@ const ExpandGrid = ({ data }) => {
       <div className="mx-auto sm:mx-3 pb-5 container">
         <section className="expandGrid">
           <div className="expandGrid-body">
-            <h2>{data.title}</h2>
-            <h6 className="px-md-3">{data.subtitle}</h6>
-            {data.items && data.items.length > 0 && (
+            {title && <h2>{title}</h2>}
+            {subtitle && <h3 className="px-md-3">{data.subtitle}</h3>}
+            {items?.length > 0 && (
               <AnimatedList items={data?.items?.slice(0, 4)} />
             )}
           </div>
@@ -60,7 +62,7 @@ ExpandGrid.propTypes = {
         url: PropTypes.string.isRequired,
         localFile: PropTypes.shape({
           childImageSharp: PropTypes.shape({
-            gatsbyImageDate: PropTypes.object.isRequired
+            gatsbyImageData: PropTypes.object.isRequired
           })
         })
       })
@@ -87,7 +89,7 @@ const ListItem = ({ index, onClick, data }) => {
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent">
             <div className="listItem-more">
-              <h5>{data.title}</h5>
+              <h4>{data.title}</h4>
             </div>
             <Flipped
               flipId={`avatar-${index}`}
@@ -95,9 +97,10 @@ const ListItem = ({ index, onClick, data }) => {
               shouldFlip={shouldFlip(index)}
               delayUntil={createCardFlipId(index)}
             >
-              <img src={data.image?.url}
+              <CustomImage
+                image={data?.image}
                 alt={data.image.alternativeText || 'Avatar image'}
-                className="avatar"
+                className='avatar'
               />
             </Flipped>
           </div>
@@ -114,7 +117,12 @@ ListItem.propTypes = {
     title: PropTypes.string.isRequired,
     image: PropTypes.shape({
       url: PropTypes.string.isRequired,
-      alternativeText: PropTypes.string
+      alternativeText: PropTypes.string,
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          gatsbyImageData: PropTypes.object.isRequired
+        })
+      })
     }).isRequired
   }).isRequired
 }
@@ -122,6 +130,7 @@ ListItem.propTypes = {
 const ExpandedListItem = ({ index, data, isFirst }) => {
   const getUrl = useLandingUrl()
   const scrollRef = useRef(null)
+
   return (
     <Flipped
       flipId={createCardFlipId(index)}
@@ -137,21 +146,22 @@ const ExpandedListItem = ({ index, data, isFirst }) => {
         <Flipped inverseFlipId={createCardFlipId(index)}>
           <div className="listItemContent-expanded">
             <div className="listItem-more-expanded">
-              <h5>{data.title}</h5>
+              <h4>{data.title}</h4>
             </div>
             <Flipped
               flipId={`avatar-${index}`}
               stagger="card-image"
               delayUntil={createCardFlipId(index)}
             >
-              <img src={data.image?.url}
-                alt={data.image.alternativeText || 'Avatar image expanded'}
-                className="avatar-expanded"
+              <CustomImage
+                image={data?.image}
+                alt={data?.image?.alternativeText || 'Avatar image expanded'}
+                className='avatar-expanded'
               />
             </Flipped>
             <div className={"additional-content "}>
               <div style={isFirst ? { opacity: "1" } : {}}>
-                <h4>{data.title}</h4>
+                <h6>{data.title}</h6>
                 {data?.text && (
                   <div className="additional-content-markdown">
                     <MarkdownView markdown={data.text}
@@ -183,7 +193,12 @@ ExpandedListItem.propTypes = {
     }),
     image: PropTypes.shape({
       url: PropTypes.string.isRequired,
-      alternativeText: PropTypes.string
+      alternativeText: PropTypes.string,
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          gatsbyImageData: PropTypes.object.isRequired
+        })
+      })
     }),
   })
 }
@@ -213,6 +228,7 @@ const AnimatedList = ({ items }) => {
       }
     }
   }
+
   return (
     <Flipper
       flipKey={itemsArray.focused}
@@ -260,6 +276,5 @@ AnimatedList.propTypes = {
     })
   )
 }
-
 
 export default ExpandGrid

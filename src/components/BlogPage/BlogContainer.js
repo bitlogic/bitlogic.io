@@ -32,7 +32,7 @@ const Blog = () => {
               {category.map((item, idx) => (
                 <BlogArticle
                   key={idx}
-                  image={item.image}
+                  image={item?.image || item?.imagePage}
                   title={item.title}
                   summary={item.summary}
                   slug={"/blog/" + item.slug}
