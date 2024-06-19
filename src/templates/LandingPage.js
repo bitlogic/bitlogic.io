@@ -13,7 +13,10 @@ const LandingPage = ({ data, location }) => {
 
   return (
     <Layout location={location} options={{ hasHeader: true }}>
-      <Seo title={pageData.name} />
+      <Seo title={pageData?.seo?.pageTitle || pageData.name}
+        description={pageData?.seo?.pageDescription}
+        keywords={pageData?.seo?.pageKeywords}
+      />
       {pageData?.body?.length > 0 && (
         <CustomSection sections={pageData.body} />
       )}
@@ -29,7 +32,12 @@ LandingPage.propTypes = {
           name: PropTypes.string.isRequired,
           body: PropTypes.arrayOf(
             PropTypes.object
-          )
+          ),
+          seo: PropTypes.shape({
+            pageTitle: PropTypes.string.isRequired,
+            pageDescription: PropTypes.string.isRequired,
+            pageKeywords: PropTypes.string
+          })
         })
       )
     })
@@ -43,6 +51,11 @@ export const query = graphql`
       nodes {
         body
         name
+        seo {
+          pageTitle
+          pageKeywords
+          pageDescription
+        }
       }
     }
   }

@@ -3,19 +3,21 @@ import React from "react"
 import "./Banner.scss"
 import useLandingUrl from "../../hooks/useLandingUrl"
 import PropTypes from "prop-types"
+import CustomImage from "../CustomImage/CustomImage"
 
 export default function BannerList({ data }) {
   const { title, Card, contactForm, concactFormAnchor, callToAction } = data
   const getUrl = useLandingUrl()
   const cards = Card.map(item => {
     return (
-      <div className="card_item d-flex mb-2">
+      <div className="card_item d-flex mb-2 gap-2" key={item.id}>
         {item?.icon && (
           <div className="card_item">
-            <img className="d-block"
-              alt={item?.icon?.alternativeText || 'card-icon'}
-              src={item.icon.url}
-              placeholder="blurred"
+            <CustomImage image={item?.icon}
+              className={'d-block'}
+              alt={item?.icon?.alternativeText || 'Card icon'}
+              width={60}
+              height={60}
             />
           </div>
         )}
@@ -37,17 +39,17 @@ export default function BannerList({ data }) {
   })
 
   return (
-    <div className="container pt-5">
+    <div className="container py-5">
       <div className="bannerList d-md-flex flex-row">
-        <h1 className="bannerList__title col-md-6 col-xl-6 align-self-center mb-4">
+        <h2 className="bannerList__title col-md-6 col-xl-6 align-self-center mb-4">
           {title}
           {contactForm && concactFormAnchor && callToAction && (
             <button>
               <a href={concactFormAnchor}>{callToAction}</a>
             </button>
           )}
-        </h1>
-        <div className="bannerList__cards col-md-6 col-xl-6">
+        </h2>
+        <div className="bannerList__cards d-flex flex-column col-md-6 col-xl-6 gap-4">
           {cards}
         </div>
         {contactForm && concactFormAnchor && callToAction && (

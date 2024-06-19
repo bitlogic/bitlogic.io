@@ -58,8 +58,8 @@ const Dropdown = ({ sections, topLevel }) => {
         )}
         <div className="dropdown_section">
           {sections?.map(section =>
-            <div>
-              <div className="dropdown_elem-link" key={section.id}>
+            <div key={section.id}>
+              <div className="dropdown_elem-link">
                 {section.icon && (
                   <GatsbyImage
                     image={getImage(section.icon.localFile?.childrenImageSharp[0].gatsbyImageData)}

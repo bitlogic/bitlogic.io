@@ -1,45 +1,36 @@
 import React from 'react'
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { useProfessionals } from '../../hooks'
 import "./Professionals.scss"
 import { FaLinkedinIn } from "react-icons/fa"
+import CustomImage from "../CustomImage/CustomImage"
+import PropTypes from "prop-types"
 
 const Professionals = ({ data }) => {
   const { title, summary, professionals } = data
-  const professionalsData = useProfessionals()
+  const professionalsData = useProfessionals()?.allStrapiProfessional?.nodes
 
-  const professionalsList = professionals.map(pro =>
-    professionalsData?.allStrapiProfessional?.nodes.find(professional => professional.strapiId === pro.id)
+  const professionalsList = professionals?.map(pro =>
+    professionalsData?.find(professional => professional.strapiId === pro.id)
   ).slice(0, 6)
 
-  const professionalsCards = professionalsList.map((pro, idx) => {
-
-    const photo = pro?.photo?.localFile ? getImage(pro.photo.localFile) : undefined
-
-    const { name, position, quote, linkedin } = pro
+  const professionalsCards = professionalsList?.map(pro => {
+    const { name, position, quote, linkedin, photo } = pro
 
     return (
-      <div
-        className="pro col-12 col-md-4 row"
-        key={`pro-${idx}`}
-        id={data.strapi_component + "-" + data.id}
-      >
+      <div key={`pro-${pro.id}`} className="pro col-12 col-md-4 row">
         <div className="col-6 col-md-12">
-          {photo ? (
-            <GatsbyImage image={photo} alt={name} className="pro__img" />
-          ) : (
-            <img
-              src={pro?.photo?.url}
-              alt={name}
-              className='pro__img'
-            />
-          )}
+          <CustomImage image={photo}
+            width={160}
+            height={250}
+            alt={photo?.alternativeText || name}
+            className='pro__img'
+          />
         </div>
         <div className="col-6 col-md-12">
           <div className="pro__descr">
-            <h6 className="pro__descr_title">{name}</h6>
-            {linkedin && <a href={linkedin} target="_blank" rel='noopener noreferrer'><FaLinkedinIn size={23} /></a>}
-            {position && <h6 className="pro__descr_position">{position}</h6>}
+            <h4 className="pro__descr_title">{name}</h4>
+            {linkedin && <a href={linkedin} target="_blank" rel='noopener noreferrer' aria-label='Link externo a LinkedIn'><FaLinkedinIn size={28} /></a>}
+            {position && <p className="pro__descr_position">{position}</p>}
             <p className="pro__descr_text">{quote}</p>
           </div>
         </div>
@@ -50,12 +41,36 @@ const Professionals = ({ data }) => {
   return (
     <div className="container pt-5 pb-1 prosSection">
       {title && <h2>{title}</h2>}
-      {summary && <h6 className="prosSection__summary px-lg-3">{summary}</h6>}
-      {(professionalsCards !== undefined && professionalsCards.length > 0) &&
+      {summary && <p className="prosSection__summary px-lg-3">{summary}</p>}
+      {professionalsCards?.length > 0 &&
         <div className="cases row">{professionalsCards}</div>
       }
     </div>
   )
+}
+
+Professionals.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    summary: PropTypes.string,
+    professionals: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        position: PropTypes.string,
+        linkedin: PropTypes.string,
+        quote: PropTypes.string.isRequired,
+        photo: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          alternativeText: PropTypes.string,
+          localFile: PropTypes.shape({
+            childImageSharp: PropTypes.shape({
+              gatsbyImageData: PropTypes.object.isRequired
+            })
+          })
+        }).isRequired
+      })
+    )
+  })
 }
 
 export default Professionals

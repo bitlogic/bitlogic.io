@@ -5,6 +5,7 @@ import { useTheme } from "../../context/themeContext"
 import "./Banner.scss"
 import PropTypes from 'prop-types'
 import CustomLink from "../CustomLink/CustomLink"
+import CustomImage from "../CustomImage/CustomImage"
 
 const Banner = ({ data }) => {
   const { theme } = useTheme()
@@ -21,23 +22,21 @@ const Banner = ({ data }) => {
   const showTitle = () => {
     if (variant === "diagonal" || variant === "diagonalReverse") {
       return <h2>{title}</h2>
-    } else {
-      return <h1>{title}</h1>
     }
+
+    return <h1>{title}</h1>
   }
 
   return (
     <div className={`banner ${variant}`}>
       <div className="container banner__wrapper">
         {variant === "background" ?
-          <div
-            className="bgImage"
+          <div className="bgImage"
             style={{
-              backgroundImage: `url(${image?.url})`,
+              backgroundImage: image ? `url(${image?.url})` : '',
               backgroundPosition: 'center',
-              // backgroundSize: 'cover',
             }}>
-            <div className="title-background ">
+            <div className="title-background">
               <h1 style={{ color: theme === 'dark' ? 'white' : '#3F6BE8' }}>{title}</h1>
               {summary && (
                 <MarkdownView
@@ -77,19 +76,18 @@ const Banner = ({ data }) => {
             </div>
 
             <div className="imagen">
-              {image?.url ? (
-                <img
-                  src={theme === "dark" && imageDark ? imageDark?.url : image?.url}
+              {image ? (
+                <CustomImage image={theme === 'dark' && imageDark ? imageDark : image}
+                  alt={image?.alternativeText || title}
+                  className={''}
                   width={290}
                   height={200}
-                  alt={image?.alternativeText || title}
-                />) : (
+                />
+              ) : (
                 <div className="cont-lottie">
-                  {animation && <Lottie options={{
-                    ...defaultOptions,
-                    animationData: animation,
-                  }}
-                  />}
+                  {animation && (
+                    <Lottie options={{ ...defaultOptions, animationData: animation }} />
+                  )}
                 </div>
               )}
             </div>

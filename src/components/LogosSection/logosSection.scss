@@ -1,14 +1,27 @@
 @import "../../styles/global.scss";
 
+.containerCarrusel {
+  min-width: 290px;
+  min-height: 185px;
+
+  &-inactive {
+    min-height: 0;
+  }
+}
+
 .logos {
   color: $primary;
+
   &__title {
     font-weight: 700;
     text-transform: uppercase;
   }
+
   &__summary {
     font-weight: 400;
+    font-size: $medium;
   }
+
   &__logos {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -16,9 +29,15 @@
     flex-direction: column;
     align-items: center;
   }
+
   &__image {
     margin-top: 15px;
     max-width: 220px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .react-multi-carousel-list {
@@ -28,12 +47,15 @@
       max-width: 20px;
       max-height: 20px;
     }
+
     .left {
       left: -8px;
     }
+
     .right {
       right: -8px;
     }
+
     button {
       background: none;
 
@@ -42,6 +64,7 @@
         font-weight: 900;
       }
     }
+
     .react-multi-carousel-item {
       display: flex;
       justify-content: center;
@@ -55,18 +78,21 @@
     &__title {
       text-align: center;
     }
+
     &__summary {
       text-align: center;
       margin-top: 20px;
       margin-bottom: 50px !important;
       line-height: 28px;
     }
+
     &__logos {
       margin: 30px 0;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
     }
+
     &__image {
       margin: 10px 10px 0 10px;
       padding: 0px 25px;

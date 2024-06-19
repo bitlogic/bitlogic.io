@@ -4,9 +4,9 @@ import { Link } from "gatsby"
 import Navbar from "react-bootstrap/Navbar"
 import AnimatedNavbar from "./AnimatedNavBar/AnimatedNavbar"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import CustomLink from "../CustomLink/CustomLink"
 
-import { useLandingUrl, useNavbar } from "../../hooks/index"
-import menusvg from '../../images/menu.svg'
+import { useNavbar } from "../../hooks/index"
 import { useTheme } from "../../context/themeContext"
 // theme images
 import moon from "../../images/moon-solid.svg"
@@ -14,19 +14,12 @@ import sun from "../../images/sun.svg"
 
 const NavBar = () => {
   const { theme, toggleTheme } = useTheme()
-  const navbarData = useNavbar()
-  const getUrl = useLandingUrl();
+  const navbarData = useNavbar()?.allStrapiLayout?.nodes[0]
+  const menuData = navbarData?.menu
 
-  const menuData = navbarData.allStrapiLayout?.nodes[0].menu
-
-  const logoLight = getImage(
-    navbarData.allStrapiLayout?.nodes[0].navbar?.logo?.localFile
-  )
-  const logoDark = getImage(
-    navbarData.allStrapiLayout?.nodes[0].navbar?.logoDark?.localFile
-  )
-
-  const navbarButton = navbarData.allStrapiLayout?.nodes[0].navbar?.navButton
+  const logoLight = getImage(navbarData?.navbar?.logo?.localFile)
+  const logoDark = getImage(navbarData?.navbar?.logoDark?.localFile)
+  const navbarButton = navbarData?.navbar?.navButton
 
   return (
     <>
@@ -47,26 +40,22 @@ const NavBar = () => {
           {menuData && (
             <div className="NavBar_links">
               <AnimatedNavbar
-                // homeComponents={navbarData.allStrapiHome?.nodes[0].body}
-                navbarItems={
-                  menuData
-                }
+                navbarItems={menuData}
                 duration={300}
               />
             </div>
           )}
           <div className="NavBar_Side">
             {navbarButton && (
-              <button className="NavBar_Side-contact">
-                <Link
-                  to={
-                    navbarButton.landing_page
-                      ? "/" + navbarButton.landing_page.slug
-                      : ""
-                  }
-                >
-                  {navbarButton.content}
-                </Link>
+              <button className="NavBar_Side-contact"
+                aria-label={`Ir a ${navbarButton.content}`}
+              >
+                <CustomLink
+                  content={navbarButton.content}
+                  url={navbarButton?.url}
+                  landing={navbarButton?.landing_page}
+                  className=''
+                />
               </button>
             )}
             <button className="theme-toggle" onClick={toggleTheme}>

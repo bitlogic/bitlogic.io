@@ -74,7 +74,7 @@ const CustomSection = ({ sections }) => {
 
 CustomSection.propTypes = {
   sections: PropTypes.arrayOf(
-    PropTypes.node
+    PropTypes.object
   )
 }
 

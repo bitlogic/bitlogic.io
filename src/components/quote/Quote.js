@@ -1,14 +1,13 @@
 import "./quote.scss"
 import MarkdownView from "react-showdown"
 import React from "react"
-import { Link } from 'gatsby'
-import { useLandingUrl } from "../../hooks"
+import CustomLink from "../CustomLink/CustomLink"
+import PropTypes from "prop-types"
+import CustomImage from "../CustomImage/CustomImage"
 
-const Quote = ({
-  data: { description, title, variant, profileDescription, videoUrl, button, profile, image, strapi_component, id },
-}) => {
+const Quote = ({ data }) => {
+  const { description, title, variant, profileDescription, videoUrl, button, profile, image } = data
 
-  const getUrl = useLandingUrl()
   const url = videoUrl?.replace("watch?v=", "embed/")
   let code = url?.substring(url.lastIndexOf("/") + 1, url.length)
   const codeIndex = code?.indexOf("?")
@@ -18,13 +17,16 @@ const Quote = ({
   }
 
   return (
-    <div className="container mb-3 mb-lg-5" id={strapi_component + "-" + id}>
+    <div className="container mb-3 mb-lg-5">
       <section className={`quote variant-${variant} py-lg-4`}>
         {(image && !videoUrl) && (
           <div className="quote-body">
-            <img
-              src={image.url}
-              alt={image.name}
+            <CustomImage
+              image={image}
+              alt={image?.alternativeText || 'Image quote'}
+              width={290}
+              height={360}
+              className=''
             />
           </div>
         )}
@@ -48,42 +50,46 @@ const Quote = ({
                 webkitallowfullscreen="true"
                 mozallowfullscreen="true"
               ></iframe>
-
             )}
-
           </div>
         )}
 
         <div className="quote-person">
-          <h4 className="quote-person-title">{title}</h4>
-          <MarkdownView markdown={description} className="quote-person-text" />
+          {title && <h4 className="quote-person-title">{title}</h4>}
+          <div className="quote-person-text">
+            <MarkdownView
+              markdown={description}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          </div>
 
           {profile && (
             <div className="quote-profile make-it-fast my-3 my-md-2 my-xl-4 d-flex gap-3 justify-content-between">
-              <img
-                src={profile.url}
-                alt="quote author"
+              <CustomImage
+                image={profile}
+                alt={profile?.alternativeText || 'Quote author'}
+                width={70}
+                height={70}
+                className=''
               />
               <div className="flex-grow-1 align-self-center">
-                <MarkdownView markdown={profileDescription} className="markdown" />
+                <MarkdownView
+                  markdown={profileDescription}
+                  dangerouslySetInnerHTML={{ __html: profileDescription }}
+                />
               </div>
             </div>
           )}
           {button && (
             <div className="quote-btn">
-              {button.landing_page ? (
-                <Link to={getUrl(button.landing_page.slug)}>
-                  {button.content}
-                </Link>
-              ) : (button.url && (
-                <a href={button.url}
-                  target={button.url.startsWith('http') && '_blank'}
-                  rel={button.url.startsWith('http') && 'noreferrer noopener'}
-                >
-                  <button>{button.content}</button>
-                </a>
-              )
-              )}
+              <button aria-label={`Ir a ${button.content}`}>
+                <CustomLink
+                  content={button.content}
+                  url={button?.url}
+                  landing={button?.landing_page}
+                  className=''
+                />
+              </button>
             </div>
           )}
         </div>
@@ -101,6 +107,41 @@ Quote.defaultProps = {
   button: {},
   profile: {},
   image: {},
+}
+
+Quote.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    variant: PropTypes.string,
+    profileDescription: PropTypes.string,
+    videoUrl: PropTypes.string,
+    button: PropTypes.shape({
+      content: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string.isRequired
+      })
+    }),
+    profile: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      alternativeText: PropTypes.string,
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          gatsbyImageData: PropTypes.object.isRequired
+        })
+      })
+    }),
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      alternativeText: PropTypes.string,
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          gatsbyImageData: PropTypes.object.isRequired
+        })
+      })
+    })
+  })
 }
 
 export default Quote

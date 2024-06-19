@@ -2,7 +2,7 @@ import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types"
 
-const CustomImage = ({ image, className, alt }) => {
+const CustomImage = ({ image, className, alt, width, height }) => {
 
   if (!image) return null;
 
@@ -12,18 +12,23 @@ const CustomImage = ({ image, className, alt }) => {
     const localImage = getImage(localFile);
 
     return (
-      <GatsbyImage
+      <GatsbyImage loading="lazy"
         image={localImage}
         alt={alt}
         className={className}
+        width={width}
+        height={height}
       />
     )
   }
 
   return (
-    <img src={url}
+    <img loading="lazy"
+      src={url}
       alt={alt}
       className={className}
+      width={width}
+      height={height}
     />
   )
 }
@@ -31,6 +36,8 @@ const CustomImage = ({ image, className, alt }) => {
 CustomImage.propTypes = {
   className: PropTypes.string,
   alt: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
   image: PropTypes.shape({
     url: PropTypes.string,
     localFile: PropTypes.shape({

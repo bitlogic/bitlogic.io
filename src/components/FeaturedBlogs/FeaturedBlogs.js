@@ -15,28 +15,30 @@ const compareDates = (a, b) => {
 }
 
 const FeaturedBlogs = ({ data }) => {
-  const callToAction = useBlog()?.allStrapiBlogPage?.callToAction;
+  const { title, subtitle, articles } = data;
+  const callToAction = useBlog()?.allStrapiBlogPage?.callToActionArticle;
 
   return (
     <div className="container featured pb-3">
-      <h2>{data.title}</h2>
-      <h6 className="px-md-3">{data.subtitle}</h6>
-
-      <div className="featured-blogs">
-        {data.articles
-          .sort(compareDates)
-          .slice(0, 3)
-          .map((item, idx) => (
-            <BlogArticle
-              key={idx}
-              image={item.image}
-              title={item.title}
-              summary={item.summary}
-              slug={"/blog/" + item.slug}
-              text={callToAction}
-            />
-          ))}
-      </div>
+      {title && <h2>{title}</h2>}
+      {subtitle && <h3 className="px-md-3">{subtitle}</h3>}
+      {articles?.length > 0 && (
+        <div className="featured-blogs">
+          {articles
+            .sort(compareDates)
+            .slice(0, 3)
+            .map((item, idx) => (
+              <BlogArticle
+                key={idx}
+                image={item?.image || item?.imagePage}
+                title={item.title}
+                summary={item.summary}
+                slug={"/blog/" + item.slug}
+                text={callToAction}
+              />
+            ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -59,7 +61,16 @@ FeaturedBlogs.propTypes = {
               gatsbyImageData: PropTypes.object.isRequired
             })
           })
-        }).isRequired
+        }),
+        imagePage: PropTypes.shape({
+          alternativeText: PropTypes.string,
+          url: PropTypes.string.isRequired,
+          localFile: PropTypes.shape({
+            childImageSharp: PropTypes.shape({
+              gatsbyImageData: PropTypes.object.isRequired
+            })
+          })
+        }),
       })
     )
   })

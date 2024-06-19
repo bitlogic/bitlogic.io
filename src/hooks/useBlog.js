@@ -22,6 +22,15 @@ const useBlog = () => {
               }
             }
           }
+          imagePage {
+            url
+            alternativeText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
           
           blog_category {
             name

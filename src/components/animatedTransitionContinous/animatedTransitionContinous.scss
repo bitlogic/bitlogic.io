@@ -8,6 +8,7 @@
   overflow: hidden;
   z-index: 1;
   margin: 2rem auto;
+
   &__title {
     display: flex;
     position: absolute;
@@ -20,40 +21,51 @@
     white-space: nowrap;
     transform: scale(1.5);
     transition: all 50ms ease;
-    & > div {
+
+    &>div {
       display: flex;
       animation: scrollText 120s infinite linear;
+
       &:hover {
         animation-play-state: paused;
       }
+
       @keyframes scrollText {
         from {
           transform: translateX(0%);
         }
+
         to {
           transform: translateX(-50%);
         }
       }
     }
-    &-image{
+
+    &-image {
       animation: scrollText 200s infinite linear !important;
+
       &:hover {
         animation-play-state: unset !important;
       }
     }
-    &-inner{
+
+    &-inner {
       display: flex;
       flex-direction: row;
       margin-right: 40px;
-      img{
+
+      img {
         margin: 0 50px;
         height: 40px;
+        object-fit: contain;
       }
-      h1 {
+
+      h2 {
         margin: 0;
         color: rgba(255, 255, 255, 1) transparent;
         transition: all 1s ease;
         cursor: default;
+
         &:hover {
           text-decoration: none;
           color: $primary;
@@ -63,14 +75,16 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-lg){
+@media screen and (min-width: $breakpoint-lg) {
   .m-scroll {
     &__title {
       &-inner {
         margin-right: 80px;
-        img{
+
+        img {
           margin: 0 100px;
           height: 70px;
+          width: 70px;
         }
       }
     }

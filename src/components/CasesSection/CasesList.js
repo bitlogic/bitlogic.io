@@ -21,7 +21,7 @@ const CasesList = ({ data }) => {
           />
         </div>
         <div className="col-12 col-md-7">
-          <h5 className="pt-3 pb-2 caseExpanded__title">{caso.title}</h5>
+          <h4 className="pt-3 pb-2 caseExpanded__title">{caso.title}</h4>
           {caso.description && (
             <div className="caseExpanded__descr">
               <MarkdownView markdown={caso.description}
@@ -32,9 +32,9 @@ const CasesList = ({ data }) => {
         </div>
         <div className="col-12 col-md-5 row caseQuote">
           {caso?.quote?.title && (
-            <h5 className="caseQuote__title col-12 pt-md-3 pb-2">
+            <h4 className="caseQuote__title col-12 pt-md-3 pb-2">
               {caso.quote.title}
-            </h5>
+            </h4>
           )}
           {caso?.quote?.description && (
             <div className="caseQuote__descr col-9 col-md-12">
