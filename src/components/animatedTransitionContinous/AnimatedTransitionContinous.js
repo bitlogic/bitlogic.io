@@ -17,8 +17,8 @@ const AnimatedTransitionContinous = ({ data }) => {
     <div className="m-scroll">
       <div className="m-scroll__title">
         <div className={text ? "" : "m-scroll__title-image"}>
-          {longerText.split("-").map((innerText) => (
-            <div className="m-scroll__title-inner" key={`AnimatedScroll-${crypto?.randomUUID()}`}>
+          {longerText.split("-").map((innerText, idx) => (
+            <div className="m-scroll__title-inner" key={`AnimatedScroll-${idx}`}>
               {imagePosition === "first" && image && (
                 <CustomImage image={image}
                   alt={image?.alternativeText || 'Image animated'}
