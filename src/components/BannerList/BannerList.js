@@ -3,6 +3,7 @@ import React from "react"
 import "./Banner.scss"
 import useLandingUrl from "../../hooks/useLandingUrl"
 import PropTypes from "prop-types"
+import CustomImage from "../CustomImage/CustomImage"
 
 export default function BannerList({ data }) {
   const { title, Card, contactForm, concactFormAnchor, callToAction } = data
@@ -12,10 +13,9 @@ export default function BannerList({ data }) {
       <div className="card_item d-flex mb-2 gap-2" key={item.id}>
         {item?.icon && (
           <div className="card_item">
-            <img className="d-block"
-              alt={item?.icon?.alternativeText || 'card-icon'}
-              src={item.icon.url}
-              placeholder="blurred"
+            <CustomImage image={item?.icon}
+              className={'d-block'}
+              alt={item?.icon?.alternativeText || 'Card icon'}
               width={60}
               height={60}
             />

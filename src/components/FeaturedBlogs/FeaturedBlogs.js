@@ -61,7 +61,16 @@ FeaturedBlogs.propTypes = {
               gatsbyImageData: PropTypes.object.isRequired
             })
           })
-        }).isRequired
+        }),
+        imagePage: PropTypes.shape({
+          alternativeText: PropTypes.string,
+          url: PropTypes.string.isRequired,
+          localFile: PropTypes.shape({
+            childImageSharp: PropTypes.shape({
+              gatsbyImageData: PropTypes.object.isRequired
+            })
+          })
+        }),
       })
     )
   })

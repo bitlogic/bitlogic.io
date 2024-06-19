@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import PropTypes from "prop-types"
+import CustomImage from "../CustomImage/CustomImage"
 
 
 const LogosSection = ({ data }) => {
@@ -17,14 +18,11 @@ const LogosSection = ({ data }) => {
 
     return (
       <div className="logos__image" key={logo.id}>
-        <img alt={logo.name}
-          loading="lazy"
+        <CustomImage image={theme === 'dark' && logo?.imageDark ? logo?.imageDark : logo?.img}
+          alt={logo?.image?.alternativeText || logo.name}
+          className={''}
           width={196}
           height={186}
-          src={theme === "dark" && logo.imageDark
-            ? logo?.imageDark?.url
-            : logo?.img?.url
-          }
         />
       </div>
     )
@@ -91,11 +89,24 @@ LogosSection.propTypes = {
     summary: PropTypes.string,
     media: PropTypes.arrayOf(
       PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        alternativeText: PropTypes.string,
-        localFile: PropTypes.shape({
-          childImageSharp: PropTypes.shape({
-            gatsbyImageData: PropTypes.object.isRequired
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        img: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          alternativeText: PropTypes.string,
+          localFile: PropTypes.shape({
+            childImageSharp: PropTypes.shape({
+              gatsbyImageData: PropTypes.object.isRequired
+            })
+          })
+        }).isRequired,
+        imageDark: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          alternativeText: PropTypes.string,
+          localFile: PropTypes.shape({
+            childImageSharp: PropTypes.shape({
+              gatsbyImageData: PropTypes.object.isRequired
+            })
           })
         })
       })

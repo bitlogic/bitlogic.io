@@ -4,6 +4,7 @@ import Lottie from 'react-lottie'
 import "./Form.scss"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
+import CustomImage from "../CustomImage/CustomImage"
 
 const PipedriveForm = ({ data }) => {
   const { title, content, form_url, image, animation } = data;
@@ -50,10 +51,10 @@ const PipedriveForm = ({ data }) => {
             />
           )}
           <div className="form__img text-center text-md-start">
-            {image?.url ? (
-              <img
-                src={image.url}
+            {image ? (
+              <CustomImage image={image}
                 alt={image?.alternativeText || title}
+                className={''}
                 width={290}
                 height={290}
               />
