@@ -10,13 +10,12 @@ import {
 
 const LandingPage = ({ data, location }) => {
   const pageData = data?.allStrapiLandingPage?.nodes[0]
-  const { pageTitle, pageDescription, pageKeywords } = pageData?.seo
 
   return (
     <Layout location={location} options={{ hasHeader: true }}>
-      <Seo title={pageTitle}
-        description={pageDescription}
-        keywords={pageKeywords}
+      <Seo title={pageData?.seo?.pageTitle || pageData.name}
+        description={pageData?.seo?.pageDescription}
+        keywords={pageData?.seo?.pageKeywords}
       />
       {pageData?.body?.length > 0 && (
         <CustomSection sections={pageData.body} />

@@ -66,7 +66,7 @@ function Seo({ description, lang, meta, title, keywords }) {
           content: metaDescription,
         },
       ].concat(meta)}
-      // link={[]}
+    // link={[]}
     />
   )
 }
@@ -75,6 +75,7 @@ Seo.defaultProps = {
   lang: `es`,
   meta: [],
   description: ``,
+  keywords: ``
 }
 
 Seo.propTypes = {
@@ -82,6 +83,7 @@ Seo.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  keywords: PropTypes.string
 }
 
 export default Seo
