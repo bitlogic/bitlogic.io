@@ -4,6 +4,7 @@ import { useTheme } from "../../context/themeContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+import PropTypes from "prop-types"
 
 
 const LogosSection = ({ data }) => {
@@ -82,6 +83,24 @@ const LogosSection = ({ data }) => {
       )}
     </div>
   )
+}
+
+LogosSection.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    summary: PropTypes.string,
+    media: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        alternativeText: PropTypes.string,
+        localFile: PropTypes.shape({
+          childImageSharp: PropTypes.shape({
+            gatsbyImageData: PropTypes.object.isRequired
+          })
+        })
+      })
+    )
+  })
 }
 
 export default LogosSection
