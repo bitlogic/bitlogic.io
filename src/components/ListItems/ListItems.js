@@ -11,46 +11,33 @@ const ListItems = ({ data }) => {
   const getUrl = useLandingUrl()
 
   const items = ListItem?.map(item => {
+    const content = (
+      <>
+        <h3 className="d-flex align-items-center gap-1">
+          <CustomImage
+            image={item?.icon}
+            alt={item?.icon?.alternativeText || item.title}
+            className={"d-block image"}
+            width={30}
+            height={30}
+          />
+          {item.title}
+        </h3>
+        {item?.description && (
+          <MarkdownView
+            markdown={item.description}
+            dangerouslySetInnerHTML={{ __html: item.description }}
+          />
+        )}
+      </>
+    )
+
     return (
       <div className="ListItems__wrapper__item" key={item.id}>
         {item.landing_page ? (
-          <Link to={getUrl(item.landing_page.slug)}>
-            <h3 className="d-flex align-items-center gap-1">
-              <CustomImage
-                image={item?.icon}
-                alt={item?.icon?.alternativeText || item.title}
-                className={"d-block image"}
-                width={30}
-                height={30}
-              />
-              {item.title}
-            </h3>
-            {item?.description && (
-              <MarkdownView
-                markdown={item.description}
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              />
-            )}
-          </Link>
+          <Link to={getUrl(item.landing_page.slug)}>{content}</Link>
         ) : (
-          <>
-            <h3 className="d-flex align-items-center gap-1">
-              <CustomImage
-                image={item?.icon}
-                alt={item?.icon?.alternativeText || item.title}
-                className={"d-block image"}
-                width={30}
-                height={30}
-              />
-              {item.title}
-            </h3>
-            {item?.description && (
-              <MarkdownView
-                markdown={item.description}
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              />
-            )}
-          </>
+          content
         )}
       </div>
     )
