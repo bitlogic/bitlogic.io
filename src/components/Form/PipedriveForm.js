@@ -4,36 +4,12 @@ import Lottie from "react-lottie"
 import "./Form.scss"
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
+import { Helmet } from "react-helmet"
 
 const PipedriveForm = ({ data }) => {
   const { title, content, form_url, image, animation } = data
 
   const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const isScriptLoaded = document.querySelector(
-      `script[src="https://webforms.pipedrive.com/f/loader"]`
-    )
-
-    if (!isScriptLoaded) {
-      const script = document.createElement("script")
-      script.src = "https://webforms.pipedrive.com/f/loader"
-      script.async = true
-      script.defer = true
-
-      script.onload = () => {
-        setLoading(false)
-      }
-
-      document.body.appendChild(script)
-
-      return () => {
-        document.body.removeChild(script)
-      }
-    } else {
-      setLoading(false)
-    }
-  }, [])
 
   const defaultOptions = {
     loop: true,
@@ -84,6 +60,14 @@ const PipedriveForm = ({ data }) => {
             data-pd-webforms={form_url}
           >
             {loading && <div>Cargando...</div>}
+            <Helmet>
+              <script
+                src="https://webforms.pipedrive.com/f/loader"
+                onLoad={() => setLoading(false)}
+                async
+                defer
+              />
+            </Helmet>
           </div>
         </div>
       </div>
