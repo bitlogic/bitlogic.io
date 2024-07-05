@@ -2,7 +2,6 @@ import React from "react"
 import "./animatedTransitionContinous.scss"
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
-import { Popover } from "bootstrap"
 
 const AnimatedTransitionContinous = ({ data }) => {
   const { text = "", image, imagePosition, color } = data
