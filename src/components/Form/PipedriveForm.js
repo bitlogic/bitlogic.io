@@ -1,38 +1,45 @@
 import React, { useState, useEffect } from "react"
 import MarkdownView from "react-showdown"
-import Lottie from 'react-lottie'
+import Lottie from "react-lottie"
 import "./Form.scss"
-import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
 
 const PipedriveForm = ({ data }) => {
-  const { title, content, form_url, image, animation } = data;
+  const { title, content, form_url, image, animation } = data
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://webforms.pipedrive.com/f/loader';
-    script.async = true;
-    script.defer = true;
+    const isScriptLoaded = document.querySelector(
+      `script[src="https://webforms.pipedrive.com/f/loader"]`
+    )
 
-    script.onload = () => {
-      setLoading(false);
-    };
+    if (!isScriptLoaded) {
+      const script = document.createElement("script")
+      script.src = "https://webforms.pipedrive.com/f/loader"
+      script.async = true
+      script.defer = true
 
-    document.body.appendChild(script);
+      script.onload = () => {
+        setLoading(false)
+      }
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+      document.body.appendChild(script)
+
+      return () => {
+        document.body.removeChild(script)
+      }
+    } else {
+      setLoading(false)
+    }
+  }, [])
 
   const defaultOptions = {
     loop: true,
     autoplay: true,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
+      preserveAspectRatio: "xMidYMid slice",
     },
   }
 
@@ -40,9 +47,7 @@ const PipedriveForm = ({ data }) => {
     <section className="form">
       <div className="container d-flex px-lg-2 flex-wrap">
         <div className="col-12 col-md-6 pe-md-5">
-          {title && (
-            <h2 className="title text-start">{title}</h2>
-          )}
+          {title && <h2 className="title text-start">{title}</h2>}
           {content && (
             <MarkdownView
               markdown={content}
@@ -52,32 +57,33 @@ const PipedriveForm = ({ data }) => {
           )}
           <div className="form__img text-center text-md-start">
             {image ? (
-              <CustomImage image={image}
+              <CustomImage
+                image={image}
                 alt={image?.alternativeText || title}
-                className={''}
+                className={""}
                 width={290}
                 height={290}
               />
             ) : (
               <>
-                {animation && <Lottie options={{
-                  ...defaultOptions,
-                  animationData: animation,
-                }}
-                />}
+                {animation && (
+                  <Lottie
+                    options={{
+                      ...defaultOptions,
+                      animationData: animation,
+                    }}
+                  />
+                )}
               </>
             )}
           </div>
         </div>
         <div className="col-12 col-md-6">
-          <div className="pipedriveWebForms form-wrapper" data-pd-webforms={form_url}>
-            {loading ? (
-              <div>Cargando...</div>
-            ) : (
-              <Helmet>
-                <script async defer src="https://webforms.pipedrive.com/f/loader"></script>
-              </Helmet>
-            )}
+          <div
+            className="pipedriveWebForms form-wrapper"
+            data-pd-webforms={form_url}
+          >
+            {loading && <div>Cargando...</div>}
           </div>
         </div>
       </div>
@@ -92,11 +98,10 @@ PipedriveForm.propTypes = {
     form_url: PropTypes.string.isRequired,
     image: PropTypes.shape({
       url: PropTypes.string.isRequired,
-      alternativeText: PropTypes.string
+      alternativeText: PropTypes.string,
     }),
-    animation: PropTypes.object
-
-  })
+    animation: PropTypes.object,
+  }),
 }
 
-export default PipedriveForm;
+export default PipedriveForm

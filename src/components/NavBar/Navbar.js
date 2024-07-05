@@ -24,7 +24,7 @@ const NavBar = () => {
   return (
     <>
       <Navbar variant="dark" expand="xl" className="NavBar">
-        <Link to="/" className="NavBar__Logo" >
+        <Link to="/" className="NavBar__Logo">
           <GatsbyImage
             image={theme === "dark" && logoDark ? logoDark : logoLight}
             alt={"bitlogic"}
@@ -39,39 +39,40 @@ const NavBar = () => {
           {/* Menu Links */}
           {menuData && (
             <div className="NavBar_links">
-              <AnimatedNavbar
-                navbarItems={menuData}
-                duration={300}
-              />
+              <AnimatedNavbar navbarItems={menuData} duration={300} />
             </div>
           )}
           <div className="NavBar_Side">
             {navbarButton && (
-              <button className="NavBar_Side-contact"
-                aria-label={`Ir a ${navbarButton.content}`}
-              >
-                <CustomLink
-                  content={navbarButton.content}
-                  url={navbarButton?.url}
-                  landing={navbarButton?.landing_page}
-                  className=''
-                />
-              </button>
+              <CustomLink
+                content={navbarButton.content}
+                url={navbarButton?.url}
+                landing={navbarButton?.landing_page}
+                className="NavBar_Side-contact"
+              />
             )}
-            <button className="theme-toggle" onClick={toggleTheme}>
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={`Cambiar página a modo ${
+                theme === "dark" ? "claro" : "oscuro"
+              }`}
+            >
               {theme === "dark" ? (
                 <img
                   src={moon}
                   className="theme-toggle-moon"
-                  alt="theme"
-                  width="20"
+                  alt="theme dark"
+                  width="25"
+                  height="25"
                 />
               ) : (
                 <img
                   className="theme-toggle-sun"
                   src={sun}
-                  alt="theme"
+                  alt="theme light"
                   width="25"
+                  height="25"
                 />
               )}
             </button>

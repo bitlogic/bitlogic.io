@@ -4,13 +4,13 @@ module.exports = {
     description: `Bitlogic Web es una empresa dedicada al diseño, ingeniería y desarrollo ágil de productos de software, especializada en la transformación digital de instituciones educativas .`,
     author: `Bitlogic.io`,
     siteUrl: process.env.SITE_URL,
-    // siteUrl: 'https://bitlogic.io',
+    // siteUrl: "https://bitlogic.io",
   },
   plugins: [
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        output: '/',
+        output: "/",
         query: `
         {
           allSitePage {
@@ -31,26 +31,26 @@ module.exports = {
         resolvePages: ({
           allSitePage: { nodes: allPages },
           strapiBlogPage: blogPage,
-          strapiHome: homePage
+          strapiHome: homePage,
         }) => {
           const singlePages = [
             {
-              path: '/',
-              lastmod: homePage.updated_at
+              path: "/",
+              lastmod: homePage.updated_at,
             },
             {
-              path: '/blog',
-              lastmod: blogPage.updated_at
-            }
-          ];
+              path: "/blog",
+              lastmod: blogPage.updated_at,
+            },
+          ]
 
           return allPages.map(page => {
-            if (page.path === '/') return singlePages[0]
-            else if (page.path === '/blog/') return singlePages[1]
+            if (page.path === "/") return singlePages[0]
+            else if (page.path === "/blog/") return singlePages[1]
 
             return {
               path: page.path,
-              lastmod: page?.pageContext?.lastmod
+              lastmod: page?.pageContext?.lastmod,
             }
           })
         },
@@ -60,27 +60,30 @@ module.exports = {
             lastmod: lastmod,
           }
         },
-      }
+      },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
         host: process.env.SITE_URL,
         sitemap: `${process.env.SITE_URL}/sitemap-index.xml`,
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          "G-F6VPYEJ1X0", // Google Analytics / G
-        ],
+        trackingIds: ["G-F6VPYEJ1X0"],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+          cookie_flags: "SameSite=None; Secure",
+        },
         // This object is used for configuration specific to this plugin
         pluginConfig: {
-          // Puts tracking script in the head instead of the body
           head: true,
+          respectDNT: true,
         },
       },
     },
@@ -95,7 +98,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        // siteUrl: 'https://bitlogic.io',
+        // siteUrl: "https://bitlogic.io",
         siteUrl: process.env.SITE_URL,
       },
     },
@@ -105,7 +108,7 @@ module.exports = {
         // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
         // apiURL: `https://strapi.bitlogic.io`,
         apiURL: process.env.STRAPI_URL,
-        // apiURL: 'http://127.0.0.1:1337',
+        // apiURL: "http://127.0.0.1:1337",
         queryLimit: 1000,
         collectionTypes: [
           `article`,
