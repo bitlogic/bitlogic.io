@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import MarkdownView from "react-showdown"
 import Lottie from "react-lottie"
 import "./Form.scss"

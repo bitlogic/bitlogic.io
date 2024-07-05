@@ -2,6 +2,7 @@ import React from "react"
 import "./animatedTransitionContinous.scss"
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
+import { Popover } from "bootstrap"
 
 const AnimatedTransitionContinous = ({ data }) => {
   const { text = "", image, imagePosition, color } = data
@@ -20,7 +21,7 @@ const AnimatedTransitionContinous = ({ data }) => {
           {longerText.split("-").map((innerText, idx) => (
             <div
               className="m-scroll__title-inner"
-              key={`AnimatedScroll-${idx}`}
+              key={`AnimatedScroll-${(innerText || image?.name) + idx}`}
             >
               {imagePosition === "first" && image && (
                 <CustomImage
@@ -55,8 +56,14 @@ AnimatedTransitionContinous.propTypes = {
     color: PropTypes.string,
     imagePosition: PropTypes.string,
     image: PropTypes.shape({
+      name: PropTypes.string,
       url: PropTypes.string.isRequired,
       alternativeText: PropTypes.string,
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          gatsbyImageData: PropTypes.object.isRequired,
+        }),
+      }),
     }),
   }),
 }
