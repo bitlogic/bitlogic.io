@@ -27,18 +27,14 @@ const useNavbar = () => {
             logo {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(
-                    placeholder: BLURRED
-                  )
+                  gatsbyImageData(placeholder: BLURRED)
                 }
               }
             }
             logoDark {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(
-                    placeholder: BLURRED
-                  )
+                  gatsbyImageData(placeholder: BLURRED)
                 }
               }
             }
@@ -61,10 +57,8 @@ const useNavbar = () => {
                 alternativeText
                 url
                 localFile {
-                  childrenImageSharp {
-                    gatsbyImageData(
-                      placeholder: BLURRED
-                    )
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED)
                   }
                 }
               }
@@ -79,10 +73,8 @@ const useNavbar = () => {
               url
               icon {
                 localFile {
-                  childrenImageSharp {
-                    gatsbyImageData(
-                      placeholder: BLURRED
-                    )
+                  childImageSharp {
+                    gatsbyImageData(placeholder: BLURRED)
                   }
                 }
                 alternativeText
@@ -110,7 +102,6 @@ const useNavbar = () => {
         }
       }
     }
-    
   `)
 }
 

@@ -1,73 +1,84 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import Navbar from "./Navbar"
 import NavbarItem from "./Navbar/NavbarItem"
 import { Flipper } from "react-flip-toolkit"
 import DropdownContainer from "./DropdownContainer"
 import Dropdown from "./DropdownContainer/Dropdown"
 import { useLandingUrl } from "../../../hooks"
+import PropTypes from "prop-types"
 
 const AnimatedNavbar = ({ navbarItems = [], duration }) => {
-
   const getUrl = useLandingUrl()
 
-  const url = (item) => {
-    if (item.dropdown) return ''
+  const url = item => {
+    if (item.dropdown) return ""
 
-    const landing = getUrl(item?.landing_page?.slug);
+    const landing = getUrl(item?.landing_page?.slug)
 
-    if(landing) return landing
+    if (landing) return landing
 
-    let slug = item?.url ? item.url : ''
+    let slug = item?.url ? item.url : ""
 
     return slug
   }
 
   const navbarConfig = [
     ...navbarItems.map(navItem => {
-      let res = {
+      return {
         title: navItem.title,
         slug: url(navItem),
-        dropdown: () => {
-          if(navItem.dropdown) {
-            return <Dropdown sections={navItem?.dropdownItems} topLevel={navItem?.toplevelItem} />
-          }
-          return <Dropdown sections={null} topLevel={null} />
-        },
-        isDropdown: navItem?.dropdown
+        dropdown: () =>
+          navItem.dropdown ? (
+            <Dropdown
+              sections={navItem?.dropdownItems}
+              topLevel={navItem?.toplevelItem}
+            />
+          ) : (
+            <Dropdown sections={null} topLevel={null} />
+          ),
+        isDropdown: navItem?.dropdown,
       }
-
-      return res
     }),
   ]
 
   const [activeIndex, setActiveIndex] = useState([])
-  const [animationOut, setAnimationOut] = useState(null)
+  const [animationOut, setAnimationOut] = useState(false)
 
   const [animatingOutTimeout, setAnimatingOutTimeout] = useState(null)
 
-  const resetDropdownState = i => {
+  const resetDropdownState = useCallback(i => {
     setActiveIndex(typeof i === "number" ? [i] : [])
     setAnimationOut(false)
-
     setAnimatingOutTimeout(null)
-  }
+  }, [])
 
-  const onMouseEnter = i => {
-    if (animatingOutTimeout) {
-      clearTimeout(animatingOutTimeout)
-      resetDropdownState(i)
-      return
-    }
-    if (activeIndex[activeIndex.length - 1] === i) return
+  const onMouseEnter = useCallback(
+    i => {
+      if (animatingOutTimeout) {
+        clearTimeout(animatingOutTimeout)
+        resetDropdownState(i)
+        return
+      }
+      if (activeIndex[activeIndex.length - 1] === i) return
 
-    setActiveIndex(prev => prev.concat(i))
-    setAnimationOut(false)
-  }
+      setActiveIndex(prev => prev.concat(i))
+      setAnimationOut(false)
+    },
+    [animatingOutTimeout, activeIndex, resetDropdownState]
+  )
 
-  const onMouseLeave = () => {
+  const onMouseLeave = useCallback(() => {
     setAnimationOut(true)
     setAnimatingOutTimeout(setTimeout(resetDropdownState, duration))
-  }
+  }, [resetDropdownState, duration])
+
+  useEffect(() => {
+    return () => {
+      if (animatingOutTimeout) {
+        clearTimeout(animatingOutTimeout)
+      }
+    }
+  }, [animatingOutTimeout])
 
   let CurrentDropdown
   let PrevDropdown
@@ -97,7 +108,7 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
               key={n?.title}
               title={n?.title}
               index={index}
-              onMouseEnter={onMouseEnter}
+              onMouseEnter={() => onMouseEnter(index)}
               isDropdown={n?.isDropdown}
             >
               {currentIndex === index && (
@@ -116,6 +127,22 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
       </Navbar>
     </Flipper>
   )
+}
+
+AnimatedNavbar.propTypes = {
+  duration: PropTypes.number.isRequired,
+  navbarItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+      dropdown: PropTypes.bool,
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string,
+      }),
+      toplevelItem: PropTypes.object,
+      dropdownItems: PropTypes.array,
+    })
+  ),
 }
 
 export default AnimatedNavbar

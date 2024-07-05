@@ -49,7 +49,7 @@ export default function DualSection({ data }) {
   ))
 
   return (
-    <section className="container py-5">
+    <section className="DualSection container py-5">
       {title && <h2>{title}</h2>}
       {summary && <p className="summary">{summary}</p>}
       <div className={`d-flex flex-column flex-md-row ${title && "pt-4"}`}>
