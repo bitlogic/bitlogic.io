@@ -1,18 +1,18 @@
-import React from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import React, { memo } from "react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import PropTypes from "prop-types"
 
-const CustomImage = ({ image, className, alt, width, height }) => {
+const CustomImage = memo(({ image, className, alt, width, height }) => {
+  if (!image) return null
 
-  if (!image) return null;
-
-  const { url, localFile } = image;
+  const { url, localFile } = image
 
   if (localFile) {
-    const localImage = getImage(localFile);
+    const localImage = getImage(localFile)
 
     return (
-      <GatsbyImage loading="lazy"
+      <GatsbyImage
+        loading="lazy"
         image={localImage}
         alt={alt}
         className={className}
@@ -23,7 +23,8 @@ const CustomImage = ({ image, className, alt, width, height }) => {
   }
 
   return (
-    <img loading="lazy"
+    <img
+      loading="lazy"
       src={url}
       alt={alt}
       className={className}
@@ -31,7 +32,7 @@ const CustomImage = ({ image, className, alt, width, height }) => {
       height={height}
     />
   )
-}
+})
 
 CustomImage.propTypes = {
   className: PropTypes.string,
@@ -42,10 +43,10 @@ CustomImage.propTypes = {
     url: PropTypes.string,
     localFile: PropTypes.shape({
       childImageSharp: PropTypes.shape({
-        gatsbyImageData: PropTypes.object.isRequired
-      })
-    })
-  })
+        gatsbyImageData: PropTypes.object.isRequired,
+      }),
+    }),
+  }),
 }
 
-export default CustomImage;
+export default CustomImage

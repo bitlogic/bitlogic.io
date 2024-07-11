@@ -1,0 +1,61 @@
+@import "../../styles/global.scss";
+
+.ListItems {
+  color: $primary !important;
+  h2 {
+    text-transform: uppercase;
+  }
+
+  a {
+    color: $primary;
+
+    &:hover,
+    &:active {
+      color: $secondary;
+    }
+  }
+
+  h3 {
+    font-size: $medium;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    text-wrap: pretty;
+  }
+  p {
+    margin: 0;
+  }
+
+  &__wrapper {
+    gap: 32px;
+
+    .image {
+      object-fit: contain;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    h2 {
+      text-align: center;
+    }
+
+    &__wrapper {
+      gap: 24px;
+      &__item {
+        flex: 1;
+      }
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    h3 {
+      font-size: 32px;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-xl) {
+    .image {
+      width: 70px;
+      height: 70px;
+    }
+  }
+}

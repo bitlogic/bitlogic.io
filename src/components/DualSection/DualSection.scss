@@ -1,12 +1,49 @@
 @import "../../styles/global.scss";
 
-.dualSection {
+.DualSection {
   color: $primary;
 
-  h4 {
-    margin-top: 1rem;
-    font-weight: 700;
+  h2 {
     margin-bottom: 16px;
+  }
+
+  .summary {
+    font-size: $medium;
+  }
+
+  & > div {
+    gap: clamp(40px, 4vw, 60px);
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    h2 {
+      text-align: center;
+    }
+
+    .summary {
+      text-align: center;
+      line-height: 28px;
+    }
+  }
+}
+
+.dualSection {
+  &__title {
+    display: block;
+    font-size: clamp(24px, 4vw, 32px) !important;
+    color: $primary;
+    margin-block: 16px !important;
+    font-weight: 700;
+
+    &.active {
+      transition: all 0.4s ease-in-out;
+    }
+
+    &.active:hover,
+    &.active:active {
+      color: $secondary;
+      text-decoration: 2px underline $secondary;
+    }
   }
 
   &__image {
@@ -19,24 +56,11 @@
     }
   }
 
-  a {
-    @include primaryBtn;
-    display: block;
-    min-width: auto;
-    padding: 10px 15px;
-
-    @media screen and (min-width: $breakpoint-lg) {
-      padding: 12px 30px;
-    }
-  }
-
   &__textContainer {
-    &>div {
-
-      p,
-      a {
-        font-size: 18px;
-      }
+    p,
+    a {
+      font-size: 18px;
+      margin-bottom: 8px;
     }
   }
 }
@@ -81,7 +105,6 @@
     flex-basis: 45%;
 
     &-body {
-
       p,
       a {
         font-size: $medium;
