@@ -5,7 +5,6 @@
     color: $primary;
     width: 100%;
     margin: 0 auto;
-    // padding: 4rem 1rem 3rem;
 
     p {
       font-size: $small;
@@ -264,7 +263,7 @@
           font-style: italic;
           color: #e7e6e4;
           z-index: 1;
-          font-family: "Sanchez";
+          font-family: "Sanchez", sans-serif;
         }
 
         strong {

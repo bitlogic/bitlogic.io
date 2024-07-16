@@ -3,6 +3,9 @@
 .navbar {
   &-el {
     margin: auto;
+    background: transparent;
+    border: none;
+    width: 100%;
   }
 
   &-list {

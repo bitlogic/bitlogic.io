@@ -10,9 +10,19 @@ export default function Navegation() {
   const dataNav = data?.allStrapiLayout?.nodes[0].navbar
 
   const navegationItems = dataNav.navbarItem.map((navItem, index) => {
-    const path = navItem?.singleType ? `/${navItem.singleType}` :
-      navItem?.landing ? getUrl(navItem.landing?.slug) :
-        `${navItem?.url ? navItem.url : ''}`
+    
+    let path;
+
+    if (navItem?.singleType) {
+      path = `/${navItem.singleType}`;
+    } else if (navItem?.landing) {
+      path = getUrl(navItem.landing?.slug);
+    } else if (navItem?.url) {
+      path = navItem.url;
+    } else {
+      path = '';
+}
+
 
     if (path.startsWith('http')) return (
       <li className="mb-2" key={`${navItem.label}-${index}`}>
