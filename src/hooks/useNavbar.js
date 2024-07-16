@@ -88,17 +88,11 @@ const useNavbar = () => {
       }
       allStrapiLandingPage {
         nodes {
-          body
           name
           slug
           parent_page {
             slug
           }
-        }
-      }
-      allStrapiHome {
-        nodes {
-          body
         }
       }
     }

@@ -27,7 +27,7 @@ type StrapiProfessional implements Node {
       locale: String
     ): Date
     photo: LocalFile
-    strapiId: Int
+    strapiId: ID
   }
 
   type LocalFile {

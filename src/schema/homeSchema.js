@@ -1,7 +1,7 @@
 const homeSchema = `
 
 type StrapiHome implements Node {
-    body: JSON
+    body: [BodyComponent]
     published_at(
       formatString: String
       fromNow: Boolean
