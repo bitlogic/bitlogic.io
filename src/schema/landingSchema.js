@@ -1,9 +1,9 @@
 const landingSchema = `
 type StrapiLandingPage implements Node {
-    body: JSON
     name: String
-    slug: String
-    parent_page : StrapiLandingPageParentPage
+    body: [BodyComponent]
+    slug: String  
+    parent_page : StrapiLandingPage
     published_at(
       formatString: String
       fromNow: Boolean
@@ -37,30 +37,81 @@ type StrapiLandingPage implements Node {
     pageKeywords: String
   }
 
-  type StrapiLandingPageParentPage {
+  type BodyComponent {
+    id: ID!
+    title: String
+    subtitle: String
+    summary: String
+    text: String
+    description: String
+    contactFormAnchor: String
+    callToAction: String
+    videoUrl: String
+    variant: String
+    imagePosition: String
+    color: String
+    profileDescription: String
+    form_url: String
+    content: String
+    animation: JSON
+    contactForm: Boolean
+    allCases: Boolean
+    allBlog: Boolean
+    show: Boolean
+    image: LocalFile
+    imageDark: LocalFile
+    backgroundImage: LocalFile
+    backgroundImageDark: LocalFile
+    video: LocalFile
+    profile: LocalFile
+    button: Button
+    media: [CustomImage]
+    items: [GridItems]
+    dualSectionPart: [SectionPart]
+    Card: [Card]
+    ListItem: [Card]
+    cases: [StrapiCase]
+    professionals: [StrapiProfessional]
+    articles: [StrapiArticle]
+  }
+
+  type Card {
+    id: ID!
+    title: String
+    description: String
+    landing_page: StrapiLandingPage
+    icon: LocalFile
+  }
+
+  type GridItems {
+    id: ID!
+    title: String!
+    text: String
+    landing_page: StrapiLandingPage
+    image: LocalFile
+  }
+
+  type CustomImage {
     id: ID!
     name: String
-    slug: String
-    body: JSON
-    seo: StrapiLandingPageSeo
-    published_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
-    created_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
-    updated_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
+    img: LocalFile
+    imageDark: LocalFile
+  }
+
+  type SectionPart {
+    id: ID!
+    title: String
+    description: String
+    button: Button
+    image: LocalFile
+    backgroundImage: LocalFile
+    backgroundImageDark: LocalFile
+  }
+
+  type Button {
+    content: String!
+    url: String
+    landing_page: StrapiLandingPage
   }
 
   type LocalFile {
