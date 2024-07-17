@@ -7,6 +7,19 @@ import 'react-multi-carousel/lib/styles.css'
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
 
+const CustomLeftArrow = ({ onClick }) => {
+  return <FontAwesomeIcon
+    className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
+    icon="fa-solid fa-chevron-left"
+    onClick={() => onClick()} />;
+};
+
+const CustomRightArrow = ({ onClick }) => {
+  return <FontAwesomeIcon
+    className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
+    icon="fa-solid fa-chevron-right"
+    onClick={() => onClick()} />;
+};
 
 const LogosSection = ({ data }) => {
   const { title, summary, media } = data
@@ -45,20 +58,6 @@ const LogosSection = ({ data }) => {
       breakpoint: { max: 576, min: 0 },
       items: 1
     }
-  };
-
-  const CustomLeftArrow = ({ onClick }) => {
-    return <FontAwesomeIcon
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
-      icon="fa-solid fa-chevron-left"
-      onClick={() => onClick()} />;
-  };
-
-  const CustomRightArrow = ({ onClick }) => {
-    return <FontAwesomeIcon
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
-      icon="fa-solid fa-chevron-right"
-      onClick={() => onClick()} />;
   };
 
   return (

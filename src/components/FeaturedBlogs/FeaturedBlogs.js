@@ -27,9 +27,9 @@ const FeaturedBlogs = ({ data }) => {
           {articles
             .sort(compareDates)
             .slice(0, 3)
-            .map((item, idx) => (
+            .map((item) => (
               <BlogArticle
-                key={idx}
+                key={item.id}
                 image={item?.image || item?.imagePage}
                 title={item.title}
                 summary={item.summary}

@@ -7,6 +7,19 @@ import Dropdown from "./DropdownContainer/Dropdown"
 import { useLandingUrl } from "../../../hooks"
 import PropTypes from "prop-types"
 
+function getDropdown(navItem) {
+  return () => (
+    navItem?.dropdown ? (
+      <Dropdown
+        sections={navItem?.dropdownItems}
+        topLevel={navItem?.toplevelItem}
+      />
+    ) : (
+      <Dropdown sections={null} topLevel={null} />
+    )
+  );
+}
+
 const AnimatedNavbar = ({ navbarItems = [], duration }) => {
   const getUrl = useLandingUrl()
 
@@ -27,15 +40,7 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
       return {
         title: navItem.title,
         slug: url(navItem),
-        dropdown: () =>
-          navItem.dropdown ? (
-            <Dropdown
-              sections={navItem?.dropdownItems}
-              topLevel={navItem?.toplevelItem}
-            />
-          ) : (
-            <Dropdown sections={null} topLevel={null} />
-          ),
+        dropdown: getDropdown(navItem),
         isDropdown: navItem?.dropdown,
       }
     }),

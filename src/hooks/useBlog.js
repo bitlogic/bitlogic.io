@@ -11,6 +11,7 @@ const useBlog = () => {
       allStrapiArticle(sort: { fields: published_at, order: DESC }) {
         nodes {
           title
+          id
           summary
           slug
           image {
