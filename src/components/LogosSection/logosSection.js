@@ -82,6 +82,13 @@ const LogosSection = ({ data }) => {
   )
 }
 
+CustomLeftArrow.propTypes = {
+  onClick: PropTypes.func,
+}
+CustomRightArrow.propTypes = {
+  onClick: PropTypes.func
+}
+
 LogosSection.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
