@@ -66,7 +66,6 @@ export const query = graphql`
           form_url
           contactFormAnchor
           contactForm
-          concactFormAnchor
           color
           callToAction
           allBlog

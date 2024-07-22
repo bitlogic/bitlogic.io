@@ -284,6 +284,13 @@ type StrapiBlogCategory implements Node {
     slug: String
     blog_category: StrapiArticleBlog_category
     author: [StrapiArticleAuthor]
+    seo: StrapiArticlePageMetaData
+  }
+
+  type StrapiArticlePageMetaData {
+    pageTitle: String
+    pageDescription: String
+    pageKeywords: String
   }
   
   type StrapiArticleBlog_category {

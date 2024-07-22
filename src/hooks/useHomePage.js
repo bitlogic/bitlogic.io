@@ -27,7 +27,6 @@ const useHomePage = () => {
             form_url
             contactFormAnchor
             contactForm
-            concactFormAnchor
             color
             callToAction
             allBlog

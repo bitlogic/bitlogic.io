@@ -7,13 +7,24 @@ import PropTypes from "prop-types"
 import "./BlogItemDetail.scss"
 
 const BlogDetail = ({ data }) => {
-  const { title, description, image, imagePage, author } = data?.allStrapiArticle?.nodes[0]
+  const {
+    title,
+    description,
+    image,
+    imagePage,
+    author,
+    seo,
+  } = data?.allStrapiArticle?.nodes[0]
 
   const bannerTop = imagePage ? { title, imagePage } : { title, image }
 
   return (
     <Layout>
-      <Seo title={title} />
+      <Seo
+        title={title}
+        description={seo?.pageDescription}
+        keywords={seo?.pageKeywords}
+      />
       <BannerTop banner={bannerTop} />
       <div className="detail__container row">
         <div className="col-lg-12">
@@ -29,7 +40,7 @@ const BlogDetail = ({ data }) => {
                     <CustomImage
                       image={author?.image}
                       alt={author?.image?.alternativeText || author.name}
-                      className=''
+                      className=""
                     />
                   </div>
                   <div className="detail__box-autor-description">
@@ -55,23 +66,28 @@ BlogDetail.propTypes = {
           title: PropTypes.string.isRequired,
           description: PropTypes.string.isRequired,
           slug: PropTypes.string.isRequired,
+          seo: PropTypes.shape({
+            pageTitle: PropTypes.string,
+            pageDescription: PropTypes.string,
+            pageKeywords: PropTypes.string,
+          }),
           image: PropTypes.shape({
             url: PropTypes.string.isRequired,
             alternativeText: PropTypes.string,
             localFile: PropTypes.shape({
               childImageSharp: PropTypes.shape({
-                gatsbyImageData: PropTypes.object.isRequired
-              })
-            })
+                gatsbyImageData: PropTypes.object.isRequired,
+              }),
+            }),
           }),
           imagePage: PropTypes.shape({
             url: PropTypes.string.isRequired,
             alternativeText: PropTypes.string,
             localFile: PropTypes.shape({
               childImageSharp: PropTypes.shape({
-                gatsbyImageData: PropTypes.object.isRequired
-              })
-            })
+                gatsbyImageData: PropTypes.object.isRequired,
+              }),
+            }),
           }),
           author: PropTypes.arrayOf(
             PropTypes.shape({
@@ -83,16 +99,16 @@ BlogDetail.propTypes = {
                 alternativeText: PropTypes.string,
                 localFile: PropTypes.shape({
                   childImageSharp: PropTypes.shape({
-                    gatsbyImageData: PropTypes.object.isRequired
-                  })
-                })
-              })
+                    gatsbyImageData: PropTypes.object.isRequired,
+                  }),
+                }),
+              }),
             })
-          )
+          ),
         })
-      )
-    })
-  })
+      ),
+    }),
+  }),
 }
 
 export const query = graphql`
@@ -102,6 +118,11 @@ export const query = graphql`
         title
         description
         slug
+        seo {
+          pageTitle
+          pageDescription
+          pageKeywords
+        }
         image {
           url
           alternativeText
@@ -111,7 +132,7 @@ export const query = graphql`
             }
           }
         }
-        imagePage{
+        imagePage {
           url
           alternativeText
           localFile {
