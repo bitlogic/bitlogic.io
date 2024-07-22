@@ -112,7 +112,7 @@ Quote.defaultProps = {
 Quote.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
     variant: PropTypes.string,
     profileDescription: PropTypes.string,
     videoUrl: PropTypes.string,
@@ -141,7 +141,7 @@ Quote.propTypes = {
         })
       })
     })
-  })
+  }).isRequired
 }
 
 export default Quote

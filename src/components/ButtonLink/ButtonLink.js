@@ -1,5 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
+import PropTypes from 'prop-types'
 import useLandingUrl from "../../hooks/useLandingUrl"
 
 const ButtonLink = ({ button }) => {
@@ -18,6 +19,19 @@ const ButtonLink = ({ button }) => {
     >
       {button.content}
     </a>)
+}
+
+ButtonLink.propTypes = {
+  button: PropTypes.shape({
+    singleType: PropTypes.string,
+    url: PropTypes.shape({
+      startsWith: PropTypes.string
+    }),
+    content: PropTypes.string.isRequired,
+    landing_page: PropTypes.shape({
+      slug: PropTypes.string.isRequired
+    })
+  }).isRequired
 }
 
 export default ButtonLink
