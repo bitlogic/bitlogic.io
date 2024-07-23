@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from 'prop-types'
 import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 import "./BannerTop.scss"
@@ -39,6 +40,25 @@ const BannerTop = ({ banner }) => {
       ) : null}
     </div>
   )
+}
+
+BannerTop.propTypes = {
+  banner: PropTypes.shape({
+    bgImage: PropTypes.shape({
+      localFile: PropTypes.object
+    }),
+    bgImageDarkMode: PropTypes.shape({
+      localFile: PropTypes.object
+    }),
+    image: PropTypes.shape({
+      localFile: PropTypes.object
+    }),
+    imagePage: PropTypes.shape({
+      localFile: PropTypes.object
+    }),
+    title: PropTypes.string.isRequired,
+    summary: PropTypes.string
+  }).isRequired
 }
 
 export default BannerTop

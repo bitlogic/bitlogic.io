@@ -7,14 +7,8 @@ import PropTypes from "prop-types"
 import "./BlogItemDetail.scss"
 
 const BlogDetail = ({ data }) => {
-  const {
-    title,
-    description,
-    image,
-    imagePage,
-    author,
-    seo,
-  } = data?.allStrapiArticle?.nodes[0]
+  const { title, description, image, imagePage, author, seo } =
+    data?.allStrapiArticle?.nodes[0] || {}
 
   const bannerTop = imagePage ? { title, imagePage } : { title, image }
 
@@ -35,7 +29,7 @@ const BlogDetail = ({ data }) => {
             />
             <div className="detail__description-author">
               {author?.map(author => (
-                <div className="detail__box-author">
+                <div className="detail__box-author" key={author.id}>
                   <div className="detail__box-author-image">
                     <CustomImage
                       image={author?.image}

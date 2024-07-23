@@ -6,6 +6,7 @@ import ScriptTag from "react-script-tag"
 import useGlobalConfig from "../hooks/useGlobalConfig"
 import ThemeProvider from "../context/themeContext"
 import { Helmet } from 'react-helmet';
+import PropTypes from "prop-types"
 import BannerRedirect from "./BannerRedirect/BannerRedirect"
 
 const Layout = ({ children, options = {}, location }) => {
@@ -79,6 +80,16 @@ const Layout = ({ children, options = {}, location }) => {
       {/*© {new Date().getFullYear()}, Built with*/}
     </ThemeProvider>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  options: PropTypes.object,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      component: PropTypes.string
+    })
+  })
 }
 
 export default Layout
