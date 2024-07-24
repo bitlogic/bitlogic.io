@@ -1,11 +1,6 @@
 @import "../../../styles/global.scss";
 
-.ContactData__Item {
-
-  h6 {
-    font-size: 22px;
-  }
-
+.Footer__navigation {
   ul {
     li {
       list-style: none;
@@ -13,20 +8,8 @@
       a {
         color: $white;
         font-size: 18px;
+        font-weight: $standard;
       }
-    }
-  }
-}
-
-
-
-@media screen and (min-width: $breakpoint-xl) {
-  .ContactData__Item {
-    ul li a {
-      font-size: 18px;
-    }
-    h6 {
-      font-size: unset;
     }
   }
 }

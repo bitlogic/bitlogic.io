@@ -1,23 +1,16 @@
 @import "../../../styles/global.scss";
 
-.Sites {
+.Footer__sites {
   flex-direction: column;
-
-  h6 {
-    color: $white;
-    margin-bottom: 16px;
-    font-size: 22px;
-
-    @media (min-width: $breakpoint-xxl) {
-      font-size: 20px;
-    }
-  }
 
   &__items {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 8px;
+
+    & > div {
+      margin-bottom: 10px;
+    }
 
     a {
       color: $white;
