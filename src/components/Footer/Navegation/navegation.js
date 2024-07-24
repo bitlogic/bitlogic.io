@@ -1,55 +1,45 @@
 import React from "react"
-import { useFooter, useLandingUrl } from "../../../hooks"
-import { Link } from "gatsby"
+import CustomLink from "../../CustomLink/CustomLink"
 import "./navegation.scss"
+import PropTypes from "prop-types"
 
-export default function Navegation() {
-  const data = useFooter()
-  const getUrl = useLandingUrl()
-  const dataFooter = data?.allStrapiLayout?.nodes[0].footer
-  const dataNav = data?.allStrapiLayout?.nodes[0].navbar
+export default function Navegation({ title, items }) {
+  if (!items) return null
 
-  const navegationItems = dataNav.navbarItem.map((navItem, index) => {
-    
-    let path;
-
-    if (navItem?.singleType) {
-      path = `/${navItem.singleType}`;
-    } else if (navItem?.landing) {
-      path = getUrl(navItem.landing?.slug);
-    } else if (navItem?.url) {
-      path = navItem.url;
-    } else {
-      path = '';
-}
-
-
-    if (path.startsWith('http')) return (
-      <li className="mb-2" key={`${navItem.label}-${index}`}>
-        <a href={path}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          {navItem.label}
-        </a>
-      </li>
-    )
-
+  const navegationItems = items?.map((navItem, index) => {
     return (
       <li className="mb-2" key={`${navItem.label}-${index}`}>
-        <Link to={path}>
-          {navItem.label}
-        </Link>
+        <CustomLink
+          content={navItem.label}
+          url={
+            navItem?.url ||
+            (navItem?.singleType ? `/${navItem.singleType}` : "")
+          }
+          landing={navItem?.landing}
+          className=""
+        />
       </li>
     )
   })
 
   return (
-    <div className="ContactData__Item">
-      <h6>{dataFooter.navegation?.title}</h6>
-      <ul className="Navegation__Item">
-        {navegationItems}
-      </ul>
+    <div className="Footer__navigation">
+      <h6>{title}</h6>
+      <ul className="Footer__navigation__items">{navegationItems}</ul>
     </div>
   )
+}
+
+Navegation.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      singleType: PropTypes.string,
+      landing: PropTypes.shape({
+        slug: PropTypes.string,
+      }),
+    })
+  ),
 }

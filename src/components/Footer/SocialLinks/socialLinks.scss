@@ -1,12 +1,33 @@
 @import "../../../styles/global.scss";
 
-.SocialMedia {
+.Footer__socialMedia {
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+
   &__Links {
-    margin-bottom: 20px;
     .btn-social {
       color: $white;
       width: 21px;
       height: 21px;
+    }
+  }
+
+  &__Logo {
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gatsby-image-wrapper.gatsby-image-wrapper-constrained {
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      object-fit: contain !important;
     }
   }
 }

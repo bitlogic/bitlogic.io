@@ -1,15 +1,13 @@
 import React from "react"
-import { useFooter } from "../../../hooks"
 import FaIcon from "../../FaIcon/FaIcon"
 import "./contactData.scss"
 import CustomLink from "../../CustomLink/CustomLink"
+import PropTypes from "prop-types"
 
-export default function ContactData() {
-  const data = useFooter()
-  const dataFooter = data?.allStrapiLayout?.nodes[0]?.footer
-  const navButton = data?.allStrapiLayout?.nodes[0].navbar?.navButton
+export default function ContactData({ contactData, internalLink, navButton }) {
+  if (!contactData) return null
 
-  const contact = dataFooter?.contact?.iconText.map(item => {
+  const contact = contactData?.iconText.map(item => {
     return (
       <div className="icon-text d-flex" key={item.id}>
         <FaIcon type={item.icon.type} code={item.icon.code} />
@@ -19,22 +17,45 @@ export default function ContactData() {
   })
 
   return (
-    <>
-      <div className="ContactData__Item">
-        <h6>{dataFooter?.contact?.title}</h6>
-        <div className="ContactData__Item__contact">{contact}</div>
-        {navButton && dataFooter?.internalLink && (
-          <div className="ContactData__Item__link">
-            <CustomLink
-              content={dataFooter?.internalLink?.name}
-              url={navButton?.url}
-              landing={navButton?.landing_page}
-              className=''
-            />
-          </div>
-        )}
-
-      </div>
-    </>
+    <div className="Footer__contactData">
+      <h6>{contactData?.title}</h6>
+      {contactData?.iconText?.length > 0 && (
+        <div className="Footer__contactData__contact">{contact}</div>
+      )}
+      {navButton && internalLink && (
+        <CustomLink
+          content={internalLink?.name}
+          url={navButton?.url}
+          landing={navButton?.landing_page}
+          className="Footer__contactData__link"
+        />
+      )}
+    </div>
   )
+}
+
+ContactData.propTypes = {
+  contactData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    iconText: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string.isRequired,
+        icon: PropTypes.shape({
+          type: PropTypes.string.isRequired,
+          code: PropTypes.string.isRequired,
+        }),
+      })
+    ),
+  }),
+  internalLink: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }),
+  navButton: PropTypes.shape({
+    content: PropTypes.string,
+    url: PropTypes.string,
+    landing_page: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }),
+  }),
 }
