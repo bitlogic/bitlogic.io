@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import { useFooter } from "../../hooks"
 import ContactData from "./ContactData/contactData"
 import Location from "./Location/location"
@@ -8,7 +8,7 @@ import Subscription from "./Subscription/subscription"
 import Sites from "./Sites/Sites"
 import "./Footer.scss"
 
-const Footer = () => {
+const Footer = memo(() => {
   const layoutData = useFooter()?.allStrapiLayout.nodes[0]
 
   const dataNavbar = layoutData?.navbar
@@ -39,5 +39,6 @@ const Footer = () => {
       </div>
     </section>
   )
-}
+})
+
 export default Footer

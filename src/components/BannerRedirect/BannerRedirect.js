@@ -8,7 +8,7 @@ function BannerRedirect() {
   const REDIRECT = Object.freeze({
     title: `Would you like to visit our English site?`,
     url: "https://en.bitlogic.io",
-    callToAction: "Let´s go!",
+    callToAction: "Let’s go!",
   })
 
   const closeBanner = () => {
@@ -19,35 +19,29 @@ function BannerRedirect() {
     }
   }
 
-  const userLanguage = typeof window !== "undefined" ? navigator?.language : ""
-
   useEffect(() => {
-    if (userLanguage?.startsWith("es")) {
-      closeBanner()
+    const bannerStorage =
+      typeof window !== "undefined"
+        ? localStorage.getItem("BannerRedirect")
+        : undefined
+    if (bannerStorage === "closed") {
+      setIsOpen(false)
     }
-  }, [userLanguage])
+  }, [])
 
-  const bannerStorage =
-    typeof window !== "undefined"
-      ? localStorage.getItem("BannerRedirect")
-      : undefined
-
-  if (bannerStorage === "closed" || !isOpen) return null
+  if (!isOpen) return null
 
   return (
     <section className="BannerRedirect container">
       <div className="BannerRedirect__wrapper">
         <div className="d-flex flex-direction-row">
           <h6>{REDIRECT.title}</h6>
-          <button aria-label="Close Banner" onClick={() => closeBanner()}>
+          <button aria-label="Close Banner" onClick={closeBanner}>
             <MdClose />
           </button>
         </div>
-        <button
-          className="BannerRedirect__wrapper__btn"
-          onClick={() => closeBanner()}
-        >
-          <a href={REDIRECT.URL}>{REDIRECT.callToAction}</a>
+        <button className="BannerRedirect__wrapper__btn" onClick={closeBanner}>
+          <a href={REDIRECT.url}>{REDIRECT.callToAction}</a>
         </button>
       </div>
     </section>
