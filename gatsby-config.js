@@ -158,14 +158,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-offline",
-    "gatsby-plugin-sass",
-    /* {
-      resolve: "gatsby-plugin-hubspot",
-      options: {
-        trackingCode: "8668423",
-        respectDNT: true,
-        productionOnly: true,
-      },
-    }, */
+    `gatsby-plugin-sass`,
   ],
 }
