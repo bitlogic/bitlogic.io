@@ -71,20 +71,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: ["G-F6VPYEJ1X0"],
-        gtagConfig: {
-          anonymize_ip: true,
-          cookie_expires: 0,
-          cookie_flags: "SameSite=None; Secure",
-        },
-        // This object is used for configuration specific to this plugin
-        pluginConfig: {
-          head: true,
-          respectDNT: true,
-        },
+        id: process.env.GTM_ID,
+        includeInDevelopment: false,
+        enableWebVitalsTracking: true,
       },
     },
     "gatsby-plugin-react-helmet",
@@ -169,13 +160,5 @@ module.exports = {
     },
     "gatsby-plugin-offline",
     `gatsby-plugin-sass`,
-    /* {
-      resolve: "gatsby-plugin-hubspot",
-      options: {
-        trackingCode: "8668423",
-        respectDNT: true,
-        productionOnly: true,
-      },
-    }, */
   ],
 }
