@@ -78,7 +78,6 @@ module.exports = {
         enableWebVitalsTracking: true,
       },
     },
-    "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -3,13 +3,20 @@
 .NavBar {
   background-color: $primary-container;
   z-index: 10;
-  .logo {
-    max-width: 140px;
-  }
 }
+
 .NavBar__Logo {
   margin: 16px 28px;
   width: 120px;
+
+  .logo {
+    img,
+    picture {
+      width: 120px;
+      object-fit: contain !important;
+      aspect-ratio: 16/9 !important;
+    }
+  }
 }
 
 .navbar-toggler .navbar-toggler-icon {

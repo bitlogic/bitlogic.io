@@ -34,6 +34,7 @@ const useHomePage = () => {
             videoUrl
             video {
               url
+              mime
             }
             profile {
               alternativeText

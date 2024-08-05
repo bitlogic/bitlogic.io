@@ -1,10 +1,12 @@
-import * as React from "react"
+import React, { lazy, Suspense } from "react"
 import Header from "./header"
-import "./layout.scss"
-import Footer from "./Footer/Footer"
 import ThemeProvider from "../context/themeContext"
+import Footer from "./Footer/Footer"
+import "./layout.scss"
 import PropTypes from "prop-types"
-import BannerRedirect from "./BannerRedirect/BannerRedirect"
+import "./FontAwesomeOne/FontAwesomeOne"
+
+const BannerRedirect = lazy(() => import("./BannerRedirect/BannerRedirect"))
 
 const Layout = ({ children, options = {}, location }) => {
   const defaultOptions = {
@@ -22,10 +24,17 @@ const Layout = ({ children, options = {}, location }) => {
     }
   }, [location?.state?.component])
 
+  const userLanguage =
+    typeof window !== "undefined" ? navigator.language : undefined
+
   return (
     <ThemeProvider>
       {options.hasHeader && <Header />}
-      <BannerRedirect />
+      {userLanguage?.startsWith("en") && (
+        <Suspense fallback>
+          <BannerRedirect />
+        </Suspense>
+      )}
       <main>{children}</main>
       {options.hasFooter && <Footer />}
       {/*© {new Date().getFullYear()}, Built with*/}
