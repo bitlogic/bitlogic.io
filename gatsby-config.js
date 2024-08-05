@@ -3,8 +3,8 @@ module.exports = {
     title: `Bitlogic`,
     description: `Bitlogic Web es una empresa dedicada al diseño, ingeniería y desarrollo ágil de productos de software, especializada en la transformación digital de instituciones educativas .`,
     author: `Bitlogic.io`,
-    // siteUrl: process.env.SITE_URL,
-    siteUrl: "https://bitlogic.io",
+    siteUrl: process.env.SITE_URL,
+    // siteUrl: "https://bitlogic.io",
   },
   plugins: [
     {
@@ -27,7 +27,7 @@ module.exports = {
           }
         }
         `,
-        resolveSiteUrl: () => process.env.SITE_URL || "https://bitlogic.io",
+        resolveSiteUrl: () => process.env.SITE_URL,
         resolvePages: ({
           allSitePage: { nodes: allPages },
           strapiBlogPage: blogPage,
@@ -65,18 +65,16 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: process.env.SITE_URL || "https://bitlogic.io",
-        sitemap: `${
-          process.env.SITE_URL || "https://bitlogic.io"
-        }/sitemap-index.xml`,
+        host: process.env.SITE_URL,
+        sitemap: `${process.env.SITE_URL}/sitemap-index.xml`,
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        id: process.env.GTM_ID || "GTM-WTQK8T8",
-        includeInDevelopment: true,
+        id: process.env.GTM_ID,
+        includeInDevelopment: false,
         enableWebVitalsTracking: true,
       },
     },
@@ -90,16 +88,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: "https://bitlogic.io",
-        // siteUrl: process.env.SITE_URL,
+        // siteUrl: "https://bitlogic.io",
+        siteUrl: process.env.SITE_URL,
       },
     },
     {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
-        apiURL: `https://strapi.bitlogic.io`,
-        // apiURL: process.env.STRAPI_URL,
+        // apiURL: `https://strapi.bitlogic.io`,
+        apiURL: process.env.STRAPI_URL,
         // apiURL: "http://127.0.0.1:1337",
         queryLimit: 1000,
         collectionTypes: [
