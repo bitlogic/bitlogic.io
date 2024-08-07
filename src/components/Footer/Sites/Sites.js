@@ -10,12 +10,20 @@ const Sites = ({ sitesData }) => {
 
   if (!websites) return null
 
-  const websitesItems = websites?.map(website => {
+  const websitesItems = websites.map(website => {
+    const path = website.url.startsWith("https")
+      ? website.url
+      : `https://${website.url}`
+
     return (
       <div key={website.id}>
         <a
-          href={website.url}
-          aria-label={`Visita nuestro sitio web: ${website.url}`}
+          aria-label={`Visita nuestro sitio web: ${path}`}
+          href={path}
+          onClick={e => {
+            e.preventDefault()
+            window.location.href = path
+          }}
         >
           <CustomImage
             image={website?.icon}
@@ -24,7 +32,7 @@ const Sites = ({ sitesData }) => {
             height={15}
             className=""
           />
-          {website?.name ? website.name : ""}
+          {website?.name || ""}
         </a>
       </div>
     )
