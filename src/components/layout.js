@@ -1,12 +1,13 @@
-import * as React from "react"
+import React, { lazy, Suspense } from "react"
 import Header from "./header"
 import "./layout.scss"
 import Footer from "./Footer/Footer"
 import ScriptTag from "react-script-tag"
 import useGlobalConfig from "../hooks/useGlobalConfig"
 import ThemeProvider from "../context/themeContext"
-import { Helmet } from 'react-helmet';
-import BannerRedirect from "./BannerRedirect/BannerRedirect"
+import { Helmet } from "react-helmet"
+
+const BannerRedirect = lazy(() => import("./BannerRedirect/BannerRedirect"))
 
 const Layout = ({ children, options = {}, location }) => {
   const defaultOptions = {
@@ -15,6 +16,9 @@ const Layout = ({ children, options = {}, location }) => {
   }
 
   options = { ...defaultOptions, ...options }
+
+  const userLanguage =
+    typeof window !== "undefined" ? navigator.language : undefined
 
   const config = useGlobalConfig()
   const scripts = config?.allStrapiGlobalConfig?.nodes.map(item =>
@@ -44,7 +48,11 @@ const Layout = ({ children, options = {}, location }) => {
     <ThemeProvider>
       {scripts}
       {options.hasHeader && <Header />}
-      <BannerRedirect />
+      {userLanguage?.startsWith("en") && (
+        <Suspense fallback>
+          <BannerRedirect />
+        </Suspense>
+      )}
       <Helmet>
         <script>
           {`
@@ -72,7 +80,10 @@ const Layout = ({ children, options = {}, location }) => {
             })();
           `}
         </script>
-        <script src="https://leadbooster-chat.pipedrive.com/assets/loader.js" async></script>
+        <script
+          src="https://leadbooster-chat.pipedrive.com/assets/loader.js"
+          async
+        ></script>
       </Helmet>
       <main>{children}</main>
       {options.hasFooter && <Footer />}
