@@ -1,7 +1,6 @@
 @import "../../styles/global.scss";
 
 .videoBackground {
-  aspect-ratio: 1.91/1;
   max-width: 100%;
 
   &-container {
@@ -12,11 +11,14 @@
   video,
   iframe {
     width: 100%;
-    height: 220px;
+    min-height: 220px;
+    max-height: 650px;
     object-fit: cover;
     display: block;
     border-radius: 5px;
     margin-bottom: 0px;
+    aspect-ratio: 16/9;
+    cursor: pointer;
   }
 
   &-card {
@@ -47,49 +49,18 @@
 
 @media screen and (min-width: $breakpoint-md) {
   .videoBackground {
-    height: 400px;
     position: relative;
-    z-index: 3;
-    display: flex;
-
-    .video {
-      top: 0;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      cursor: pointer;
-    }
 
     &-card {
-      z-index: 4;
-      align-self: flex-end;
-      flex-basis: 1;
-      max-width: 700px;
+      position: absolute;
+      bottom: 0;
+      max-width: calc(700px - 60px);
       backdrop-filter: blur(14px);
-      color: white;
       border-radius: 5px;
       background: #e8e8e8c5;
       box-shadow: 0px 0px 3px #00000044;
       margin: 2em;
-      padding: 2em;
-
-      h4 {
-        color: $grey;
-      }
+      padding: 32px;
     }
-  }
-}
-
-@media screen and (min-width: $breakpoint-lg) {
-  .videoBackground {
-    height: 520px;
-  }
-}
-
-@media screen and (min-width: $breakpoint-xl) {
-  .videoBackground {
-    height: 720px;
   }
 }

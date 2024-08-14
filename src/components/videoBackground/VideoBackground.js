@@ -83,7 +83,7 @@ const VideoBackground = ({ data }) => {
         backgroundPosition: "center",
       }}
     >
-      <div className="container px-md-0 px-lg-3 videoBackground-container">
+      <div className="container videoBackground-container">
         <section className="videoBackground">
           {video?.url !== null && video?.url !== undefined ? (
             <video

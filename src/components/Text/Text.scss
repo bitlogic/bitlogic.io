@@ -1,19 +1,24 @@
 @import "../../styles/global.scss";
 
 .container-text {
+  padding: 64px 0;
+
   .text {
     color: $primary;
 
     .title {
+      flex: 1;
+
       .titleText {
         text-transform: uppercase;
-        margin-top: 2rem;
+        margin-block: 2rem;
       }
     }
 
     .description {
       background-color: $primary-container;
       border-radius: 10px;
+      flex: 2;
 
       p:first-child {
         padding-top: 29px;
@@ -23,12 +28,18 @@
         color: $primary;
         padding: 0rem 0.5rem;
       }
+
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin-right: 8px;
+      }
     }
   }
 
   .container-markdown {
-    padding-top: 5rem;
-    padding-bottom: 3rem;
+    padding-block: 3rem;
 
     .notTitle {
       display: flex;
@@ -58,19 +69,12 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-md) {
+@media screen and (min-width: $breakpoint-lg) {
   .container-text {
     .text {
       .title {
-        padding-top: 4rem;
         flex: 1;
-      }
-
-      .description {
-        margin-left: 2rem;
-        margin-top: 6rem;
-        margin-bottom: 3rem;
-        flex: 2;
+        align-self: baseline;
       }
     }
   }
