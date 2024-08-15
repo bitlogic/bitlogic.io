@@ -4,10 +4,6 @@
   width: 100%;
   height: 100%;
 
-  p {
-    font-size: $medium;
-  }
-
   &__wrapper {
     color: $primary;
     overflow: hidden;
@@ -23,10 +19,6 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-
-    .imagen {
-      min-height: 450px;
-    }
   }
 
   .cont-lottie {
@@ -36,7 +28,7 @@
 
   &.background {
     .banner__wrapper {
-      padding: 0
+      padding: 0;
     }
 
     .button {
@@ -46,8 +38,7 @@
     }
 
     .bgImage {
-      margin: 32px 0 !important;
-      width: 100%;
+      margin: 32px 0;
     }
 
     .title-background {
@@ -88,7 +79,6 @@
         word-wrap: initial;
       }
 
-      h2,
       h3 {
         font-weight: 400;
         text-align: left;
@@ -141,7 +131,7 @@
 
       img {
         width: 100%;
-        object-fit: cover;
+        max-width: 450px;
       }
     }
 
@@ -182,7 +172,6 @@
 
       img {
         width: 100%;
-        height: 100%;
         object-fit: cover;
       }
     }
@@ -253,7 +242,7 @@
 
       .title-background {
         margin: 0 auto;
-        width: 80%;
+        width: 70%;
       }
     }
 
@@ -279,7 +268,7 @@
 
     &.top {
       .title {
-        h1 {
+        h2 {
           margin-bottom: 1rem;
           text-align: left;
         }
@@ -302,11 +291,13 @@
 
     &.topReverse {
       .imagen {
+        overflow: hidden;
+        padding: 0;
         height: 100%;
 
         img {
           width: 100%;
-          height: 100%;
+          max-width: 600px;
         }
 
         .cont-lottie {
@@ -316,10 +307,23 @@
       }
 
       .title {
+        padding-top: 0;
+        padding-bottom: 0;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
+
+        h2 {
+          margin-bottom: 1rem;
+          padding-right: 3rem;
+          text-align: left;
+        }
+
+        h3 {
+          font-weight: 400;
+          padding-right: 3rem;
+        }
       }
     }
 
@@ -349,6 +353,15 @@
       .title {
         padding: 20px 0;
         flex: 1;
+
+        h2 {
+          margin-bottom: 1rem;
+          max-width: 300px;
+        }
+
+        h3 {
+          font-weight: 400;
+        }
       }
     }
 
@@ -390,8 +403,16 @@
         padding: 0;
         flex: 2;
 
-        &>div {
+        & > div {
           width: 70%;
+        }
+
+        h2 {
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          font-weight: 400;
         }
       }
     }
@@ -415,8 +436,8 @@
 
     &.hero {
       .banner__wrapper {
-        min-height: 600px;
         flex-direction: row;
+        height: 600px;
         gap: 32px;
       }
 
@@ -424,6 +445,15 @@
         max-height: 800px;
         overflow: hidden;
         padding: 0;
+
+        .gatsby-image-wrapper.gatsby-image-wrapper-constrained {
+          width: 100%;
+          height: 100%;
+
+          img {
+            object-fit: contain !important;
+          }
+        }
 
         .cont-lottie {
           width: 100%;
@@ -434,12 +464,10 @@
       .title {
         h1 {
           margin-bottom: 1rem;
-          padding-right: 3rem;
         }
 
         h3 {
           font-weight: 400;
-          padding-right: 3rem;
         }
       }
     }
@@ -496,15 +524,6 @@
     &.diagonal {
       .banner__wrapper {
         max-height: 450px;
-        margin-right: 0;
-        margin-left: 8%;
-        max-width: calc(100% - 8%);
-        padding: 0;
-      }
-
-      .title {
-        display: flex;
-        justify-content: end;
       }
 
       .imagen {
@@ -513,11 +532,17 @@
           height: 400px;
         }
       }
+
+      .title {
+        h2 {
+          margin-bottom: 1rem;
+          max-width: 400px;
+        }
+      }
     }
   }
 
   @media screen and (min-width: $breakpoint-xxl) {
-
     &.hero,
     &.top,
     &.topReverse,
@@ -529,8 +554,15 @@
 
     &.diagonal {
       .banner__wrapper {
-        margin-left: 15%;
-        max-width: calc(100% - 15%);
+        margin-right: 0;
+        margin-left: 200px;
+        max-width: calc(100% - 200px);
+        padding: 0;
+      }
+
+      .title {
+        display: flex;
+        justify-content: end;
       }
     }
   }

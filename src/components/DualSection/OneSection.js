@@ -1,6 +1,6 @@
 import React from "react"
 import { useTheme } from "../../context/themeContext"
-import MarkdownView from 'react-showdown'
+import MarkdownView from "react-showdown"
 import CustomImage from "../CustomImage/CustomImage"
 import CustomLink from "../CustomLink/CustomLink"
 import PropTypes from "prop-types"
@@ -19,11 +19,12 @@ const OneSection = ({ data: { dualSectionPart } }) => {
     <div
       className="one_sec-background"
       style={{
-        backgroundPosition: 'center',
-        backgroundImage: `url(${theme === "dark" && backgroundImageDark?.url
-          ? backgroundImageDark?.url
-          : backgroundImage?.url
-          })`
+        backgroundPosition: "center",
+        backgroundImage: `url(${
+          theme === "dark" && backgroundImageDark?.url
+            ? backgroundImageDark?.url
+            : backgroundImage?.url
+        })`,
       }}
     >
       <div className="container one_sec">
@@ -40,16 +41,17 @@ const OneSection = ({ data: { dualSectionPart } }) => {
               content={button.content}
               url={button?.url}
               landing={button?.landing_page}
-              className=''
+              className=""
             />
           )}
         </div>
         <div className="one_sec-img">
-          <CustomImage image={image}
+          <CustomImage
+            image={image}
             width={290}
             height={180}
             alt={image.alternativeText || title}
-            className=''
+            className=""
           />
         </div>
       </div>
@@ -68,26 +70,26 @@ OneSection.propTypes = {
           alternativeText: PropTypes.string,
           localFile: PropTypes.shape({
             childImageSharp: PropTypes.shape({
-              gatsbyImageData: PropTypes.object.isRequired
-            })
-          })
+              gatsbyImageData: PropTypes.object.isRequired,
+            }),
+          }),
         }).isRequired,
         button: PropTypes.shape({
           content: PropTypes.string.isRequired,
           url: PropTypes.string,
           landing_page: PropTypes.shape({
-            slug: PropTypes.string.isRequired
-          })
+            slug: PropTypes.string.isRequired,
+          }),
         }),
         backgroundImage: PropTypes.shape({
-          url: PropTypes.string
+          url: PropTypes.string,
         }),
         backgroundImageDark: PropTypes.shape({
-          url: PropTypes.string
-        })
+          url: PropTypes.string,
+        }),
       })
-    )
-  })
+    ),
+  }),
 }
 
 export default OneSection

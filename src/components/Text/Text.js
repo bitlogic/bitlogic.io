@@ -8,25 +8,31 @@ export default function Text({ data }) {
   const bgImage = data?.backgroundImage?.url
 
   return (
-    <div className="container-text mt-3 mt-xl-5" style={{
-      backgroundImage: bgImage ? `url(${bgImage})` : '',
-      backgroundPosition: 'center'
-    }}>
+    <div
+      className="container-text mt-3 mt-xl-5"
+      style={{
+        backgroundImage: bgImage ? `url(${bgImage})` : "",
+        backgroundPosition: "center",
+      }}
+    >
       {title ? (
-        <div className="container text d-flex flex-column flex-md-row gap-xl-5 py-3">
+        <div className="container text d-flex flex-column flex-lg-row gap-3 gap-xl-5">
           <div className="title">
-            <h2 className="titleText ps-md-0 pt-md-3">{title}</h2>
+            <h2 className="titleText">{title}</h2>
           </div>
           <div className="description">
             <MarkdownView
               markdown={text}
               dangerouslySetInnerHTML={{ __html: text }}
-              style={{ margin: !bgImage && '0rem' }}
+              style={{ margin: !bgImage && "0rem" }}
             />
           </div>
         </div>
       ) : (
-        <div className="container container-markdown" style={{ padding: !bgImage && '0rem' }}>
+        <div
+          className="container container-markdown"
+          style={{ padding: !bgImage && "0rem" }}
+        >
           <div className="notTitle">
             <MarkdownView
               markdown={text}
@@ -36,7 +42,6 @@ export default function Text({ data }) {
         </div>
       )}
     </div>
-
   )
 }
 
@@ -45,7 +50,7 @@ Text.propTypes = {
     title: PropTypes.string,
     text: PropTypes.string.isRequired,
     backgroundImage: PropTypes.shape({
-      url: PropTypes.string
-    })
-  })
+      url: PropTypes.string,
+    }),
+  }),
 }

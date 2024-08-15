@@ -25,7 +25,7 @@ const useHomePage = () => {
             profileDescription
             imagePosition
             form_url
-            contactFormAnchor
+            concactFormAnchor
             contactForm
             color
             callToAction

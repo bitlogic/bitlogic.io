@@ -44,7 +44,7 @@ type StrapiLandingPage implements Node {
     summary: String
     text: String
     description: String
-    contactFormAnchor: String
+    concactFormAnchor: String
     callToAction: String
     videoUrl: String
     variant: String
