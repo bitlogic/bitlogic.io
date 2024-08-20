@@ -6,6 +6,7 @@ import PropTypes from "prop-types"
 const VideoBackground = ({ data }) => {
   const { video, description, button, backgroundImage, videoUrl } = data
   const [isVideoPause, setIsVideoPause] = useState(false)
+  const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
   const pausePlay = () => {
@@ -16,6 +17,39 @@ const VideoBackground = ({ data }) => {
     }
     setIsVideoPause(prev => !prev)
   }
+
+  const handleKeyDown = event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault()
+      pausePlay()
+    }
+  }
+
+  useEffect(() => {
+    const videoElement = videoRef?.current
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true)
+          observer.unobserve(videoRef?.current)
+        }
+      },
+      {
+        rootMargin: "0px 0px 200px 0px",
+        threshold: 0.1,
+      }
+    )
+
+    if (videoElement) {
+      observer.observe(videoElement)
+    }
+
+    return () => {
+      if (videoElement) {
+        observer.unobserve(videoElement)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     const isVideoPauseLocal =
@@ -31,7 +65,6 @@ const VideoBackground = ({ data }) => {
 
   useEffect(() => {
     localStorage.setItem("videoPaused", isVideoPause)
-
   }, [isVideoPause])
 
   const url = videoUrl?.replace("watch?v=", "embed/")
@@ -43,28 +76,34 @@ const VideoBackground = ({ data }) => {
   }
 
   return (
-    <div style={{
-      backgroundImage: backgroundImage ? `url(${backgroundImage?.url})` : '',
-      backgroundRepeatY: 'no-repeat',
-      backgroundPosition: 'center'
-    }}
+    <div
+      style={{
+        backgroundImage: backgroundImage ? `url(${backgroundImage?.url})` : "",
+        backgroundRepeatY: "no-repeat",
+        backgroundPosition: "center",
+      }}
     >
-      <div className="container px-md-0 px-lg-3 videoBackground-container">
+      <div className="container videoBackground-container">
         <section className="videoBackground">
-          {(video?.url !== null && video?.url !== undefined) ?
+          {video?.url !== null && video?.url !== undefined ? (
             <video
               className="video"
               ref={videoRef}
               muted
-              autoPlay
               loop
-              src={video.url}
-              type="video/mp4"
+              tabIndex={0}
               controls={false}
+              autoPlay={isIntersecting}
               onClick={pausePlay}
-            /> : (videoUrl !== null && videoUrl !== undefined) && (
+              onKeyDown={handleKeyDown}
+            >
+              {isIntersecting && <source src={video.url} type={video?.mime} />}
+            </video>
+          ) : (
+            videoUrl !== null &&
+            videoUrl !== undefined && (
               <>
-                {(url !== undefined && code !== undefined) && (
+                {url !== undefined && code !== undefined && (
                   <iframe
                     className="video"
                     loading="lazy"
@@ -82,13 +121,12 @@ const VideoBackground = ({ data }) => {
                     webkitallowfullscreen="true"
                     mozallowfullscreen="true"
                   ></iframe>
-                )
-                }
+                )}
               </>
             )
-          }
+          )}
 
-          {description &&
+          {description && (
             <div className="videoBackground-card">
               <h4>{description}</h4>
               {button && (
@@ -96,11 +134,11 @@ const VideoBackground = ({ data }) => {
                   content={button.content}
                   url={button?.url}
                   landing={button?.landing_page}
-                  className=''
+                  className=""
                 />
               )}
             </div>
-          }
+          )}
         </section>
       </div>
     </div>
@@ -110,7 +148,8 @@ const VideoBackground = ({ data }) => {
 VideoBackground.propTypes = {
   data: PropTypes.shape({
     video: PropTypes.shape({
-      url: PropTypes.string.isRequired
+      url: PropTypes.string.isRequired,
+      mime: PropTypes.string.isRequired,
     }),
     videoUrl: PropTypes.string,
     description: PropTypes.string,
@@ -121,10 +160,10 @@ VideoBackground.propTypes = {
       content: PropTypes.string.isRequired,
       url: PropTypes.string,
       landing_page: PropTypes.shape({
-        slug: PropTypes.string.isRequired
-      })
-    })
-  })
+        slug: PropTypes.string.isRequired,
+      }),
+    }),
+  }),
 }
 
 export default VideoBackground

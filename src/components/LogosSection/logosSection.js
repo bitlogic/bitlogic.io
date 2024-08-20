@@ -2,25 +2,64 @@ import "./logosSection.scss"
 import React from "react"
 import { useTheme } from "../../context/themeContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Carousel from 'react-multi-carousel'
-import 'react-multi-carousel/lib/styles.css'
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
 
+const handleKeyDown = (event, onClick) => {
+  if (event.key === "Enter" || event.key === " ") {
+    onClick()
+  }
+}
+
+const CustomLeftArrow = ({ onClick }) => {
+  return (
+    <FontAwesomeIcon
+      role="button"
+      aria-label="Flecha izquierda para ver logo anterior"
+      tabIndex={0}
+      aria-hidden={false}
+      focusable
+      onKeyDown={event => handleKeyDown(event, onClick)}
+      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
+      icon="fa-solid fa-chevron-left"
+      onClick={() => onClick()}
+    />
+  )
+}
+
+const CustomRightArrow = ({ onClick }) => {
+  return (
+    <FontAwesomeIcon
+      role="button"
+      aria-label="Flecha derecha para ver el siguiente logo"
+      tabIndex={0}
+      aria-hidden={false}
+      focusable
+      onKeyDown={event => handleKeyDown(event, onClick)}
+      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
+      icon="fa-solid fa-chevron-right"
+      onClick={() => onClick()}
+    />
+  )
+}
 
 const LogosSection = ({ data }) => {
   const { title, summary, media } = data
   const { theme } = useTheme()
 
   const logoList = media?.map(logo => {
-
     if (!logo.img && !logo.imageDark) return null
 
     return (
       <div className="logos__image" key={logo.id}>
-        <CustomImage image={theme === 'dark' && logo?.imageDark ? logo?.imageDark : logo?.img}
+        <CustomImage
+          image={
+            theme === "dark" && logo?.imageDark ? logo?.imageDark : logo?.img
+          }
           alt={logo?.image?.alternativeText || logo.name}
-          className={''}
+          className={""}
           width={196}
           height={186}
         />
@@ -31,35 +70,21 @@ const LogosSection = ({ data }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4
+      items: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 768 },
-      items: 3
+      items: 3,
     },
     mobileTablet: {
       breakpoint: { max: 767, min: 577 },
-      items: 2
+      items: 2,
     },
     mobile: {
       breakpoint: { max: 576, min: 0 },
-      items: 1
-    }
-  };
-
-  const CustomLeftArrow = ({ onClick }) => {
-    return <FontAwesomeIcon
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
-      icon="fa-solid fa-chevron-left"
-      onClick={() => onClick()} />;
-  };
-
-  const CustomRightArrow = ({ onClick }) => {
-    return <FontAwesomeIcon
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
-      icon="fa-solid fa-chevron-right"
-      onClick={() => onClick()} />;
-  };
+      items: 1,
+    },
+  }
 
   return (
     <div className="logos container py-3 my-3">
@@ -71,16 +96,25 @@ const LogosSection = ({ data }) => {
           autoPlay={logoList.length > 4}
           autoPlaySpeed={3000}
           infinite={logoList.length > 4}
-          containerClass={'containerCarrusel'}
+          containerClass={"containerCarrusel"}
           customRightArrow={<CustomRightArrow />}
           customLeftArrow={<CustomLeftArrow />}
-          removeArrowOnDeviceType={logoList.length <= 4 && ['tablet', 'desktop']}
+          removeArrowOnDeviceType={
+            logoList.length <= 4 && ["tablet", "desktop"]
+          }
         >
           {logoList}
         </Carousel>
       )}
     </div>
   )
+}
+
+CustomLeftArrow.propTypes = {
+  onClick: PropTypes.func,
+}
+CustomRightArrow.propTypes = {
+  onClick: PropTypes.func,
 }
 
 LogosSection.propTypes = {
@@ -96,22 +130,22 @@ LogosSection.propTypes = {
           alternativeText: PropTypes.string,
           localFile: PropTypes.shape({
             childImageSharp: PropTypes.shape({
-              gatsbyImageData: PropTypes.object.isRequired
-            })
-          })
+              gatsbyImageData: PropTypes.object.isRequired,
+            }),
+          }),
         }).isRequired,
         imageDark: PropTypes.shape({
           url: PropTypes.string.isRequired,
           alternativeText: PropTypes.string,
           localFile: PropTypes.shape({
             childImageSharp: PropTypes.shape({
-              gatsbyImageData: PropTypes.object.isRequired
-            })
-          })
-        })
+              gatsbyImageData: PropTypes.object.isRequired,
+            }),
+          }),
+        }),
       })
-    )
-  })
+    ),
+  }),
 }
 
 export default LogosSection

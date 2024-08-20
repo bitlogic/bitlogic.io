@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState, useContext } from "react"
+import React, { createContext, useEffect, useState, useContext, useMemo } from "react"
 import PropTypes from "prop-types"
 import "./themeContext.scss"
 
@@ -23,9 +23,10 @@ const ThemeProvider = ({ children }) => {
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"))
   }
-
+  const obj = useMemo(() =>({theme, setTheme, toggleTheme }),[theme])
+  
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={obj}>
       <div key={theme} id="style-context" className={theme}>
         {children}
       </div>

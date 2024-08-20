@@ -1,22 +1,21 @@
 @import "../../../styles/global.scss";
 
-.ContactData__Item {
+.Footer__location {
   margin: 0px !important;
 
-  &__location {
+  &__items {
     display: block;
     color: $white;
 
-    p {
-      font-size: 18px;
-    }
-
     .icon-text {
+      font-size: 18px;
       margin-bottom: 16px;
       align-items: center;
+      max-width: 80%;
+      text-wrap: pretty;
 
       svg {
-        margin-right: 10px;
+        margin-right: 8px;
       }
     }
   }

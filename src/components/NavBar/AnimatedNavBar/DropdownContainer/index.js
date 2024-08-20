@@ -5,9 +5,7 @@ import FadeContents from "./FadeContents"
 
 const getFirstDropdownSectionHeight = el => {
   if (
-    !el ||
-    !el.querySelector ||
-    !el.querySelector("*[data-first-dropdown-section]")
+    !el?.querySelector("*[data-first-dropdown-section]")
   )
     return 0
   return el.querySelector("*[data-first-dropdown-section]").offsetHeight

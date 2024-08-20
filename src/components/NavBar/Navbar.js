@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import "./NavBar.scss"
 import { Link } from "gatsby"
 import Navbar from "react-bootstrap/Navbar"
@@ -12,7 +12,7 @@ import { useTheme } from "../../context/themeContext"
 import moon from "../../images/moon-solid.svg"
 import sun from "../../images/sun.svg"
 
-const NavBar = () => {
+const NavBar = memo(() => {
   const { theme, toggleTheme } = useTheme()
   const navbarData = useNavbar()?.allStrapiLayout?.nodes[0]
   const menuData = navbarData?.menu
@@ -26,6 +26,7 @@ const NavBar = () => {
       <Navbar variant="dark" expand="xl" className="NavBar">
         <Link to="/" className="NavBar__Logo">
           <GatsbyImage
+            loading="lazy"
             image={theme === "dark" && logoDark ? logoDark : logoLight}
             alt={"bitlogic"}
             className="logo"
@@ -81,6 +82,6 @@ const NavBar = () => {
       </Navbar>
     </>
   )
-}
+})
 
 export default NavBar

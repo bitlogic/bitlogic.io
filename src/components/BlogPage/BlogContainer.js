@@ -12,10 +12,10 @@ const Blog = () => {
   const blogData = useBlog()
   const data = blogData?.allStrapiBlogCategory?.nodes
   const dataArticles = blogData?.allStrapiArticle?.nodes
-  const defaultCategory = data[0]?.name
-  const filterArticle = data.map(category => dataArticles.filter(article => category.name === article?.blog_category?.name || defaultCategory))
+  const filterArticle = data.map(category => dataArticles.filter(article => category.name === article?.blog_category?.name))
   const { seo, banner } = blogData.allStrapiBlogPage.nodes[0]
   const callToAction = blogData?.allStrapiBlogPage?.callToActionArticle
+
 
   return (
     <Layout>
@@ -28,19 +28,19 @@ const Blog = () => {
       {data.length > 0 && (
         <div className="blog__container container">
           {filterArticle?.map((category, idx) => (
-            <BlogGrid key={idx} title={category[0]?.blog_category?.name}>
-              {category.map((item, idx) => (
+            <BlogGrid key={data[idx].name} title={category[0]?.blog_category?.name}>
+              {category.map(item => (
                 <BlogArticle
-                  key={idx}
+                  key={item.id}
                   image={item?.image || item?.imagePage}
                   title={item.title}
                   summary={item.summary}
                   slug={"/blog/" + item.slug}
                   text={callToAction}
                 />
-              ))}
-            </BlogGrid>
           ))}
+            </BlogGrid>
+          ))}  
         </div>
       )}
     </Layout>

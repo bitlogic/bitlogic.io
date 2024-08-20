@@ -22,7 +22,7 @@
     transform: scale(1.5);
     transition: all 50ms ease;
 
-    &>div {
+    & > div {
       display: flex;
       animation: scrollText 120s infinite linear;
 
@@ -42,6 +42,7 @@
     }
 
     &-image {
+      gap: 50px;
       animation: scrollText 200s infinite linear !important;
 
       &:hover {
@@ -52,16 +53,30 @@
     &-inner {
       display: flex;
       flex-direction: row;
-      margin-right: 40px;
+      width: 100%;
+      height: fit-content;
+      align-items: center;
+
+      picture {
+        width: 0;
+        height: 0;
+      }
 
       img {
-        margin: 0 50px;
+        display: block;
         height: 40px;
-        object-fit: contain;
+        width: 60px;
+        object-fit: contain !important;
+      }
+
+      .gatsby-image-wrapper.gatsby-image-wrapper-constrained {
+        width: max-content;
+        height: max-content;
       }
 
       h2 {
         margin: 0;
+        padding-inline: 50px;
         color: rgba(255, 255, 255, 1) transparent;
         transition: all 1s ease;
         cursor: default;
@@ -78,13 +93,19 @@
 @media screen and (min-width: $breakpoint-lg) {
   .m-scroll {
     &__title {
-      &-inner {
-        margin-right: 80px;
+      &-image {
+        gap: 180px;
+      }
 
+      &-inner {
         img {
-          margin: 0 100px;
-          height: 70px;
-          width: 70px;
+          height: 70px !important;
+          width: 70px !important;
+          object-fit: cover !important;
+        }
+
+        h2 {
+          padding-inline: 100px;
         }
       }
     }

@@ -1,59 +1,41 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
-import { useFooter, useLandingUrl } from "../../../hooks"
+import CustomLink from "../../CustomLink/CustomLink"
 import "./subscription.scss"
+import PropTypes from "prop-types"
 
-const SubscriptionLink = ({ children, subscriptionUrl, landing }) => {
-  const isExternalLink = subscriptionUrl?.startsWith('http')
+export default function Subscription({ subscriptionData }) {
+  if (!subscriptionData) return null
 
-  if (landing) {
-    return <Link to={landing}>{children}</Link>
-  } else if (isExternalLink) {
-    return (
-      <a href={subscriptionUrl} rel="noopener noreferrer" target="_blank">
-        {children}
-      </a>
-    )
-  } else {
-    return <a href={subscriptionUrl}>{children}</a>
-  }
-}
+  const { title, url, callToAction, landing_page } = subscriptionData
 
-SubscriptionLink.propTypes = {
-  children: PropTypes.node.isRequired,
-  subscriptionUrl: PropTypes.string,
-  landing: PropTypes.string,
-}
-
-export default function Subscription() {
-  const data = useFooter()
-  const getUrl = useLandingUrl()
-
-  const dataSubscription = data?.allStrapiLayout?.nodes[0]?.footer?.subscription
-
-  const subscriptionUrl = dataSubscription?.url
-  const landing = getUrl(dataSubscription?.landing_page?.slug)
-
-  if (!dataSubscription?.landing_page && !subscriptionUrl) return null
+  if (!url && !landing_page) return null
 
   return (
-    <div className="ContactData__Item contactData-container">
-      <h6 className="titleSubscription">{dataSubscription?.title}</h6>
-      <div>
-        <div className="ContactData__Form d-flex flex-md-column justify-content-between">
-          <button className="col-5">
-            <SubscriptionLink subscriptionUrl={subscriptionUrl} landing={landing}>
-              {dataSubscription?.callToAction || '¡Aqui!'}
-            </SubscriptionLink>
-          </button>
-        </div>
-      </div>
-      <button className="col-5 contactData-mobile_button">
-        <SubscriptionLink subscriptionUrl={subscriptionUrl} landing={landing}>
-          {dataSubscription?.title}
-        </SubscriptionLink>
-      </button>
+    <div className="Footer__subscription">
+      <h6 className="Footer__subscription__title">{title}</h6>
+      <CustomLink
+        content={callToAction || "¡Aquí!"}
+        url={url}
+        landing={landing_page}
+        className={`Footer__subscription__button`}
+      />
+      <CustomLink
+        content={title}
+        url={url}
+        landing={landing_page}
+        className="Footer__subscription__button mobile"
+      />
     </div>
   )
+}
+
+Subscription.propTypes = {
+  subscriptionData: PropTypes.shape({
+    title: PropTypes.string,
+    url: PropTypes.string,
+    callToAction: PropTypes.string,
+    landing_page: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }),
+  }),
 }
