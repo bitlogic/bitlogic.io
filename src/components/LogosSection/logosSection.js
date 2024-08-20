@@ -7,7 +7,7 @@ import "react-multi-carousel/lib/styles.css"
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
 
-const handleKeyDown = ({ event, onClick }) => {
+const handleKeyDown = (event, onClick) => {
   if (event.key === "Enter" || event.key === " ") {
     onClick()
   }
@@ -21,7 +21,7 @@ const CustomLeftArrow = ({ onClick }) => {
       tabIndex={0}
       aria-hidden={false}
       focusable
-      onKeyDown={event => handleKeyDown(event, onClick())}
+      onKeyDown={event => handleKeyDown(event, onClick)}
       className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
       icon="fa-solid fa-chevron-left"
       onClick={() => onClick()}
@@ -37,7 +37,7 @@ const CustomRightArrow = ({ onClick }) => {
       tabIndex={0}
       aria-hidden={false}
       focusable
-      onKeyDown={event => handleKeyDown(event, onClick())}
+      onKeyDown={event => handleKeyDown(event, onClick)}
       className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
       icon="fa-solid fa-chevron-right"
       onClick={() => onClick()}
