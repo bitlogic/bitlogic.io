@@ -44,7 +44,7 @@ const Navigation = ({ data, landing }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [isFixed, isBottom])
+  }, [isFixed, isBottom, wrapperRef, lastScrollY])
 
   if (!data) return null
 
