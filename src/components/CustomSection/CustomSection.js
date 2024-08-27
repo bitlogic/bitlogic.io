@@ -22,11 +22,11 @@ import {
   Professionals,
   Quote,
   Text,
+  BannerTop,
 } from "../"
 
 const COMPONENTS = Object.freeze({
   "home.transition": AnimatedTransitionContinous,
-  "components.banner": Banner,
   "components.banner-list": BannerList,
   "components.selected-grid": ExpandGrid,
   "components.featured-blogs": FeaturedBlogs,
@@ -39,6 +39,12 @@ const COMPONENTS = Object.freeze({
   "home.hero": Hero,
   "components.list-items": ListItems,
   "scripts.catsone": Catsone,
+  "components.banner": ({ data }) =>
+    data?.variant === "background" ? (
+      <BannerTop banner={data} />
+    ) : (
+      <Banner data={data} />
+    ),
   "components.cases-section": ({ data }) =>
     data?.allCases ? <CasesList data={data} /> : <CasesSection data={data} />,
   "home.dual-section": ({ data }) =>
