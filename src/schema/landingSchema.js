@@ -2,6 +2,7 @@ const landingSchema = `
 type StrapiLandingPage implements Node {
     name: String
     body: [BodyComponent]
+    navigation: StrapiNavigation
     slug: String  
     parent_page : StrapiLandingPage
     published_at(
@@ -35,6 +36,17 @@ type StrapiLandingPage implements Node {
     pageTitle: String
     pageDescription: String
     pageKeywords: String
+  }
+
+  type StrapiNavigation {
+    title: String
+    showSiblingPages: Boolean
+    relatedPages: StrapiNavigationRelatedPages
+  }
+
+  type StrapiNavigationRelatedPages {
+    title: String
+    pages: [Button]
   }
 
   type BodyComponent {
