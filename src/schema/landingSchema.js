@@ -67,7 +67,6 @@ type StrapiLandingPage implements Node {
     content: String
     animation: JSON
     contactForm: Boolean
-    allCases: Boolean
     allBlog: Boolean
     show: Boolean
     image: LocalFile
@@ -82,7 +81,6 @@ type StrapiLandingPage implements Node {
     dualSectionPart: [SectionPart]
     Card: [Card]
     ListItem: [Card]
-    cases: [StrapiCase]
     professionals: [StrapiProfessional]
     articles: [StrapiArticle]
   }

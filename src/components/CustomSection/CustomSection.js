@@ -11,8 +11,6 @@ import {
   AnimatedTransitionContinous,
   Banner,
   BannerList,
-  CasesSection,
-  CasesList,
   Catsone,
   DualSection,
   OneSection,
@@ -39,8 +37,6 @@ const COMPONENTS = Object.freeze({
   "home.hero": Hero,
   "components.list-items": ListItems,
   "scripts.catsone": Catsone,
-  "components.cases-section": ({ data }) =>
-    data?.allCases ? <CasesList data={data} /> : <CasesSection data={data} />,
   "home.dual-section": ({ data }) =>
     data?.dualSectionPart?.length === 1 ? (
       <OneSection data={data} />
