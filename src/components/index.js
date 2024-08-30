@@ -1,6 +1,4 @@
 import Seo from "./Seo/Seo"
-import CasesSection from "./CasesSection/CasesSection"
-import CasesList from "./CasesSection/CasesList"
 import LogosSection from "./LogosSection/logosSection"
 import Banner from "./Banner/Banner"
 import BannerList from "./BannerList/BannerList"
@@ -22,8 +20,6 @@ import Navigation from "./Navigation/Navigation"
 import Layout from "./layout"
 
 export {
-  CasesList,
-  CasesSection,
   Seo,
   LogosSection,
   Banner,
