@@ -7,6 +7,7 @@ export default function Location({ locationData }) {
   if (!locationData) return null
 
   const location = locationData?.iconText?.map(item => {
+    if (!item?.icon) return null
     return (
       <div className="icon-text d-flex" key={item.id}>
         <FaIcon type={item.icon.type} code={item.icon.code} />
