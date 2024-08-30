@@ -11,8 +11,6 @@ import {
   AnimatedTransitionContinous,
   Banner,
   BannerList,
-  CasesSection,
-  CasesList,
   Catsone,
   DualSection,
   OneSection,
@@ -45,8 +43,6 @@ const COMPONENTS = Object.freeze({
     ) : (
       <Banner data={data} />
     ),
-  "components.cases-section": ({ data }) =>
-    data?.allCases ? <CasesList data={data} /> : <CasesSection data={data} />,
   "home.dual-section": ({ data }) =>
     data?.dualSectionPart?.length === 1 ? (
       <OneSection data={data} />
@@ -56,6 +52,8 @@ const COMPONENTS = Object.freeze({
 })
 
 const CustomSection = ({ sections }) => {
+  if (!sections) return null
+
   const sectionResult = sections.map(section => {
     if (!section?.strapi_component) return null
 

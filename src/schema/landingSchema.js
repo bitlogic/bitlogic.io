@@ -2,6 +2,7 @@ const landingSchema = `
 type StrapiLandingPage implements Node {
     name: String
     body: [BodyComponent]
+    navigation: StrapiNavigation
     slug: String  
     parent_page : StrapiLandingPage
     published_at(
@@ -37,6 +38,17 @@ type StrapiLandingPage implements Node {
     pageKeywords: String
   }
 
+  type StrapiNavigation {
+    title: String
+    showSiblingPages: Boolean
+    relatedPages: StrapiNavigationRelatedPages
+  }
+
+  type StrapiNavigationRelatedPages {
+    title: String
+    pages: [Button]
+  }
+
   type BodyComponent {
     id: ID!
     title: String
@@ -55,7 +67,6 @@ type StrapiLandingPage implements Node {
     content: String
     animation: JSON
     contactForm: Boolean
-    allCases: Boolean
     allBlog: Boolean
     show: Boolean
     image: LocalFile
@@ -70,7 +81,6 @@ type StrapiLandingPage implements Node {
     dualSectionPart: [SectionPart]
     Card: [Card]
     ListItem: [Card]
-    cases: [StrapiCase]
     professionals: [StrapiProfessional]
     articles: [StrapiArticle]
   }
