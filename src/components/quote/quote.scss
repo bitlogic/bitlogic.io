@@ -1,172 +1,135 @@
 @import "../../styles/global.scss";
 
-.quote {
-  display: grid;
-  gap: 2em;
+.Quote {
   color: $primary;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-block: 48px;
 
-  &-body {
-
-    grid-area: quote-body;
+  &__body {
+    .gatsby-image-wrapper.gatsby-image-wrapper-constrained {
+      width: 100%;
+      height: 100%;
+    }
 
     img {
+      min-height: 300px;
       max-height: 450px;
       height: 100%;
       width: 100%;
-      object-fit: cover;
-      object-position: top;
       border-radius: 8px;
+      object-position: center center;
     }
 
     iframe {
-      height: 100%;
+      aspect-ratio: 16/9;
       width: 100%;
       margin-bottom: 0;
       min-height: 250px;
-      max-height: 400px;
     }
   }
 
-  &-person {
-    grid-area: quote-person;
+  &__content {
     display: flex;
     flex-direction: column;
 
-    &-title {
+    &__title {
       margin-bottom: 1rem;
+      text-wrap: pretty;
     }
 
-    &-text {
+    &__text {
+      text-wrap: pretty;
       margin-bottom: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 7;
-      -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    div>p {
-      margin: 0;
-    }
-  }
-
-  &-profile {
-    grid-area: quote-profile;
-    flex-grow: 0;
-    align-items: center;
-    align-self: flex-start;
-    border-radius: 50%;
-    width: 100%;
-    z-index: 4;
-
-    img {
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
+    div > p {
+      margin-bottom: 8px;
     }
 
-    div>p {
-      margin-bottom: 6px;
+    &__profile {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      margin-top: 16px;
+      align-items: center;
+      gap: 8px;
+
+      img {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+      }
+
+      div > p {
+        margin-bottom: 8px;
+      }
     }
-  }
 
-  &-btn {
-    margin-top: 8px;
-
-    button {
+    &__btn {
       @include primaryBtn;
+      margin-top: 8px;
       border-radius: 8px;
       width: 131px;
-      height: 30px;
+      height: max-content;
+      text-align: center;
     }
   }
 }
 
 @media (min-width: $breakpoint-md) {
-  .quote {
-    &-body {
-      iframe {
-        min-height: 300px !important;
+  .Quote {
+    gap: 32px;
+
+    &.quote {
+      flex-direction: row-reverse;
+    }
+
+    &.media {
+      flex-direction: row;
+    }
+
+    &__content {
+      flex: 1;
+    }
+
+    &__body {
+      &.image {
+        flex: 1;
+      }
+
+      &.video {
+        flex: 2;
       }
     }
   }
 }
 
 @media (min-width: $breakpoint-lg) {
-  .quote {
-    &-body {
-      img {
-        max-height: 550px;
-      }
-
-      iframe {
-        min-height: 350px !important;
-      }
-    }
-
-    &-btn {
-      button {
+  .Quote {
+    &__content {
+      &__btn {
         width: 150px;
-        height: 40px;
       }
-    }
 
-    &-profile {
-      img {
-        width: 100px;
-        height: 100px;
+      &__profile {
+        img {
+          width: 100px;
+          height: 100px;
+        }
       }
     }
   }
 }
 
 @media (min-width: $breakpoint-xl) {
-  .quote {
-    &-body {
-
-      iframe {
-        min-height: 500px !important;
-      }
-    }
-
-    &-person {
-      &-title {
+  .Quote {
+    &__content {
+      &__title {
         margin-bottom: 15px;
       }
-    }
-  }
-}
-
-.variant {
-  &-quote {
-    grid-template-areas:
-      "quote-person quote-body"
-      "quote-profile quote-body";
-    grid-template-columns: 1fr 2fr;
-    @extend .variant;
-  }
-
-  &-media {
-    grid-template-areas:
-      "quote-body quote-person"
-      "quote-body quote-profile";
-    grid-template-columns: 2fr 1fr;
-    @extend .variant;
-  }
-
-  grid-template-rows: auto 1fr;
-
-  @media screen and (max-width: calc($breakpoint-md - 3px)) {
-    grid-template-areas: "quote-body quote-body" "quote-profile quote-person";
-    grid-template-columns: auto 1fr;
-  }
-
-  @media screen and (max-width: calc($breakpoint-md - 3px)) {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    p {
-      margin-bottom: 0;
     }
   }
 }

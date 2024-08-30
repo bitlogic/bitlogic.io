@@ -9,6 +9,8 @@
   }
 
   &__titleContainer {
+    position: absolute;
+    bottom: 0;
     background-color: rgba(36, 39, 42, 0.4);
     padding: 24px 8px;
     width: 100%;
