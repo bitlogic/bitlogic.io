@@ -5,16 +5,20 @@ import { BgImage } from "gbimage-bridge"
 import "./BannerTop.scss"
 
 const BannerTop = ({ banner }) => {
-  const { image, imagePage, title } = banner
+  const { image, imagePage, title, variant = "" } = banner
 
   const imageBanner =
     getImage(image?.localFile) || getImage(imagePage?.localFile)
 
   return (
-    <div className="BannerTop">
+    <div className={`BannerTop ${variant}`}>
       <BgImage image={imageBanner} className="BannerTop__bgImage">
         <div className="BannerTop__titleContainer">
-          <h1 className="BannerTop__title container">{title}</h1>
+          <h1
+            className={`BannerTop__title ${variant && "background container"}`}
+          >
+            {title}
+          </h1>
         </div>
       </BgImage>
     </div>
@@ -30,6 +34,7 @@ BannerTop.propTypes = {
       localFile: PropTypes.object,
     }),
     title: PropTypes.string.isRequired,
+    variant: PropTypes.string,
   }).isRequired,
 }
 
