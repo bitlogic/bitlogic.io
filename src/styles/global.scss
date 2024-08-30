@@ -36,7 +36,8 @@ $link-blog: var(--link-blog);
 
 $summary-color: var(--summary-color);
 
-main {
+.dark,
+.light {
   background-color: $primary-container !important;
 }
 
@@ -67,18 +68,37 @@ $white: #ffffff;
 $yellow: #67f293;
 $blue: #3f6be8;
 $grey-light: #f5f5f5;
+
 //new colors
 $grey: #545468;
 $light-grey: #c4c4c4;
 $alt: #67f293;
 $blackBit: #242424;
 $grey-light-bg: #faf8f8;
+
 /* Sizes */
 $small: 15px;
 $medium: 20px;
 $large: 25px;
 $second-large: 40px;
 $extra-large: 45px;
+
+// new sizes
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+/* Weights */
+$normal: 400;
+$standard: 500;
+$bold: 600;
+$max-bold: 700;
+$extra-bold: 900;
+
+/* Borders */
+$bottom-yellow: 4px solid $yellow;
 
 //buttons
 @mixin primaryBtn {
@@ -130,13 +150,6 @@ $extra-large: 45px;
     color: inherit;
   }
 }
-
-// new sizes
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-$breakpoint-xxl: 1400px;
 
 body {
   font-size: 16px;
@@ -240,16 +253,6 @@ body {
     }
   }
 }
-
-/* Weights */
-$normal: 400;
-$standard: 500;
-$bold: 600;
-$max-bold: 700;
-$extra-bold: 900;
-
-/* Borders */
-$bottom-yellow: 4px solid $yellow;
 
 %border-shadowed {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
