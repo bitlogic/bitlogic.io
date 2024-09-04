@@ -31,6 +31,12 @@ function BannerRedirect() {
 
   if (!isOpen) return null
 
+  const redirect = event => {
+    closeBanner()
+    event.preventDefault()
+    window.location.href = REDIRECT.url
+  }
+
   return (
     <section className="BannerRedirect container">
       <div className="BannerRedirect__wrapper">
@@ -40,8 +46,10 @@ function BannerRedirect() {
             <MdClose />
           </button>
         </div>
-        <button className="BannerRedirect__wrapper__btn" onClick={closeBanner}>
-          <a href={REDIRECT.url}>{REDIRECT.callToAction}</a>
+        <button tabIndex={-1} className="BannerRedirect__wrapper__btn">
+          <a onClick={e => redirect(e)} href={REDIRECT.url}>
+            {REDIRECT.callToAction}
+          </a>
         </button>
       </div>
     </section>
