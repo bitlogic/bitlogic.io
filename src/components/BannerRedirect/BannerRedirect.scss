@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 .BannerRedirect {
   background-color: $nav-footer-container;
@@ -20,7 +20,7 @@
     padding: 16px 1px;
     color: $primary;
 
-    &>div {
+    & > div {
       gap: 16px;
       color: $white;
       margin-bottom: 16px;
@@ -37,7 +37,7 @@
         align-self: self-start;
         background-color: transparent;
         padding: 3px;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         border-radius: 50%;
 
         &:hover {
@@ -48,8 +48,6 @@
 
     &__btn {
       @include primaryBtn;
-      color: $primary-invert;
-      background-color: $secondary;
     }
   }
 
