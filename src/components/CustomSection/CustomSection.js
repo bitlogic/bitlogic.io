@@ -6,7 +6,6 @@ import PropTypes from "prop-types"
 import ListItems from "../ListItems/ListItems"
 import VideoBackground from "../videoBackground/VideoBackground"
 import PipedriveForm from "../Form/PipedriveForm"
-import Hero from "../Hero/Hero"
 import {
   AnimatedTransitionContinous,
   Banner,
@@ -34,7 +33,6 @@ const COMPONENTS = Object.freeze({
   "home.quote": Quote,
   "components.text": Text,
   "home.video-background": VideoBackground,
-  "home.hero": Hero,
   "components.list-items": ListItems,
   "scripts.catsone": Catsone,
   "components.banner": ({ data }) =>
