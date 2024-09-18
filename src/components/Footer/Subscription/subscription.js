@@ -31,7 +31,7 @@ export default function Subscription({ subscriptionData }) {
 
 Subscription.propTypes = {
   subscriptionData: PropTypes.shape({
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
     url: PropTypes.string,
     callToAction: PropTypes.string,
     landing_page: PropTypes.shape({
