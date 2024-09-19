@@ -52,8 +52,8 @@ Sites.propTypes = {
     websites: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
-        url: PropTypes.string,
-        name: PropTypes.string,
+        url: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
         icon: PropTypes.shape({
           url: PropTypes.string,
           alternativeText: PropTypes.string,
