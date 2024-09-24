@@ -83,11 +83,11 @@
   .Quote {
     gap: 32px;
 
-    &.quote {
+    &.derecha {
       flex-direction: row-reverse;
     }
 
-    &.media {
+    &.izquierda {
       flex-direction: row;
     }
 
