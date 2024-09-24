@@ -1,10 +1,11 @@
 module.exports = {
+  trailingSlash: "always",
   siteMetadata: {
     title: `Bitlogic`,
     description: `Bitlogic Web es una empresa dedicada al diseño, ingeniería y desarrollo ágil de productos de software, especializada en la transformación digital de instituciones educativas .`,
     author: `Bitlogic.io`,
     siteUrl: process.env.SITE_URL,
-    // siteUrl: "https://bitlogic.io",
+    // siteUrl: "https://es.bitlogic.io",
   },
   plugins: [
     {
@@ -39,7 +40,7 @@ module.exports = {
               lastmod: homePage.updated_at,
             },
             {
-              path: "/blog",
+              path: "/blog/",
               lastmod: blogPage.updated_at,
             },
           ]
@@ -88,8 +89,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        // siteUrl: "https://bitlogic.io",
+        stripQueryString: true,
         siteUrl: process.env.SITE_URL,
+        // siteUrl: "https://es.bitlogic.io",
       },
     },
     {

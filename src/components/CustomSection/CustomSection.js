@@ -6,13 +6,10 @@ import PropTypes from "prop-types"
 import ListItems from "../ListItems/ListItems"
 import VideoBackground from "../videoBackground/VideoBackground"
 import PipedriveForm from "../Form/PipedriveForm"
-import Hero from "../Hero/Hero"
 import {
   AnimatedTransitionContinous,
   Banner,
   BannerList,
-  CasesSection,
-  CasesList,
   Catsone,
   DualSection,
   OneSection,
@@ -22,11 +19,11 @@ import {
   Professionals,
   Quote,
   Text,
+  BannerTop,
 } from "../"
 
 const COMPONENTS = Object.freeze({
   "home.transition": AnimatedTransitionContinous,
-  "components.banner": Banner,
   "components.banner-list": BannerList,
   "components.selected-grid": ExpandGrid,
   "components.featured-blogs": FeaturedBlogs,
@@ -36,11 +33,14 @@ const COMPONENTS = Object.freeze({
   "home.quote": Quote,
   "components.text": Text,
   "home.video-background": VideoBackground,
-  "home.hero": Hero,
   "components.list-items": ListItems,
   "scripts.catsone": Catsone,
-  "components.cases-section": ({ data }) =>
-    data?.allCases ? <CasesList data={data} /> : <CasesSection data={data} />,
+  "components.banner": ({ data }) =>
+    data?.variant === "background" ? (
+      <BannerTop banner={data} />
+    ) : (
+      <Banner data={data} />
+    ),
   "home.dual-section": ({ data }) =>
     data?.dualSectionPart?.length === 1 ? (
       <OneSection data={data} />
@@ -50,6 +50,8 @@ const COMPONENTS = Object.freeze({
 })
 
 const CustomSection = ({ sections }) => {
+  if (!sections) return null
+
   const sectionResult = sections.map(section => {
     if (!section?.strapi_component) return null
 

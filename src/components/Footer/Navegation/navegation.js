@@ -13,7 +13,7 @@ export default function Navegation({ title, items }) {
           content={navItem.label}
           url={
             navItem?.url ||
-            (navItem?.singleType ? `/${navItem.singleType}` : "")
+            (navItem?.singleType ? `/${navItem.singleType}/` : "")
           }
           landing={navItem?.landing}
           className=""

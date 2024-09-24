@@ -1,21 +1,44 @@
-import React from "react"
+import React, { useRef } from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import PropTypes from "prop-types"
-
-import { Seo, CustomSection } from "../components"
+import { Seo, CustomSection, Navigation, Layout } from "../components"
 
 const LandingPage = ({ data, location }) => {
-  const pageData = data?.allStrapiLandingPage?.nodes[0]
+  const { name, slug, parent_page, seo, body, navigation } =
+    data?.allStrapiLandingPage?.nodes[0] || {}
+
+  const wrapperRef = useRef(null)
+
+  const landing = {
+    name,
+    slug,
+    parent_page,
+    ref: wrapperRef,
+  }
 
   return (
     <Layout location={location} options={{ hasHeader: true }}>
       <Seo
-        title={pageData?.seo?.pageTitle || pageData.name}
-        description={pageData?.seo?.pageDescription}
-        keywords={pageData?.seo?.pageKeywords}
+        title={seo?.pageTitle || name}
+        description={seo?.pageDescription}
+        keywords={seo?.pageKeywords}
       />
-      {pageData?.body?.length > 0 && <CustomSection sections={pageData.body} />}
+      {body?.length > 0 && navigation ? (
+        <>
+          <CustomSection sections={body.slice(0, 1)} />
+          <div
+            ref={wrapperRef}
+            className="wrapper-container d-flex flex-column flex-lg-row"
+          >
+            <Navigation data={navigation} landing={landing} />
+            <div className="content-section flex-grow-1">
+              <CustomSection sections={body.slice(1)} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <CustomSection sections={body} />
+      )}
     </Layout>
   )
 }
@@ -44,10 +67,30 @@ export const query = graphql`
     allStrapiLandingPage(filter: { slug: { eq: $slug } }) {
       nodes {
         name
+        slug
+        parent_page {
+          slug
+        }
         seo {
           pageTitle
           pageKeywords
           pageDescription
+        }
+        navigation {
+          title
+          showSiblingPages
+          relatedPages {
+            title
+            pages {
+              id
+              content
+              url
+              landing_page {
+                name
+                slug
+              }
+            }
+          }
         }
         body {
           id
@@ -69,7 +112,6 @@ export const query = graphql`
           color
           callToAction
           allBlog
-          allCases
           videoUrl
           video {
             url
@@ -180,51 +222,6 @@ export const query = graphql`
               localFile {
                 childImageSharp {
                   gatsbyImageData
-                }
-              }
-            }
-          }
-          cases {
-            id
-            title
-            subtitle
-            description
-            button {
-              content
-              url
-              landing_page {
-                slug
-              }
-            }
-            image {
-              alternativeText
-              url
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-            quote {
-              title
-              description
-              variant
-              profile {
-                alternativeText
-                url
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-              image {
-                alternativeText
-                url
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
                 }
               }
             }

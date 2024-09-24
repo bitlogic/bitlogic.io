@@ -1,60 +1,58 @@
 @import "../../styles/global.scss";
 
-.banner {
+.BannerTop {
   &__bgImage {
     min-height: 40vh;
+    width: 100%;
     display: flex;
     align-items: flex-end;
-    width: 100%;
   }
+
   &__titleContainer {
+    position: absolute;
+    bottom: 0;
     background-color: rgba(36, 39, 42, 0.4);
-    padding: 27px 45px 28px 24px;
+    padding: 24px 8px;
     width: 100%;
   }
+
   &__title {
-    font-size: $medium;
+    text-wrap: pretty;
     color: $white;
     font-weight: $max-bold;
-    margin: 0;
-  }
-  &__summary {
-    background-color: $secondary-container;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 0;
+    text-transform: uppercase;
 
-    &__txt {
-      color: $white;
+    &:not(.background) {
+      text-transform: none;
       font-size: $medium;
-      padding: 23px 16px;
-      line-height: 25px;
-      letter-spacing: 0em;
-      text-align: center;
-      margin: 20px 0 20px;
-      font-weight: bold;
+    }
+  }
+
+  &.background {
+    &__titleContainer {
+      padding: 24px 8px;
     }
   }
 }
 
 @media (min-width: $breakpoint-md) {
-  .banner {
+  .BannerTop {
     &__bgImage {
       min-height: 55vh;
     }
+
     &__titleContainer {
       padding: 30px;
     }
-    &__title {
+
+    &__title:not(.background) {
       font-size: $extra-large;
     }
-    &__summary {
-      &__txt {
-        font-size: $large;
-        line-height: 35px;
-        text-align: center;
-        padding: 4rem 6rem;
-        margin-top: 0;
+
+    &.background {
+      &__titleContainer {
+        padding: 30px 0;
       }
     }
   }
