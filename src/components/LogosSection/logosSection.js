@@ -1,29 +1,16 @@
 import "./logosSection.scss"
 import React from "react"
 import { useTheme } from "../../context/themeContext"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import PropTypes from "prop-types"
 import CustomImage from "../CustomImage/CustomImage"
 
-const handleKeyDown = (event, onClick) => {
-  if (event.key === "Enter" || event.key === " ") {
-    onClick()
-  }
-}
-
 const CustomLeftArrow = ({ onClick }) => {
   return (
-    <FontAwesomeIcon
-      role="button"
-      aria-label="Flecha izquierda para ver logo anterior"
-      tabIndex={0}
-      aria-hidden={false}
-      focusable
-      onKeyDown={event => handleKeyDown(event, onClick)}
+    <button
       className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left custom-arrow left"
-      icon="fa-solid fa-chevron-left"
+      aria-label="Flecha izquierda para ver logo anterior"
       onClick={() => onClick()}
     />
   )
@@ -31,15 +18,9 @@ const CustomLeftArrow = ({ onClick }) => {
 
 const CustomRightArrow = ({ onClick }) => {
   return (
-    <FontAwesomeIcon
-      role="button"
-      aria-label="Flecha derecha para ver el siguiente logo"
-      tabIndex={0}
-      aria-hidden={false}
-      focusable
-      onKeyDown={event => handleKeyDown(event, onClick)}
+    <button
       className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right custom-arrow right"
-      icon="fa-solid fa-chevron-right"
+      aria-label="Flecha derecha para ver el siguiente logo"
       onClick={() => onClick()}
     />
   )
@@ -123,7 +104,7 @@ LogosSection.propTypes = {
     summary: PropTypes.string,
     media: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         img: PropTypes.shape({
           url: PropTypes.string.isRequired,

@@ -65,7 +65,7 @@ DualSection.propTypes = {
     summary: PropTypes.string,
     dualSectionPart: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         description: PropTypes.string,
         button: PropTypes.shape({

@@ -4,10 +4,7 @@ import { Flipped } from "react-flip-toolkit"
 import FadeContents from "./FadeContents"
 
 const getFirstDropdownSectionHeight = el => {
-  if (
-    !el?.querySelector("*[data-first-dropdown-section]")
-  )
-    return 0
+  if (!el?.querySelector("*[data-first-dropdown-section]")) return 0
   return el.querySelector("*[data-first-dropdown-section]").offsetHeight
 }
 
@@ -84,7 +81,6 @@ class DropdownContainer extends Component {
                 <div
                   className="dropdown_root-background-alt"
                   ref={el => (this.altBackgroundEl = el)}
-                  duration={duration}
                 />
                 <FadeContents
                   direction={direction}
