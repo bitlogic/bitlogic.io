@@ -56,12 +56,9 @@ const Pagination = ({ posts, postPerPage, inicialState }) => {
 }
 
 Pagination.propTypes = {
-  postPerPage: PropTypes.number.isRequired,
-  inicialState: PropTypes.bool.isRequired,
-  post: PropTypes.shape({
-    length: PropTypes.number.isRequired,
-    slice: PropTypes.func
-  }).isRequired
+  postPerPage: PropTypes.string.isRequired,
+  inicialState: PropTypes.bool,
+  posts: PropTypes.array.isRequired,
 }
 
 export default Pagination

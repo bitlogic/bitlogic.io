@@ -37,7 +37,7 @@ RenderSection.propTypes = {
       slug: PropTypes.string.isRequired,
     }),
     icon: PropTypes.shape({
-      url: PropTypes.string.isRequired,
+      url: PropTypes.string,
       alternativeText: PropTypes.string,
       localFile: PropTypes.shape({
         childImageSharp: PropTypes.shape({
@@ -83,40 +83,10 @@ const Dropdown = memo(({ sections, topLevel }) => {
 })
 
 Dropdown.propTypes = {
-  topLevel: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    text: PropTypes.string,
-    url: PropTypes.string,
-    landing_page: PropTypes.shape({
-      slug: PropTypes.string.isRequired,
-    }),
-    icon: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      alternativeText: PropTypes.string,
-      localFile: PropTypes.shape({
-        childImageSharp: PropTypes.shape({
-          gatsbyImageData: PropTypes.object.isRequired,
-        }),
-      }),
-    }),
-  }),
+  topLevel: PropTypes.object,
   sections: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      text: PropTypes.string,
-      url: PropTypes.string,
-      landing_page: PropTypes.shape({
-        slug: PropTypes.string.isRequired,
-      }),
-      icon: PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        alternativeText: PropTypes.string,
-        localFile: PropTypes.shape({
-          childImageSharp: PropTypes.shape({
-            gatsbyImageData: PropTypes.object.isRequired,
-          }),
-        }),
-      }),
+      id: PropTypes.number.isRequired,
     })
   ),
 }

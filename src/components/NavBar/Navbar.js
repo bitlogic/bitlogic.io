@@ -22,65 +22,62 @@ const NavBar = memo(() => {
   const navbarButton = navbarData?.navbar?.navButton
 
   return (
-    <>
-      <Navbar variant="dark" expand="xl" className="NavBar">
-        <Link to="/" className="NavBar__Logo">
-          <GatsbyImage
-            loading="lazy"
-            image={theme === "dark" && logoDark ? logoDark : logoLight}
-            alt={"bitlogic"}
-            className="logo"
-          />
-        </Link>
-        <Navbar.Toggle
-          className="NavBar__Toggler"
-          aria-controls="basic-navbar-nav"
+    <Navbar variant="dark" expand="xxl" className="NavBar">
+      <Link to="/" className="NavBar__Logo">
+        <GatsbyImage
+          loading="lazy"
+          image={theme === "dark" && logoDark ? logoDark : logoLight}
+          alt={"bitlogic"}
+          className="logo"
         />
-        <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
-          {/* Menu Links */}
-          {menuData && (
-            <div className="NavBar_links">
-              <AnimatedNavbar navbarItems={menuData} duration={300} />
-            </div>
+      </Link>
+      <Navbar.Toggle
+        className="NavBar__Toggler"
+        aria-controls="basic-navbar-nav"
+      />
+      <Navbar.Collapse id="basic-navbar-nav" className="NavBar__Collapse">
+        {menuData && (
+          <div className="NavBar_links">
+            <AnimatedNavbar navbarItems={menuData} duration={300} />
+          </div>
+        )}
+        <div className="NavBar_Side">
+          {navbarButton && (
+            <CustomLink
+              content={navbarButton.content}
+              url={navbarButton?.url}
+              landing={navbarButton?.landing_page}
+              className="NavBar_Side-contact"
+            />
           )}
-          <div className="NavBar_Side">
-            {navbarButton && (
-              <CustomLink
-                content={navbarButton.content}
-                url={navbarButton?.url}
-                landing={navbarButton?.landing_page}
-                className="NavBar_Side-contact"
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Cambiar página a modo ${
+              theme === "dark" ? "claro" : "oscuro"
+            }`}
+          >
+            {theme === "dark" ? (
+              <img
+                src={moon}
+                className="theme-toggle-moon"
+                alt="theme dark"
+                width="25"
+                height="25"
+              />
+            ) : (
+              <img
+                className="theme-toggle-sun"
+                src={sun}
+                alt="theme light"
+                width="25"
+                height="25"
               />
             )}
-            <button
-              className="theme-toggle"
-              onClick={toggleTheme}
-              aria-label={`Cambiar página a modo ${
-                theme === "dark" ? "claro" : "oscuro"
-              }`}
-            >
-              {theme === "dark" ? (
-                <img
-                  src={moon}
-                  className="theme-toggle-moon"
-                  alt="theme dark"
-                  width="25"
-                  height="25"
-                />
-              ) : (
-                <img
-                  className="theme-toggle-sun"
-                  src={sun}
-                  alt="theme light"
-                  width="25"
-                  height="25"
-                />
-              )}
-            </button>
-          </div>
-        </Navbar.Collapse>
-      </Navbar>
-    </>
+          </button>
+        </div>
+      </Navbar.Collapse>
+    </Navbar>
   )
 })
 

@@ -6,10 +6,9 @@ const CustomImage = memo(({ image, className, alt, width, height }) => {
   if (!image) return null
 
   const { url, localFile } = image
+  const localImage = getImage(localFile)
 
-  if (localFile) {
-    const localImage = getImage(localFile)
-
+  if (localImage) {
     return (
       <GatsbyImage
         loading="lazy"
