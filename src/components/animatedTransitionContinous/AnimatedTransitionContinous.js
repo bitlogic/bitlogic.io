@@ -20,7 +20,7 @@ const AnimatedTransitionContinous = ({ data }) => {
           {longerText.split("-").map((innerText, idx) => (
             <div
               className="m-scroll__title-inner"
-              key={`AnimatedScroll-${(innerText || image?.name) + idx}`}
+              key={`AnimatedScroll-${(innerText || "") + idx}`}
             >
               {imagePosition === "first" && image && (
                 <CustomImage

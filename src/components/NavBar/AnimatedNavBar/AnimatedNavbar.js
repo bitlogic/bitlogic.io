@@ -8,7 +8,7 @@ import { useLandingUrl } from "../../../hooks"
 import PropTypes from "prop-types"
 
 function getDropdown(navItem) {
-  return () => (
+  return () =>
     navItem?.dropdown ? (
       <Dropdown
         sections={navItem?.dropdownItems}
@@ -17,7 +17,6 @@ function getDropdown(navItem) {
     ) : (
       <Dropdown sections={null} topLevel={null} />
     )
-  );
 }
 
 const AnimatedNavbar = ({ navbarItems = [], duration }) => {
@@ -116,7 +115,7 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
               onMouseEnter={() => onMouseEnter(index)}
               isDropdown={n?.isDropdown}
             >
-              {currentIndex === index && (
+              {currentIndex === index ? (
                 <DropdownContainer
                   direction={direction}
                   animatingOut={animationOut}
@@ -125,7 +124,7 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
                   <CurrentDropdown />
                   {PrevDropdown && <PrevDropdown />}
                 </DropdownContainer>
-              )}
+              ) : null}
             </NavbarItem>
           )
         })}

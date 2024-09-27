@@ -19,7 +19,6 @@ const FadeContents = forwardRef(
 )
 
 const propTypes = {
-  duration: PropTypes.number,
   direction: PropTypes.oneOf(["right", "left"]),
   animatingOut: PropTypes.bool,
   children: PropTypes.node,

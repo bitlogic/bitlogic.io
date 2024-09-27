@@ -97,32 +97,20 @@ const Quote = ({ data }) => {
   )
 }
 
-Quote.defaultProps = {
-  description: "",
-  title: "",
-  variant: "",
-  profileDescription: "",
-  videoUrl: "",
-  button: {},
-  profile: {},
-  image: {},
-}
-
 Quote.propTypes = {
   data: PropTypes.shape({
+    id: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
     variant: PropTypes.string,
     profileDescription: PropTypes.string,
     videoUrl: PropTypes.string,
-    strapi_component: PropTypes.string,
-    id: PropTypes.string,
     button: PropTypes.shape({
       content: PropTypes.string.isRequired,
-      english_landing_page: PropTypes.shape({
+      url: PropTypes.string,
+      landing_page: PropTypes.shape({
         slug: PropTypes.string.isRequired,
       }),
-      url: PropTypes.string,
     }),
     profile: PropTypes.shape({
       url: PropTypes.string.isRequired,

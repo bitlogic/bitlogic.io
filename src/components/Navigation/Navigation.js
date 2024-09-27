@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { useLandingUrl, useNavbar } from "../../hooks/index"
 import "./Navigation.scss"
 import { FaAngleDown } from "react-icons/fa"
+import PropTypes from "prop-types"
 
 const Navigation = ({ data, landing }) => {
   const getUrl = useLandingUrl()
@@ -136,6 +137,38 @@ const Navigation = ({ data, landing }) => {
       </aside>
     </>
   )
+}
+
+Navigation.propTypes = {
+  landing: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    parent_page: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }),
+    ref: PropTypes.shape({
+      current: PropTypes.shape({
+        getBoundingClientRect: PropTypes.func,
+      }),
+    }).isRequired,
+  }),
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    showSiblingPages: PropTypes.bool,
+    relatedPages: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      pages: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          content: PropTypes.string.isRequired,
+          url: PropTypes.string,
+          landing_page: PropTypes.shape({
+            slug: PropTypes.string.isRequired,
+          }),
+        })
+      ),
+    }),
+  }),
 }
 
 export default Navigation
