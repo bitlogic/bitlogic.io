@@ -61,6 +61,7 @@ type StrapiLandingPage implements Node {
     videoUrl: String
     variant: String
     imagePosition: String
+    titlePosition: String
     color: String
     profileDescription: String
     form_url: String

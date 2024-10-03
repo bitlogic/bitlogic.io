@@ -1,92 +1,73 @@
 @import "../../styles/global.scss";
 
-.container-text {
+.Text {
   padding: 64px 0;
+  background-position: center center;
 
-  .text {
+  &__wrapper {
     color: $primary;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 24px;
+  }
 
-    .title {
-      flex: 1;
+  &__title {
+    flex: 1;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
 
-      .titleText {
-        text-transform: uppercase;
-        margin-block: 2rem;
+  &__description {
+    flex: 2;
+    background-color: $primary-container;
+    border-radius: 10px;
+    padding: 32px 16px;
+    @media (min-width: $breakpoint-lg) {
+      padding: 24px 32px;
+    }
+
+    p {
+      text-wrap: pretty;
+      line-height: 1.3;
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
 
-    .description {
-      background-color: $primary-container;
-      border-radius: 10px;
-      flex: 2;
-
-      p:first-child {
-        padding-top: 29px;
-      }
-
-      p {
-        color: $primary;
-        padding: 0rem 0.5rem;
-      }
-
-      img {
-        width: 40px;
-        height: 40px;
-        object-fit: cover;
-        margin-right: 8px;
-      }
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      margin-right: 8px;
     }
   }
 
-  .container-markdown {
-    padding-block: 3rem;
+  @media (min-width: $breakpoint-lg) {
+    &__wrapper {
+      gap: 64px;
 
-    .notTitle {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: $primary;
-      border-radius: 20px;
-      background-color: $primary-container;
-      padding: 0rem 1rem;
-
-      p:first-child {
-        padding-top: 29px;
-      }
-
-      h6 {
-        margin-bottom: 0px;
-
-        &:last-child {
-          padding-bottom: 29px;
+      &.Top {
+        gap: 24px;
+        background-color: $primary-container;
+        border-radius: 10px;
+        padding: 32px 16px;
+        @media (min-width: $breakpoint-xl) {
+          padding: 24px 32px;
         }
 
-        strong {
-          font-size: 16px !important;
+        .Text__description {
+          padding: 0;
         }
       }
-    }
-  }
-}
 
-@media screen and (min-width: $breakpoint-lg) {
-  .container-text {
-    .text {
-      .title {
-        flex: 1;
-        align-self: baseline;
+      &.Left {
+        flex-direction: row;
       }
-    }
-  }
-}
 
-@media screen and (min-width: $breakpoint-xl) {
-  .container-text {
-    .text {
-      .description {
-        p {
-          padding: 0rem 2rem;
-        }
+      &.Right {
+        flex-direction: row-reverse;
       }
     }
   }
