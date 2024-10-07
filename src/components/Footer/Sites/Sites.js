@@ -40,7 +40,7 @@ const Sites = ({ sitesData }) => {
 
   return (
     <div className="Footer_sites">
-      {title && <h6>{title}</h6>}
+      {title && <h2>{title}</h2>}
       <div className="Footer__sites__items">{websitesItems}</div>
     </div>
   )

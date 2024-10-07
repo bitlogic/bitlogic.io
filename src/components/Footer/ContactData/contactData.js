@@ -18,7 +18,7 @@ export default function ContactData({ contactData, internalLink, navButton }) {
 
   return (
     <div className="Footer__contactData">
-      <h6>{contactData?.title}</h6>
+      <h2>{contactData?.title}</h2>
       {contactData?.iconText?.length > 0 && (
         <div className="Footer__contactData__contact">{contact}</div>
       )}

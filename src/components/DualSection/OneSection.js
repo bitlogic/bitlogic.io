@@ -29,7 +29,7 @@ const OneSection = ({ data: { dualSectionPart } }) => {
     >
       <div className="container one_sec">
         <div className="one_sec-title">
-          <h4>{title}</h4>
+          <h2>{title}</h2>
           <div className="one_sec-title-body">
             <MarkdownView
               markdown={description}

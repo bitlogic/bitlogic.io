@@ -60,7 +60,7 @@ const Quote = ({ data }) => {
         </div>
       )}
       <section className={`Quote__content`}>
-        <h4 className="Quote__content__title">{title}</h4>
+        <h2 className="Quote__content__title">{title}</h2>
         <MarkdownView
           markdown={description}
           className="Quote__content__text"

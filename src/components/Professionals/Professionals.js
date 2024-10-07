@@ -28,7 +28,7 @@ const Professionals = ({ data }) => {
         </div>
         <div className="col-6 col-md-12">
           <div className="pro__descr">
-            <h4 className="pro__descr_title">{name}</h4>
+            <h3 className="pro__descr_title">{name}</h3>
             {linkedin && <a href={linkedin} target="_blank" rel='noopener noreferrer' aria-label='Link externo a LinkedIn'><FaLinkedinIn size={28} /></a>}
             {position && <p className="pro__descr_position">{position}</p>}
             <p className="pro__descr_text">{quote}</p>

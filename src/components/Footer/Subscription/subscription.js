@@ -12,7 +12,7 @@ export default function Subscription({ subscriptionData }) {
 
   return (
     <div className="Footer__subscription">
-      <h6 className="Footer__subscription__title">{title}</h6>
+      <h2 className="Footer__subscription__title">{title}</h2>
       <CustomLink
         content={callToAction || "¡Aquí!"}
         url={url}
