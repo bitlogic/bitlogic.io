@@ -10,6 +10,12 @@
     color: $white;
     text-wrap: pretty;
   }
+  h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: $white;
+    text-wrap: pretty;
+  }
 
   &__wrapper {
     display: flex;

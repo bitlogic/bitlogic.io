@@ -26,12 +26,12 @@ export default function BannerList({ data }) {
         <div className="card_item col-9 pe-2">
           {item.landing_page ? (
             <Link to={getUrl(item.landing_page.slug)}>
-              <h4>{item.title}</h4>
+              <h3>{item.title}</h3>
               <p>{item.description}</p>
             </Link>
           ) : (
             <>
-              <h4>{item.title}</h4>
+              <h3>{item.title}</h3>
               <p>{item.description}</p>
             </>
           )}
