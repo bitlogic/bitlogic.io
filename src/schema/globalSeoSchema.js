@@ -1,80 +1,66 @@
 const globalSeoSchema = `
-type StrapiGlobalSeo implements Node {
-    id: ID!
+  type StrapiGlobalSeo implements Node {
     parent: Node
     children: [Node!]!
     internal: Internal!
-    siteURL: String
-    robots: Boolean
-    author: String
+    id: ID!
+    siteURL: String!
+    robots: Boolean!
+    author: String!
+    siteMetadata: ComponentSeo
     published_at(
       formatString: String
       fromNow: Boolean
       difference: String
       locale: String
-    ): Date
+    ): Date!
     created_at(
       formatString: String
       fromNow: Boolean
       difference: String
       locale: String
-    ): Date
+    ): Date!
     updated_at(
       formatString: String
       fromNow: Boolean
       difference: String
       locale: String
     ): Date
-    siteMetadata: StrapiGlobalSeoSiteMetadata
-    strapiId: Int
-  }
-  
-  type StrapiGlobalSeoSiteMetadata {
-    id: Int
-    pageTitle: String
-    pageDescription: String
-    pageKeywords: String
   }
 
-
-type StrapiGlobalConfig implements Node {
-    id: ID!
+  type StrapiGlobalConfig implements Node {
     parent: Node
     children: [Node!]!
     internal: Internal!
-    published_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
-    created_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
-    updated_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
+    id: ID!
     script: [StrapiGlobalConfigScript]
-    strapiId: Int
+    published_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date!
+    created_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date!
+    updated_at(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date
   }
   
   type StrapiGlobalConfigScript {
-    id: Int
+    id: Int!
     name: String
     enable: Boolean
-    src: String
-  }
-
-  type LocalFile {
-    localFile: File @link(from: "localFile___NODE")
+    src: String!
   }
 `
 module.exports = {
-    value: globalSeoSchema,
-  }
+  value: globalSeoSchema,
+}

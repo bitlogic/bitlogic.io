@@ -1,79 +1,34 @@
 const caseSchema = `
-
-type StrapiCase implements Node {
-    id: ID!
+  type StrapiCase implements Node {
     parent: Node
     children: [Node!]!
     internal: Internal!
-    title: String
+    id: ID!
+    strapiId: Int
+    title: String!
     description: String
-    published_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
-    created_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
-    updated_at(
-      formatString: String
-      fromNow: Boolean
-      difference: String
-      locale: String
-    ): Date
-    button: StrapiCaseButton
-    quote: StrapiCaseQuote
+    button: ComponentButton
+    quote: ComponentQuote
     image: LocalFile
-    strapiId: ID
     subtitle: String
-  }
-  
-  type StrapiCaseButton {
-    id: Int
-    content: String
-    url: String
-    landing_page: StrapiCaseButtonLanding_page
-  }
-  
-  type StrapiCaseButtonLanding_page {
-    id: Int
-    name: String
-    slug: String
     published_at(
       formatString: String
       fromNow: Boolean
       difference: String
       locale: String
-    ): Date
+    ): Date!
     created_at(
       formatString: String
       fromNow: Boolean
       difference: String
       locale: String
-    ): Date
+    ): Date!
     updated_at(
       formatString: String
       fromNow: Boolean
       difference: String
       locale: String
     ): Date
-  }
-  
-  type StrapiCaseQuote {
-    id: Int
-    title: String
-    description: String
-    variant: String
-    profile: LocalFile
-    image: LocalFile
-  }
-
-  type LocalFile {
-    localFile: File @link(from: "localFile___NODE")
   }
 `
 

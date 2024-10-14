@@ -32,7 +32,6 @@ const useBlog = () => {
               }
             }
           }
-          
           blog_category {
             name
           }
@@ -51,6 +50,7 @@ const useBlog = () => {
             title
             variant
             summary
+            animation
             button {
               content
               id
@@ -63,8 +63,13 @@ const useBlog = () => {
             }
             image {
               url
+              alternativeText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
             }
-            animation
           }
         }
       }
