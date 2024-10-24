@@ -49,6 +49,10 @@ RenderSection.propTypes = {
     landing_page: PropTypes.shape({
       slug: PropTypes.string.isRequired,
     }),
+    sub_landing_pages: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
     icon: PropTypes.shape({
       url: PropTypes.string,
       alternativeText: PropTypes.string,

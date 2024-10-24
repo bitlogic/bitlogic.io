@@ -4,12 +4,10 @@
 
   width: 18.5rem;
   &_container {
-    // overflow-x: hidden;
     width: 100%;
     display: flex;
     justify-content: flex-start; /* Alinear a la izquierda */
     align-items: flex-start; /* Asegura que los elementos estén alineados al inicio */
-    // max-width: 100vw;   
   }
 
   &_section {
@@ -98,9 +96,7 @@
 }
 
 .subLandingPages {
-  list-style-type: none; 
-  // padding: 0;          
-  // margin: 3%;         
+  list-style-type: none;      
   text-align: start;
   margin-left: 1.7rem;
 
@@ -139,7 +135,6 @@
 
   .subLandingPages {
     margin-left: 1.3rem;
-    // display: none; // Oculta los subitems en mobile
   }
 }
 
