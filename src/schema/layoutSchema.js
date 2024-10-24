@@ -126,6 +126,7 @@ const layoutSchema = `
     url: String
     text: String
     landing_page: StrapiLandingPage
+    sub_landing_pages: [StrapiLandingPage]
   }
 
   type StrapiLayoutSites {

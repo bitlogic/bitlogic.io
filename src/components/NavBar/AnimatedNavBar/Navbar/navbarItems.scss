@@ -65,6 +65,11 @@
       @media screen and (max-width: $breakpoint-xl) {
         display: contents;
       }
+
+      &.left{
+        left: 0%;
+      }
     }
+
   }
 }
