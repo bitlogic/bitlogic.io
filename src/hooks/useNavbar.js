@@ -65,6 +65,11 @@ const useNavbar = () => {
               landing_page {
                 slug
               }
+              sub_landing_pages {
+                id
+                slug
+                name
+              }
             }
             toplevelItem {
               id

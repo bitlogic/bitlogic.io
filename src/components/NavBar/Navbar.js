@@ -22,7 +22,7 @@ const NavBar = memo(() => {
   const navbarButton = navbarData?.navbar?.navButton
 
   return (
-    <Navbar variant="dark" expand="xxl" className="NavBar">
+    <Navbar variant="dark" expand="xl" className="NavBar">
       <Link to="/" className="NavBar__Logo">
         <GatsbyImage
           loading="lazy"
