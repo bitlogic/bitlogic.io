@@ -18,7 +18,7 @@ export default function Location({ locationData }) {
 
   return (
     <div className="Footer__location">
-      <h6>{locationData?.title}</h6>
+      <h2>{locationData?.title}</h2>
       <div className="Footer__location__items">{location}</div>
     </div>
   )

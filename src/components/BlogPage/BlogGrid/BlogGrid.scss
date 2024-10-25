@@ -7,9 +7,10 @@
     padding: 40px 0;
     border-bottom: 4px solid #dedede;
 
-    h4 {
+    h2 {
       padding-left: 0.5rem;
       color: $primary;
+      font-size: 28px;
     }
   }
 }
@@ -17,7 +18,7 @@
 @media (min-width: $breakpoint-lg) {
   .grid {
     &__container {
-      h4 {
+      h2 {
         padding-left: 1rem;
       }
     }

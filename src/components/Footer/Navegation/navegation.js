@@ -24,7 +24,7 @@ export default function Navegation({ title, items }) {
 
   return (
     <div className="Footer__navigation">
-      <h6>{title}</h6>
+      <h2>{title}</h2>
       <ul className="Footer__navigation__items">{navegationItems}</ul>
     </div>
   )

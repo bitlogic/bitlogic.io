@@ -6,17 +6,33 @@ import DropdownContainer from "./DropdownContainer"
 import Dropdown from "./DropdownContainer/Dropdown"
 import { useLandingUrl } from "../../../hooks"
 import PropTypes from "prop-types"
+import DropdownItem from "./DropdownContainer/DropdownItems"
+
+const hasSubLandingPages = (navItem) => navItem?.dropdownItems?.some(
+  item => item?.sub_landing_pages && item.sub_landing_pages.length > 0
+)
 
 function getDropdown(navItem) {
-  return () =>
-    navItem?.dropdown ? (
-      <Dropdown
-        sections={navItem?.dropdownItems}
+  if(hasSubLandingPages(navItem)){
+    return () => 
+      <DropdownItem
+        sections={navItem?.dropdownItems.map(item => ({
+          ...item,
+          subItems: item?.sub_landing_pages,
+        }))}
         topLevel={navItem?.toplevelItem}
       />
-    ) : (
-      <Dropdown sections={null} topLevel={null} />
-    )
+  } else {
+    return () =>   
+      navItem?.dropdown ? (
+        <Dropdown
+          sections={navItem?.dropdownItems}
+          topLevel={navItem?.toplevelItem}
+        />
+      ) : (
+        <Dropdown sections={null} topLevel={null} />
+      )
+  } 
 }
 
 const AnimatedNavbar = ({ navbarItems = [], duration }) => {
@@ -41,6 +57,7 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
         slug: url(navItem),
         dropdown: getDropdown(navItem),
         isDropdown: navItem?.dropdown,
+        isDropdownItem: hasSubLandingPages(navItem),
       }
     }),
   ]
@@ -114,6 +131,7 @@ const AnimatedNavbar = ({ navbarItems = [], duration }) => {
               index={index}
               onMouseEnter={() => onMouseEnter(index)}
               isDropdown={n?.isDropdown}
+              isDropdownItem={n?.isDropdownItem}
             >
               {currentIndex === index ? (
                 <DropdownContainer

@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import "./navbarItems.scss"
 import { FaAngleDown } from "react-icons/fa"
 
-const NavbarItem = ({ title, children, index, to, isDropdown, ...props }) => {
+const NavbarItem = ({ title, children, index, to, isDropdown, isDropdownItem, ...props }) => {
   const onMouseEnter = () => {
     props.onMouseEnter(index)
   }
@@ -21,7 +21,7 @@ const NavbarItem = ({ title, children, index, to, isDropdown, ...props }) => {
         {title}
         {isDropdown && <FaAngleDown />}
       </Link>
-      <div className="navbar_item-dropdown_container">{children}</div>
+      <div className={`navbar_item-dropdown_container ${isDropdownItem ? "left" : ""}`}>{children}</div>
     </li>
   )
 }
@@ -32,6 +32,7 @@ NavbarItem.propTypes = {
   index: PropTypes.number.isRequired,
   to: PropTypes.string,
   isDropdown: PropTypes.bool,
+  isDropdownItem: PropTypes.bool,
   onMouseEnter: PropTypes.func.isRequired,
 }
 

@@ -128,7 +128,7 @@ const VideoBackground = ({ data }) => {
 
           {description && (
             <div className="videoBackground-card">
-              <h4>{description}</h4>
+              <h2>{description}</h2>
               {button && (
                 <CustomLink
                   content={button.content}
