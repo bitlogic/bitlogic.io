@@ -22,11 +22,14 @@ const RenderSection = ({ section, className }) => {
           className="dropdownItem_link-inner"
         />
       </div>
-      {section?.text && <p className="navItemP">{section.text}</p>}
       {section?.sub_landing_pages && section.sub_landing_pages.length > 0 && (
-        <ul className="subLandingPages">
+        <ul
+          className={`subLandingPages ${
+            section.sub_landing_pages.length > 5 ? 'two-column-list' : ''
+          }`}
+        >
           {section.sub_landing_pages.map(subItem => (
-            <li key={subItem.id}>
+            <li key={subItem.id} className="subLandingPages-item">
               <CustomLink
                 content={subItem.name}
                 url={`/${subItem.slug}`}

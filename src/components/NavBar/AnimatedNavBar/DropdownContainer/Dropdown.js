@@ -56,7 +56,6 @@ const Dropdown = memo(({ sections, topLevel }) => {
           <div
             className="dropdown_elem_topLevel"
             style={{
-              borderBottom: "2px solid #808080",
               marginBottom: "15px",
               paddingBottom: "8px",
             }}
