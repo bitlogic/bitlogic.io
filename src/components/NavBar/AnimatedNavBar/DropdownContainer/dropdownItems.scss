@@ -95,6 +95,7 @@
 }
 
 .subLandingPages {
+  width: 100%;
   list-style-type: none;      
   text-align: start;
   margin-left: 1.7rem;
@@ -113,6 +114,10 @@
   display: none; /* Oculta los elementos que superen el límite de 10 */
 }
 
+.dropdownItem_icon {
+  display: none;
+}
+
 @media only screen and (max-width: 1200px) {
   .dropdownItem {
     &_container {
@@ -126,6 +131,8 @@
       padding-left: 28px;
       display: flex;
       flex-direction: column; 
+      background-color: #2b2b2b; // Asegúrate de que el color coincida
+      border-radius: 0;
     }
 
     &_content {
@@ -145,6 +152,18 @@
 
   .subLandingPages {
     margin-left: 1.3rem;
+    transition: max-height 0.3s ease; // Transición suave para el contenedor
+    overflow: hidden; // Asegura que solo el contenido visible esté dentro del contenedor
+  }
+
+  .dropdownItem_icon {
+    display: block;
+    color: $primary;
+    
+    &.open {
+      transform: rotate(180deg);
+    }
   }
 }
+
 

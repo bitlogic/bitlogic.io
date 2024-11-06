@@ -1,38 +1,65 @@
-import React, { memo } from "react"
+import React, { memo, useState, useEffect } from "react"
 import "./dropdownItems.scss"
 import CustomImage from "../../../CustomImage/CustomImage"
 import CustomLink from "../../../CustomLink/CustomLink"
 import PropTypes from "prop-types"
+import { FaAngleDown } from "react-icons/fa"
+
 
 const RenderSection = ({ section, className }) => {
+  const { icon, label, url, landing_page, sub_landing_pages = [] } = section || {};
+  const hasSubLandingPages = sub_landing_pages.length > 0;
+  const [openSubLandingPages, setOpenSubLandingPages] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1200);
+
+  // Actualizar el estado `isMobileView` según el tamaño de la pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 1200);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Alterna la visibilidad de `sub_landing_pages` si es vista móvil
+  const toggleSubLandingPages = () => {
+    if (isMobileView) setOpenSubLandingPages(prev => !prev);
+  };
+
   return (
     <>
-      <div className={className}>
+      <div
+        className={className}
+        onClick={toggleSubLandingPages}
+        onKeyPress={(e) => e.key === "Enter" && toggleSubLandingPages()} // to avoid warning
+        role="button"
+        tabIndex={0}
+      >
         <CustomImage
-          image={section?.icon}
-          alt={section?.icon?.alternativeText || "NavLink icon"}
+          image={icon}
+          alt={icon?.alternativeText || "NavLink icon"}
           className="navbarItemIcon"
           width={28}
           height={28}
         />
         <CustomLink
-          content={section.label}
-          url={section?.url}
-          landing={section?.landing_page}
+          content={label}
+          url={url}
+          landing={landing_page}
           className="dropdownItem_link-inner"
         />
+        {hasSubLandingPages && <FaAngleDown className={`dropdownItem_icon ${openSubLandingPages ? "open" : ""}`} />}
       </div>
-      {section?.sub_landing_pages && section.sub_landing_pages.length > 0 && (
+
+      {(hasSubLandingPages && (openSubLandingPages || !isMobileView)) && (
         <ul
-          className={`subLandingPages ${
-            section.sub_landing_pages.length > 5 ? 'two-column-list' : ''
-          }`}
+          className={`subLandingPages ${sub_landing_pages.length > 5 ? "two-column-list" : ""}`}
         >
-          {section.sub_landing_pages.map(subItem => (
-            <li key={subItem.id} className="subLandingPages-item">
+          {sub_landing_pages.map(({ id, name, slug }) => (
+            <li key={id} className="subLandingPages-item">
               <CustomLink
-                content={subItem.name}
-                url={`/${subItem.slug}`}
+                content={name}
+                url={`/${slug}`}
                 className="dropdownItem_link-subLanding"
               />
             </li>
@@ -40,8 +67,8 @@ const RenderSection = ({ section, className }) => {
         </ul>
       )}
     </>
-  )
-}
+  );
+};
 
 RenderSection.propTypes = {
   className: PropTypes.string,
