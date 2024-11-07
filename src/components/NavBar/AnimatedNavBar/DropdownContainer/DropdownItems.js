@@ -31,9 +31,11 @@ const RenderSection = ({ section, className }) => {
       <div
         className={className}
         onClick={toggleSubLandingPages}
-        onKeyPress={(e) => e.key === "Enter" && toggleSubLandingPages()} // to avoid warning
-        role="button"
+        onKeyPress={(e) => e.key === "Enter" && toggleSubLandingPages()}
         tabIndex={0}
+        role="button"
+        aria-expanded={openSubLandingPages}
+        aria-label="Toggle sub-landing pages"
       >
         <CustomImage
           image={icon}

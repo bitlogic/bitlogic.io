@@ -1,5 +1,16 @@
 @import "../../../../styles/global.scss";
 
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit; 
+  color: inherit; 
+  cursor: pointer; 
+  outline: none;
+}
+
 .dropdownItem {
 
   width: 18.5rem;
