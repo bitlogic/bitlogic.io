@@ -28,14 +28,9 @@ const RenderSection = ({ section, className }) => {
 
   return (
     <>
-      <button
+      <div
         className={className}
-        onClick={toggleSubLandingPages}
-        // onKeyPress={(e) => e.key === "Enter" && toggleSubLandingPages()}
-        // tabIndex={0}
-        // role="button"
-        // aria-expanded={openSubLandingPages}
-        // aria-label="Toggle sub-landing pages"
+        
       >
         <CustomImage
           image={icon}
@@ -50,8 +45,8 @@ const RenderSection = ({ section, className }) => {
           landing={landing_page}
           className="dropdownItem_link-inner"
         />
-        {hasSubLandingPages && <FaAngleDown className={`dropdownItem_icon ${openSubLandingPages ? "open" : ""}`} />}
-      </button>
+        {hasSubLandingPages && <FaAngleDown className={`dropdownItem_icon ${openSubLandingPages ? "open" : ""}`} onClick={toggleSubLandingPages}/>}
+      </div>
 
       {(hasSubLandingPages && (openSubLandingPages || !isMobileView)) && (
         <ul
