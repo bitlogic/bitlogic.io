@@ -1,16 +1,5 @@
 @import "../../../../styles/global.scss";
 
-button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit; 
-  color: inherit; 
-  cursor: pointer; 
-  outline: none;
-}
-
 .dropdownItem {
 
   width: 18.5rem;
@@ -115,8 +104,6 @@ button {
 .two-column-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
-  max-height: calc(5 * 2rem); /* Ajusta el alto máximo según el tamaño de cada elemento */
-  overflow: hidden; /* Oculta los elementos que excedan el límite de 10 */
   padding: 0;
   list-style: none;
 }
@@ -164,7 +151,12 @@ button {
   .subLandingPages {
     margin-left: 1.3rem;
     transition: max-height 0.3s ease; // Transición suave para el contenedor
-    overflow: hidden; // Asegura que solo el contenido visible esté dentro del contenedor
+
+    &-item {
+      height: 44px;
+      display: flex;
+      align-items: center; 
+    }
   }
 
   .dropdownItem_icon {
