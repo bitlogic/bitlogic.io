@@ -54,6 +54,7 @@ const RenderSection = ({ section, className, isOpen, toggleSubLandingPages, isMo
 RenderSection.propTypes = {
   className: PropTypes.string,
   section: PropTypes.shape({
+    id: PropTypes.number.isRequired, 
     label: PropTypes.string.isRequired,
     text: PropTypes.string,
     url: PropTypes.string,
@@ -62,6 +63,7 @@ RenderSection.propTypes = {
     }),
     sub_landing_pages: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.number.isRequired, 
         slug: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
       })
@@ -75,11 +77,12 @@ RenderSection.propTypes = {
         }),
       }),
     }),
-  }),
+  }).isRequired,
   isOpen: PropTypes.bool.isRequired,
   toggleSubLandingPages: PropTypes.func.isRequired,
   isMobileView: PropTypes.bool.isRequired,
 };
+
 
 const DropdownItems = memo(({ sections, topLevel }) => {
   const [openSectionId, setOpenSectionId] = useState(null);
