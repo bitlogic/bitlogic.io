@@ -4,6 +4,51 @@ import CustomLink from "../CustomLink/CustomLink"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+function getIOSVersion() {
+  const userAgent = navigator.userAgent;
+
+  // Check if it's an iOS device
+  const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/;
+  const iosMatch = regex.exec(userAgent);
+  if (iosMatch) {
+      const major = parseInt(iosMatch[1], 10);
+      const minor = parseInt(iosMatch[2], 10);
+      const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0;
+      return { major, minor, patch };
+  } else {
+      return null; // It's not an iOS device
+  }
+}
+
+function isIOSPriorTo(version) {
+  const currentVersion = getIOSVersion();
+
+  if (!currentVersion) {
+      return false; // It's not an iOS device
+  }
+
+  const [majorVersion, minorVersion] = version.split(".").map(Number);
+
+  // Major compare
+  if (currentVersion.major < majorVersion) {
+      return true;
+  }
+  if (currentVersion.major > majorVersion) {
+      return false;
+  }
+
+  // If major equals, then compare minor version
+  if (currentVersion.minor < minorVersion) {
+      return true;
+  }
+  if (currentVersion.minor > minorVersion) {
+      return false;
+  }
+
+  // If major and minor version equals to current version's, then do patch compare
+  return currentVersion.patch < 0; // If no patch, it's prior
+}
+
 const VideoBackground = ({ data }) => {
 
   const { image /*, video*/, description, button, backgroundImage, videoUrl } = data
@@ -14,51 +59,6 @@ const VideoBackground = ({ data }) => {
   const imageData = image ? getImage(image.localFile) : undefined;
 
   const video = {url: 'https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com/MAIN_VIDEO_d4563c2589.webm', mime: 'video/webm'}
-
-  function getIOSVersion() {
-    const userAgent = navigator.userAgent;
-
-    // Check if it's an iOS device
-    const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/;
-    const iosMatch = regex.exec(userAgent);
-    if (iosMatch) {
-        const major = parseInt(iosMatch[1], 10);
-        const minor = parseInt(iosMatch[2], 10);
-        const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0;
-        return { major, minor, patch };
-    } else {
-        return null; // It's not an iOS device
-    }
-  }
-
-  function isIOSPriorTo(version) {
-    const currentVersion = getIOSVersion();
-
-    if (!currentVersion) {
-        return false; // It's not an iOS device
-    }
-
-    const [majorVersion, minorVersion] = version.split(".").map(Number);
-
-    // Major compare
-    if (currentVersion.major < majorVersion) {
-        return true;
-    }
-    if (currentVersion.major > majorVersion) {
-        return false;
-    }
-
-    // If major equals, then compare minor version
-    if (currentVersion.minor < minorVersion) {
-        return true;
-    }
-    if (currentVersion.minor > minorVersion) {
-        return false;
-    }
-
-    // If major and minor version equals to current version's, then do patch compare
-    return currentVersion.patch < 0; // If no patch, it's prior
-  }
 
 
 
@@ -177,12 +177,7 @@ if (!isIOSPriorTo("17.4")) {
     }
   }
 } else {
-  // Si es un dispositivo iOS anterior a la versión 17.4, se renderiza la imagen
-  if (imageData) {
-    videoContent = <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"} />;
-  } else {
-    videoContent = <div><br /></div>;
-  }
+  videoContent = imageData ? <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"} /> : <div><br /></div>
 }
 
 return (
