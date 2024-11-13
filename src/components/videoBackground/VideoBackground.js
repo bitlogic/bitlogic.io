@@ -6,19 +6,21 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const VideoBackground = ({ data }) => {
 
-  const { image, video, description, button, backgroundImage, videoUrl } = data
+  const { image /*, video*/, description, button, backgroundImage, videoUrl } = data
   const [isVideoPause, setIsVideoPause] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
   const imageData = image ? getImage(image.localFile) : undefined;
 
+  const video = {url: 'https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com/MAIN_VIDEO_d4563c2589.webm', mime: 'video/webm'}
 
   function getIOSVersion() {
     const userAgent = navigator.userAgent;
 
     // Check if it's an iOS device
-    const iosMatch = userAgent.match(/iPhone.*OS (\d+)_?(\d+)_?(\d+)?/);
+    const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/;
+    const iosMatch = regex.exec(userAgent);
     if (iosMatch) {
         const major = parseInt(iosMatch[1], 10);
         const minor = parseInt(iosMatch[2], 10);
@@ -129,86 +131,89 @@ const VideoBackground = ({ data }) => {
 
 
 
-  return (
-    <div
-      style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage?.url})` : "",
-        backgroundRepeatY: "no-repeat",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="container videoBackground-container">
-        <section className="videoBackground">
-          
-          { !isIOSPriorTo("17.4") ? (video?.url !== null && video?.url !== undefined ? (
-            <video
-              className="video"
-              ref={videoRef}
-              muted
-              loop
-              tabIndex={0}
-              controls={false}
-              autoPlay={isIntersecting}
-              onClick={pausePlay}
-              onKeyDown={handleKeyDown}
-            >
-              {isIntersecting && <source src={video.url} type={video?.mime} />}
-            </video>
-          ) : (
-            videoUrl !== null &&
-            videoUrl !== undefined && (
-              <>
-                {url !== undefined && code !== undefined && (
+// variable para los diferentes tipos de contenido
+let videoContent = null;
 
-                  <iframe
-                    className="video"
-                    loading="lazy"
-                    type="text/html"
-                    srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
-                    width:100%;height:100%;object-fit: cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
-                    <a href=${url + "?rel=0"}>
-                    <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video' height='100%'>
-                    <span>▶</span></a>`}
-                    src={url + "?rel=0"}
-                    frameBorder="0"
-                    allowFullScreen
-                    title="benefits_video"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    webkitallowfullscreen="true"
-                    mozallowfullscreen="true"
-                  ></iframe>
-                )}
-              </>
-            )
-          )) : (
-            <>
-              {imageData ? (
-                <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"}/>
-              ) : (
-                <div>
-                  <br/>
-                </div>
-              )}
-            </>
-          )}
+if (!isIOSPriorTo("17.4")) {
+  // Si el video URL está disponible, se renderiza el video el video
+  if (video?.url !== null && video?.url !== undefined) {
+    videoContent = (
+      <video
+        className="video"
+        ref={videoRef}
+        muted
+        loop
+        tabIndex={0}
+        controls={false}
+        autoPlay={isIntersecting}
+        onClick={pausePlay}
+        onKeyDown={handleKeyDown}
+      >
+        {isIntersecting && <source src={video.url} type={video?.mime} />}
+      </video>
+    );
+  } else if (videoUrl !== null && videoUrl !== undefined) {
+    // Si el video URL alternativo está disponible, se renderiza el iframe
+    if (url !== undefined && code !== undefined) {
+      videoContent = (
+        <iframe
+          className="video"
+          loading="lazy"
+          type="text/html"
+          srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
+          width:100%;height:100%;object-fit: cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
+          <a href=${url + "?rel=0"}>
+          <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video' height='100%'>
+          <span>▶</span></a>`}
+          src={url + "?rel=0"}
+          frameBorder="0"
+          allowFullScreen
+          title="benefits_video"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+        ></iframe>
+      );
+    }
+  }
+} else {
+  // Si es un dispositivo iOS anterior a la versión 17.4, se renderiza la imagen
+  if (imageData) {
+    videoContent = <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"} />;
+  } else {
+    videoContent = <div><br /></div>;
+  }
+}
 
-          {description && (
-            <div className="videoBackground-card">
-              <h2>{description}</h2>
-              {button && (
-                <CustomLink
-                  content={button.content}
-                  url={button?.url}
-                  landing={button?.landing_page}
-                  className=""
-                />
-              )}
-            </div>
-          )}
-        </section>
-      </div>
+return (
+  <div
+    style={{
+      backgroundImage: backgroundImage ? `url(${backgroundImage?.url})` : "",
+      backgroundRepeatY: "no-repeat",
+      backgroundPosition: "center",
+    }}
+  >
+    <div className="container videoBackground-container">
+      <section className="videoBackground">
+        {videoContent} {/* Aquí insertamos el contenido del video o la imagen */}
+        
+        {description && (
+          <div className="videoBackground-card">
+            <h2>{description}</h2>
+            {button && (
+              <CustomLink
+                content={button.content}
+                url={button?.url}
+                landing={button?.landing_page}
+                className=""
+              />
+            )}
+          </div>
+        )}
+      </section>
     </div>
-  )
+  </div>
+);
 }
 
 VideoBackground.propTypes = {
