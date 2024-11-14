@@ -11,12 +11,12 @@ function getIOSVersion() {
   const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/;
   const iosMatch = regex.exec(userAgent);
   if (iosMatch) {
-      const major = parseInt(iosMatch[1], 10);
-      const minor = parseInt(iosMatch[2], 10);
-      const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0;
-      return { major, minor, patch };
+    const major = parseInt(iosMatch[1], 10);
+    const minor = parseInt(iosMatch[2], 10);
+    const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0;
+    return { major, minor, patch };
   } else {
-      return null; // It's not an iOS device
+    return null; // It's not an iOS device
   }
 }
 
@@ -24,41 +24,92 @@ function isIOSPriorTo(version) {
   const currentVersion = getIOSVersion();
 
   if (!currentVersion) {
-      return false; // It's not an iOS device
+    return false; // It's not an iOS device
   }
 
   const [majorVersion, minorVersion] = version.split(".").map(Number);
 
   // Major compare
   if (currentVersion.major < majorVersion) {
-      return true;
+    return true;
   }
   if (currentVersion.major > majorVersion) {
-      return false;
+    return false;
   }
 
   // If major equals, then compare minor version
   if (currentVersion.minor < minorVersion) {
-      return true;
+    return true;
   }
   if (currentVersion.minor > minorVersion) {
-      return false;
+    return false;
   }
 
   // If major and minor version equals to current version's, then do patch compare
   return currentVersion.patch < 0; // If no patch, it's prior
 }
 
+function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDown, videoUrl, image, imageData, url, code) {
+  let videoContent = null;
+
+  if (!isIOSPriorTo("17.4")) {
+    // Si el video URL está disponible, se renderiza el video el video
+    if (video?.url !== null && video?.url !== undefined) {
+      videoContent = (
+        <video
+          className="video"
+          ref={videoRef}
+          muted
+          loop
+          tabIndex={0}
+          controls={false}
+          autoPlay={isIntersecting}
+          onClick={pausePlay}
+          onKeyDown={handleKeyDown}
+        >
+          {isIntersecting && <source src={video.url} type={video?.mime} />}
+        </video>
+      );
+    } else if (videoUrl !== null && videoUrl !== undefined) {
+      // Si el video URL alternativo está disponible, se renderiza el iframe
+      if (url !== undefined && code !== undefined) {
+        videoContent = (
+          <iframe
+            className="video"
+            loading="lazy"
+            type="text/html"
+            srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
+            width:100%;height:100%;object-fit: cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
+            <a href=${url + "?rel=0"}>
+            <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video' height='100%'>
+            <span>▶</span></a>`}
+            src={url + "?rel=0"}
+            frameBorder="0"
+            allowFullScreen
+            title="benefits_video"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+          ></iframe>
+        );
+      }
+    }
+  } else {
+    videoContent = imageData ? <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"} /> : <div><br /></div>
+  }
+
+  return videoContent;
+}
+
 const VideoBackground = ({ data }) => {
 
-  const { image /*, video*/, description, button, backgroundImage, videoUrl } = data
+  const { image , video, description, button, backgroundImage, videoUrl } = data
   const [isVideoPause, setIsVideoPause] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
   const imageData = image ? getImage(image.localFile) : undefined;
 
-  const video = {url: 'https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com/MAIN_VIDEO_d4563c2589.webm', mime: 'video/webm'}
 
 
 
@@ -131,84 +182,38 @@ const VideoBackground = ({ data }) => {
 
 
 
-// variable para los diferentes tipos de contenido
-let videoContent = null;
+  // variable para los diferentes tipos de contenido
+  let videoContent = getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDown, videoUrl, image, imageData, url, code)
 
-if (!isIOSPriorTo("17.4")) {
-  // Si el video URL está disponible, se renderiza el video el video
-  if (video?.url !== null && video?.url !== undefined) {
-    videoContent = (
-      <video
-        className="video"
-        ref={videoRef}
-        muted
-        loop
-        tabIndex={0}
-        controls={false}
-        autoPlay={isIntersecting}
-        onClick={pausePlay}
-        onKeyDown={handleKeyDown}
-      >
-        {isIntersecting && <source src={video.url} type={video?.mime} />}
-      </video>
-    );
-  } else if (videoUrl !== null && videoUrl !== undefined) {
-    // Si el video URL alternativo está disponible, se renderiza el iframe
-    if (url !== undefined && code !== undefined) {
-      videoContent = (
-        <iframe
-          className="video"
-          loading="lazy"
-          type="text/html"
-          srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
-          width:100%;height:100%;object-fit: cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
-          <a href=${url + "?rel=0"}>
-          <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video' height='100%'>
-          <span>▶</span></a>`}
-          src={url + "?rel=0"}
-          frameBorder="0"
-          allowFullScreen
-          title="benefits_video"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          webkitallowfullscreen="true"
-          mozallowfullscreen="true"
-        ></iframe>
-      );
-    }
-  }
-} else {
-  videoContent = imageData ? <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"} /> : <div><br /></div>
-}
+  return (
+    <div
+      style={{
+        backgroundImage: backgroundImage ? `url(${backgroundImage?.url})` : "",
+        backgroundRepeatY: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="container videoBackground-container">
+        <section className="videoBackground">
+          {videoContent}
 
-return (
-  <div
-    style={{
-      backgroundImage: backgroundImage ? `url(${backgroundImage?.url})` : "",
-      backgroundRepeatY: "no-repeat",
-      backgroundPosition: "center",
-    }}
-  >
-    <div className="container videoBackground-container">
-      <section className="videoBackground">
-        {videoContent} {/* Aquí insertamos el contenido del video o la imagen */}
-        
-        {description && (
-          <div className="videoBackground-card">
-            <h2>{description}</h2>
-            {button && (
-              <CustomLink
-                content={button.content}
-                url={button?.url}
-                landing={button?.landing_page}
-                className=""
-              />
-            )}
-          </div>
-        )}
-      </section>
+          {description && (
+            <div className="videoBackground-card">
+              <h2>{description}</h2>
+              {button && (
+                <CustomLink
+                  content={button.content}
+                  url={button?.url}
+                  landing={button?.landing_page}
+                  className=""
+                />
+              )}
+            </div>
+          )}
+        </section>
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 VideoBackground.propTypes = {
@@ -226,7 +231,7 @@ VideoBackground.propTypes = {
       url: PropTypes.string.isRequired,
       alternativeText: PropTypes.string,
       localFile: PropTypes.shape({
-      childImageSharp: PropTypes.object.isRequired,
+        childImageSharp: PropTypes.object.isRequired,
       })
     }),
     button: PropTypes.shape({
