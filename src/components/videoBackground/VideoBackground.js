@@ -113,12 +113,11 @@ function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDo
 
 const VideoBackground = ({ data }) => {
 
-  const { image ,/* video,*/ description, button, backgroundImage, videoUrl } = data
+  const { image , video, description, button, backgroundImage, videoUrl } = data
   const [isVideoPause, setIsVideoPause] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
-  const video = {url: 'https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com/MAIN_VIDEO_d4563c2589.webm', mime: 'video/webm'}
 
   const pausePlay = () => {
     if (isVideoPause) {
