@@ -49,8 +49,17 @@ function isIOSPriorTo(version) {
   return currentVersion.patch < 0; // If no patch, it's prior
 }
 
-function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDown, videoUrl, image, imageData, url, code) {
+function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDown, videoUrl, image) {
   let videoContent = null;
+  const imageData = image ? getImage(image.localFile) : undefined;
+  const url = videoUrl?.replace("watch?v=", "embed/")
+  let code = url?.substring(url?.lastIndexOf("/") + 1, url?.length)
+  const codeIndex = code?.indexOf("?")
+
+  if (codeIndex !== -1 && code !== undefined) {
+    code = code.substring(0, code.indexOf("?"))
+  }
+
 
   if (!isIOSPriorTo("17.4")) {
     // Si el video URL está disponible, se renderiza el video el video
@@ -107,11 +116,6 @@ const VideoBackground = ({ data }) => {
   const [isVideoPause, setIsVideoPause] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
-
-  const imageData = image ? getImage(image.localFile) : undefined;
-
-
-
 
 
   const pausePlay = () => {
@@ -172,18 +176,12 @@ const VideoBackground = ({ data }) => {
     localStorage.setItem("videoPaused", isVideoPause)
   }, [isVideoPause])
 
-  const url = videoUrl?.replace("watch?v=", "embed/")
-  let code = url?.substring(url?.lastIndexOf("/") + 1, url?.length)
-  const codeIndex = code?.indexOf("?")
-
-  if (codeIndex !== -1 && code !== undefined) {
-    code = code.substring(0, code.indexOf("?"))
-  }
+  
 
 
 
   // variable para los diferentes tipos de contenido
-  let videoContent = getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDown, videoUrl, image, imageData, url, code)
+  let videoContent = getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDown, videoUrl, image)
 
   return (
     <div
