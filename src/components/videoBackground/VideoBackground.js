@@ -56,10 +56,11 @@ function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDo
   let code = url?.substring(url?.lastIndexOf("/") + 1, url?.length)
   const codeIndex = code?.indexOf("?")
 
-  if (codeIndex !== -1 && code !== undefined) {
-    code = code.substring(0, code.indexOf("?"))
-  }
+  // if (codeIndex !== -1 && code !== undefined) {
+  //   code = code.substring(0, code.indexOf("?"))
+  // }
 
+  code = (codeIndex !== -1 && code !== undefined) ? code.substring(0, code.indexOf("?")) : code;
 
   if (!isIOSPriorTo("17.4")) {
     // Si el video URL está disponible, se renderiza el video el video
