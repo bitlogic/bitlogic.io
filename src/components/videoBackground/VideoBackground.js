@@ -82,27 +82,27 @@ function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDo
       );
     } else if (videoUrl !== null && videoUrl !== undefined) {
       // Si el video URL alternativo está disponible, se renderiza el iframe
-      if (url !== undefined && code !== undefined) {
-        videoContent = (
-          <iframe
-            className="video"
-            loading="lazy"
-            type="text/html"
-            srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
-            width:100%;height:100%;object-fit: cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
-            <a href=${url + "?rel=0"}>
-            <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video' height='100%'>
-            <span>▶</span></a>`}
-            src={url + "?rel=0"}
-            frameBorder="0"
-            allowFullScreen
-            title="benefits_video"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            webkitallowfullscreen="true"
-            mozallowfullscreen="true"
-          ></iframe>
-        );
-      }
+
+      videoContent = (
+        <iframe
+          className="video"
+          loading="lazy"
+          type="text/html"
+          srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;
+          width:100%;height:100%;object-fit: cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style>
+          <a href=${url + "?rel=0"}>
+          <img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video' height='100%'>
+          <span>▶</span></a>`}
+          src={url + "?rel=0"}
+          frameBorder="0"
+          allowFullScreen
+          title="benefits_video"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+        ></iframe>
+      );
+
     }
   } else {
     videoContent = imageData ? <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"} /> : <div><br /></div>
@@ -113,11 +113,12 @@ function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDo
 
 const VideoBackground = ({ data }) => {
 
-  const { image , video, description, button, backgroundImage, videoUrl } = data
+  const { image ,/* video,*/ description, button, backgroundImage, videoUrl } = data
   const [isVideoPause, setIsVideoPause] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
+  const video = {url: 'https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com/MAIN_VIDEO_d4563c2589.webm', mime: 'video/webm'}
 
   const pausePlay = () => {
     if (isVideoPause) {
