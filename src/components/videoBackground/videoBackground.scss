@@ -32,6 +32,18 @@
     padding: 15px;
   }
 
+  .image {
+    width: 100%;
+    min-height: 220px;
+    max-height: 650px;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+  }
+
   h2 {
     font-size: 28px;
     width: 100%;
