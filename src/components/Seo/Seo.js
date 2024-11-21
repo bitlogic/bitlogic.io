@@ -16,6 +16,7 @@ function Seo({ description, lang, meta, title, keywords }) {
   const defaultTitle = siteTitle
   const preventIndex = robots ? `index, follow` : `noindex, nofollow`
   const defaultKeywords = keywords || siteKeywords
+  console.log(defaultTitle)
 
   return (
     <Helmet
@@ -23,7 +24,13 @@ function Seo({ description, lang, meta, title, keywords }) {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={
+        defaultTitle
+          ? ((title.length + defaultTitle.length) <= 50 // Cambia 50 por el límite deseado
+              ? `%s | ${defaultTitle}` // Si el título es corto, concatenar
+              : `%s`) // Si es largo, usar solo el título particular
+          : null // Si no hay defaultTitle, no usar plantilla
+      }      
       meta={[
         {
           name: `robots`,
