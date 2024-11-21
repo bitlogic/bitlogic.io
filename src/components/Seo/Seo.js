@@ -26,10 +26,10 @@ function Seo({ description, lang, meta, title, keywords }) {
       title={title}
       titleTemplate={
         defaultTitle
-          ? ((title.length + defaultTitle.length) <= 50 // Cambia 50 por el límite deseado
-              ? `%s | ${defaultTitle}` // Si el título es corto, concatenar
-              : `%s`) // Si es largo, usar solo el título particular
-          : null // Si no hay defaultTitle, no usar plantilla
+          ? ((title.length + defaultTitle.length) <= 50 
+              ? `%s | ${defaultTitle}` 
+              : `%s`) 
+          : null 
       }      
       meta={[
         {
