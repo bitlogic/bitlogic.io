@@ -20,7 +20,7 @@ function Seo({ description, lang, meta, title, keywords }) {
   let titleTemplateValue = null;
 
   if (defaultTitle) {
-    if (title.length + defaultTitle.length <= 50) {
+    if (title?.length + defaultTitle?.length <= 50) {
       titleTemplateValue = `%s | ${defaultTitle}`; // Concatenar si la longitud total es corta
     } else {
       titleTemplateValue = `%s`; // Usar solo el título particular
