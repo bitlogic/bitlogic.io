@@ -1,13 +1,3 @@
-require("dotenv").config({
-  path: `.env`, // Asegúrate de que apunte al archivo correcto
-});
-  
-  
-  
-  
-  
-  
-
 module.exports = {
   trailingSlash: "always",
   siteMetadata: {
@@ -112,8 +102,8 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
-        apiURL: `https://strapi.bitlogic.io`,
-        // apiURL: process.env.STRAPI_URL,
+        // apiURL: `https://strapi.bitlogic.io`,
+        apiURL: process.env.STRAPI_URL,
         // apiURL: "http://127.0.0.1:1337",
         queryLimit: 1000,
         collectionTypes: [
