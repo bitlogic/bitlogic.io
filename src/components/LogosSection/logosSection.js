@@ -104,7 +104,7 @@ LogosSection.propTypes = {
     summary: PropTypes.string,
     media: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         img: PropTypes.shape({
           url: PropTypes.string.isRequired,

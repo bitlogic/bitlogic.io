@@ -23,7 +23,7 @@ const PipedriveForm = ({ data }) => {
     <section className="form">
       <div className="container d-flex px-lg-2 flex-wrap">
         <div className="col-12 col-md-6 pe-md-5">
-          {title && <h2 className="title text-start">{title}</h2>}
+          {title && <h1 className="title text-start">{title}</h1>}
           {content && (
             <MarkdownView
               markdown={content}

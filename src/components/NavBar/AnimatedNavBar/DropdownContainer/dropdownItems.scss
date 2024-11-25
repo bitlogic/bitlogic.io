@@ -39,12 +39,12 @@
     flex-direction: row;
     align-items: center;
     font-size: 18px;
-    padding-bottom: 0.1rem;
 
     &-inner {
       text-align: start;
       color: $primary;
-      padding: 2% 0;
+      padding-bottom: 8px;
+      padding-top: 8px;
       font-weight: $standard;
 
       &:hover {
@@ -57,7 +57,6 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      border-right: "2px solid #808080"; // Línea de separación vertical
     }
 
     &-subLanding {
@@ -96,45 +95,78 @@
 }
 
 .subLandingPages {
+  width: 100%;
   list-style-type: none;      
   text-align: start;
   margin-left: 1.7rem;
+}
 
+.two-column-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+  padding: 0;
+  list-style: none;
+}
+
+.two-column-list li:nth-child(1n+11) {
+  display: none; /* Oculta los elementos que superen el límite de 10 */
+}
+
+.dropdownItem_icon {
+  display: none;
 }
 
 @media only screen and (max-width: 1200px) {
   .dropdownItem {
     &_container {
-      flex-direction: column; // Cambia a una disposición vertical
+      flex-direction: column; 
     }
 
     &_section {
-      // Cambia el estilo si es necesario
       padding-top: 28px;
       padding-right: 28px;
       padding-bottom: 14px;
       padding-left: 28px;
       display: flex;
-      flex-direction: column; // Asegura que los subitems se alineen verticalmente
+      flex-direction: column; 
+      background-color: #2b2b2b; // Asegúrate de que el color coincida
+      border-radius: 0;
     }
 
     &_content {
-      flex-direction: column; // Asegura que los items dentro también sean verticales
-      width: 100%; // Ocupará el 100% del ancho
+      flex-direction: column; 
+      width: 100%; 
       gap: 16px;
     }
 
     &_topLevel {
-      width: 100%; // Asegura que el top level ocupe todo el ancho
-      border-right: none; // Elimina la línea de separación si no es necesaria
-      margin-right: 0; // Elimina el margen derecho
-      padding-bottom: 8px; // Añade un poco de espacio debajo del top level
+      width: 100%; 
+      border-right: none; 
+      margin-right: 0; 
+      padding-bottom: 8px; 
       border-bottom: 2px solid #808080;
     }
   }
 
   .subLandingPages {
     margin-left: 1.3rem;
+    transition: max-height 0.3s ease; // Transición suave para el contenedor
+
+    &-item {
+      height: 36px;
+      display: flex;
+      align-items: center; 
+    }
+  }
+
+  .dropdownItem_icon {
+    display: block;
+    color: $primary;
+    
+    &.open {
+      transform: rotate(180deg);
+    }
   }
 }
+
 

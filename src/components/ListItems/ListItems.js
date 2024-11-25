@@ -60,7 +60,7 @@ ListItems.propTypes = {
     title: PropTypes.string,
     ListItem: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         description: PropTypes.string,
         landing_page: PropTypes.shape({
