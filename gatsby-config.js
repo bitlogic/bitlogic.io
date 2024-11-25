@@ -1,11 +1,15 @@
+require("dotenv").config({
+  path: `.env`, // Asegúrate de que apunte al archivo correcto
+});
+
 module.exports = {
   trailingSlash: "always",
   siteMetadata: {
     title: `Bitlogic`,
     description: `Bitlogic Web es una empresa dedicada al diseño, ingeniería y desarrollo ágil de productos de software, especializada en la transformación digital de instituciones educativas .`,
     author: `Bitlogic.io`,
-    siteUrl: process.env.SITE_URL,
-    // siteUrl: "https://es.bitlogic.io",
+    // siteUrl: process.env.SITE_URL,
+    siteUrl: "https://es.bitlogic.io",
   },
   plugins: [
     {
@@ -102,8 +106,8 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `http://lb-bitlogic-strapi-dev-48805770.sa-east-1.elb.amazonaws.com:1337`,
-        // apiURL: `https://strapi.bitlogic.io`,
-        apiURL: process.env.STRAPI_URL,
+        apiURL: `https://strapi.bitlogic.io`,
+        // apiURL: process.env.STRAPI_URL,
         // apiURL: "http://127.0.0.1:1337",
         queryLimit: 1000,
         collectionTypes: [
@@ -163,14 +167,8 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true,     // Muestra las clases eliminadas en la consola
-        develop: false,          // PurgeCSS solo se ejecuta en producción
-      },
-    },
     "gatsby-plugin-offline",
     `gatsby-plugin-sass`,
+    "gatsby-plugin-webpack-bundle-analyser-v2"
   ],
 }
