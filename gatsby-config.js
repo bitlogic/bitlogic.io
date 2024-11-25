@@ -167,6 +167,7 @@ module.exports = {
         ],
       },
     },
+
     "gatsby-plugin-offline",
     `gatsby-plugin-sass`,
     "gatsby-plugin-webpack-bundle-analyser-v2"
