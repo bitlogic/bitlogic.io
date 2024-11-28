@@ -163,14 +163,9 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true,     // Muestra las clases eliminadas en la consola
-        develop: false,          // PurgeCSS solo se ejecuta en producción
-      },
-    },
+
     "gatsby-plugin-offline",
     `gatsby-plugin-sass`,
+    "gatsby-plugin-webpack-bundle-analyser-v2"
   ],
 }
