@@ -15,7 +15,7 @@ const BlogDetail = ({ data }) => {
   return (
     <Layout>
       <Seo
-        title={title}
+        title={seo?.pageTitle}
         description={seo?.pageDescription}
         keywords={seo?.pageKeywords}
       />
