@@ -1,8 +1,11 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons"
+import { faLinkedin, faTwitter, faInstagram, faYoutube, faSpotify } from "@fortawesome/free-brands-svg-icons"
 
-library.add(fas)
-library.add(far)
-library.add(fab)
+library.add(faEnvelope)
+library.add(faLocationDot)
+library.add(faLinkedin)
+library.add(faTwitter)
+library.add(faInstagram)
+library.add(faYoutube)
+library.add(faSpotify)
