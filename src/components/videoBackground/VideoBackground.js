@@ -106,7 +106,7 @@ function getVideoContent(video, videoRef, isIntersecting, pausePlay, handleKeyDo
 
     }
   } else {
-    videoContent = imageData ? <GatsbyImage className="image" image={imageData} alt={image.alternativeText || "Image"} /> : <div><br /></div>
+    videoContent = imageData ? <GatsbyImage width={290} height={200} className="image" image={imageData} alt={image.alternativeText || "Image"} /> : <div><br /></div>
   }
 
   return videoContent;
