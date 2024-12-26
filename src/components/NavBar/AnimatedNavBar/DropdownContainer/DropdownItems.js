@@ -36,11 +36,12 @@ const RenderSection = ({ section, className, isOpen, toggleSubLandingPages, isMo
 
       {(hasSubLandingPages && (isOpen || !isMobileView)) && (
         <ul className={`subLandingPages ${sub_landing_pages.length > 5 ? "two-column-list" : ""}`}>
-          {sub_landing_pages.map(({ id, name, slug }) => (
-            <li key={id} className="subLandingPages-item">
+          {sub_landing_pages.map(subLandingPage => (
+            <li key={subLandingPage.id} className="subLandingPages-item">
               <CustomLink
-                content={name}
-                url={`/${slug}`}
+                content={subLandingPage.name}
+                landing={subLandingPage} 
+                url={subLandingPage?.url}
                 className="dropdownItem_link-subLanding"
               />
             </li>
