@@ -35,6 +35,7 @@ const RenderSection = ({ section, className, isOpen, toggleSubLandingPages, isMo
       {section?.text && <p className="navItemP">{section.text}</p>}
 
       {(hasSubLandingPages && (isOpen || !isMobileView)) && (
+
         <ul className={`subLandingPages ${sub_landing_pages.length > 5 ? "two-column-list" : ""}`}>
           {sub_landing_pages.map(subLandingPage => (
             <li key={subLandingPage.id} className="subLandingPages-item">
