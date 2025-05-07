@@ -166,6 +166,7 @@ module.exports = {
 
     "gatsby-plugin-offline",
     `gatsby-plugin-sass`,
-    "gatsby-plugin-webpack-bundle-analyser-v2"
+    "gatsby-plugin-webpack-bundle-analyser-v2",
+    "gatsby-plugin-react-helmet"
   ],
 }
