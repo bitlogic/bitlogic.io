@@ -84,7 +84,7 @@ function Seo({ description, lang, meta, title, keywords }) {
    {
         rel: "alternate",
         hrefLang: 'en',
-        href:'https://es.bitlogic.io',
+        href:'https://en.bitlogic.io',
    }
   ]}
     />
