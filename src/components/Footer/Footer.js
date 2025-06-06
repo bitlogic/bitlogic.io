@@ -17,7 +17,7 @@ const Footer = memo(() => {
 
   return (
     <section className="Footer">
-      <div className="Footer__wrapper container-fluid">
+      <div className="Footer__wrapper container-fluid" data-nosnippet>
         <Navegation
           items={dataNavbar?.navbarItem}
           title={dataFooter?.navegation?.title}

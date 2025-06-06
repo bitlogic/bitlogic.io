@@ -19,7 +19,7 @@ const FeaturedBlogs = ({ data }) => {
   const callToAction = useBlog()?.allStrapiBlogPage?.callToActionArticle;
 
   return (
-    <div className="container featured pb-3">
+    <div className="container featured pb-3" data-nosnippet>
       {title && <h2>{title}</h2>}
       {subtitle && <h3 className="px-md-3">{subtitle}</h3>}
       {articles?.length > 0 && (
