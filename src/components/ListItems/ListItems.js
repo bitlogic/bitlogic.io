@@ -44,7 +44,7 @@ const ListItems = ({ data }) => {
   })
 
   return (
-    <div className="ListItems container">
+    <div className="ListItems container" data-nosnippet>
       {title && <h2>{title}</h2>}
       {ListItem?.length > 0 && (
         <div className="ListItems__wrapper d-flex flex-column flex-md-row">
