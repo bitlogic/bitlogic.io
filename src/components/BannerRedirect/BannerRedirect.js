@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import "./BannerRedirect.scss"
-import { MdClose } from "react-icons/md"
+import  MdClose  from "react-icons/lib/md/close"
 
 function BannerRedirect() {
   const [isOpen, setIsOpen] = useState(true)
