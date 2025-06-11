@@ -8,6 +8,20 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         exclude: /mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/,
       }),
     ],
+    
+      resolve: {
+        extensions: ['.mjs', '.js'],
+      },
+      module: {
+        rules: [
+          {
+            test: /\.mjs$/,
+            include: /node_modules/,
+            type: 'javascript/auto',
+          },
+        ],
+      },
+    
   })
 }
 
