@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 
 const BlogGrid = ({ title, children }) => {
   return (
-    <div className="grid__container">
+    <div className="grid__container" data-nosnippet>
       <h2>{title}</h2>
       <Pagination initialState={true} postPerPage="9" posts={children} />
     </div>

@@ -26,7 +26,7 @@ const Quote = ({ data }) => {
   }
 
   return (
-    <div className={`Quote ${variant} container`}>
+    <div className={`Quote ${variant} container`} data-nosnippet>
       {image ? (
         <div className="Quote__body image">
           <CustomImage
@@ -59,7 +59,7 @@ const Quote = ({ data }) => {
           )}
         </div>
       )}
-      <section className={`Quote__content`}>
+      <section className={`Quote__content`} data-nosnippet>
         <h2 className="Quote__content__title">{title}</h2>
         <MarkdownView
           markdown={description}
