@@ -1,7 +1,4 @@
- require("dotenv").config({
-    path: `.env`, // Asegúrate de que apunte al archivo correcto
-   });
-  
+
 
 module.exports = {
   trailingSlash: "always",
