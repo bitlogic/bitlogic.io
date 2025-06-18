@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { Link } from "gatsby"
 import { useLandingUrl, useNavbar } from "../../hooks/index"
 import "./Navigation.scss"
-import { FaAngleDown } from "react-icons/fa"
+import  FaAngleDown from "react-icons/lib/fa/angle-down"
 import PropTypes from "prop-types"
 
 const Navigation = ({ data, landing }) => {
