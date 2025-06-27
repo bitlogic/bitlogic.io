@@ -147,6 +147,7 @@ export const query = graphql`
         slug
         published_at
         updated_at
+        Destacado
         seo {
           pageTitle
           pageDescription

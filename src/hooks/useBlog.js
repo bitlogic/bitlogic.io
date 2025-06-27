@@ -14,6 +14,7 @@ const useBlog = () => {
           id
           summary
           slug
+          Destacado
           image {
             url
             alternativeText

@@ -8,14 +8,26 @@ import Layout from "../layout"
 import Banner from "../Banner/Banner"
 
 const Blog = () => {
-
   const blogData = useBlog()
-  const data = blogData?.allStrapiBlogCategory?.nodes
-  const dataArticles = blogData?.allStrapiArticle?.nodes
-  const filterArticle = data.map(category => dataArticles.filter(article => category.name === article?.blog_category?.name))
-  const { seo, banner } = blogData.allStrapiBlogPage.nodes[0]
+  const categorias = blogData?.allStrapiBlogCategory?.nodes || []
+  const articulos = blogData?.allStrapiArticle?.nodes || []
+  const { seo, banner } = blogData?.allStrapiBlogPage?.nodes?.[0] || {}
   const callToAction = blogData?.allStrapiBlogPage?.callToActionArticle
 
+  // Agrupa artículos destacados por categoría (máximo 3 por categoría)
+  const articulosDestacadosPorCategoria = categorias.map(categoria => {
+    const destacados = articulos
+      .filter(articulo =>
+        articulo?.blog_category?.name === categoria.name &&
+        articulo?.Destacado === true
+      )
+      .slice(0, 3)
+
+    return {
+      categoria: categoria.name,
+      articulos: destacados,
+    }
+  }).filter(grupo => grupo.articulos.length > 0) // Solo mostrar si hay destacados
 
   return (
     <Layout>
@@ -25,26 +37,28 @@ const Blog = () => {
         keywords={seo.pageKeywords}
       />
       <Banner data={banner} />
-      {data.length > 0 && (
-        <div className="blog__container container">
-          {filterArticle?.map((category, idx) => (
-            <BlogGrid key={data[idx].name} title={category[0]?.blog_category?.name}>
-              {category.map(item => (
-                <BlogArticle
-                  key={item.id}
-                  image={item?.image || item?.imagePage}
-                  title={item.title}
-                  summary={item.summary}
-                  slug={"/blog/" + item.slug}
-                  text={callToAction}
-                />
-          ))}
-            </BlogGrid>
-          ))}  
-        </div>
-      )}
+
+      <div className="blog__container container">
+        {articulosDestacadosPorCategoria.map(({ categoria, articulos }) => (
+          <BlogGrid key={categoria} title={categoria}>
+            {articulos.map(item => (
+              <BlogArticle
+                key={item.id}
+                image={item?.image || item?.imagePage}
+                title={item.title}
+                summary={item.summary}
+                slug={`/blog/${item.slug}`}
+                text={callToAction}
+              />
+            ))}
+          </BlogGrid>
+        ))}
+      </div>
     </Layout>
   )
 }
 
 export default Blog
+
+
+
