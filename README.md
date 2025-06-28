@@ -257,7 +257,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Website**: [bitlogic.io](https://bitlogic.io)
 - **Email**: info@bitlogic.io
-- **LinkedIn**: [Bitlogic Company Page](https://linkedin.com/company/bitlogic)
+- **LinkedIn**: [Bitlogic Company Page](https://www.linkedin.com/company/bitlogic.io)
 
 ---
 
