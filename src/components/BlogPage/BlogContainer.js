@@ -1,11 +1,12 @@
+// src/components/BlogPage/BlogContainer.js
 import React from "react"
 import { useBlog } from "../../hooks"
 import BlogGrid from "./BlogGrid/BlogGrid"
 import BlogArticle from "./BlogArticle/BlogArticle"
 import Seo from "../Seo/Seo"
-import "./BlogContainer.scss"
 import Layout from "../layout"
 import Banner from "../Banner/Banner"
+import "./BlogContainer.scss"
 
 const Blog = () => {
   const blogData = useBlog()
@@ -14,20 +15,25 @@ const Blog = () => {
   const { seo, banner } = blogData?.allStrapiBlogPage?.nodes?.[0] || {}
   const callToAction = blogData?.allStrapiBlogPage?.callToActionArticle
 
-  // Agrupa artículos destacados por categoría (máximo 3 por categoría)
-  const articulosDestacadosPorCategoria = categorias.map(categoria => {
-    const destacados = articulos
-      .filter(articulo =>
-        articulo?.blog_category?.name === categoria.name &&
-        articulo?.Destacado === true
+  // Para cada categoría, tomar hasta 3 artículos (flag destacado opcional)
+  const articulosPorCategoria = categorias
+    .map(categoria => {
+      // Filtrar artículos de esta categoría
+      const articulosCat = articulos.filter(
+        articulo => articulo.blog_category?.name === categoria.name
       )
-      .slice(0, 3)
+      // Si hay flag 'destacado', priorizar; sino tomar primeros 3
+      const destacados = articulosCat.some(a => a.destacado)
+        ? articulosCat.filter(a => a.destacado).slice(0, 3)
+        : articulosCat.slice(0, 3)
 
-    return {
-      categoria: categoria.name,
-      articulos: destacados,
-    }
-  }).filter(grupo => grupo.articulos.length > 0) // Solo mostrar si hay destacados
+      return {
+        categoria: categoria.name,
+        slug: categoria.slug,
+        articulos: destacados,
+      }
+    })
+    .filter(grupo => grupo.articulos.length > 0)
 
   return (
     <Layout>
@@ -39,12 +45,17 @@ const Blog = () => {
       <Banner data={banner} />
 
       <div className="blog__container container">
-        {articulosDestacadosPorCategoria.map(({ categoria, articulos }) => (
-          <BlogGrid key={categoria} title={categoria}>
+        {articulosPorCategoria.map(({ categoria, slug, articulos }) => (
+          <BlogGrid
+            key={categoria}
+            title={categoria}
+            viewAllHref={`/blog/category/${slug}`}
+          >
             {articulos.map(item => (
               <BlogArticle
                 key={item.id}
-                image={item?.image || item?.imagePage}
+                destacado={item.destacado}
+                image={item.image || item.imagePage}
                 title={item.title}
                 summary={item.summary}
                 slug={`/blog/${item.slug}`}
@@ -59,6 +70,11 @@ const Blog = () => {
 }
 
 export default Blog
+
+
+
+
+
 
 
 

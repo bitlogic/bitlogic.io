@@ -1,23 +1,32 @@
+// src/components/BlogPage/BlogGrid/BlogGrid.jsx
 import React from "react"
-import "./BlogGrid.scss"
 import PropTypes from "prop-types"
+import "./BlogGrid.scss"
 
-const BlogGrid = ({ title, children }) => {
-  return (
-    <div className="grid__container" data-nosnippet>
-      <h2>{title}</h2>
-      <div className="grid__content">
-        {children}
-      </div>
+const BlogGrid = ({ title, viewAllHref, children }) => (
+  <section className="blog__section" data-nosnippet>
+    <header className="blog__section-header">
+      <h2 className="blog__section-title">{title}</h2>
+      {viewAllHref && (
+        <a href={viewAllHref} className="blog__view-all">
+          Ver todos
+        </a>
+      )}
+    </header>
+    <div className="blog__section-articles-grid">
+      {children}
     </div>
-  )
-}
+  </section>
+)
 
 BlogGrid.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.array.isRequired,
+  viewAllHref: PropTypes.string,
+  children: PropTypes.node.isRequired,
 }
 
 export default BlogGrid
+
+
 
 
