@@ -6,6 +6,7 @@ const useBlog = () => {
       allStrapiBlogCategory {
         nodes {
           name
+          slug
         }
       }
       allStrapiArticle(sort: { fields: published_at, order: DESC }) {
@@ -35,6 +36,7 @@ const useBlog = () => {
           }
           blog_category {
             name
+            slug
           }
         }
       }

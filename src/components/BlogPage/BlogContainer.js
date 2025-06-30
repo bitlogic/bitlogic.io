@@ -1,4 +1,3 @@
-// src/components/BlogPage/BlogContainer.js
 import React from "react"
 import { useBlog } from "../../hooks"
 import BlogGrid from "./BlogGrid/BlogGrid"
@@ -7,51 +6,42 @@ import Seo from "../Seo/Seo"
 import Layout from "../layout"
 import Banner from "../Banner/Banner"
 import "./BlogContainer.scss"
-
 const Blog = () => {
-  const blogData = useBlog()
-  const categorias = blogData?.allStrapiBlogCategory?.nodes || []
-  const articulos = blogData?.allStrapiArticle?.nodes || []
-  const { seo, banner } = blogData?.allStrapiBlogPage?.nodes?.[0] || {}
-  const callToAction = blogData?.allStrapiBlogPage?.callToActionArticle
-
-  // Para cada categoría, tomar hasta 3 artículos (flag destacado opcional)
+  const { allStrapiBlogCategory, allStrapiArticle, allStrapiBlogPage } = useBlog()
+  const categorias = allStrapiBlogCategory.nodes
+  const articulos = allStrapiArticle.nodes
+  const { seo, banner } = allStrapiBlogPage.nodes[0] || {}
+  const callToAction = allStrapiBlogPage.nodes[0]?.callToActionArticle  
   const articulosPorCategoria = categorias
     .map(categoria => {
-      // Filtrar artículos de esta categoría
       const articulosCat = articulos.filter(
-        articulo => articulo.blog_category?.name === categoria.name
+        art => art.blog_category?.slug === categoria.slug
       )
-      // Si hay flag 'destacado', priorizar; sino tomar primeros 3
       const destacados = articulosCat.some(a => a.destacado)
         ? articulosCat.filter(a => a.destacado).slice(0, 3)
-        : articulosCat.slice(0, 3)
-
-      return {
-        categoria: categoria.name,
+        : articulosCat.slice(0, 3)      
+        return {
+        name: categoria.name,
         slug: categoria.slug,
-        articulos: destacados,
+        items: destacados,
       }
     })
-    .filter(grupo => grupo.articulos.length > 0)
-
-  return (
+    .filter(grupo => grupo.items.length > 0)  
+    return (
     <Layout>
       <Seo
-        title={seo.pageTitle}
-        description={seo.pageDescription}
-        keywords={seo.pageKeywords}
+        title={seo?.pageTitle}
+        description={seo?.pageDescription}
+        keywords={seo?.pageKeywords}
       />
-      <Banner data={banner} />
-
-      <div className="blog__container container">
-        {articulosPorCategoria.map(({ categoria, slug, articulos }) => (
+      <Banner data={banner} />      <div className="blog__container container">
+        {articulosPorCategoria.map(({ name, slug, items }) => (
           <BlogGrid
-            key={categoria}
-            title={categoria}
-            viewAllHref={`/blog/category/${slug}`}
+            key={slug}
+            title={name}
+            viewAllHref={`/categoria/${slug}`}
           >
-            {articulos.map(item => (
+            {items.map(item => (
               <BlogArticle
                 key={item.id}
                 destacado={item.destacado}
@@ -68,13 +58,4 @@ const Blog = () => {
     </Layout>
   )
 }
-
 export default Blog
-
-
-
-
-
-
-
-
