@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useBlog = () => {
-  const query = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
       allStrapiBlogCategory {
         nodes {
@@ -11,11 +11,11 @@ const useBlog = () => {
       }
       allStrapiArticle(sort: { fields: published_at, order: DESC }) {
         nodes {
-          title
           id
+          title
           summary
           slug
-          Destacado
+          destacado          # <-- Asegurate de que coincida en minúscula
           image {
             url
             alternativeText
@@ -78,7 +78,11 @@ const useBlog = () => {
       }
     }
   `)
-  return query
+  return {
+    allStrapiBlogCategory: data.allStrapiBlogCategory,
+    allStrapiArticle: data.allStrapiArticle,
+    allStrapiBlogPage: data.allStrapiBlogPage,
+  }
 }
 
 export default useBlog
