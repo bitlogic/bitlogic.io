@@ -1,5 +1,3 @@
-// gatsby-node.js
-
 const path = require("path")
 const FilterWarningsPlugin = require("webpack-filter-warnings-plugin")
 
@@ -48,7 +46,16 @@ exports.createSchemaCustomization = ({ actions }) => {
     professionalsSchema.value +
     generalSchema.value
 
+  // Core type definitions from schema files
   createTypes(typeDefs)
+
+  // POSTER
+  createTypes(`
+    type ComponentVideoBackground implements Node {
+      poster: File @link(from: "poster.localFile")
+      video: File @link(from: "video.localFile")
+    }
+  `)
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -139,7 +146,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   categoryResult.data.allStrapiBlogCategory.nodes.forEach(category => {
     const slugLower = category.slug.toLowerCase()
     createPage({
-      
       path: `/categoria/${slugLower}`,
       component: categoryTemplate,
       context: {
