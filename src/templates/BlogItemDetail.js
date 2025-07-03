@@ -138,6 +138,7 @@ BlogDetail.propTypes = {
   }),
 }
 
+
 export const query = graphql`
   query($slug: String!) {
     allStrapiArticle(filter: { slug: { eq: $slug } }) {
@@ -147,6 +148,7 @@ export const query = graphql`
         slug
         published_at
         updated_at
+        destacado
         seo {
           pageTitle
           pageDescription

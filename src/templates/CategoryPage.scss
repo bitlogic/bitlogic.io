@@ -1,0 +1,48 @@
+/* src/templates/CategoryPage.scss */
+
+/* Estilos del título en la vista de categoría */
+.category__container .blog__section-header {
+  margin-bottom: 1.5rem;
+
+  .blog__section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.25rem;  /* espacio para el subrayado */
+    color: #222;
+    display: inline-block;
+    background: none;
+    border-radius: 0;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -0.1rem;   /* desplaza la línea hacia abajo */
+      left: 0;
+      width: 100%;        /* subrayado completo */
+      height: 3px;
+      background: #769dd8; /* color personalizado */
+    }
+  }
+}
+
+/* Grid de 3 columnas en la vista de categoría */
+.category__container .blog__section-articles-grid {
+  display: grid;
+  justify-items: center;  /* centra las tarjetas si hay menos en la última fila */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  /* Dos columnas en pantallas medianas */
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Una columna para tablet y móvil */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+}
+
