@@ -8,18 +8,20 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         exclude: /mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/,
       }),
     ],
-    resolve: {
-      extensions: [".mjs", ".js"],
-    },
-    module: {
-      rules: [
-        {
-          test: /\.mjs$/,
-          include: /node_modules/,
-          type: "javascript/auto",
-        },
-      ],
-    },
+    
+      resolve: {
+        extensions: ['.mjs', '.js'],
+      },
+      module: {
+        rules: [
+          {
+            test: /\.mjs$/,
+            include: /node_modules/,
+            type: 'javascript/auto',
+          },
+        ],
+      },
+    
   })
 }
 
@@ -34,7 +36,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   const professionalsSchema = require("./src/schema/professionalsSchema")
   const generalSchema = require("./src/schema/generalSchema")
   const { createTypes } = actions
-
   const typeDefs =
     blogSchema.value +
     caseSchema.value +
