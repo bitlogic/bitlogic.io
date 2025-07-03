@@ -138,6 +138,7 @@ BlogDetail.propTypes = {
   }),
 }
 
+
 export const query = graphql`
   query($slug: String!) {
     allStrapiArticle(filter: { slug: { eq: $slug } }) {
