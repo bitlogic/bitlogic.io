@@ -31,7 +31,9 @@ const BlogArticle = ({
 
     <div className="article__description">
       <h4 className="article__title">{title}</h4>
-      <MarkdownView markdown={summary} />
+      <MarkdownView markdown={`${summary}`}
+          dangerouslySetInnerHTML={{ __html: summary }}
+        />
       <div className="article__link">
         <Link to={slug}>
           <small>{text || 'Ver más'}</small>
