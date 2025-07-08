@@ -1,12 +1,15 @@
+// src/hooks/useBlog.js
+
 import { useStaticQuery, graphql } from "gatsby"
 
 const useBlog = () => {
   const data = useStaticQuery(graphql`
     {
-      allStrapiBlogCategory {
+      allStrapiBlogCategory(sort: { fields: orden, order: ASC }) {
         nodes {
           name
           slug
+          orden
         }
       }
       allStrapiArticle(sort: { fields: published_at, order: DESC }) {
@@ -15,7 +18,7 @@ const useBlog = () => {
           title
           summary
           slug
-          destacado          # <-- Asegurate de que coincida en minúscula
+          destacado
           image {
             url
             alternativeText
@@ -78,6 +81,7 @@ const useBlog = () => {
       }
     }
   `)
+
   return {
     allStrapiBlogCategory: data.allStrapiBlogCategory,
     allStrapiArticle: data.allStrapiArticle,
@@ -86,3 +90,4 @@ const useBlog = () => {
 }
 
 export default useBlog
+
