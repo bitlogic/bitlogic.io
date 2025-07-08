@@ -147,7 +147,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   categoryResult.data.allStrapiBlogCategory.nodes.forEach(category => {
     const slugLower = category.slug.toLowerCase()
     createPage({
-      path: `/categoria/${slugLower}`,
+      path: `/blog/${slugLower}`,
       component: categoryTemplate,
       context: {
         name: category.name,
