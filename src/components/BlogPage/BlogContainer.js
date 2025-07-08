@@ -44,7 +44,7 @@ const Blog = () => {
           <BlogGrid
             key={slug}
             title={name}
-            viewAllHref={`/categoria/${slug.toLowerCase()}`}  // ruta actualizada
+            viewAllHref={`/blog/${slug.toLowerCase()}`}  // ruta actualizada
           >
             {items.map(item => (
               <BlogArticle
