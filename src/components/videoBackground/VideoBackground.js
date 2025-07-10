@@ -1,8 +1,12 @@
-import React, { useEffect, useRef, useState } from "react"
+
+import React, { useEffect, useRef, useState, Suspense, lazy } from "react"
+import PropTypes from "prop-types"
 import "./videoBackground.scss"
 import CustomLink from "../CustomLink/CustomLink"
-import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
+
+const VideoBackgroundContent = lazy(() => import("./VideoBackgroundContent"))
 
 function getIOSVersion() {
   if (typeof window === "undefined" || typeof navigator === "undefined") return null
@@ -10,19 +14,17 @@ function getIOSVersion() {
   const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/
   const iosMatch = regex.exec(userAgent)
   if (!iosMatch) return null
-  const major = parseInt(iosMatch[1], 10)
-  const minor = parseInt(iosMatch[2], 10)
-  const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0
+  const [major, minor, patch = 0] = iosMatch.slice(1).map(n => parseInt(n, 10))
   return { major, minor, patch }
 }
 
 function isIOSPriorTo(version) {
-  const currentVersion = getIOSVersion()
-  if (!currentVersion) return false
-  const [majorVersion, minorVersion] = version.split(".").map(Number)
-  if (currentVersion.major < majorVersion) return true
-  if (currentVersion.major > majorVersion) return false
-  return currentVersion.minor < minorVersion
+  const current = getIOSVersion()
+  if (!current) return false
+  const [maj, min] = version.split(".").map(Number)
+  if (current.major < maj) return true
+  if (current.major > maj) return false
+  return current.minor < min
 }
 
 function getVideoContent(
@@ -32,16 +34,14 @@ function getVideoContent(
   pausePlay,
   handleKeyDown,
   videoUrl,
-  image,
   posterData
 ) {
   const posterUrl = posterData?.url
   const posterSharp = posterData?.localFile && getImage(posterData.localFile)
 
   const url = videoUrl?.replace("watch?v=", "embed/")
-  let code = url?.substring(url.lastIndexOf("/") + 1) || ""
-  const codeIndex = code.indexOf("?")
-  if (codeIndex !== -1) code = code.substring(0, codeIndex)
+  let code = url?.split("/").pop() || ""
+  code = code.split("?")[0]
 
   if (!isIOSPriorTo("17.4")) {
     if (video?.url) {
@@ -69,14 +69,23 @@ function getVideoContent(
           className="video"
           loading="lazy"
           type="text/html"
-          srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;height:100%;object-fit:cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style><a href=${url}?rel=0><img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video'><span>▶</span></a>`}
+          srcDoc={`
+            <style>
+              *{padding:0;margin:0;overflow:hidden}
+              html,body{height:100%}
+              img,span{position:absolute;width:100%;height:100%;object-fit:cover;top:0}
+              span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+            </style>
+            <a href="${url}?rel=0">
+              <img src="https://img.youtube.com/vi/${code}/hqdefault.jpg" alt="Video">
+              <span>▶</span>
+            </a>
+          `}
           src={`${url}?rel=0`}
           frameBorder="0"
           allowFullScreen
           title="benefits_video"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          webkitallowfullscreen
-          mozallowfullscreen
         />
       )
     }
@@ -92,39 +101,42 @@ function getVideoContent(
     )
   }
 
-  return <div><br /></div>
+  return <div style={{ height: "200px" }} /> // placeholder
 }
 
 const VideoBackground = ({ data }) => {
+
+
   const {
-    image,
-    video,
-    description,
-    button,
     backgroundImage,
+    video,
     videoUrl,
     poster,
+    description,
+    button,
   } = data
 
   const [isVideoPause, setIsVideoPause] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
+  // Control play/pause
   const pausePlay = () => {
     if (isVideoPause) videoRef.current.play()
     else videoRef.current.pause()
     setIsVideoPause(prev => !prev)
   }
-
-  const handleKeyDown = event => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault()
+  const handleKeyDown = ev => {
+    if (ev.key === "Enter" || ev.key === " ") {
+      ev.preventDefault()
       pausePlay()
     }
   }
 
+  // Intersection Observer para lazy video src
   useEffect(() => {
     const elem = videoRef.current
+    if (!elem) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -134,19 +146,18 @@ const VideoBackground = ({ data }) => {
       },
       { rootMargin: "0px 0px 200px 0px", threshold: 0.1 }
     )
-    if (elem) observer.observe(elem)
-    return () => elem && observer.unobserve(elem)
+    observer.observe(elem)
+    return () => observer.unobserve(elem)
   }, [])
 
+  // Persistir estado paused
   useEffect(() => {
-    const stored =
-      typeof window !== "undefined" && localStorage.getItem("videoPaused")
+    const stored = typeof window !== "undefined" && localStorage.getItem("videoPaused")
     if (stored === "true") {
       videoRef.current.pause()
       setIsVideoPause(true)
     }
   }, [])
-
   useEffect(() => {
     localStorage.setItem("videoPaused", isVideoPause)
   }, [isVideoPause])
@@ -158,20 +169,23 @@ const VideoBackground = ({ data }) => {
     pausePlay,
     handleKeyDown,
     videoUrl,
-    image,
     poster
   )
 
+  // Prepara la imagen de fondo
+  const bgSharp = backgroundImage?.localFile && getImage(backgroundImage.localFile)
+
   return (
-    <div
-      style={{
-        backgroundImage: backgroundImage
-          ? `url(${backgroundImage.url})`
-          : "",
-        backgroundRepeatY: "no-repeat",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="videoBackground-wrapper">
+      {bgSharp && (
+        <GatsbyImage
+          className="videoBackground-bg"
+          image={bgSharp}
+          alt={backgroundImage.alternativeText || "Background"}
+          loading="eager"
+        />
+      )}
+
       <div className="container videoBackground-container">
         <section className="videoBackground">
           {videoContent}
@@ -195,26 +209,31 @@ const VideoBackground = ({ data }) => {
 
 VideoBackground.propTypes = {
   data: PropTypes.shape({
-    video: PropTypes.shape({ url: PropTypes.string.isRequired, mime: PropTypes.string.isRequired }),
-    videoUrl: PropTypes.string,
-    description: PropTypes.string,
-    backgroundImage: PropTypes.shape({ url: PropTypes.string.isRequired }),
-    image: PropTypes.shape({
+    backgroundImage: PropTypes.shape({
       alternativeText: PropTypes.string,
-      localFile: PropTypes.object,
+      localFile: PropTypes.object.isRequired,
     }),
+    video: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      mime: PropTypes.string.isRequired,
+    }),
+    videoUrl: PropTypes.string,
     poster: PropTypes.shape({
       url: PropTypes.string.isRequired,
       alternativeText: PropTypes.string,
-      localFile: PropTypes.shape({ childImageSharp: PropTypes.object.isRequired }),
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.object.isRequired,
+      }),
     }),
+    description: PropTypes.string,
     button: PropTypes.shape({
       content: PropTypes.string.isRequired,
       url: PropTypes.string,
-      landing_page: PropTypes.shape({ slug: PropTypes.string.isRequired }),
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }),
     }),
-  }),
+  }).isRequired,
 }
 
-export default VideoBackground;
-
+export default VideoBackground

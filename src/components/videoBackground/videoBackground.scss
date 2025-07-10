@@ -1,5 +1,20 @@
 @import "../../styles/global.scss";
 
+/* Contenedor principal que envuelve la imagen de fondo y el contenido */
+.videoBackground-wrapper {
+  position: relative;
+
+  /* Esta clase la aplica GatsbyImage con loading="eager" */
+  .videoBackground-bg {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
 .videoBackground {
   max-width: 100%;
 
@@ -8,6 +23,7 @@
     padding-bottom: 50px;
   }
 
+  /* Vídeo o iframe (luego se hidratará en React) */
   video,
   iframe {
     width: 100%;
@@ -16,7 +32,7 @@
     object-fit: cover;
     display: block;
     border-radius: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     aspect-ratio: 16/9;
     cursor: pointer;
   }
@@ -39,7 +55,7 @@
     object-fit: cover;
     display: block;
     border-radius: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     aspect-ratio: 16/9;
     cursor: pointer;
   }
