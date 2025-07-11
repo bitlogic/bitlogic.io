@@ -8,6 +8,20 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         exclude: /mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/,
       }),
     ],
+    
+      resolve: {
+        extensions: ['.mjs', '.js'],
+      },
+      module: {
+        rules: [
+          {
+            test: /\.mjs$/,
+            include: /node_modules/,
+            type: 'javascript/auto',
+          },
+        ],
+      },
+    
   })
 }
 
@@ -19,9 +33,8 @@ exports.createSchemaCustomization = ({ actions }) => {
   const iconSchema = require("./src/schema/iconSchema")
   const landingSchema = require("./src/schema/landingSchema")
   const layoutSchema = require("./src/schema/layoutSchema")
-  const generalSchema = require("./src/schema/generalSchema")
   const professionalsSchema = require("./src/schema/professionalsSchema")
-
+  const generalSchema = require("./src/schema/generalSchema")
   const { createTypes } = actions
   const typeDefs =
     blogSchema.value +
@@ -33,15 +46,25 @@ exports.createSchemaCustomization = ({ actions }) => {
     layoutSchema.value +
     professionalsSchema.value +
     generalSchema.value
+
+  // Core type definitions from schema files
   createTypes(typeDefs)
+
+  // POSTER
+  createTypes(`
+    type ComponentVideoBackground implements Node {
+      poster: File @link(from: "poster.localFile")
+      video: File @link(from: "video.localFile")
+    }
+  `)
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  // CREACION DE PAGINAS DE BLOG
-  const { data: blogQueryData } = await graphql(`
-    query Articles {
+  // 1) Blog detail pages
+  const blogResult = await graphql(`
+    {
       allStrapiArticle {
         nodes {
           slug
@@ -50,16 +73,14 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-
-  if (blogQueryData.errors) {
-    reporter.panicOnBuild("Error creando paginas de blog")
+  if (blogResult.errors) {
+    reporter.panicOnBuild("Error creating blog detail pages", blogResult.errors)
   }
-
-  blogQueryData.allStrapiArticle.nodes.forEach(node => {
-    const BlogDetail = path.resolve("./src/templates/BlogItemDetail.js")
+  const blogTemplate = path.resolve("./src/templates/BlogItemDetail.js")
+  blogResult.data.allStrapiArticle.nodes.forEach(node => {
     createPage({
-      path: "/blog/" + node.slug,
-      component: BlogDetail,
+      path: `/blog/${node.slug}`,
+      component: blogTemplate,
       context: {
         slug: node.slug,
         lastmod: node.updated_at,
@@ -67,9 +88,9 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // CREACION DE LANDING PAGES
-  const { data: LandingQueryData } = await graphql(`
-    query Landings {
+  // 2) Landing pages
+  const landingResult = await graphql(`
+    {
       allStrapiLandingPage {
         nodes {
           slug
@@ -81,37 +102,55 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-
-  if (LandingQueryData.errors) {
-    reporter.panicOnBuild("Error creando paginas de landing")
+  if (landingResult.errors) {
+    reporter.panicOnBuild("Error creating landing pages", landingResult.errors)
   }
-
-  const landings = LandingQueryData.allStrapiLandingPage.nodes
-
-  function getUrl(node) {
+  const landings = landingResult.data.allStrapiLandingPage.nodes
+  const landingTemplate = path.resolve("./src/templates/LandingPage.js")
+  const buildLandingUrl = node => {
     if (!node) return ""
-
     if (node.parent_page) {
-      const parentPage = landings.find(
-        landing => landing.slug === node.parent_page.slug
-      )
-      const parentUrl = getUrl(parentPage)
-      return `${parentUrl}/${node.slug}`
+      const parent = landings.find(l => l.slug === node.parent_page.slug)
+      return buildLandingUrl(parent) + `/${node.slug}`
     }
-
     return `/${node.slug}`
   }
-
   landings.forEach(node => {
-    const LandingPage = path.resolve("./src/templates/LandingPage.js")
-    const url = getUrl(node)
-
     createPage({
-      path: url,
-      component: LandingPage,
+      path: buildLandingUrl(node),
+      component: landingTemplate,
       context: {
         slug: node.slug,
         lastmod: node.updated_at,
+      },
+    })
+  })
+
+  // 3) Category pages
+  const categoryResult = await graphql(`
+    {
+      allStrapiBlogCategory {
+        nodes {
+          name
+          slug
+        }
+      }
+    }
+  `)
+  if (categoryResult.errors) {
+    reporter.panicOnBuild(
+      "Error creating category pages",
+      categoryResult.errors
+    )
+  }
+  const categoryTemplate = path.resolve("./src/templates/CategoryPage.js")
+  categoryResult.data.allStrapiBlogCategory.nodes.forEach(category => {
+    const slugLower = category.slug.toLowerCase()
+    createPage({
+      path: `/blog/${slugLower}`,
+      component: categoryTemplate,
+      context: {
+        name: category.name,
       },
     })
   })

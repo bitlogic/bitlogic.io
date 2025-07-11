@@ -1,3 +1,5 @@
+
+
 module.exports = {
   trailingSlash: "always",
   siteMetadata: {
