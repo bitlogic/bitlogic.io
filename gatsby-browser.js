@@ -1,13 +1,10 @@
-// gatsby-browser.js
 export const onClientEntry = () => {
-  const style = document.createElement("style")
-  style.id = "critical-banner-hero"
-  style.innerHTML = `
+  const criticalCSS = `
     .banner.hero .title h1 {
       text-transform: uppercase;
       text-align: left;
       margin-bottom: 0.8rem;
-      font-size: 32px;
+      font-size: 52px;
       font-family: "Plain", sans-serif;
       word-wrap: initial;
     }
@@ -17,8 +14,14 @@ export const onClientEntry = () => {
       margin: 0;
     }
   `
+
+  // Inyectar CSS crítico
+  const style = document.createElement("style")
+  style.id = "critical-banner-hero"
+  style.innerHTML = criticalCSS
   document.head.appendChild(style)
 
+  // Precargar poster del video
   const link = document.createElement("link")
   link.rel = "preload"
   link.as = "image"

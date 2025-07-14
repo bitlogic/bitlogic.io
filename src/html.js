@@ -1,5 +1,5 @@
-// src/html.js
 import React from "react"
+
 
 export default function HTML({
   htmlAttributes,
@@ -13,22 +13,7 @@ export default function HTML({
     <html {...htmlAttributes}>
       <head>
         {headComponents}
-        {/* ——— CSS CRÍTICO DEL BANNER HERO ——— */}
-        <style>{`
-          .banner.hero .title h1 {
-            text-transform: uppercase;
-            text-align: left;
-            margin-bottom: 0.8rem;
-            font-size: 32px;
-            font-family: "Plain", sans-serif;
-            word-wrap: initial;
-          }
-          .banner.hero .title p {
-            font-size: 1rem;
-            line-height: 1.5;
-            margin: 0;
-          }
-        `}</style>
+        {/* ——— Aquí ya no inyectamos CSS crítico del banner ——— */}
       </head>
       <body {...bodyAttributes}>
         {preBodyComponents}

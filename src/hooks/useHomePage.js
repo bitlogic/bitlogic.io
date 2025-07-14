@@ -1,7 +1,8 @@
+
 import { useStaticQuery, graphql } from "gatsby"
 
 const useHomePage = () => {
-  const query = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query allStrapiHome {
       allStrapiHome {
         nodes {
@@ -100,6 +101,61 @@ const useHomePage = () => {
                 }
               }
             }
+            Card {
+              id
+              title
+              description
+              landing_page {
+                slug
+              }
+              icon {
+                alternativeText
+                url
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+            ListItem {
+              id
+              title
+              description
+              landing_page {
+                slug
+              }
+              icon {
+                alternativeText
+                url
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+            
+            backgroundImage {
+              url
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 1920
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP]
+                  )
+                }
+              }
+            }
+            backgroundImageDark {
+              url
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
             imageDark {
               alternativeText
               url
@@ -152,27 +208,12 @@ const useHomePage = () => {
                 slug
               }
             }
-            backgroundImageDark {
-              url
-            }
-            backgroundImage {
-              url
-            }
             articles {
               id
               title
               summary
               slug
               published_at
-              imagePage {
-                alternativeText
-                url
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
               image {
                 alternativeText
                 url
@@ -182,32 +223,7 @@ const useHomePage = () => {
                   }
                 }
               }
-            }
-            ListItem {
-              id
-              title
-              description
-              landing_page {
-                slug
-              }
-              icon {
-                alternativeText
-                url
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
-            Card {
-              id
-              title
-              description
-              landing_page {
-                slug
-              }
-              icon {
+              imagePage {
                 alternativeText
                 url
                 localFile {
@@ -222,7 +238,8 @@ const useHomePage = () => {
       }
     }
   `)
-  return query
+
+  return data
 }
 
 export default useHomePage
