@@ -1,3 +1,5 @@
+// gatsby-browser.js
+
 export const onClientEntry = () => {
   const criticalCSS = `
     .banner.hero .title h1 {
@@ -15,16 +17,9 @@ export const onClientEntry = () => {
     }
   `
 
-  // Inyectar CSS crítico
+  // Inyectamos el mismo CSS crítico en el head para desarrollo / SPA
   const style = document.createElement("style")
   style.id = "critical-banner-hero"
   style.innerHTML = criticalCSS
   document.head.appendChild(style)
-
-  // Precargar poster del video
-  const link = document.createElement("link")
-  link.rel = "preload"
-  link.as = "image"
-  link.href = "https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com/background_componente_video_be81ab4bf2.webp"
-  document.head.appendChild(link)
 }

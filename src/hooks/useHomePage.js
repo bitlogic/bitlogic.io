@@ -1,4 +1,3 @@
-
 import { useStaticQuery, graphql } from "gatsby"
 
 const useHomePage = () => {
@@ -32,10 +31,36 @@ const useHomePage = () => {
             color
             callToAction
             allBlog
+
             videoUrl
             video {
               url
               mime
+            }
+            poster {
+              url
+              alternativeText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 800
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
+            }
+            backgroundImage {
+              url
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 1200
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
             }
             profile {
               alternativeText
@@ -126,104 +151,6 @@ const useHomePage = () => {
                 slug
               }
               icon {
-                alternativeText
-                url
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
-            
-            backgroundImage {
-              url
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    width: 1920
-                    placeholder: BLURRED
-                    formats: [AUTO, WEBP]
-                  )
-                }
-              }
-            }
-            backgroundImageDark {
-              url
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-            imageDark {
-              alternativeText
-              url
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-            image {
-              alternativeText
-              url
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-            dualSectionPart {
-              id
-              title
-              description
-              button {
-                content
-                url
-                landing_page {
-                  slug
-                }
-              }
-              backgroundImage {
-                url
-              }
-              backgroundImageDark {
-                url
-              }
-              image {
-                alternativeText
-                url
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
-            button {
-              content
-              url
-              landing_page {
-                slug
-              }
-            }
-            articles {
-              id
-              title
-              summary
-              slug
-              published_at
-              image {
-                alternativeText
-                url
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-              imagePage {
                 alternativeText
                 url
                 localFile {
