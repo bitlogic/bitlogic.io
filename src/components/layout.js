@@ -1,4 +1,6 @@
-import React, { lazy, Suspense } from "react"
+import React, { lazy, Suspense, useEffect } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
 import Header from "./header"
 import ThemeProvider from "../context/themeContext"
 import Footer from "./Footer/Footer"
@@ -9,18 +11,43 @@ import "./FontAwesomeOne/FontAwesomeOne"
 const BannerRedirect = lazy(() => import("./BannerRedirect/BannerRedirect"))
 
 const Layout = ({ children, options = {}, location }) => {
-  const defaultOptions = {
-    hasHeader: true,
+  const defaultOptions = { 
+    hasHeader: true, 
     hasFooter: true,
-  }
+   }
+     options = { ...defaultOptions, ...options }
 
-  options = { ...defaultOptions, ...options }
+  
+  const { allStrapiHome } = useStaticQuery(graphql`
+    query PreloadDynamicHero {
+      allStrapiHome {
+        nodes {
+          body {
+            strapi_component
+            backgroundImage {
+              url
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  React.useEffect(() => {
+  const heroBlock = allStrapiHome.nodes[0].body.find(
+    b => b.strapi_component === "components.banner"
+  )
+  const raw = heroBlock?.backgroundImage?.url
+  const heroUrl = raw
+    ? raw.startsWith("http")
+      ? raw
+      : `https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com${raw}`
+    : null
+
+  useEffect(() => {
     const hash = location?.state?.component
-    let el = hash && document.getElementById(hash)
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" })
+    if (hash) {
+      const el = document.getElementById(hash)
+      if (el) el.scrollIntoView({ behavior: "smooth" })
     }
   }, [location?.state?.component])
 
@@ -29,22 +56,46 @@ const Layout = ({ children, options = {}, location }) => {
 
   return (
     <ThemeProvider>
+      <Helmet>
+        {heroUrl && (
+          <link key="preload-hero" rel="preload" as="image" href={heroUrl} />
+        )}
+        <style type="text/css">{`
+          .banner.hero .title h1 {
+            text-transform: uppercase;
+            text-align: left;
+            margin-bottom: 0.8rem;
+            font-size: 52px;
+            font-family: "Plain", sans-serif;
+            word-wrap: initial;
+          }
+          .banner.hero .title p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+          }
+        `}</style>
+      </Helmet>
+
       {options.hasHeader && <Header />}
+
       {userLanguage?.startsWith("en") && (
-        <Suspense fallback>
+        <Suspense fallback={null}>
           <BannerRedirect />
         </Suspense>
       )}
       <main>{children}</main>
       {options.hasFooter && <Footer />}
-      {/*© {new Date().getFullYear()}, Built with*/}
     </ThemeProvider>
   )
 }
 
 Layout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object).isRequired,
-  options: PropTypes.object,
+  children: PropTypes.node.isRequired,
+  options: PropTypes.shape({
+    hasHeader: PropTypes.bool,
+    hasFooter: PropTypes.bool,
+  }),
   location: PropTypes.shape({
     state: PropTypes.shape({
       component: PropTypes.string,

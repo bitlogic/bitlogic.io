@@ -1,5 +1,3 @@
-// gatsby-browser.js
-
 export const onClientEntry = () => {
   const criticalCSS = `
     .banner.hero .title h1 {
@@ -17,7 +15,6 @@ export const onClientEntry = () => {
     }
   `
 
-  // Inyectamos el mismo CSS crítico en el head para desarrollo / SPA
   const style = document.createElement("style")
   style.id = "critical-banner-hero"
   style.innerHTML = criticalCSS

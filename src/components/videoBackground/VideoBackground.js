@@ -1,31 +1,31 @@
-
-import React, { useEffect, useRef, useState, Suspense, lazy } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import PropTypes from "prop-types"
-import "./videoBackground.scss"
-import CustomLink from "../CustomLink/CustomLink"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import CustomLink from "../CustomLink/CustomLink"
+import "./videoBackground.scss"
 
-
-const VideoBackgroundContent = lazy(() => import("./VideoBackgroundContent"))
 
 function getIOSVersion() {
-  if (typeof window === "undefined" || typeof navigator === "undefined") return null
-  const userAgent = navigator.userAgent
-  const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/
-  const iosMatch = regex.exec(userAgent)
-  if (!iosMatch) return null
-  const [major, minor, patch = 0] = iosMatch.slice(1).map(n => parseInt(n, 10))
-  return { major, minor, patch }
+  if (typeof window === "undefined" || typeof navigator === "undefined")
+    return null
+  const ua = navigator.userAgent
+  const m = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/.exec(ua)
+  if (!m) return null
+  return {
+    major: +m[1],
+    minor: +m[2],
+    patch: +(m[3] || 0),
+  }
 }
 
 function isIOSPriorTo(version) {
-  const current = getIOSVersion()
-  if (!current) return false
-  const [maj, min] = version.split(".").map(Number)
-  if (current.major < maj) return true
-  if (current.major > maj) return false
-  return current.minor < min
+  const cur = getIOSVersion()
+  if (!cur) return false
+  const [maj, min] = version.split('.')
+    .map(Number)
+  return cur.major < maj || (cur.major === maj && cur.minor < min)
 }
+
 
 function getVideoContent(
   video,
@@ -36,14 +36,28 @@ function getVideoContent(
   videoUrl,
   posterData
 ) {
+  const posterSharp = posterData?.localFile &&
+    getImage(posterData.localFile)
   const posterUrl = posterData?.url
-  const posterSharp = posterData?.localFile && getImage(posterData.localFile)
 
-  const url = videoUrl?.replace("watch?v=", "embed/")
-  let code = url?.split("/").pop() || ""
-  code = code.split("?")[0]
+ 
+  if (!isIntersecting && posterSharp) {
+    return (
+      <GatsbyImage
+        className="video-poster"
+        image={posterSharp}
+        alt={posterData.alternativeText || "Video poster"}
+        loading="eager"
+      />
+    )
+  }
 
-  if (!isIOSPriorTo("17.4")) {
+ 
+  const embedUrl = videoUrl?.replace("watch?v=", "embed/")
+  let code = embedUrl?.split('/').pop() || ''
+  code = code.split('?')[0]
+
+  if (!isIOSPriorTo('17.4')) {
     if (video?.url) {
       return (
         <video
@@ -59,54 +73,78 @@ function getVideoContent(
           onClick={pausePlay}
           onKeyDown={handleKeyDown}
         >
-          {isIntersecting && <source src={video.url} type={video.mime} />}
+          {isIntersecting && (
+            <source
+              src={video.url}
+              type={video.mime}
+            />
+          )}
         </video>
       )
     }
+
     if (videoUrl) {
       return (
         <iframe
           className="video"
           loading="lazy"
-          type="text/html"
+          title="Video Background"
           srcDoc={`
             <style>
-              *{padding:0;margin:0;overflow:hidden}
-              html,body{height:100%}
-              img,span{position:absolute;width:100%;height:100%;object-fit:cover;top:0}
-              span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+              * { padding:0; margin:0; overflow:hidden; }
+              html, body { height:100%; }
+              img, span {
+                position:absolute;
+                width:100%;
+                height:100%;
+                object-fit:cover;
+                top:0;
+              }
+              span {
+                height:1.5em;
+                text-align:center;
+                font:48px/1.5 sans-serif;
+                color:white;
+                text-shadow:0 0 0.5em black;
+              }
             </style>
-            <a href="${url}?rel=0">
-              <img src="https://img.youtube.com/vi/${code}/hqdefault.jpg" alt="Video">
+            <a href="${embedUrl}?rel=0">
+              <img
+                src="https://img.youtube.com/vi/${code}/hqdefault.jpg"
+                alt="Video"
+              />
               <span>▶</span>
             </a>
           `}
-          src={`${url}?rel=0`}
+          src={`${embedUrl}?rel=0`}
           frameBorder="0"
           allowFullScreen
-          title="benefits_video"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          webkitallowfullscreen
+          mozallowfullscreen
         />
       )
     }
   }
 
+  // 3) Fallback: poster eager
   if (posterSharp) {
     return (
       <GatsbyImage
         className="video-poster"
         image={posterSharp}
         alt={posterData.alternativeText || "Video poster"}
+        loading="eager"
       />
     )
   }
 
-  return <div style={{ height: "200px" }} /> // placeholder
+  // 4) Placeholder
+  return <div style={{ height: '200px' }} />
 }
 
+// — Componente principal —
 const VideoBackground = ({ data }) => {
-
-
   const {
     backgroundImage,
     video,
@@ -116,51 +154,53 @@ const VideoBackground = ({ data }) => {
     button,
   } = data
 
-  const [isVideoPause, setIsVideoPause] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
-  // Control play/pause
-  const pausePlay = () => {
-    if (isVideoPause) videoRef.current.play()
-    else videoRef.current.pause()
-    setIsVideoPause(prev => !prev)
-  }
-  const handleKeyDown = ev => {
-    if (ev.key === "Enter" || ev.key === " ") {
-      ev.preventDefault()
-      pausePlay()
-    }
-  }
-
-  // Intersection Observer para lazy video src
+  // Observador para arrancar el vídeo tras entrar en viewport
   useEffect(() => {
-    const elem = videoRef.current
-    if (!elem) return
-    const observer = new IntersectionObserver(
+    const el = videoRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsIntersecting(true)
-          observer.unobserve(elem)
+          obs.unobserve(el)
         }
       },
-      { rootMargin: "0px 0px 200px 0px", threshold: 0.1 }
+      { rootMargin: '0px 0px 200px 0px', threshold: 0.1 }
     )
-    observer.observe(elem)
-    return () => observer.unobserve(elem)
+    obs.observe(el)
+    return () => obs.unobserve(el)
   }, [])
 
   // Persistir estado paused
   useEffect(() => {
-    const stored = typeof window !== "undefined" && localStorage.getItem("videoPaused")
-    if (stored === "true") {
-      videoRef.current.pause()
-      setIsVideoPause(true)
+    if (typeof window === 'undefined') return
+    const stored = localStorage.getItem('videoPaused')
+    if (stored === 'true') {
+      videoRef.current?.pause()
+      setIsPaused(true)
     }
   }, [])
+
   useEffect(() => {
-    localStorage.setItem("videoPaused", isVideoPause)
-  }, [isVideoPause])
+    localStorage.setItem('videoPaused', isPaused)
+  }, [isPaused])
+
+  const pausePlay = () => {
+    if (isPaused) videoRef.current.play()
+    else videoRef.current.pause()
+    setIsPaused(prev => !prev)
+  }
+
+  const handleKeyDown = ev => {
+    if (ev.key === ' ' || ev.key === 'Enter') {
+      ev.preventDefault()
+      pausePlay()
+    }
+  }
 
   const videoContent = getVideoContent(
     video,
@@ -171,9 +211,8 @@ const VideoBackground = ({ data }) => {
     videoUrl,
     poster
   )
-
-  // Prepara la imagen de fondo
-  const bgSharp = backgroundImage?.localFile && getImage(backgroundImage.localFile)
+  const bgSharp =
+    backgroundImage?.localFile && getImage(backgroundImage.localFile)
 
   return (
     <div className="videoBackground-wrapper">
@@ -181,7 +220,7 @@ const VideoBackground = ({ data }) => {
         <GatsbyImage
           className="videoBackground-bg"
           image={bgSharp}
-          alt={backgroundImage.alternativeText || "Background"}
+          alt={backgroundImage.alternativeText || ''}
           loading="eager"
         />
       )}

@@ -1,6 +1,5 @@
 import React from "react"
 
-
 export default function HTML({
   htmlAttributes,
   headComponents,
@@ -13,11 +12,14 @@ export default function HTML({
     <html {...htmlAttributes}>
       <head>
         {headComponents}
-        {/* ——— Aquí ya no inyectamos CSS crítico del banner ——— */}
       </head>
       <body {...bodyAttributes}>
         {preBodyComponents}
-        <div id="___gatsby" dangerouslySetInnerHTML={{ __html: body }} />
+        <div
+          key="body"
+          id="___gatsby"
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
         {postBodyComponents}
       </body>
     </html>
