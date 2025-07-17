@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const useHomePage = () => {
-  const data = useStaticQuery(graphql`
+  const query = useStaticQuery(graphql`
     query allStrapiHome {
       allStrapiHome {
         nodes {
@@ -31,36 +31,10 @@ const useHomePage = () => {
             color
             callToAction
             allBlog
-
             videoUrl
             video {
               url
               mime
-            }
-            poster {
-              url
-              alternativeText
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    width: 800
-                    placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
-                  )
-                }
-              }
-            }
-            backgroundImage {
-              url
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    width: 1200
-                    placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
-                  )
-                }
-              }
             }
             profile {
               alternativeText
@@ -126,14 +100,80 @@ const useHomePage = () => {
                 }
               }
             }
-            Card {
+            imageDark {
+              alternativeText
+              url
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            image {
+              alternativeText
+              url
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            dualSectionPart {
               id
               title
               description
+              button {
+                content
+                url
+                landing_page {
+                  slug
+                }
+              }
+              backgroundImage {
+                url
+              }
+              backgroundImageDark {
+                url
+              }
+              image {
+                alternativeText
+                url
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+            button {
+              content
+              url
               landing_page {
                 slug
               }
-              icon {
+            }
+            backgroundImageDark {
+              url
+            }
+            backgroundImage {
+              url
+            }
+            articles {
+              id
+              title
+              summary
+              slug
+              published_at
+              imagePage {
+                alternativeText
+                url
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              image {
                 alternativeText
                 url
                 localFile {
@@ -160,13 +200,29 @@ const useHomePage = () => {
                 }
               }
             }
+            Card {
+              id
+              title
+              description
+              landing_page {
+                slug
+              }
+              icon {
+                alternativeText
+                url
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   `)
-
-  return data
+  return query
 }
 
 export default useHomePage
