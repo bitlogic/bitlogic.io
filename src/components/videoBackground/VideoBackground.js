@@ -1,29 +1,31 @@
 import React, { useEffect, useRef, useState } from "react"
-import "./videoBackground.scss"
-import CustomLink from "../CustomLink/CustomLink"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import CustomLink from "../CustomLink/CustomLink"
+import "./videoBackground.scss"
+
 
 function getIOSVersion() {
-  if (typeof window === "undefined" || typeof navigator === "undefined") return null
-  const userAgent = navigator.userAgent
-  const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/
-  const iosMatch = regex.exec(userAgent)
-  if (!iosMatch) return null
-  const major = parseInt(iosMatch[1], 10)
-  const minor = parseInt(iosMatch[2], 10)
-  const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0
-  return { major, minor, patch }
+  if (typeof window === "undefined" || typeof navigator === "undefined")
+    return null
+  const ua = navigator.userAgent
+  const m = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/.exec(ua)
+  if (!m) return null
+  return {
+    major: +m[1],
+    minor: +m[2],
+    patch: +(m[3] || 0),
+  }
 }
 
 function isIOSPriorTo(version) {
-  const currentVersion = getIOSVersion()
-  if (!currentVersion) return false
-  const [majorVersion, minorVersion] = version.split(".").map(Number)
-  if (currentVersion.major < majorVersion) return true
-  if (currentVersion.major > majorVersion) return false
-  return currentVersion.minor < minorVersion
+  const cur = getIOSVersion()
+  if (!cur) return false
+  const [maj, min] = version.split('.')
+    .map(Number)
+  return cur.major < maj || (cur.major === maj && cur.minor < min)
 }
+
 
 function getVideoContent(
   video,
@@ -32,18 +34,30 @@ function getVideoContent(
   pausePlay,
   handleKeyDown,
   videoUrl,
-  image,
   posterData
 ) {
+  const posterSharp = posterData?.localFile &&
+    getImage(posterData.localFile)
   const posterUrl = posterData?.url
-  const posterSharp = posterData?.localFile && getImage(posterData.localFile)
 
-  const url = videoUrl?.replace("watch?v=", "embed/")
-  let code = url?.substring(url.lastIndexOf("/") + 1) || ""
-  const codeIndex = code.indexOf("?")
-  if (codeIndex !== -1) code = code.substring(0, codeIndex)
+ 
+  if (!isIntersecting && posterSharp) {
+    return (
+      <GatsbyImage
+        className="video-poster"
+        image={posterSharp}
+        alt={posterData.alternativeText || "Video poster"}
+        loading="eager"
+      />
+    )
+  }
 
-  if (!isIOSPriorTo("17.4")) {
+ 
+  const embedUrl = videoUrl?.replace("watch?v=", "embed/")
+  let code = embedUrl?.split('/').pop() || ''
+  code = code.split('?')[0]
+
+  if (!isIOSPriorTo('17.4')) {
     if (video?.url) {
       return (
         <video
@@ -59,21 +73,52 @@ function getVideoContent(
           onClick={pausePlay}
           onKeyDown={handleKeyDown}
         >
-          {isIntersecting && <source src={video.url} type={video.mime} />}
+          {isIntersecting && (
+            <source
+              src={video.url}
+              type={video.mime}
+            />
+          )}
         </video>
       )
     }
+
     if (videoUrl) {
       return (
         <iframe
           className="video"
           loading="lazy"
-          type="text/html"
-          srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;height:100%;object-fit:cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style><a href=${url}?rel=0><img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video'><span>▶</span></a>`}
-          src={`${url}?rel=0`}
+          title="Video Background"
+          srcDoc={`
+            <style>
+              * { padding:0; margin:0; overflow:hidden; }
+              html, body { height:100%; }
+              img, span {
+                position:absolute;
+                width:100%;
+                height:100%;
+                object-fit:cover;
+                top:0;
+              }
+              span {
+                height:1.5em;
+                text-align:center;
+                font:48px/1.5 sans-serif;
+                color:white;
+                text-shadow:0 0 0.5em black;
+              }
+            </style>
+            <a href="${embedUrl}?rel=0">
+              <img
+                src="https://img.youtube.com/vi/${code}/hqdefault.jpg"
+                alt="Video"
+              />
+              <span>▶</span>
+            </a>
+          `}
+          src={`${embedUrl}?rel=0`}
           frameBorder="0"
           allowFullScreen
-          title="benefits_video"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           webkitallowfullscreen
           mozallowfullscreen
@@ -82,74 +127,80 @@ function getVideoContent(
     }
   }
 
+  // 3) Fallback: poster eager
   if (posterSharp) {
     return (
       <GatsbyImage
         className="video-poster"
         image={posterSharp}
         alt={posterData.alternativeText || "Video poster"}
+        loading="eager"
       />
     )
   }
 
-  return <div><br /></div>
+  // 4) Placeholder
+  return <div style={{ height: '200px' }} />
 }
 
+// — Componente principal —
 const VideoBackground = ({ data }) => {
   const {
-    image,
-    video,
-    description,
-    button,
     backgroundImage,
+    video,
     videoUrl,
     poster,
+    description,
+    button,
   } = data
 
-  const [isVideoPause, setIsVideoPause] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
 
-  const pausePlay = () => {
-    if (isVideoPause) videoRef.current.play()
-    else videoRef.current.pause()
-    setIsVideoPause(prev => !prev)
-  }
-
-  const handleKeyDown = event => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault()
-      pausePlay()
-    }
-  }
-
+  // Observador para arrancar el vídeo tras entrar en viewport
   useEffect(() => {
-    const elem = videoRef.current
-    const observer = new IntersectionObserver(
+    const el = videoRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsIntersecting(true)
-          observer.unobserve(elem)
+          obs.unobserve(el)
         }
       },
-      { rootMargin: "0px 0px 200px 0px", threshold: 0.1 }
+      { rootMargin: '0px 0px 200px 0px', threshold: 0.1 }
     )
-    if (elem) observer.observe(elem)
-    return () => elem && observer.unobserve(elem)
+    obs.observe(el)
+    return () => obs.unobserve(el)
   }, [])
 
+  // Persistir estado paused
   useEffect(() => {
-    const stored =
-      typeof window !== "undefined" && localStorage.getItem("videoPaused")
-    if (stored === "true") {
-      videoRef.current.pause()
-      setIsVideoPause(true)
+    if (typeof window === 'undefined') return
+    const stored = localStorage.getItem('videoPaused')
+    if (stored === 'true') {
+      videoRef.current?.pause()
+      setIsPaused(true)
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem("videoPaused", isVideoPause)
-  }, [isVideoPause])
+    localStorage.setItem('videoPaused', isPaused)
+  }, [isPaused])
+
+  const pausePlay = () => {
+    if (isPaused) videoRef.current.play()
+    else videoRef.current.pause()
+    setIsPaused(prev => !prev)
+  }
+
+  const handleKeyDown = ev => {
+    if (ev.key === ' ' || ev.key === 'Enter') {
+      ev.preventDefault()
+      pausePlay()
+    }
+  }
 
   const videoContent = getVideoContent(
     video,
@@ -158,20 +209,22 @@ const VideoBackground = ({ data }) => {
     pausePlay,
     handleKeyDown,
     videoUrl,
-    image,
     poster
   )
+  const bgSharp =
+    backgroundImage?.localFile && getImage(backgroundImage.localFile)
 
   return (
-    <div
-      style={{
-        backgroundImage: backgroundImage
-          ? `url(${backgroundImage.url})`
-          : "",
-        backgroundRepeatY: "no-repeat",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="videoBackground-wrapper">
+      {bgSharp && (
+        <GatsbyImage
+          className="videoBackground-bg"
+          image={bgSharp}
+          alt={backgroundImage.alternativeText || ''}
+          loading="eager"
+        />
+      )}
+
       <div className="container videoBackground-container">
         <section className="videoBackground">
           {videoContent}
@@ -195,26 +248,31 @@ const VideoBackground = ({ data }) => {
 
 VideoBackground.propTypes = {
   data: PropTypes.shape({
-    video: PropTypes.shape({ url: PropTypes.string.isRequired, mime: PropTypes.string.isRequired }),
-    videoUrl: PropTypes.string,
-    description: PropTypes.string,
-    backgroundImage: PropTypes.shape({ url: PropTypes.string.isRequired }),
-    image: PropTypes.shape({
+    backgroundImage: PropTypes.shape({
       alternativeText: PropTypes.string,
-      localFile: PropTypes.object,
+      localFile: PropTypes.object.isRequired,
     }),
+    video: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      mime: PropTypes.string.isRequired,
+    }),
+    videoUrl: PropTypes.string,
     poster: PropTypes.shape({
       url: PropTypes.string.isRequired,
       alternativeText: PropTypes.string,
-      localFile: PropTypes.shape({ childImageSharp: PropTypes.object.isRequired }),
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.object.isRequired,
+      }),
     }),
+    description: PropTypes.string,
     button: PropTypes.shape({
       content: PropTypes.string.isRequired,
       url: PropTypes.string,
-      landing_page: PropTypes.shape({ slug: PropTypes.string.isRequired }),
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }),
     }),
-  }),
+  }).isRequired,
 }
 
-export default VideoBackground;
-
+export default VideoBackground
