@@ -22,18 +22,31 @@ const useBlog = () => {
           image {
             url
             alternativeText
+            width
+            height
             localFile {
               childImageSharp {
                 gatsbyImageData
+                original{
+                 width
+                 height
+                }
               }
             }
           }
           imagePage {
             url
             alternativeText
+            width
+            height
+
             localFile {
               childImageSharp {
                 gatsbyImageData
+                original{
+                  width
+                  height
+                }
               }
             }
           }
