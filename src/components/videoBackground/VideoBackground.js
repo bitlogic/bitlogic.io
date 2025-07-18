@@ -4,27 +4,7 @@ import CustomLink from "../CustomLink/CustomLink"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-function getIOSVersion() {
-  if (typeof window === "undefined" || typeof navigator === "undefined") return null
-  const userAgent = navigator.userAgent
-  const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/
-  const iosMatch = regex.exec(userAgent)
-  if (!iosMatch) return null
-  const major = parseInt(iosMatch[1], 10)
-  const minor = parseInt(iosMatch[2], 10)
-  const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0
-  return { major, minor, patch }
-}
-
-function isIOSPriorTo(version) {
-  const currentVersion = getIOSVersion()
-  if (!currentVersion) return false
-  const [majorVersion, minorVersion] = version.split(".").map(Number)
-  if (currentVersion.major < majorVersion) return true
-  if (currentVersion.major > majorVersion) return false
-  return currentVersion.minor < minorVersion
-}
-
+// Utilidad para obtener el poster o el código del iframe
 function getVideoContent(
   video,
   videoRef,
@@ -43,56 +23,77 @@ function getVideoContent(
   const codeIndex = code.indexOf("?")
   if (codeIndex !== -1) code = code.substring(0, codeIndex)
 
-  if (!isIOSPriorTo("17.4")) {
-    if (video?.url) {
-      return (
-        <video
-          ref={videoRef}
-          muted
-          loop
-          playsInline
-          tabIndex={0}
-          controls={false}
-          autoPlay={isIntersecting}
-          poster={posterUrl}
-          preload="auto"
-          onClick={pausePlay}
-          onKeyDown={handleKeyDown}
-        >
-          {isIntersecting && <source src={video.url} type={video.mime} />}
-        </video>
-      )
-    }
-    if (videoUrl) {
-      return (
-        <iframe
-          className="video"
-          loading="lazy"
-          type="text/html"
-          srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;height:100%;object-fit:cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style><a href=${url}?rel=0><img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video'><span>▶</span></a>`}
-          src={`${url}?rel=0`}
-          frameBorder="0"
-          allowFullScreen
-          title="benefits_video"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          webkitallowfullscreen
-          mozallowfullscreen
-        />
-      )
-    }
+  // ✅ Mostrar <video> siempre si está disponible
+  if (video?.url) {
+    return (
+      <video
+        ref={videoRef}
+        muted
+        loop
+        playsInline
+        tabIndex={0}
+        controls={false}
+        autoPlay={isIntersecting}
+        poster={posterUrl}
+        preload="auto"
+        onClick={pausePlay}
+        onKeyDown={handleKeyDown}
+        style={{
+          width: "100%",
+          maxWidth: "100vw",
+          height: "auto",
+          objectFit: "cover",
+          aspectRatio: "16/9",
+          display: "block",
+          borderRadius: "5px",
+        }}
+      >
+        {isIntersecting && <source src={video.url} type={video.mime} />}
+      </video>
+    )
+  }
+  if (videoUrl) {
+    return (
+      <iframe
+        className="video"
+        loading="lazy"
+        type="text/html"
+        srcDoc={`<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;height:100%;object-fit:cover;top:0;bottom:0}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;margin:auto;text-shadow:0 0 0.5em black}</style><a href=${url}?rel=0><img src=https://img.youtube.com/vi/${code}/hqdefault.jpg alt='Video'><span>▶</span></a>`}
+        src={`${url}?rel=0`}
+        frameBorder="0"
+        allowFullScreen
+        title="benefits_video"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        webkitallowfullscreen
+        mozallowfullscreen
+        style={{
+          width: "100%",
+          maxWidth: "100vw",
+          height: "auto",
+          objectFit: "cover",
+          aspectRatio: "16/9",
+          display: "block",
+          borderRadius: "5px",
+        }}
+      />
+    )
   }
 
+  // Si no hay video ni iframe, usar poster si está disponible
   if (posterSharp) {
     return (
       <GatsbyImage
         className="video-poster"
         image={posterSharp}
         alt={posterData.alternativeText || "Video poster"}
+        loading="eager"
+        style={{ width: "100%", maxWidth: "100vw", height: "auto" }}
       />
     )
   }
 
-  return <div><br /></div>
+  // Si no hay nada, no renderizamos contenido (no caja vacía)
+  return null
 }
 
 const VideoBackground = ({ data }) => {
@@ -111,8 +112,8 @@ const VideoBackground = ({ data }) => {
   const videoRef = useRef(null)
 
   const pausePlay = () => {
-    if (isVideoPause) videoRef.current.play()
-    else videoRef.current.pause()
+    if (isVideoPause) videoRef.current?.play()
+    else videoRef.current?.pause()
     setIsVideoPause(prev => !prev)
   }
 
@@ -123,8 +124,10 @@ const VideoBackground = ({ data }) => {
     }
   }
 
+  // Activar video solo al entrar en viewport
   useEffect(() => {
     const elem = videoRef.current
+    if (!elem) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -134,17 +137,8 @@ const VideoBackground = ({ data }) => {
       },
       { rootMargin: "0px 0px 200px 0px", threshold: 0.1 }
     )
-    if (elem) observer.observe(elem)
-    return () => elem && observer.unobserve(elem)
-  }, [])
-
-  useEffect(() => {
-    const stored =
-      typeof window !== "undefined" && localStorage.getItem("videoPaused")
-    if (stored === "true") {
-      videoRef.current.pause()
-      setIsVideoPause(true)
-    }
+    observer.observe(elem)
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -195,7 +189,10 @@ const VideoBackground = ({ data }) => {
 
 VideoBackground.propTypes = {
   data: PropTypes.shape({
-    video: PropTypes.shape({ url: PropTypes.string.isRequired, mime: PropTypes.string.isRequired }),
+    video: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      mime: PropTypes.string.isRequired,
+    }),
     videoUrl: PropTypes.string,
     description: PropTypes.string,
     backgroundImage: PropTypes.shape({ url: PropTypes.string.isRequired }),
@@ -206,15 +203,18 @@ VideoBackground.propTypes = {
     poster: PropTypes.shape({
       url: PropTypes.string.isRequired,
       alternativeText: PropTypes.string,
-      localFile: PropTypes.shape({ childImageSharp: PropTypes.object.isRequired }),
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.object.isRequired,
+      }),
     }),
     button: PropTypes.shape({
       content: PropTypes.string.isRequired,
       url: PropTypes.string,
-      landing_page: PropTypes.shape({ slug: PropTypes.string.isRequired }),
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }),
     }),
   }),
 }
 
-export default VideoBackground;
-
+export default VideoBackground
