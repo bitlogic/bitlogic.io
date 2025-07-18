@@ -1,5 +1,3 @@
-// src/hooks/useBlog.js
-
 import { useStaticQuery, graphql } from "gatsby"
 
 const useBlog = () => {
