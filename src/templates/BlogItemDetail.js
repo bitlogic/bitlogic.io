@@ -12,20 +12,30 @@ const BlogDetail = ({ data }) => {
     data?.allStrapiArticle?.nodes[0] || {}
 
   const bannerTop = imagePage ? { title, imagePage } : { title, image }
+const img       = imagePage || image;
+const imgWidth  = img.width  || img.localFile.childImageSharp.original.width;
+const imgHeight = img.height || img.localFile.childImageSharp.original.height;
 
-  // Define datos estructurados
+
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": seo?.pageTitle || title, // Usa pageTitle de SEO o el título
+    "@type": "BlogPosting",
+    "headline": seo?.pageTitle || title, 
     "description": seo?.pageDescription || description,
-    "image": imagePage?.url || image?.url, // Imagen principal
+    "image": {
+    "@type": "ImageObject",
+    "url": img.url,
+    "width": imgWidth,
+    "height": imgHeight
+  },
     "author": author?.map(auth => ({
       "@type": "Person",
       "name": auth.name,
-    })),
-    "datePublished": published_at, // Ajusta con la fecha real
-    "dateModified": updated_at, // Ajusta con la fecha real
+    }
+  )),
+    
+    "datePublished": published_at, 
+    "dateModified": updated_at, 
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://es.bitlogic.io/blog/${data?.allStrapiArticle?.nodes[0]?.slug}`,
@@ -36,7 +46,9 @@ const BlogDetail = ({ data }) => {
       "logo": {
         "@type": "ImageObject",
         "url": "https://bitlogic.io/static/64f396cb88cfcbfda46b86c5218242f2/de081/Logo_Bit_azul_7e725e9726.webp", // URL del logo del sitio
-      },
+        "width": 633,
+        "height": 187
+      }
     },
   }
 
@@ -157,18 +169,30 @@ export const query = graphql`
         image {
           url
           alternativeText
+          width
+          height
           localFile {
             childImageSharp {
               gatsbyImageData
+              original{
+                width
+                height
+              }
             }
           }
         }
         imagePage {
           url
           alternativeText
+          width
+          height
           localFile {
             childImageSharp {
               gatsbyImageData
+              original{
+                width
+                height
+              }
             }
           }
         }
