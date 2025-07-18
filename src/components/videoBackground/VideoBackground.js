@@ -4,7 +4,6 @@ import CustomLink from "../CustomLink/CustomLink"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-// Utilidad para obtener el poster o el código del iframe
 function getVideoContent(
   video,
   videoRef,
@@ -22,8 +21,6 @@ function getVideoContent(
   let code = url?.substring(url.lastIndexOf("/") + 1) || ""
   const codeIndex = code.indexOf("?")
   if (codeIndex !== -1) code = code.substring(0, codeIndex)
-
-  // ✅ Mostrar <video> siempre si está disponible
   if (video?.url) {
     return (
       <video
@@ -78,8 +75,6 @@ function getVideoContent(
       />
     )
   }
-
-  // Si no hay video ni iframe, usar poster si está disponible
   if (posterSharp) {
     return (
       <GatsbyImage
@@ -91,8 +86,6 @@ function getVideoContent(
       />
     )
   }
-
-  // Si no hay nada, no renderizamos contenido (no caja vacía)
   return null
 }
 
@@ -124,7 +117,6 @@ const VideoBackground = ({ data }) => {
     }
   }
 
-  // Activar video solo al entrar en viewport
   useEffect(() => {
     const elem = videoRef.current
     if (!elem) return
