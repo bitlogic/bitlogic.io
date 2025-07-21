@@ -4,6 +4,7 @@ import { getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 import "./BannerTop.scss"
 
+
 const BannerTop = ({ banner }) => {
   const { image, imagePage, title, variant = "" } = banner
 
@@ -12,18 +13,18 @@ const BannerTop = ({ banner }) => {
 
   return (
     <div className={`BannerTop ${variant}`}>
-      <BgImage image={imageBanner} className="BannerTop__bgImage">
-        <div className="BannerTop__titleContainer">
-          <h1
-            className={`BannerTop__title ${variant && "background container"}`}
-          >
-            {title}
-          </h1>
-        </div>
-      </BgImage>
+      <BgImage
+        image={imageBanner}
+        className="BannerTop__bgImage"
+        loading="eager"
+      />
+      <div className={`BannerTop__titleContainer ${variant}`}>
+        <h1 className={`BannerTop__title ${variant}`}>{title}</h1>
+      </div>
     </div>
   )
 }
+
 
 BannerTop.propTypes = {
   banner: PropTypes.shape({

@@ -1,23 +1,31 @@
 import React, { lazy, Suspense, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { Helmet } from "react-helmet"
 import Header from "./header"
 import ThemeProvider from "../context/themeContext"
 import Footer from "./Footer/Footer"
 import "./layout.scss"
 import PropTypes from "prop-types"
 import "./FontAwesomeOne/FontAwesomeOne"
+import { Helmet } from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 
 const BannerRedirect = lazy(() => import("./BannerRedirect/BannerRedirect"))
 
 const Layout = ({ children, options = {}, location }) => {
-  const defaultOptions = { 
-    hasHeader: true, 
+  const defaultOptions = {
+    hasHeader: true,
     hasFooter: true,
-   }
-     options = { ...defaultOptions, ...options }
+  }
 
-  
+  options = { ...defaultOptions, ...options }
+  useEffect(() => {
+    const hash = location?.state?.component
+    let el = hash && document.getElementById(hash)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [location?.state?.component])
+  const userLanguage =
+    typeof window !== "undefined" ? navigator.language : undefined
   const { allStrapiHome } = useStaticQuery(graphql`
     query PreloadDynamicHero {
       allStrapiHome {
@@ -32,9 +40,8 @@ const Layout = ({ children, options = {}, location }) => {
       }
     }
   `)
-
   const heroBlock = allStrapiHome.nodes[0].body.find(
-    b => b.strapi_component === "components.banner"
+    b => b.strapi_component === "home.video-background"
   )
   const raw = heroBlock?.backgroundImage?.url
   const heroUrl = raw
@@ -42,43 +49,22 @@ const Layout = ({ children, options = {}, location }) => {
       ? raw
       : `https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com${raw}`
     : null
-
-  useEffect(() => {
-    const hash = location?.state?.component
-    if (hash) {
-      const el = document.getElementById(hash)
-      if (el) el.scrollIntoView({ behavior: "smooth" })
-    }
-  }, [location?.state?.component])
-
-  const userLanguage =
-    typeof window !== "undefined" ? navigator.language : undefined
-
   return (
     <ThemeProvider>
       <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {heroUrl && (
-          <link key="preload-hero" rel="preload" as="image" href={heroUrl} />
+          <link
+            rel="preload"
+            as="image"
+            href={heroUrl}
+            imagesrcset={heroUrl}
+            imagesizes="100vw"
+            crossorigin="anonymous"
+          />
         )}
-        <style type="text/css">{`
-          .banner.hero .title h1 {
-            text-transform: uppercase;
-            text-align: left;
-            margin-bottom: 0.8rem;
-            font-size: 52px;
-            font-family: "Plain", sans-serif;
-            word-wrap: initial;
-          }
-          .banner.hero .title p {
-            font-size: 1rem;
-            line-height: 1.5;
-            margin: 0;
-          }
-        `}</style>
       </Helmet>
-
       {options.hasHeader && <Header />}
-
       {userLanguage?.startsWith("en") && (
         <Suspense fallback={null}>
           <BannerRedirect />
@@ -91,11 +77,8 @@ const Layout = ({ children, options = {}, location }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  options: PropTypes.shape({
-    hasHeader: PropTypes.bool,
-    hasFooter: PropTypes.bool,
-  }),
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  options: PropTypes.object,
   location: PropTypes.shape({
     state: PropTypes.shape({
       component: PropTypes.string,

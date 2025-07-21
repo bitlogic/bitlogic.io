@@ -1,6 +1,9 @@
 @import "../../styles/global.scss";
 
 .BannerTop {
+  position: relative; 
+  overflow: hidden;
+
   &__bgImage {
     min-height: 40vh;
     width: 100%;
@@ -8,52 +11,36 @@
     align-items: flex-end;
   }
 
+  @media (max-width: $breakpoint-md) {
+    .BannerTop__titleContainer {
+      background-color: transparent;
+      backdrop-filter: none;
+    }
+  }
+
   &__titleContainer {
     position: absolute;
     bottom: 0;
-    background-color: rgba(36, 39, 42, 0.4);
+    background-color: rgba(36, 39, 42, 0.4); 
+
     padding: 24px 8px;
     width: 100%;
+    z-index: 1;
   }
 
   &__title {
     text-wrap: pretty;
     color: $white;
-    font-weight: $max-bold;
+    font-weight: $bold;
+    
     margin-bottom: 0;
     text-transform: uppercase;
+    contain: layout style paint;
+    will-change: transform;
 
     &:not(.background) {
       text-transform: none;
       font-size: $medium;
-    }
-  }
-
-  &.background {
-    &__titleContainer {
-      padding: 24px 8px;
-    }
-  }
-}
-
-@media (min-width: $breakpoint-md) {
-  .BannerTop {
-    &__bgImage {
-      min-height: 55vh;
-    }
-
-    &__titleContainer {
-      padding: 30px;
-    }
-
-    &__title:not(.background) {
-      font-size: $extra-large;
-    }
-
-    &.background {
-      &__titleContainer {
-        padding: 30px 0;
-      }
     }
   }
 }
