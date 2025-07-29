@@ -4,6 +4,28 @@ import CustomLink from "../CustomLink/CustomLink"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+// ✅ CAMBIO: detectar versión de iOS
+function getIOSVersion() {
+  if (typeof window === "undefined" || typeof navigator === "undefined") return null
+  const userAgent = navigator.userAgent
+  const regex = /iPhone.*OS (\d+)_?(\d+)_?(\d+)?/
+  const iosMatch = regex.exec(userAgent)
+  if (!iosMatch) return null
+  const major = parseInt(iosMatch[1], 10)
+  const minor = parseInt(iosMatch[2], 10)
+  const patch = iosMatch[3] ? parseInt(iosMatch[3], 10) : 0
+  return { major, minor, patch }
+}
+
+function isIOSPriorTo(version) {
+  const currentVersion = getIOSVersion()
+  if (!currentVersion) return false
+  const [majorVersion, minorVersion] = version.split(".").map(Number)
+  if (currentVersion.major < majorVersion) return true
+  if (currentVersion.major > majorVersion) return false
+  return currentVersion.minor < minorVersion
+}
+
 function getVideoContent(
   video,
   videoRef,
@@ -14,13 +36,30 @@ function getVideoContent(
   image,
   posterData
 ) {
-  const posterUrl = posterData?.url
+  const posterUrl = posterData?.url?.startsWith("http")
+  ? posterData.url
+  : `https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com${posterData?.url}`
+
   const posterSharp = posterData?.localFile && getImage(posterData.localFile)
 
   const url = videoUrl?.replace("watch?v=", "embed/")
   let code = url?.substring(url.lastIndexOf("/") + 1) || ""
   const codeIndex = code.indexOf("?")
   if (codeIndex !== -1) code = code.substring(0, codeIndex)
+
+  const isOldIOS = isIOSPriorTo("17.4") 
+  if (isOldIOS && posterSharp) {
+    return (
+      <GatsbyImage
+        className="video-poster"
+        image={posterSharp}
+        alt={posterData.alternativeText || "Video poster"}
+        loading="eager"
+        style={{ width: "100%", maxWidth: "100vw", height: "auto" }}
+      />
+    )
+  }
+
   if (video?.url) {
     return (
       <video
@@ -49,6 +88,7 @@ function getVideoContent(
       </video>
     )
   }
+
   if (videoUrl) {
     return (
       <iframe
@@ -75,6 +115,7 @@ function getVideoContent(
       />
     )
   }
+
   if (posterSharp) {
     return (
       <GatsbyImage
@@ -86,6 +127,7 @@ function getVideoContent(
       />
     )
   }
+
   return null
 }
 

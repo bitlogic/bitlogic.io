@@ -1,9 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { getImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BannerTop.scss"
-
 
 const BannerTop = ({ banner }) => {
   const { image, imagePage, title, variant = "" } = banner
@@ -13,18 +11,21 @@ const BannerTop = ({ banner }) => {
 
   return (
     <div className={`BannerTop ${variant}`}>
-      <BgImage
-        image={imageBanner}
-        className="BannerTop__bgImage"
-        loading="eager"
-      />
+      {imageBanner && (
+        <GatsbyImage
+          image={imageBanner}
+          alt={title}
+          className="BannerTop__bgImage"
+          loading="eager"
+          fetchpriority="high"
+        />
+      )}
       <div className={`BannerTop__titleContainer ${variant}`}>
         <h1 className={`BannerTop__title ${variant}`}>{title}</h1>
       </div>
     </div>
   )
 }
-
 
 BannerTop.propTypes = {
   banner: PropTypes.shape({
