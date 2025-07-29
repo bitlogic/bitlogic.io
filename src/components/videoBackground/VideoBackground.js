@@ -37,9 +37,8 @@ function getVideoContent(
   posterData
 ) {
   const posterUrl = posterData?.url?.startsWith("http")
-  ? posterData.url
-  : `https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com${posterData?.url}`
-
+  ? getImage(posterData.url)
+  : getImage(`https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com${posterData?.url}`)
   const posterSharp = posterData?.localFile && getImage(posterData.localFile)
 
   const url = videoUrl?.replace("watch?v=", "embed/")
