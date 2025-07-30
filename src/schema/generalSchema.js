@@ -78,7 +78,7 @@ const generalSchema = `
     backgroundImageDark: LocalFile 
     video: LocalFile 
     profile: LocalFile 
-    button: ComponentButton
+    button: [ComponentButton]
     media: [ComponentContentImage]
     items: [ComponentSelectedGridItem]
     dualSectionPart: [ComponentDualSectionPart]
@@ -96,7 +96,7 @@ const generalSchema = `
 
   type ComponentButton {
     id: Int
-    content: String!
+    content: String
     url: String
     landing_page: StrapiLandingPage
   }
@@ -195,7 +195,7 @@ const generalSchema = `
     variant: String!
     summary: String
     image: LocalFile 
-    button: ComponentButton
+    button: [ComponentButton]
     imageDark: LocalFile 
     animation: JSON
     navTitle: String
