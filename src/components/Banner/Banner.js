@@ -86,10 +86,10 @@ Banner.propTypes = {
     summary: PropTypes.string,
     button: PropTypes.arrayOf(
     PropTypes.shape({
-      content: PropTypes.string.isRequired,
+      content: PropTypes.string,
       url: PropTypes.string,
       landing_page: PropTypes.shape({
-        slug: PropTypes.string,
+        slug: PropTypes.string.isRequired,
       }),
     })
 ),
