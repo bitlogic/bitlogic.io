@@ -76,11 +76,6 @@ function Seo({ description, lang, meta, title, keywords }) {
           content: metaDescription,
         },
       ].concat(meta)}
-      link={[{
-        rel: "canonical",
-        href:'https://es.bitlogic.io',
-   }
-  ]}
     />
   )
 }
