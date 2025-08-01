@@ -39,13 +39,18 @@ const Banner = ({ data }) => {
                 dangerouslySetInnerHTML={{ __html: summary }}
               />
             )}
-            {button && (
-              <CustomLink
-                content={button.content}
-                url={button?.url}
-                landing={button?.landing_page}
-                className={"button"}
-              />
+            {Array.isArray(button) && button.length > 0 && (
+              <div className="banner__buttons">
+                {button.map((btn, index) => (
+                  <CustomLink
+                    key={index}
+                    content={btn.content}
+                    url={btn.url}
+                    landing={btn.landing_page}
+                    className="button"
+                  />
+                ))}
+              </div>
             )}
           </div>
         </div>
@@ -79,13 +84,15 @@ Banner.propTypes = {
     title: PropTypes.string.isRequired,
     variant: PropTypes.string.isRequired,
     summary: PropTypes.string,
-    button: PropTypes.shape({
-      content: PropTypes.string.isRequired,
+    button: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.string,
       url: PropTypes.string,
       landing_page: PropTypes.shape({
         slug: PropTypes.string.isRequired,
       }),
-    }),
+    })
+),
     animation: PropTypes.object,
     image: PropTypes.shape({
       alternativeText: PropTypes.string,
