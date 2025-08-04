@@ -17,7 +17,10 @@ export default function SocialLinks({ image, socialMedia }) {
       rel="noreferrer"
       aria-label={`Link externo a ${item?.name}`}
     >
-      <FaIcon type={item.icon?.type} code={item.icon?.code} />
+      <>
+        <FaIcon type={item.icon?.type} code={item.icon?.code} />
+        <span className="visually-hidden">Link a {item.name}</span>
+      </>
     </a>
   ))
 
