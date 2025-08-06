@@ -78,7 +78,8 @@ const generalSchema = `
     backgroundImageDark: LocalFile 
     video: LocalFile 
     profile: LocalFile 
-    button: [ComponentButton]
+    button: ComponentButton
+    arrayButtons: [ComponentButton]
     media: [ComponentContentImage]
     items: [ComponentSelectedGridItem]
     dualSectionPart: [ComponentDualSectionPart]
@@ -195,7 +196,8 @@ const generalSchema = `
     variant: String!
     summary: String
     image: LocalFile 
-    button: [ComponentButton]
+    button: ComponentButton
+    arrayButtons: [ComponentButton]
     imageDark: LocalFile 
     animation: JSON
     navTitle: String
