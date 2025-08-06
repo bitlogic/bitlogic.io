@@ -153,6 +153,14 @@ const useHomePage = () => {
                 slug
               }
             }
+            arrayButtons {
+              content
+              url
+              landing_page {
+                id
+                slug
+              }
+            }
             backgroundImageDark {
               url
             }
