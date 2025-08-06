@@ -9,7 +9,7 @@ import CustomImage from "../CustomImage/CustomImage"
 
 const Banner = ({ data }) => {
   const { theme } = useTheme()
-  const { title, variant, summary, animation, image, imageDark, arrayButtons } = data
+  const { title, variant, summary, animation, image, imageDark, arrayButtons, button } = data
 
   const defaultOptions = {
     loop: true,
@@ -18,7 +18,7 @@ const Banner = ({ data }) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   }
-  
+
   const showTitle = () => {
     if (variant === "diagonal" || variant === "diagonalReverse") {
       return <h2>{title}</h2>
@@ -52,6 +52,14 @@ const Banner = ({ data }) => {
                 ))}
               </div>
             )}
+            {button && (
+                <CustomLink
+                  content={button.content}
+                  url={button?.url}
+                  landing={button?.landing_page}
+                  className={'button'}
+                />
+              )}
           </div>
         </div>
 
@@ -92,7 +100,14 @@ Banner.propTypes = {
         slug: PropTypes.string.isRequired,
       }),
     })
-),
+  ),
+    button: PropTypes.shape({
+      content: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      landing_page: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }),
+    }),
     animation: PropTypes.object,
     image: PropTypes.shape({
       alternativeText: PropTypes.string,
