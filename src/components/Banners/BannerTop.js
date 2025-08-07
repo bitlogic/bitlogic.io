@@ -5,31 +5,20 @@ import "./BannerTop.scss"
 
 const BannerTop = ({ banner }) => {
   const { image, imagePage, title, variant = "" } = banner
-
-  const imageBanner =
-    getImage(image?.localFile) || getImage(imagePage?.localFile)
+  const imageBanner = getImage(image?.localFile) || getImage(imagePage?.localFile)
 
   return (
     <div className={`BannerTop ${variant}`}>
-      {imageBanner ? (
-        <BgImage
+      <h1 className={`BannerTop__title ${variant && "background container"}`}>
+        {title}
+      </h1>
+      {imageBanner && (
+        <GatsbyImage
           image={imageBanner}
           className="BannerTop__bgImage"
           loading="eager"
           fetchpriority="high"
-        >
-          <div className={`BannerTop__titleContainer ${variant}`}>
-            <h1 className={`BannerTop__title ${variant && "background container"}`}>
-              {title}
-            </h1>
-          </div>
-        </BgImage>
-      ) : (
-        <div className={`BannerTop__titleContainer ${variant}`}>
-          <h1 className={`BannerTop__title ${variant && "background container"}`}>
-            {title}
-          </h1>
-        </div>
+        />
       )}
     </div>
   )
