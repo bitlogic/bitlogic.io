@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { getImage } from "gatsby-plugin-image"
-import { BgImage } from "gbimage-bridge"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import "./BannerTop.scss"
 
 const BannerTop = ({ banner }) => {

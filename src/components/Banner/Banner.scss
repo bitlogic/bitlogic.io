@@ -170,6 +170,8 @@
   &.diagonalReverse {
     .banner__wrapper {
       margin: 32px auto;
+      display: flex;
+      flex-direction: column;
     }
 
     .imagen {
@@ -183,14 +185,23 @@
         object-fit: cover;
       }
     }
-
+    //aca estan los botones
+    .banner__buttons{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding-top: 25px;
+      padding-right: 10px;
+    }
+    
     .button {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      display: inline-block;
-      color: #607ee7;
-      text-decoration: underline;
-      padding-left: 5px;
+      color:$primary;
+        
+      @include primaryBtn;
+      display: block;
+      width: max-content;
+      padding: 10px 15px;
+      margin-right: 20px;
     }
 
     .title {
@@ -332,7 +343,7 @@
         }
       }
     }
-
+ // modificar aca en deskyop 
     &.diagonalReverse {
       .banner__wrapper {
         height: 400px;
@@ -356,9 +367,6 @@
         }
       }
 
-      .button {
-        padding-left: 5rem;
-      }
 
       .title {
         display: flex;
