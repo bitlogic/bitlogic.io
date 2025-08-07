@@ -10,12 +10,8 @@ const CategoryPage = ({ data }) => {
   const categoryName = data.strapiBlogCategory.name
   const articles = data.allStrapiArticle.nodes
 
-  // Separar destacados (máximo 3) y los demás
   const destacados = articles.filter(article => article.destacado).slice(0, 3)
   const noDestacados = articles.filter(article => !article.destacado)
-
-  // Unir destacados + no destacados
-  const todosLosArticulos = [...destacados, ...noDestacados]
 
   return (
     <Layout>
@@ -23,7 +19,7 @@ const CategoryPage = ({ data }) => {
 
       <div className="category__container container">
         <BlogGrid title={categoryName} className="category-grid">
-          {todosLosArticulos.map(article => (
+          {[...destacados, ...noDestacados].map(article => (
             <BlogArticle
               key={article.id}
               image={article.image || article.imagePage}

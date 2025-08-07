@@ -146,9 +146,18 @@ const useHomePage = () => {
               }
             }
             button {
+              id
               content
               url
               landing_page {
+                slug
+              }
+            }
+            arrayButtons {
+              content
+              url
+              landing_page {
+                id
                 slug
               }
             }

@@ -1,6 +1,7 @@
 import React, { useRef } from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
 import { Seo, CustomSection, Navigation, Layout } from "../components"
 
 const LandingPage = ({ data, location }) => {
@@ -8,6 +9,34 @@ const LandingPage = ({ data, location }) => {
     data?.allStrapiLandingPage?.nodes[0] || {}
 
   const wrapperRef = useRef(null)
+
+  const faqs = (body || [])
+    .filter(block => block.strapi_component === "components.banner-list")
+    .map(({ id, title, description }) => ({
+      "@type": "Question",
+      name: title,               
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: description || "", 
+      },
+      "@id": `#faq-${id}`,       
+    }))
+
+    const pageLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: seo?.pageTitle || name,
+    description: seo?.pageDescription,
+    url: `https://es.bitlogic.io/${slug}`,
+  }
+    const faqLd =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs,
+        }
+      : null
 
   const landing = {
     name,
@@ -23,6 +52,16 @@ const LandingPage = ({ data, location }) => {
         description={seo?.pageDescription}
         keywords={seo?.pageKeywords}
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(pageLd)}
+        </script>
+        {faqLd && (
+          <script type="application/ld+json">
+            {JSON.stringify(faqLd)}
+          </script>
+        )}
+      </Helmet>
       {body?.length > 0 && navigation ? (
         <>
           <CustomSection sections={body.slice(0, 1)} />
@@ -234,6 +273,14 @@ export const query = graphql`
               slug
             }
           }
+            arrayButtons {
+              content
+              url
+              landing_page {
+                id
+                slug
+              }
+            }
           backgroundImageDark {
             url
           }

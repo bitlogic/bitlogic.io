@@ -1,5 +1,3 @@
-// src/hooks/useBlog.js
-
 import { useStaticQuery, graphql } from "gatsby"
 
 const useBlog = () => {
@@ -22,18 +20,31 @@ const useBlog = () => {
           image {
             url
             alternativeText
+            width
+            height
             localFile {
               childImageSharp {
                 gatsbyImageData
+                original{
+                 width
+                 height
+                }
               }
             }
           }
           imagePage {
             url
             alternativeText
+            width
+            height
+
             localFile {
               childImageSharp {
                 gatsbyImageData
+                original{
+                  width
+                  height
+                }
               }
             }
           }
