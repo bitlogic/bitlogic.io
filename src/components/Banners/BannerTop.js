@@ -19,14 +19,14 @@ const BannerTop = ({ banner }) => {
           loading="eager"
           fetchpriority="high"
         >
-          <div className="BannerTop__titleContainer">
+          <div className={`BannerTop__titleContainer ${variant}`}>
             <h1 className={`BannerTop__title ${variant && "background container"}`}>
               {title}
             </h1>
           </div>
         </BgImage>
       ) : (
-        <div className="BannerTop__titleContainer">
+        <div className={`BannerTop__titleContainer ${variant}`}>
           <h1 className={`BannerTop__title ${variant && "background container"}`}>
             {title}
           </h1>
