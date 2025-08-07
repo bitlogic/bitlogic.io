@@ -2,19 +2,24 @@
 
 .BannerTop {
   position: relative;
+  position: relative;
 
   &__bgImage {
     min-height: 40vh;
     width: 100%;
+    display: flex;
+    align-items: flex-end;
     object-fit: cover;
-    display: block;
   }
 
   &__titleContainer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    width: 100%;
     padding: 24px 8px;
+    background-color: rgba(36, 39, 42, 0.4);
+    z-index: 2;
     background-color: rgba(36, 39, 42, 0.4);
     z-index: 2;
   }
@@ -23,6 +28,9 @@
     color: $white;
     margin-bottom: 0;
     text-transform: uppercase;
+    font-family: "Plain", sans-serif;
+    font-weight: 900;
+    font-size: $large;
     font-family: "Plain", sans-serif;
     font-weight: 900;
     font-size: $large;
@@ -40,6 +48,10 @@
   @media (min-width: $breakpoint-md) {
     &__bgImage {
       min-height: 55vh;
+    }
+
+    &__titleContainer {
+      padding: 30px;
     }
 
     &__title {

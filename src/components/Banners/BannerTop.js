@@ -11,18 +11,26 @@ const BannerTop = ({ banner }) => {
 
   return (
     <div className={`BannerTop ${variant}`}>
-      {imageBanner && (
-        <GatsbyImage
+      {imageBanner ? (
+        <BgImage
           image={imageBanner}
-          alt={title}
           className="BannerTop__bgImage"
           loading="eager"
           fetchpriority="high"
-        />
+        >
+          <div className={`BannerTop__titleContainer ${variant}`}>
+            <h1 className={`BannerTop__title ${variant && "background container"}`}>
+              {title}
+            </h1>
+          </div>
+        </BgImage>
+      ) : (
+        <div className={`BannerTop__titleContainer ${variant}`}>
+          <h1 className={`BannerTop__title ${variant && "background container"}`}>
+            {title}
+          </h1>
+        </div>
       )}
-      <div className={`BannerTop__titleContainer ${variant}`}>
-        <h1 className={`BannerTop__title ${variant}`}>{title}</h1>
-      </div>
     </div>
   )
 }
