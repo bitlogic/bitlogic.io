@@ -40,6 +40,9 @@
   .BannerTop {
     &__bgImage {
       min-height: 55vh;
+      &::after {
+        background-position: top!important; 
+      }
     }
 
     &__titleContainer {
