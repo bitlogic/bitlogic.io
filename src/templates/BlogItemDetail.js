@@ -193,7 +193,7 @@ export const query = graphql`
         published_at
         updated_at
         destacado
-        body            # HOWTO: pedir body como JSON (no tiene subcampos)
+        body            
         seo {
           pageTitle
           pageDescription
