@@ -1,4 +1,6 @@
 const blogSchema = `
+  union ArticleBodyDynamicZone = ComponentHowtoHowTo
+
   type StrapiBlogCategory implements Node {
     parent: Node
     children: [Node!]!
@@ -37,11 +39,13 @@ const blogSchema = `
     description: String!
     summary: String!
     slug: String!
+    destacado: Boolean
     image: LocalFile
     imagePage: LocalFile
     seo: ComponentSeo
     blog_category: StrapiBlogCategory
     author: [StrapiArticleAuthor]
+    body: [ArticleBodyDynamicZone]
     published_at(
       formatString: String
       fromNow: Boolean
