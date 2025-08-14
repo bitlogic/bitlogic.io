@@ -16,7 +16,7 @@ const pickHowTo = (blocks = []) =>
   })
 
 const BlogDetail = ({ data }) => {
-  const { title, description, image, imagePage, author, seo, published_at, updated_at, body } = // HOWTO: añadimos `body`
+  const { title, description, image, imagePage, author, seo, published_at, updated_at, body } =
     data?.allStrapiArticle?.nodes[0] || {}
 
   const bannerTop = imagePage ? { title, imagePage } : { title, image }
@@ -137,6 +137,7 @@ BlogDetail.propTypes = {
           title: PropTypes.string.isRequired,
           description: PropTypes.string.isRequired,
           slug: PropTypes.string.isRequired,
+          body: PropTypes.array,
           seo: PropTypes.shape({
             pageTitle: PropTypes.string,
             pageDescription: PropTypes.string,
@@ -193,7 +194,22 @@ export const query = graphql`
         published_at
         updated_at
         destacado
-        body            
+        body {
+          ... on ComponentHowtoHowTo {
+            id
+            title
+            descripcion
+            totalMinutes
+            tieneHowTo
+            tools {
+              name
+            }
+            steps {
+              name
+              text
+            }
+          }
+        }
         seo {
           pageTitle
           pageDescription
