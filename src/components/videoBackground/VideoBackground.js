@@ -4,7 +4,6 @@ import CustomLink from "../CustomLink/CustomLink"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-// ✅ CAMBIO: detectar versión de iOS
 function getIOSVersion() {
   if (typeof window === "undefined" || typeof navigator === "undefined") return null
   const userAgent = navigator.userAgent
@@ -25,6 +24,39 @@ function isIOSPriorTo(version) {
   if (currentVersion.major > majorVersion) return false
   return currentVersion.minor < minorVersion
 }
+function getQS(name) {
+  if (typeof window === "undefined") return null
+  return new URLSearchParams(window.location.search).get(name)
+}
+
+
+function resolvePoster(poster, image) {
+  const posterLocal =
+    poster?.localFile ||
+    poster?.data?.attributes?.localFile ||
+    null
+  const sharp = posterLocal ? getImage(posterLocal) : null
+
+  const rawUrl =
+    poster?.url ||
+    poster?.data?.attributes?.url ||
+    poster?.formats?.large?.url ||
+    poster?.formats?.medium?.url ||
+    poster?.formats?.small?.url ||
+    poster?.formats?.thumbnail?.url ||
+    null
+
+  const toAbs = u =>
+    !u ? null : (u.startsWith("http")
+      ? u
+      : `https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com${u}`)
+
+  const url = toAbs(rawUrl)
+
+  const imageSharp = image?.localFile ? getImage(image.localFile) : null
+
+  return { sharp: sharp || imageSharp, url }
+}
 
 function getVideoContent(
   video,
@@ -36,28 +68,13 @@ function getVideoContent(
   image,
   posterData
 ) {
-  const posterUrl = posterData?.url?.startsWith("http")
-  ? getImage(posterData.url)
-  : getImage(`https://strapi-s3-bitlogic.s3.sa-east-1.amazonaws.com${posterData?.url}`)
-  const posterSharp = posterData?.localFile && getImage(posterData.localFile)
+  const { sharp: pSharp, url: pUrl } = resolvePoster(posterData, image)
+  const posterUrl = pUrl || pSharp?.images?.fallback?.src
 
   const url = videoUrl?.replace("watch?v=", "embed/")
   let code = url?.substring(url.lastIndexOf("/") + 1) || ""
   const codeIndex = code.indexOf("?")
   if (codeIndex !== -1) code = code.substring(0, codeIndex)
-
-  const isOldIOS = isIOSPriorTo("17.4") 
-  if (isOldIOS && posterSharp) {
-    return (
-      <GatsbyImage
-        className="video-poster"
-        image={posterSharp}
-        alt={posterData.alternativeText || "Video poster"}
-        loading="eager"
-        style={{ width: "100%", maxWidth: "100vw", height: "auto" }}
-      />
-    )
-  }
 
   if (video?.url) {
     return (
@@ -100,8 +117,8 @@ function getVideoContent(
         allowFullScreen
         title="benefits_video"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        webkitallowfullscreen
-        mozallowfullscreen
+        webkitallowfullscreen="true"
+        mozallowfullscreen="true"
         style={{
           width: "100%",
           maxWidth: "100vw",
@@ -115,12 +132,12 @@ function getVideoContent(
     )
   }
 
-  if (posterSharp) {
+  if (pSharp) {
     return (
       <GatsbyImage
         className="video-poster"
-        image={posterSharp}
-        alt={posterData.alternativeText || "Video poster"}
+        image={pSharp}
+        alt={posterData?.alternativeText || "Video poster"}
         loading="eager"
         style={{ width: "100%", maxWidth: "100vw", height: "auto" }}
       />
@@ -141,6 +158,12 @@ const VideoBackground = ({ data }) => {
     poster,
   } = data
 
+  const forced = getQS("forceOldIOS") === "1"
+  const initialIsOldIOS =
+    forced ||
+    (typeof navigator !== "undefined" && /iPhone/.test(navigator.userAgent) && isIOSPriorTo("17.4"))
+  const [isOldIOS] = useState(initialIsOldIOS)
+
   const [isVideoPause, setIsVideoPause] = useState(false)
   const [isIntersecting, setIsIntersecting] = useState(false)
   const videoRef = useRef(null)
@@ -157,10 +180,12 @@ const VideoBackground = ({ data }) => {
       pausePlay()
     }
   }
-
   useEffect(() => {
+    if (isOldIOS) return
+
     const elem = videoRef.current
     if (!elem) return
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -172,11 +197,83 @@ const VideoBackground = ({ data }) => {
     )
     observer.observe(elem)
     return () => observer.disconnect()
-  }, [])
+  }, [isOldIOS])
 
   useEffect(() => {
     localStorage.setItem("videoPaused", isVideoPause)
   }, [isVideoPause])
+  if (isOldIOS) {
+    const { sharp: posterSharp, url: posterFromUrl } = resolvePoster(poster, image)
+
+    return (
+      <div
+        style={{
+          backgroundImage: backgroundImage ? `url(${backgroundImage.url})` : "",
+          backgroundRepeatY: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="container videoBackground-container">
+          <section className="videoBackground" key="poster">
+            {posterSharp ? (
+              <GatsbyImage
+                className="video-poster"
+                image={posterSharp}
+                alt={poster?.alternativeText || "Video poster"}
+                loading="eager"
+                style={{ width: "100%", maxWidth: "100vw", height: "auto" }}
+              />
+            ) : posterFromUrl ? (
+              <img
+                className="video-poster"
+                src={posterFromUrl}
+                alt={poster?.alternativeText || "Video poster"}
+                loading="eager"
+                style={{
+                  width: "100%",
+                  maxWidth: "100vw",
+                  height: "auto",
+                  display: "block",
+                  borderRadius: "5px",
+                  objectFit: "cover",
+                  aspectRatio: "16/9",
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  maxWidth: "100vw",
+                  aspectRatio: "16/9",
+                  borderRadius: "5px",
+                  background: "#2e2e2e",
+                  display: "grid",
+                  placeItems: "center",
+                  color: "#ccc",
+                  fontSize: 14,
+                }}
+              >
+                (sin poster disponible)
+              </div>
+            )}
+
+            {description && (
+              <div className="videoBackground-card">
+                <h2>{description}</h2>
+                {button && (
+                  <CustomLink
+                    content={button.content}
+                    url={button.url}
+                    landing={button.landing_page}
+                  />
+                )}
+              </div>
+            )}
+          </section>
+        </div>
+      </div>
+    )
+  }
 
   const videoContent = getVideoContent(
     video,
@@ -200,7 +297,7 @@ const VideoBackground = ({ data }) => {
       }}
     >
       <div className="container videoBackground-container">
-        <section className="videoBackground">
+        <section className="videoBackground" key="video">
           {videoContent}
           {description && (
             <div className="videoBackground-card">
@@ -223,28 +320,35 @@ const VideoBackground = ({ data }) => {
 VideoBackground.propTypes = {
   data: PropTypes.shape({
     video: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      mime: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      mime: PropTypes.string,
     }),
     videoUrl: PropTypes.string,
     description: PropTypes.string,
-    backgroundImage: PropTypes.shape({ url: PropTypes.string.isRequired }),
+    backgroundImage: PropTypes.shape({ url: PropTypes.string }),
     image: PropTypes.shape({
       alternativeText: PropTypes.string,
       localFile: PropTypes.object,
     }),
     poster: PropTypes.shape({
-      url: PropTypes.string.isRequired,
+      url: PropTypes.string,
       alternativeText: PropTypes.string,
       localFile: PropTypes.shape({
-        childImageSharp: PropTypes.object.isRequired,
+        childImageSharp: PropTypes.object,
+      }),
+      formats: PropTypes.object,
+      data: PropTypes.shape({
+        attributes: PropTypes.shape({
+          url: PropTypes.string,
+          localFile: PropTypes.object,
+        }),
       }),
     }),
     button: PropTypes.shape({
-      content: PropTypes.string.isRequired,
+      content: PropTypes.string,
       url: PropTypes.string,
       landing_page: PropTypes.shape({
-        slug: PropTypes.string.isRequired,
+        slug: PropTypes.string,
       }),
     }),
   }),
