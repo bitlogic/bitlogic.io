@@ -12,15 +12,19 @@ const LandingPage = ({ data, location }) => {
 
   const faqs = (body || [])
     .filter(block => block.strapi_component === "components.banner-list")
-    .map(({ id, title, description }) => ({
-      "@type": "Question",
-      name: title,               
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: description || "", 
-      },
-      "@id": `#faq-${id}`,       
-    }))
+    .flatMap(block =>
+    (block.Card || [])
+      .filter(card => card.description && card.description.trim() !== "")
+      .map(({ id, title, description }) => ({
+        "@type": "Question",
+        name: title, 
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: description,
+        },
+        "@id": `#faq-${id}`,
+      }))
+  )
 
     const pageLd = {
     "@context": "https://schema.org",
