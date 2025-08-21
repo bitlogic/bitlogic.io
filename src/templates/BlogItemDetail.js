@@ -4,18 +4,25 @@ import MarkdownView from "react-showdown"
 import Layout from "../components/layout"
 import { Seo, BannerTop, CustomImage } from "../components/index.js"
 import PropTypes from "prop-types"
-import { Helmet } from "react-helmet" // Importa Helmet
+import { Helmet } from "react-helmet" 
 import "./BlogItemDetail.scss"
 
+const stripHtml = s => (s ? s.replace(/<[^>]+>/g, "").trim() : s) 
+const toISODuration = m => (m ? `PT${Math.max(0, Number(m))}M` : undefined) 
+const pickHowTo = (blocks = []) => 
+  blocks.find(b => {
+    const uid = b?.strapi_component || b?.__component
+    return uid && uid.includes("howto") && b?.tieneHowTo === true
+  })
+
 const BlogDetail = ({ data }) => {
-  const { title, description, image, imagePage, author, seo, published_at, updated_at } =
+  const { title, description, image, imagePage, author, seo, published_at, updated_at, body } =
     data?.allStrapiArticle?.nodes[0] || {}
 
   const bannerTop = imagePage ? { title, imagePage } : { title, image }
-const img       = imagePage || image;
-const imgWidth  = img.width  || img.localFile.childImageSharp.original.width;
-const imgHeight = img.height || img.localFile.childImageSharp.original.height;
-
+  const img       = imagePage || image;
+  const imgWidth  = img.width  || img.localFile.childImageSharp.original.width;
+  const imgHeight = img.height || img.localFile.childImageSharp.original.height;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -52,6 +59,23 @@ const imgHeight = img.height || img.localFile.childImageSharp.original.height;
     },
   }
 
+  const blocks = Array.isArray(body) ? body : [] 
+  const howto = pickHowTo(blocks)                
+
+  const structuredHowTo = howto && {             
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: howto.title || title,
+    description: stripHtml(howto.descripcion || howto.description),
+    totalTime: toISODuration(howto.totalMinutes),
+    tool: (howto.tools || []).map(t => t?.name).filter(Boolean),
+    step: (howto.steps || []).map(s => ({
+      "@type": "HowToStep",
+      name: s?.name,
+      text: stripHtml(s?.text),
+    })),
+  }
+
   return (
     <Layout>
       <Seo
@@ -64,6 +88,14 @@ const imgHeight = img.height || img.localFile.childImageSharp.original.height;
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
+      {structuredHowTo && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(structuredHowTo)}
+          </script>
+        </Helmet>
+      )}
+
       <BannerTop banner={bannerTop} />
       <div className="detail__container row">
         <div className="col-lg-12">
@@ -105,6 +137,7 @@ BlogDetail.propTypes = {
           title: PropTypes.string.isRequired,
           description: PropTypes.string.isRequired,
           slug: PropTypes.string.isRequired,
+          body: PropTypes.array,
           seo: PropTypes.shape({
             pageTitle: PropTypes.string,
             pageDescription: PropTypes.string,
@@ -161,6 +194,22 @@ export const query = graphql`
         published_at
         updated_at
         destacado
+        body {
+          ... on ComponentHowtoHowTo {
+            id
+            title
+            descripcion
+            totalMinutes
+            tieneHowTo
+            tools {
+              name
+            }
+            steps {
+              name
+              text
+            }
+          }
+        }
         seo {
           pageTitle
           pageDescription
