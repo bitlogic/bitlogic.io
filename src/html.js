@@ -11,7 +11,7 @@ export default function HTML({
   return (
     <html {...htmlAttributes}>
       <head>
-        <meta charSet="utf-8" />
+        <meta charset="utf-8" />
         {headComponents}
       </head>
       <body {...bodyAttributes}>
