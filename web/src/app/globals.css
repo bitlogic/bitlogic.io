@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   bitlogic — design tokens
+   Paleta y tipografía derivadas del branding EdTech 2025 (#HumanAfterAll).
+   Apple Garamond y Plain son licenciadas: acá usamos las sustitutas libres
+   más cercanas en esqueleto y color de página (Instrument Serif / Inter).
+   ========================================================================== */
+
+@theme {
+  /* --- Marca ------------------------------------------------------------ */
+  --color-ink: #121212;
+  --color-cream: #f9f4ea;
+  --color-blue: #3e6be8;
+  --color-coral: #feaf9b;
+  --color-yellow: #ece241;
+  --color-yellow-soft: #f4e9a6;
+  --color-cyan: #25cad3;
+
+  /* --- Derivados de superficie ------------------------------------------ */
+  --color-cream-deep: #f1e9db;
+  --color-ink-soft: #1c1c1c;
+  --color-ink-raised: #232323;
+  --color-blue-deep: #2b4fbd;
+  --color-blue-wash: #eaefff;
+
+  /* --- Tipografía -------------------------------------------------------- */
+  --font-display: var(--font-instrument-serif), "Apple Garamond", "EB Garamond",
+    Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), "Plain", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular",
+    "Menlo", monospace;
+
+  /* Escala fluida: cada paso es clamp(min, preferido, max) */
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.14em;
+
+  --text-micro: 0.8125rem;
+  --text-micro--line-height: 1.5;
+
+  --text-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --text-body--line-height: 1.65;
+
+  --text-lead: clamp(1.125rem, 1.03rem + 0.48vw, 1.375rem);
+  --text-lead--line-height: 1.55;
+
+  --text-h4: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-h4--line-height: 1.3;
+
+  --text-h3: clamp(1.5rem, 1.3rem + 1vw, 2.125rem);
+  --text-h3--line-height: 1.18;
+
+  --text-h2: clamp(2rem, 1.5rem + 2.4vw, 3.5rem);
+  --text-h2--line-height: 1.05;
+
+  --text-h1: clamp(2.75rem, 1.7rem + 4.6vw, 6rem);
+  --text-h1--line-height: 0.98;
+
+  --text-hero: clamp(2.9rem, 1.1rem + 7vw, 8.5rem);
+  --text-hero--line-height: 0.9;
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  /* --- Layout ------------------------------------------------------------ */
+  --spacing-gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --spacing-section: clamp(4rem, 8vh + 2.5rem, 8rem);
+  --radius-card: 1.25rem;
+}
+
+/* ==========================================================================
+   Reset y base
+   ========================================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  /* Lenis toma el control del scroll; sin esto pelea con el nativo. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--color-blue);
+    color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Secciones oscuras: invierten la selección para que siga siendo legible. */
+  [data-theme="dark"] ::selection {
+    background: var(--color-yellow);
+    color: var(--color-ink);
+  }
+  [data-theme="dark"] :focus-visible {
+    outline-color: var(--color-yellow);
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+}
+
+/* ==========================================================================
+   Utilidades de composición
+   ========================================================================== */
+
+@utility container-bl {
+  width: 100%;
+  max-width: 96rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+@utility grid-bl {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1rem, 1.6vw, 1.75rem);
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Regla capilar consistente en fondo claro y oscuro */
+@utility hairline {
+  border-color: color-mix(in oklab, currentColor 14%, transparent);
+}
+
+/* ==========================================================================
+   Animación — primitivas
+   Toda animación de entrada arranca desde un estado visible por defecto y
+   sólo se "arma" cuando el JS confirma que puede animar. Si el JS falla o el
+   usuario pidió menos movimiento, el contenido queda legible igual.
+   ========================================================================== */
+
+@layer components {
+  /* Revelado de líneas de texto por máscara. */
+  .reveal-line {
+    display: block;
+    overflow: hidden;
+    /* Aire para las colas de g, p, y j: con line-height menor a 1 la máscara
+       las cortaba. El margen negativo devuelve el espacio al layout. */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+  .reveal-line > span {
+    display: block;
+    will-change: transform;
+  }
+
+  [data-animate-ready="true"] .reveal-line > span {
+    transform: translateY(105%);
+  }
+
+  /* Fade + rise genérico */
+  [data-animate-ready="true"] [data-rise] {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+
+  /* Trazo de SVG que se dibuja */
+  [data-animate-ready="true"] [data-draw] {
+    stroke-dasharray: var(--draw-length, 1000);
+    stroke-dashoffset: var(--draw-length, 1000);
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    background-image: var(--grain-src);
+    background-size: 180px 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .grain {
+    display: none;
+  }
+}

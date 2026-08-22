@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+.vercel/
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
+
+# El .gitignore de la raíz ignora `public/` (convención de Gatsby, para el sitio
+# viejo). Acá `public/` es el directorio de assets estáticos de Next y sí va
+# versionado, así que lo desexcluimos explícitamente.
+!public/
+!public/**
