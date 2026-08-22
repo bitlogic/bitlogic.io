@@ -825,7 +825,7 @@ const en: Dictionary = {
     newsletterBody: "One note a month on EdTech, cloud and applied AI. No noise.",
     newsletterPlaceholder: "you@email.com",
     newsletterCta: "Subscribe",
-    legal: `© ${new Date().getFullYear()} ${SITE.legalName}. All rights reserved.`,
+    legal: `© ${new Date().getFullYear()} ${SITE.legalName} — All rights reserved.`,
     madeIn: "Made in Córdoba, Argentina",
     localeSwitch: "Ver en español",
   },

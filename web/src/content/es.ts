@@ -844,7 +844,7 @@ const es = {
     newsletterBody: "Una nota por mes sobre EdTech, cloud e IA aplicada. Sin ruido.",
     newsletterPlaceholder: "tu@email.com",
     newsletterCta: "Suscribirme",
-    legal: `© ${new Date().getFullYear()} ${SITE.legalName}. Todos los derechos reservados.`,
+    legal: `© ${new Date().getFullYear()} ${SITE.legalName} — Todos los derechos reservados.`,
     madeIn: "Hecho en Córdoba, Argentina",
     localeSwitch: "Ver en inglés",
   },

@@ -196,7 +196,7 @@
   line-height: var(--text-eyebrow--line-height);
   letter-spacing: var(--text-eyebrow--letter-spacing);
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 @utility display {

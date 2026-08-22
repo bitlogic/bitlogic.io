@@ -30,7 +30,8 @@ export const inter = Inter({
 
 export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  // Un solo peso: la mono aparece únicamente en eyebrows de 11 px.
+  weight: ["400"],
   display: "swap",
   variable: "--font-jetbrains-mono",
 });
